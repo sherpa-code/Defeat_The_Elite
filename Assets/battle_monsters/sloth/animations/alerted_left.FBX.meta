@@ -1,0 +1,209 @@
+fileFormatVersion: 2
+guid: 41b1a1d04309b2a42b5a225964117bb1
+timeCreated: 1467998278
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: sloth_earL
+    100004: sloth_earR
+    100006: sloth_head
+    100008: sloth_jaw
+    100010: sloth_LArm1
+    100012: sloth_LArm2
+    100014: sloth_LArmCollarbone
+    100016: sloth_LArmDigit11
+    100018: sloth_LArmDigit12
+    100020: sloth_LArmDigit13
+    100022: sloth_LArmDigit21
+    100024: sloth_LArmDigit22
+    100026: sloth_LArmDigit23
+    100028: sloth_LArmDigit31
+    100030: sloth_LArmDigit32
+    100032: sloth_LArmDigit33
+    100034: sloth_LArmDigit41
+    100036: sloth_LArmDigit42
+    100038: sloth_LArmDigit43
+    100040: sloth_LArmIKTarget
+    100042: sloth_LArmPalm
+    100044: sloth_LLeg1
+    100046: sloth_LLeg2
+    100048: sloth_LLegAnkle
+    100050: sloth_LLegDigit11
+    100052: sloth_LLegDigit21
+    100054: sloth_LLegDigit31
+    100056: sloth_LLegPlatform
+    100058: sloth_Neck1
+    100060: sloth_Neck2
+    100062: sloth_Neck3
+    100064: sloth_pelvis
+    100066: sloth_RArm1
+    100068: sloth_RArm2
+    100070: sloth_RArmCollarbone
+    100072: sloth_RArmDigit11
+    100074: sloth_RArmDigit12
+    100076: sloth_RArmDigit13
+    100078: sloth_RArmDigit21
+    100080: sloth_RArmDigit22
+    100082: sloth_RArmDigit23
+    100084: sloth_RArmDigit31
+    100086: sloth_RArmDigit32
+    100088: sloth_RArmDigit33
+    100090: sloth_RArmDigit41
+    100092: sloth_RArmDigit42
+    100094: sloth_RArmDigit43
+    100096: sloth_RArmIKTarget
+    100098: sloth_RArmPalm
+    100100: sloth_ribs
+    100102: sloth_RLeg1
+    100104: sloth_RLeg2
+    100106: sloth_RLegAnkle
+    100108: sloth_RLegDigit11
+    100110: sloth_RLegDigit21
+    100112: sloth_RLegDigit31
+    100114: sloth_RLegPlatform
+    100116: sloth_Spine1
+    100118: sloth_Spine2
+    100120: sloth_Spine3
+    100122: sloth_Tail1
+    100124: sloth_Tail2
+    100126: sloth_Tail3
+    100128: sloth_tongue01
+    100130: sloth_tongue02
+    100132: sloth_tongue03
+    100134: sloth_tongue04
+    400000: //RootNode
+    400002: sloth_earL
+    400004: sloth_earR
+    400006: sloth_head
+    400008: sloth_jaw
+    400010: sloth_LArm1
+    400012: sloth_LArm2
+    400014: sloth_LArmCollarbone
+    400016: sloth_LArmDigit11
+    400018: sloth_LArmDigit12
+    400020: sloth_LArmDigit13
+    400022: sloth_LArmDigit21
+    400024: sloth_LArmDigit22
+    400026: sloth_LArmDigit23
+    400028: sloth_LArmDigit31
+    400030: sloth_LArmDigit32
+    400032: sloth_LArmDigit33
+    400034: sloth_LArmDigit41
+    400036: sloth_LArmDigit42
+    400038: sloth_LArmDigit43
+    400040: sloth_LArmIKTarget
+    400042: sloth_LArmPalm
+    400044: sloth_LLeg1
+    400046: sloth_LLeg2
+    400048: sloth_LLegAnkle
+    400050: sloth_LLegDigit11
+    400052: sloth_LLegDigit21
+    400054: sloth_LLegDigit31
+    400056: sloth_LLegPlatform
+    400058: sloth_Neck1
+    400060: sloth_Neck2
+    400062: sloth_Neck3
+    400064: sloth_pelvis
+    400066: sloth_RArm1
+    400068: sloth_RArm2
+    400070: sloth_RArmCollarbone
+    400072: sloth_RArmDigit11
+    400074: sloth_RArmDigit12
+    400076: sloth_RArmDigit13
+    400078: sloth_RArmDigit21
+    400080: sloth_RArmDigit22
+    400082: sloth_RArmDigit23
+    400084: sloth_RArmDigit31
+    400086: sloth_RArmDigit32
+    400088: sloth_RArmDigit33
+    400090: sloth_RArmDigit41
+    400092: sloth_RArmDigit42
+    400094: sloth_RArmDigit43
+    400096: sloth_RArmIKTarget
+    400098: sloth_RArmPalm
+    400100: sloth_ribs
+    400102: sloth_RLeg1
+    400104: sloth_RLeg2
+    400106: sloth_RLegAnkle
+    400108: sloth_RLegDigit11
+    400110: sloth_RLegDigit21
+    400112: sloth_RLegDigit31
+    400114: sloth_RLegPlatform
+    400116: sloth_Spine1
+    400118: sloth_Spine2
+    400120: sloth_Spine3
+    400122: sloth_Tail1
+    400124: sloth_Tail2
+    400126: sloth_Tail3
+    400128: sloth_tongue01
+    400130: sloth_tongue02
+    400132: sloth_tongue03
+    400134: sloth_tongue04
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

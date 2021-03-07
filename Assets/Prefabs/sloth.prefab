@@ -1,0 +1,2309 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8331128101280411137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920673}
+  m_Layer: 0
+  m_Name: sloth_RArm2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920673
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411137}
+  m_LocalRotation: {x: -0.05834976, y: 0.07746506, z: -0.31113774, w: 0.9454035}
+  m_LocalPosition: {x: -0.4067845, y: 0.00000009689331, z: 0.0000011627197}
+  m_LocalScale: {x: 1.0000007, y: 1.0000002, z: 0.9999992}
+  m_Children:
+  - {fileID: 8331128101279920655}
+  m_Father: {fileID: 8331128101279920687}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920675}
+  m_Layer: 0
+  m_Name: sloth_RArmCollarbone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411139}
+  m_LocalRotation: {x: 0.12694964, y: -0.73814136, z: -0.20930792, w: 0.6286663}
+  m_LocalPosition: {x: -0.08809668, y: -0.06905964, z: -0.09643587}
+  m_LocalScale: {x: 1, y: 1.0000002, z: 1.0000001}
+  m_Children:
+  - {fileID: 8331128101279920687}
+  m_Father: {fileID: 8331128101279920641}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920677}
+  m_Layer: 0
+  m_Name: sloth_RArmDigit11
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411141}
+  m_LocalRotation: {x: -0.2926379, y: -0.36563483, z: 0.054753695, w: 0.88185954}
+  m_LocalPosition: {x: -0.09768313, y: -0.06323882, z: -0.1033589}
+  m_LocalScale: {x: 0.99999964, y: 1.0000029, z: 0.9999975}
+  m_Children:
+  - {fileID: 8331128101279920679}
+  m_Father: {fileID: 8331128101279920655}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920679}
+  m_Layer: 0
+  m_Name: sloth_RArmDigit12
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920679
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411143}
+  m_LocalRotation: {x: 0.0000017787607, y: 0.00000040565584, z: 0.09302997, w: 0.9956633}
+  m_LocalPosition: {x: -0.0762001, y: 0.00000009689331, z: 0.00000019378662}
+  m_LocalScale: {x: 0.9999982, y: 1.0000039, z: 0.9999974}
+  m_Children:
+  - {fileID: 8331128101279920697}
+  m_Father: {fileID: 8331128101279920677}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920681}
+  m_Layer: 0
+  m_Name: sloth_Neck2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920681
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411145}
+  m_LocalRotation: {x: 0, y: 0, z: 0.113147624, w: 0.9935782}
+  m_LocalPosition: {x: -0.20759276, y: 0.00000009689331, z: 4.620233e-14}
+  m_LocalScale: {x: 1.0000002, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 8331128101279920683}
+  m_Father: {fileID: 8331128101279920727}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920683}
+  m_Layer: 0
+  m_Name: sloth_Neck3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411147}
+  m_LocalRotation: {x: 0, y: -0, z: -0.10040407, w: 0.9949468}
+  m_LocalPosition: {x: -0.20759256, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 8331128101279920739}
+  m_Father: {fileID: 8331128101279920681}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920685}
+  m_Layer: 0
+  m_Name: sloth_pelvis
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920685
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411149}
+  m_LocalRotation: {x: -0.6644694, y: 0.24182718, z: 0.6644695, w: -0.24182709}
+  m_LocalPosition: {x: -0.000000013922457, y: 0.8695718, z: -0.31851214}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8331128101279920729}
+  - {fileID: 8331128101279920643}
+  - {fileID: 8331128101279920657}
+  - {fileID: 8331128101279920663}
+  m_Father: {fileID: 8331128101279920745}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920687}
+  m_Layer: 0
+  m_Name: sloth_RArm1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411151}
+  m_LocalRotation: {x: 0.7493656, y: -0.1209522, z: -0.12885651, w: 0.63813615}
+  m_LocalPosition: {x: -0.2690703, y: -0.00000009689331, z: 0.000000048446655}
+  m_LocalScale: {x: 1.0000001, y: 1.0000004, z: 1.0000001}
+  m_Children:
+  - {fileID: 8331128101279920673}
+  m_Father: {fileID: 8331128101279920675}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920689}
+  m_Layer: 0
+  m_Name: sloth_RArmDigit31
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920689
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411153}
+  m_LocalRotation: {x: -0.0002461845, y: 0.0721175, z: 0.2326337, w: 0.9698869}
+  m_LocalPosition: {x: -0.34733954, y: 0.012351911, z: -0.028097995}
+  m_LocalScale: {x: 0.99999654, y: 1.0000038, z: 1.0000002}
+  m_Children:
+  - {fileID: 8331128101279920691}
+  m_Father: {fileID: 8331128101279920655}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920691}
+  m_Layer: 0
+  m_Name: sloth_RArmDigit32
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411155}
+  m_LocalRotation: {x: -0.000002367212, y: -0.00000028398918, z: 0.11911369, w: 0.99288064}
+  m_LocalPosition: {x: -0.08903889, y: -0.00000009689331, z: 0.00000009689331}
+  m_LocalScale: {x: 0.9999967, y: 1.0000031, z: 1.0000001}
+  m_Children:
+  - {fileID: 8331128101279920693}
+  m_Father: {fileID: 8331128101279920689}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920693}
+  m_Layer: 0
+  m_Name: sloth_RArmDigit33
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411157}
+  m_LocalRotation: {x: -0.0000022757574, y: 0.0000002672705, z: 0.11911435, w: 0.9928806}
+  m_LocalPosition: {x: -0.08903891, y: 0, z: 0.00000009689331}
+  m_LocalScale: {x: 0.99999785, y: 1.000002, z: 1.0000004}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920691}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920695}
+  m_Layer: 0
+  m_Name: sloth_RArmDigit41
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411159}
+  m_LocalRotation: {x: 0.08296511, y: 0.25682363, z: 0.29600388, w: 0.91626424}
+  m_LocalPosition: {x: -0.3584602, y: 0.0047558625, z: 0.09241374}
+  m_LocalScale: {x: 0.99999696, y: 1.000001, z: 1.0000024}
+  m_Children:
+  - {fileID: 8331128101279920649}
+  m_Father: {fileID: 8331128101279920655}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920697}
+  m_Layer: 0
+  m_Name: sloth_RArmDigit13
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411161}
+  m_LocalRotation: {x: 0.0000018197528, y: 0.000000065267194, z: 0.09303051, w: 0.9956633}
+  m_LocalPosition: {x: -0.07619995, y: 0.00000019378662, z: 0.000000024223327}
+  m_LocalScale: {x: 0.9999974, y: 1.0000048, z: 0.99999744}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920679}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920699}
+  m_Layer: 0
+  m_Name: sloth_RArmDigit21
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411163}
+  m_LocalRotation: {x: -0.026310159, y: -0.107828245, z: 0.23556787, w: 0.96549916}
+  m_LocalPosition: {x: -0.33008003, y: -0.0212519, z: -0.10803711}
+  m_LocalScale: {x: 0.9999974, y: 1.0000048, z: 0.9999981}
+  m_Children:
+  - {fileID: 8331128101279920701}
+  m_Father: {fileID: 8331128101279920655}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920701}
+  m_Layer: 0
+  m_Name: sloth_RArmDigit22
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920701
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411165}
+  m_LocalRotation: {x: -0.0000018448399, y: -0.0000005899412, z: 0.13427821, w: 0.9909437}
+  m_LocalPosition: {x: -0.071366355, y: -0.00000009689331, z: -0.00000019378662}
+  m_LocalScale: {x: 0.99999714, y: 1.0000049, z: 0.99999785}
+  m_Children:
+  - {fileID: 8331128101279920703}
+  m_Father: {fileID: 8331128101279920699}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920703}
+  m_Layer: 0
+  m_Name: sloth_RArmDigit23
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411167}
+  m_LocalRotation: {x: -0.0000019799056, y: -0.00000014799076, z: 0.13427913, w: 0.99094355}
+  m_LocalPosition: {x: -0.07136647, y: -0.00000009689331, z: 0}
+  m_LocalScale: {x: 0.9999979, y: 1.0000039, z: 0.999998}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920701}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920705}
+  m_Layer: 0
+  m_Name: sloth_LArmDigit42
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920705
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411169}
+  m_LocalRotation: {x: -0.000002034066, y: 0.0000009600215, z: 0.11735372, w: 0.9930902}
+  m_LocalPosition: {x: -0.064898215, y: 0.00000014533997, z: 0.00000019378662}
+  m_LocalScale: {x: 1.0000023, y: 1.0000005, z: 0.9999978}
+  m_Children:
+  - {fileID: 8331128101279920707}
+  m_Father: {fileID: 8331128101279920719}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920707}
+  m_Layer: 0
+  m_Name: sloth_LArmDigit43
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920707
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411171}
+  m_LocalRotation: {x: -0.0000017085731, y: 0.0000014514421, z: 0.11735365, w: 0.9930902}
+  m_LocalPosition: {x: -0.06489812, y: 0.00000009689331, z: 0.00000019378662}
+  m_LocalScale: {x: 1.0000007, y: 1.0000015, z: 0.9999976}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920705}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920709}
+  m_Layer: 0
+  m_Name: sloth_LArmIKTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920709
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411173}
+  m_LocalRotation: {x: -0.5139585, y: 0.8123727, z: -0.26286486, w: -0.082458384}
+  m_LocalPosition: {x: -1.0859495, y: 0.257148, z: 0.67807907}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920745}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920711}
+  m_Layer: 0
+  m_Name: sloth_LArmPalm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411175}
+  m_LocalRotation: {x: 0.8449477, y: -0.081864744, z: -0.17861484, w: -0.49745175}
+  m_LocalPosition: {x: -0.4504021, y: 0.00000019378662, z: 0.000001259613}
+  m_LocalScale: {x: 1.0000012, y: 0.99999833, z: 1.0000006}
+  m_Children:
+  - {fileID: 8331128101279920765}
+  - {fileID: 8331128101279920755}
+  - {fileID: 8331128101279920713}
+  - {fileID: 8331128101279920719}
+  m_Father: {fileID: 8331128101279920761}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920713}
+  m_Layer: 0
+  m_Name: sloth_LArmDigit31
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411177}
+  m_LocalRotation: {x: 0.00024210339, y: -0.072119534, z: 0.23263358, w: 0.9698868}
+  m_LocalPosition: {x: -0.34734005, y: 0.012349343, z: 0.028095668}
+  m_LocalScale: {x: 1.0000039, y: 0.9999965, z: 1}
+  m_Children:
+  - {fileID: 8331128101279920715}
+  m_Father: {fileID: 8331128101279920711}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920715}
+  m_Layer: 0
+  m_Name: sloth_LArmDigit32
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920715
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411179}
+  m_LocalRotation: {x: -0.0000023612708, y: -0.00000033351205, z: 0.11911227, w: 0.9928808}
+  m_LocalPosition: {x: -0.089039624, y: -0.00000009689331, z: 0.00000019378662}
+  m_LocalScale: {x: 1.0000036, y: 0.9999967, z: 0.9999999}
+  m_Children:
+  - {fileID: 8331128101279920717}
+  m_Father: {fileID: 8331128101279920713}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920717}
+  m_Layer: 0
+  m_Name: sloth_LArmDigit33
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920717
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411181}
+  m_LocalRotation: {x: -0.000002294408, y: 0.00000023502105, z: 0.11911149, w: 0.9928809}
+  m_LocalPosition: {x: -0.089039564, y: 0, z: 0.00000009689331}
+  m_LocalScale: {x: 1.0000025, y: 0.99999785, z: 0.9999999}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920715}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411183
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920719}
+  m_Layer: 0
+  m_Name: sloth_LArmDigit41
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411183}
+  m_LocalRotation: {x: -0.082970336, y: -0.25682405, z: 0.2960003, w: 0.9162648}
+  m_LocalPosition: {x: -0.3584618, y: 0.004754167, z: -0.09241626}
+  m_LocalScale: {x: 1.0000033, y: 0.99999917, z: 0.99999774}
+  m_Children:
+  - {fileID: 8331128101279920705}
+  m_Father: {fileID: 8331128101279920711}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920721}
+  m_Layer: 0
+  m_Name: sloth_LLegDigit21
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920721
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411185}
+  m_LocalRotation: {x: -0.0005415769, y: 0.0007405998, z: -0.38233334, w: 0.92402405}
+  m_LocalPosition: {x: -0.24058585, y: 0.035447955, z: -0.008473659}
+  m_LocalScale: {x: 1.0000002, y: 1.0000001, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920733}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920723}
+  m_Layer: 0
+  m_Name: sloth_LLegDigit31
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411187}
+  m_LocalRotation: {x: -0.08094749, y: -0.19363041, z: -0.3736664, w: 0.90350884}
+  m_LocalPosition: {x: -0.23331599, y: 0.028267521, z: -0.093966454}
+  m_LocalScale: {x: 0.9999999, y: 1.0000001, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920733}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920725}
+  m_Layer: 0
+  m_Name: sloth_LLegPlatform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920725
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411189}
+  m_LocalRotation: {x: 0.6092166, y: -0.60921645, z: -0.35896412, w: 0.35896415}
+  m_LocalPosition: {x: -0.38140133, y: 0.055870965, z: -0.19667612}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920745}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920727}
+  m_Layer: 0
+  m_Name: sloth_Neck1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411191}
+  m_LocalRotation: {x: 0.000000026405564, y: -0.000000025171737, z: 0.12580802, w: 0.99205464}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 8331128101279920681}
+  m_Father: {fileID: 8331128101279920641}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920729}
+  m_Layer: 0
+  m_Name: sloth_LLeg1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411193}
+  m_LocalRotation: {x: -0.66042364, y: 0.73281795, z: 0.07266183, w: 0.14676076}
+  m_LocalPosition: {x: 0.000000072669984, y: 0.00000019378662, z: 0.16058269}
+  m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1.0000001}
+  m_Children:
+  - {fileID: 8331128101279920731}
+  m_Father: {fileID: 8331128101279920685}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920731}
+  m_Layer: 0
+  m_Name: sloth_LLeg2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920731
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411195}
+  m_LocalRotation: {x: 0.0060505955, y: 0.0751728, z: 0.517939, w: 0.8520867}
+  m_LocalPosition: {x: -0.41975102, y: -0.00000014533997, z: -0.0000003391266}
+  m_LocalScale: {x: 1.0000005, y: 1.0000002, z: 1.0000002}
+  m_Children:
+  - {fileID: 8331128101279920733}
+  m_Father: {fileID: 8331128101279920729}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920733}
+  m_Layer: 0
+  m_Name: sloth_LLegAnkle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411197}
+  m_LocalRotation: {x: -0.2179913, y: 0.046439752, z: -0.5654103, w: 0.7941249}
+  m_LocalPosition: {x: -0.39189014, y: -0.000000048446655, z: 0.000000048446655}
+  m_LocalScale: {x: 1.0000001, y: 0.99999964, z: 0.9999998}
+  m_Children:
+  - {fileID: 8331128101279920735}
+  - {fileID: 8331128101279920721}
+  - {fileID: 8331128101279920723}
+  m_Father: {fileID: 8331128101279920731}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920735}
+  m_Layer: 0
+  m_Name: sloth_LLegDigit11
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920735
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411199}
+  m_LocalRotation: {x: 0.11406084, y: 0.27761775, z: -0.36492357, w: 0.8813338}
+  m_LocalPosition: {x: -0.22586499, y: 0.020651272, z: 0.08007881}
+  m_LocalScale: {x: 0.99999994, y: 1.0000001, z: 0.9999998}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920733}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920737}
+  m_Layer: 0
+  m_Name: sloth_earR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920737
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411201}
+  m_LocalRotation: {x: 0.123450324, y: 0.057091404, z: 0.9442625, w: 0.29978153}
+  m_LocalPosition: {x: 0.10596824, y: -0.04273121, z: -0.15495566}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920739}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920739}
+  m_Layer: 0
+  m_Name: sloth_head
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920739
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411203}
+  m_LocalRotation: {x: 0.000000025219677, y: -0.00000002707646, z: -0.123593636, w: 0.99233294}
+  m_LocalPosition: {x: -0.20759265, y: -0.00000009689331, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 8331128101279920751}
+  - {fileID: 8331128101279920737}
+  - {fileID: 8331128101279920741}
+  m_Father: {fileID: 8331128101279920683}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920741}
+  m_Layer: 0
+  m_Name: sloth_jaw
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920741
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411205}
+  m_LocalRotation: {x: 1.6189917e-14, y: -5.0964367e-15, z: -0.30026504, w: 0.9538558}
+  m_LocalPosition: {x: 0.14825772, y: 0.05529178, z: -0.000000017140879}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8331128101279921133}
+  m_Father: {fileID: 8331128101279920739}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920743}
+  m_Layer: 0
+  m_Name: sloth_LArm1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411207}
+  m_LocalRotation: {x: -0.7493658, y: 0.1209534, z: -0.12885752, w: 0.6381355}
+  m_LocalPosition: {x: -0.26907012, y: 0, z: 0}
+  m_LocalScale: {x: 0.99999994, y: 0.9999999, z: 1.0000001}
+  m_Children:
+  - {fileID: 8331128101279920761}
+  m_Father: {fileID: 8331128101279920763}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920747}
+  - component: {fileID: 8331128101291909961}
+  m_Layer: 0
+  m_Name: sloth
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920747
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411209}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 0.987257, z: 0.27147916}
+  m_LocalScale: {x: 46.808613, y: 46.808613, z: 46.808613}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920745}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!137 &8331128101291909961
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411209}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 559a102c735b6e7459aba3bd131ebe22, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 4300000, guid: a39a31e40014ede4a83b68f5b766b68c, type: 3}
+  m_Bones:
+  - {fileID: 8331128101279920655}
+  - {fileID: 8331128101279920679}
+  - {fileID: 8331128101279920699}
+  - {fileID: 8331128101279920701}
+  - {fileID: 8331128101279920677}
+  - {fileID: 8331128101279920673}
+  - {fileID: 8331128101279920697}
+  - {fileID: 8331128101279920695}
+  - {fileID: 8331128101279920689}
+  - {fileID: 8331128101279920703}
+  - {fileID: 8331128101279920691}
+  - {fileID: 8331128101279920693}
+  - {fileID: 8331128101279920649}
+  - {fileID: 8331128101279920651}
+  - {fileID: 8331128101279920687}
+  - {fileID: 8331128101279920641}
+  - {fileID: 8331128101279920727}
+  - {fileID: 8331128101279920681}
+  - {fileID: 8331128101279920741}
+  - {fileID: 8331128101279920675}
+  - {fileID: 8331128101279920683}
+  - {fileID: 8331128101279920661}
+  - {fileID: 8331128101279920659}
+  - {fileID: 8331128101279920685}
+  - {fileID: 8331128101279920763}
+  - {fileID: 8331128101279920743}
+  - {fileID: 8331128101279920657}
+  - {fileID: 8331128101279920643}
+  - {fileID: 8331128101279920737}
+  - {fileID: 8331128101279920739}
+  - {fileID: 8331128101279920751}
+  - {fileID: 8331128101279921133}
+  - {fileID: 8331128101279921135}
+  - {fileID: 8331128101279920729}
+  - {fileID: 8331128101279920663}
+  - {fileID: 8331128101279920731}
+  - {fileID: 8331128101279920645}
+  - {fileID: 8331128101279921129}
+  - {fileID: 8331128101279921131}
+  - {fileID: 8331128101279920665}
+  - {fileID: 8331128101279920647}
+  - {fileID: 8331128101279920667}
+  - {fileID: 8331128101279920669}
+  - {fileID: 8331128101279920767}
+  - {fileID: 8331128101279920711}
+  - {fileID: 8331128101279920765}
+  - {fileID: 8331128101279920755}
+  - {fileID: 8331128101279920757}
+  - {fileID: 8331128101279920761}
+  - {fileID: 8331128101279920753}
+  - {fileID: 8331128101279920713}
+  - {fileID: 8331128101279920719}
+  - {fileID: 8331128101279920705}
+  - {fileID: 8331128101279920707}
+  - {fileID: 8331128101279920715}
+  - {fileID: 8331128101279920717}
+  - {fileID: 8331128101279920759}
+  - {fileID: 8331128101279920733}
+  - {fileID: 8331128101279920721}
+  - {fileID: 8331128101279920723}
+  - {fileID: 8331128101279920735}
+  - {fileID: 8331128101279921123}
+  - {fileID: 8331128101279921121}
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 8331128101279920685}
+  m_AABB:
+    m_Center: {x: -0.54505366, y: 0.5155494, z: -0.000009417534}
+    m_Extent: {x: 1.355813, y: 0.89326334, z: 1.249161}
+  m_DirtyAABB: 0
+--- !u!1 &8331128101280411211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920745}
+  - component: {fileID: 8331128101287665033}
+  m_Layer: 0
+  m_Name: sloth
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920745
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411211}
+  m_LocalRotation: {x: -0, y: 0.99991906, z: -0, w: -0.012726192}
+  m_LocalPosition: {x: 24.920826, y: -0.035466194, z: -7.7046065}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8331128101279920747}
+  - {fileID: 8331128101279920749}
+  - {fileID: 8331128101279920709}
+  - {fileID: 8331128101279920725}
+  - {fileID: 8331128101279920685}
+  - {fileID: 8331128101279920653}
+  - {fileID: 8331128101279920671}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 181.458, z: 0}
+--- !u!95 &8331128101287665033
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411211}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: a39a31e40014ede4a83b68f5b766b68c, type: 3}
+  m_Controller: {fileID: 9100000, guid: 32bdf323f49b7b04e8b8491a8faa2ed4, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &8331128101280411213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920749}
+  m_Layer: 0
+  m_Name: sloth_
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411213}
+  m_LocalRotation: {x: 0.5000001, y: -0.50000006, z: -0.4999999, w: 0.49999997}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920745}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920751}
+  m_Layer: 0
+  m_Name: sloth_earL
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920751
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411215}
+  m_LocalRotation: {x: -0.12345027, y: -0.057091396, z: 0.9442625, w: 0.29978168}
+  m_LocalPosition: {x: 0.10596804, y: -0.0427315, z: 0.15495566}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920739}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920753}
+  m_Layer: 0
+  m_Name: sloth_LArmDigit13
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920753
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411217}
+  m_LocalRotation: {x: 0.0000018601216, y: 0.0000001139407, z: 0.093032114, w: 0.9956631}
+  m_LocalPosition: {x: -0.0762, y: -0.00000038757324, z: 0.000000072669984}
+  m_LocalScale: {x: 1.0000024, y: 0.99999493, z: 1.0000024}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920767}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920755}
+  m_Layer: 0
+  m_Name: sloth_LArmDigit21
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411219}
+  m_LocalRotation: {x: 0.02630699, y: 0.10782553, z: 0.23556979, w: 0.9654991}
+  m_LocalPosition: {x: -0.3300804, y: -0.021254614, z: 0.10803507}
+  m_LocalScale: {x: 1.0000025, y: 0.9999954, z: 1.000002}
+  m_Children:
+  - {fileID: 8331128101279920757}
+  m_Father: {fileID: 8331128101279920711}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920757}
+  m_Layer: 0
+  m_Name: sloth_LArmDigit22
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411221}
+  m_LocalRotation: {x: -0.00000183965, y: -0.0000006282422, z: 0.13427773, w: 0.99094373}
+  m_LocalPosition: {x: -0.07136701, y: -0.00000029067994, z: -0.00000009689331}
+  m_LocalScale: {x: 1.000003, y: 0.99999505, z: 1.0000019}
+  m_Children:
+  - {fileID: 8331128101279920759}
+  m_Father: {fileID: 8331128101279920755}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411223
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920759}
+  m_Layer: 0
+  m_Name: sloth_LArmDigit23
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920759
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411223}
+  m_LocalRotation: {x: -0.0000019120932, y: -0.000000093685536, z: 0.1342767, w: 0.9909439}
+  m_LocalPosition: {x: -0.07136699, y: 0, z: 0.00000009689331}
+  m_LocalScale: {x: 1.0000023, y: 0.9999958, z: 1.000002}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920757}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920761}
+  m_Layer: 0
+  m_Name: sloth_LArm2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411225}
+  m_LocalRotation: {x: 0.0583497, y: -0.077462144, z: -0.31113818, w: 0.94540364}
+  m_LocalPosition: {x: -0.40678427, y: -0.00000019378662, z: 0.0000011627197}
+  m_LocalScale: {x: 0.9999991, y: 0.99999994, z: 1.0000011}
+  m_Children:
+  - {fileID: 8331128101279920711}
+  m_Father: {fileID: 8331128101279920743}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920763}
+  m_Layer: 0
+  m_Name: sloth_LArmCollarbone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411227}
+  m_LocalRotation: {x: -0.12694992, y: 0.7381414, z: -0.20930776, w: 0.62866634}
+  m_LocalPosition: {x: -0.08809673, y: -0.06905954, z: 0.09643585}
+  m_LocalScale: {x: 1.0000001, y: 1.0000002, z: 1.0000001}
+  m_Children:
+  - {fileID: 8331128101279920743}
+  m_Father: {fileID: 8331128101279920641}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920765}
+  m_Layer: 0
+  m_Name: sloth_LArmDigit11
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920765
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411229}
+  m_LocalRotation: {x: 0.2926345, y: 0.36563456, z: 0.054759145, w: 0.88186044}
+  m_LocalPosition: {x: -0.097683325, y: -0.06323989, z: 0.103358805}
+  m_LocalScale: {x: 1.0000006, y: 0.99999714, z: 1.0000025}
+  m_Children:
+  - {fileID: 8331128101279920767}
+  m_Father: {fileID: 8331128101279920711}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920767}
+  m_Layer: 0
+  m_Name: sloth_LArmDigit12
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920767
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411231}
+  m_LocalRotation: {x: 0.0000018560085, y: 0.0000004128789, z: 0.093032815, w: 0.99566305}
+  m_LocalPosition: {x: -0.07619995, y: -0.00000058135987, z: 0.000000072669984}
+  m_LocalScale: {x: 1.000002, y: 0.99999595, z: 1.0000024}
+  m_Children:
+  - {fileID: 8331128101279920753}
+  m_Father: {fileID: 8331128101279920765}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279921121}
+  m_Layer: 0
+  m_Name: sloth_tongue03
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279921121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411585}
+  m_LocalRotation: {x: 0, y: -0, z: -0.039291974, w: 0.99922776}
+  m_LocalPosition: {x: -0.12783928, y: 0.00000009689331, z: 0}
+  m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1}
+  m_Children:
+  - {fileID: 8331128101279921123}
+  m_Father: {fileID: 8331128101279921135}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279921123}
+  m_Layer: 0
+  m_Name: sloth_tongue04
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279921123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411587}
+  m_LocalRotation: {x: -3.3984262e-16, y: -7.097295e-15, z: -0.0478286, w: 0.9988556}
+  m_LocalPosition: {x: -0.09404237, y: 0, z: 4.620233e-14}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8331128101279921121}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279921129}
+  m_Layer: 0
+  m_Name: sloth_Tail2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279921129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411593}
+  m_LocalRotation: {x: 0, y: -0, z: -9.939647e-28, w: 1}
+  m_LocalPosition: {x: -0.26166123, y: 0.00000019378662, z: 3.465175e-14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8331128101279921131}
+  m_Father: {fileID: 8331128101279920663}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279921131}
+  m_Layer: 0
+  m_Name: sloth_Tail3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279921131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411595}
+  m_LocalRotation: {x: -1.4210855e-14, y: 6.039613e-14, z: 8.582807e-28, w: 1}
+  m_LocalPosition: {x: -0.26166135, y: -0.00000009689331, z: 2.3101165e-14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8331128101279921129}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279921133}
+  m_Layer: 0
+  m_Name: sloth_tongue01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279921133
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411597}
+  m_LocalRotation: {x: 1.3367353e-14, y: -8.000206e-15, z: 0.17540744, w: 0.98449594}
+  m_LocalPosition: {x: -0.19727333, y: 0.0628512, z: 0.00000003934156}
+  m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1}
+  m_Children:
+  - {fileID: 8331128101279921135}
+  m_Father: {fileID: 8331128101279920741}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279921135}
+  m_Layer: 0
+  m_Name: sloth_tongue02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279921135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411599}
+  m_LocalRotation: {x: 7.0257783e-15, y: -4.7188925e-16, z: -0.06701442, w: 0.997752}
+  m_LocalPosition: {x: -0.16377401, y: 0.00000009689331, z: 4.620233e-14}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 8331128101279921121}
+  m_Father: {fileID: 8331128101279921133}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920641}
+  m_Layer: 0
+  m_Name: sloth_ribs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920641
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411617}
+  m_LocalRotation: {x: 0.00000002524916, y: -4.843621e-10, z: -0.019179767, w: 0.99981606}
+  m_LocalPosition: {x: -0.24529546, y: 0.00000009689331, z: -4.620233e-14}
+  m_LocalScale: {x: 0.99999994, y: 0.9999998, z: 0.9999999}
+  m_Children:
+  - {fileID: 8331128101279920763}
+  - {fileID: 8331128101279920727}
+  - {fileID: 8331128101279920675}
+  m_Father: {fileID: 8331128101279920661}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920643}
+  m_Layer: 0
+  m_Name: sloth_RLeg1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920643
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411619}
+  m_LocalRotation: {x: -0.6604242, y: 0.7328176, z: -0.0726618, w: -0.1467604}
+  m_LocalPosition: {x: 0.00000012111664, y: 0.00000019378662, z: -0.16058269}
+  m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1}
+  m_Children:
+  - {fileID: 8331128101279920645}
+  m_Father: {fileID: 8331128101279920685}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920645}
+  m_Layer: 0
+  m_Name: sloth_RLeg2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411621}
+  m_LocalRotation: {x: -0.0060761375, y: -0.07510579, z: 0.5179549, w: 0.8520828}
+  m_LocalPosition: {x: -0.41975102, y: -0.00000014533997, z: 0.00000024223328}
+  m_LocalScale: {x: 1.0000002, y: 0.99999917, z: 1.0000002}
+  m_Children:
+  - {fileID: 8331128101279920647}
+  m_Father: {fileID: 8331128101279920643}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920647}
+  m_Layer: 0
+  m_Name: sloth_RLegAnkle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411623}
+  m_LocalRotation: {x: 0.21792781, y: -0.046646476, z: -0.56538135, w: 0.7941508}
+  m_LocalPosition: {x: -0.39189017, y: -0.000000024223327, z: -0.000000048446655}
+  m_LocalScale: {x: 0.99999946, y: 1.0000012, z: 1}
+  m_Children:
+  - {fileID: 8331128101279920665}
+  - {fileID: 8331128101279920667}
+  - {fileID: 8331128101279920669}
+  m_Father: {fileID: 8331128101279920645}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920649}
+  m_Layer: 0
+  m_Name: sloth_RArmDigit42
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411625}
+  m_LocalRotation: {x: -0.0000020340685, y: 0.0000009600155, z: 0.11735655, w: 0.99308985}
+  m_LocalPosition: {x: -0.06489778, y: -0.00000019378662, z: -0.00000009689331}
+  m_LocalScale: {x: 0.9999981, y: 0.9999999, z: 1.0000023}
+  m_Children:
+  - {fileID: 8331128101279920651}
+  m_Father: {fileID: 8331128101279920695}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920651}
+  m_Layer: 0
+  m_Name: sloth_RArmDigit43
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920651
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411627}
+  m_LocalRotation: {x: -0.000001651979, y: 0.0000015200227, z: 0.117356606, w: 0.99308985}
+  m_LocalPosition: {x: -0.06489778, y: -0.00000014533997, z: 0.00000019378662}
+  m_LocalScale: {x: 0.99999964, y: 0.9999984, z: 1.0000024}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920649}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920653}
+  m_Layer: 0
+  m_Name: sloth_RArmIKTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411629}
+  m_LocalRotation: {x: -0.26286328, y: -0.08245797, z: -0.5139603, w: 0.8123721}
+  m_LocalPosition: {x: 1.0859523, y: 0.25715056, z: 0.67807937}
+  m_LocalScale: {x: 1, y: 1, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920745}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920655}
+  m_Layer: 0
+  m_Name: sloth_RArmPalm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411631}
+  m_LocalRotation: {x: 0.8449486, y: -0.08186344, z: 0.17861159, w: 0.4974517}
+  m_LocalPosition: {x: -0.4504028, y: -0.00000024223328, z: 0.0000011627197}
+  m_LocalScale: {x: 0.9999987, y: 1.0000018, z: 0.9999996}
+  m_Children:
+  - {fileID: 8331128101279920677}
+  - {fileID: 8331128101279920699}
+  - {fileID: 8331128101279920689}
+  - {fileID: 8331128101279920695}
+  m_Father: {fileID: 8331128101279920673}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920657}
+  m_Layer: 0
+  m_Name: sloth_Spine1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920657
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411633}
+  m_LocalRotation: {x: -0.0000000012843197, y: -0.000000040437484, z: -0.031744618,
+    w: 0.99949604}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1.0000002, z: 1.0000001}
+  m_Children:
+  - {fileID: 8331128101279920659}
+  m_Father: {fileID: 8331128101279920685}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920659}
+  m_Layer: 0
+  m_Name: sloth_Spine2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920659
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411635}
+  m_LocalRotation: {x: -0.0000000028238907, y: -0.000000018481249, z: -0.15104458,
+    w: 0.988527}
+  m_LocalPosition: {x: -0.24529557, y: -0.00000019378662, z: 2.3101165e-14}
+  m_LocalScale: {x: 0.9999999, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 8331128101279920661}
+  m_Father: {fileID: 8331128101279920657}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411637
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920661}
+  m_Layer: 0
+  m_Name: sloth_Spine3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920661
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411637}
+  m_LocalRotation: {x: -0.0000000045845368, y: -0.00000003232893, z: -0.14040437,
+    w: 0.99009424}
+  m_LocalPosition: {x: -0.2452955, y: -0.00000019378662, z: 0}
+  m_LocalScale: {x: 1, y: 0.9999999, z: 1}
+  m_Children:
+  - {fileID: 8331128101279920641}
+  m_Father: {fileID: 8331128101279920659}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920663}
+  m_Layer: 0
+  m_Name: sloth_Tail1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920663
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411639}
+  m_LocalRotation: {x: 0.0000000052883156, y: 0.0000001944912, z: 0.9996306, w: 0.027180469}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8331128101279921129}
+  m_Father: {fileID: 8331128101279920685}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920665}
+  m_Layer: 0
+  m_Name: sloth_RLegDigit11
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411641}
+  m_LocalRotation: {x: -0.11413874, y: -0.27747315, z: -0.36497486, w: 0.881348}
+  m_LocalPosition: {x: -0.22586514, y: 0.020651272, z: -0.08007878}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920647}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920667}
+  m_Layer: 0
+  m_Name: sloth_RLegDigit21
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920667
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411643}
+  m_LocalRotation: {x: 0.0004826404, y: -0.00059837074, z: -0.3824056, w: 0.92399424}
+  m_LocalPosition: {x: -0.240586, y: 0.035447955, z: 0.008473756}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920647}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920669}
+  m_Layer: 0
+  m_Name: sloth_RLegDigit31
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920669
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411645}
+  m_LocalRotation: {x: 0.08090508, y: 0.19376323, z: -0.37374946, w: 0.90344983}
+  m_LocalPosition: {x: -0.23331611, y: 0.028267497, z: 0.09396655}
+  m_LocalScale: {x: 1.0000002, y: 1.0000001, z: 1.0000002}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920647}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8331128101280411647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331128101279920671}
+  m_Layer: 0
+  m_Name: sloth_RLegPlatform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331128101279920671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331128101280411647}
+  m_LocalRotation: {x: 0.35896423, y: -0.35896417, z: -0.6092164, w: 0.6092165}
+  m_LocalPosition: {x: 0.3814014, y: 0.055870965, z: -0.196676}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8331128101279920745}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

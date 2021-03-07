@@ -1,0 +1,145 @@
+fileFormatVersion: 2
+guid: 902b994cce69d8c4284a46d9b74d5619
+timeCreated: 1467996032
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: needles_BackLLeg1
+    100002: needles_BackLLeg2
+    100004: needles_BackLLegAnkle
+    100006: needles_BackLLegPlatform
+    100008: needles_BackRLeg1
+    100010: needles_BackRLeg2
+    100012: needles_BackRLegAnkle
+    100014: needles_BackRLegPlatform
+    100016: needles_FrontLLeg1
+    100018: needles_FrontLLeg2
+    100020: needles_FrontLLegAnkle
+    100022: needles_FrontLLegPlatform
+    100024: needles_FrontRLeg1
+    100026: needles_FrontRLeg2
+    100028: needles_FrontRLegAnkle
+    100030: needles_FrontRLegPlatform
+    100032: needles_LEar
+    100034: needles_neck1
+    100036: needles_neck2
+    100038: needles_neck3
+    100040: needles_neck4
+    100042: needles_pelvis
+    100044: needles_REar
+    100046: needles_ribs
+    100048: needles_skull
+    100050: needles_Spine1
+    100052: needles_Spine2
+    100054: needles_Spine3
+    100056: needles_Tail1
+    100058: needles_Tail2
+    100060: needles_Tail3
+    100062: needles_Tail4
+    100064: needles_Tail5
+    100066: needles_Tail6
+    100068: needles_Tail7
+    100070: //RootNode
+    400000: needles_BackLLeg1
+    400002: needles_BackLLeg2
+    400004: needles_BackLLegAnkle
+    400006: needles_BackLLegPlatform
+    400008: needles_BackRLeg1
+    400010: needles_BackRLeg2
+    400012: needles_BackRLegAnkle
+    400014: needles_BackRLegPlatform
+    400016: needles_FrontLLeg1
+    400018: needles_FrontLLeg2
+    400020: needles_FrontLLegAnkle
+    400022: needles_FrontLLegPlatform
+    400024: needles_FrontRLeg1
+    400026: needles_FrontRLeg2
+    400028: needles_FrontRLegAnkle
+    400030: needles_FrontRLegPlatform
+    400032: needles_LEar
+    400034: needles_neck1
+    400036: needles_neck2
+    400038: needles_neck3
+    400040: needles_neck4
+    400042: needles_pelvis
+    400044: needles_REar
+    400046: needles_ribs
+    400048: needles_skull
+    400050: needles_Spine1
+    400052: needles_Spine2
+    400054: needles_Spine3
+    400056: needles_Tail1
+    400058: needles_Tail2
+    400060: needles_Tail3
+    400062: needles_Tail4
+    400064: needles_Tail5
+    400066: needles_Tail6
+    400068: needles_Tail7
+    400070: //RootNode
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

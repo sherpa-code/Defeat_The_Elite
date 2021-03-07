@@ -1,0 +1,151 @@
+fileFormatVersion: 2
+guid: 9fc70687441b7ea4d8c7de08cbb76645
+timeCreated: 1467991857
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: diatryma_head
+    100002: diatryma_jaw
+    100004: diatryma_LLeg1
+    100006: diatryma_LLeg2
+    100008: diatryma_LLegAnkle
+    100010: diatryma_LLegDigit11
+    100012: diatryma_LLegDigit12
+    100014: diatryma_LLegDigit13
+    100016: diatryma_LLegDigit21
+    100018: diatryma_LLegDigit22
+    100020: diatryma_LLegDigit23
+    100022: diatryma_LLegDigit31
+    100024: diatryma_LLegDigit32
+    100026: diatryma_LLegDigit33
+    100028: diatryma_neck1
+    100030: diatryma_neck2
+    100032: diatryma_neck3
+    100034: diatryma_neck4
+    100036: diatryma_neck5
+    100038: diatryma_pelvis
+    100040: diatryma_RLeg1
+    100042: diatryma_RLeg2
+    100044: diatryma_RLegAnkle
+    100046: diatryma_RLegDigit11
+    100048: diatryma_RLegDigit12
+    100050: diatryma_RLegDigit13
+    100052: diatryma_RLegDigit21
+    100054: diatryma_RLegDigit22
+    100056: diatryma_RLegDigit23
+    100058: diatryma_RLegDigit31
+    100060: diatryma_RLegDigit32
+    100062: diatryma_RLegDigit33
+    100064: diatryma_Tail1
+    100066: diatryma_Tail2
+    100068: diatryma_tongue01
+    100070: diatryma_tongue02
+    100072: diatryma_tongue03
+    100074: diatryma_tongue04
+    100076: //RootNode
+    400000: diatryma_head
+    400002: diatryma_jaw
+    400004: diatryma_LLeg1
+    400006: diatryma_LLeg2
+    400008: diatryma_LLegAnkle
+    400010: diatryma_LLegDigit11
+    400012: diatryma_LLegDigit12
+    400014: diatryma_LLegDigit13
+    400016: diatryma_LLegDigit21
+    400018: diatryma_LLegDigit22
+    400020: diatryma_LLegDigit23
+    400022: diatryma_LLegDigit31
+    400024: diatryma_LLegDigit32
+    400026: diatryma_LLegDigit33
+    400028: diatryma_neck1
+    400030: diatryma_neck2
+    400032: diatryma_neck3
+    400034: diatryma_neck4
+    400036: diatryma_neck5
+    400038: diatryma_pelvis
+    400040: diatryma_RLeg1
+    400042: diatryma_RLeg2
+    400044: diatryma_RLegAnkle
+    400046: diatryma_RLegDigit11
+    400048: diatryma_RLegDigit12
+    400050: diatryma_RLegDigit13
+    400052: diatryma_RLegDigit21
+    400054: diatryma_RLegDigit22
+    400056: diatryma_RLegDigit23
+    400058: diatryma_RLegDigit31
+    400060: diatryma_RLegDigit32
+    400062: diatryma_RLegDigit33
+    400064: diatryma_Tail1
+    400066: diatryma_Tail2
+    400068: diatryma_tongue01
+    400070: diatryma_tongue02
+    400072: diatryma_tongue03
+    400074: diatryma_tongue04
+    400076: //RootNode
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

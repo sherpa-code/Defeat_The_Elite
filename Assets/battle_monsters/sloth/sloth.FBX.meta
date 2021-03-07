@@ -1,0 +1,215 @@
+fileFormatVersion: 2
+guid: a39a31e40014ede4a83b68f5b766b68c
+timeCreated: 1467041379
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: sloth
+    100002: //RootNode
+    100004: sloth_
+    100006: sloth_earL
+    100008: sloth_earR
+    100010: sloth_head
+    100012: sloth_jaw
+    100014: sloth_LArm1
+    100016: sloth_LArm2
+    100018: sloth_LArmCollarbone
+    100020: sloth_LArmDigit11
+    100022: sloth_LArmDigit12
+    100024: sloth_LArmDigit13
+    100026: sloth_LArmDigit21
+    100028: sloth_LArmDigit22
+    100030: sloth_LArmDigit23
+    100032: sloth_LArmDigit31
+    100034: sloth_LArmDigit32
+    100036: sloth_LArmDigit33
+    100038: sloth_LArmDigit41
+    100040: sloth_LArmDigit42
+    100042: sloth_LArmDigit43
+    100044: sloth_LArmIKTarget
+    100046: sloth_LArmPalm
+    100048: sloth_LLeg1
+    100050: sloth_LLeg2
+    100052: sloth_LLegAnkle
+    100054: sloth_LLegDigit11
+    100056: sloth_LLegDigit21
+    100058: sloth_LLegDigit31
+    100060: sloth_LLegPlatform
+    100062: sloth_Neck1
+    100064: sloth_Neck2
+    100066: sloth_Neck3
+    100068: sloth_pelvis
+    100070: sloth_RArm1
+    100072: sloth_RArm2
+    100074: sloth_RArmCollarbone
+    100076: sloth_RArmDigit11
+    100078: sloth_RArmDigit12
+    100080: sloth_RArmDigit13
+    100082: sloth_RArmDigit21
+    100084: sloth_RArmDigit22
+    100086: sloth_RArmDigit23
+    100088: sloth_RArmDigit31
+    100090: sloth_RArmDigit32
+    100092: sloth_RArmDigit33
+    100094: sloth_RArmDigit41
+    100096: sloth_RArmDigit42
+    100098: sloth_RArmDigit43
+    100100: sloth_RArmIKTarget
+    100102: sloth_RArmPalm
+    100104: sloth_ribs
+    100106: sloth_RLeg1
+    100108: sloth_RLeg2
+    100110: sloth_RLegAnkle
+    100112: sloth_RLegDigit11
+    100114: sloth_RLegDigit21
+    100116: sloth_RLegDigit31
+    100118: sloth_RLegPlatform
+    100120: sloth_Spine1
+    100122: sloth_Spine2
+    100124: sloth_Spine3
+    100126: sloth_Tail1
+    100128: sloth_Tail2
+    100130: sloth_Tail3
+    100132: sloth_tongue01
+    100134: sloth_tongue02
+    100136: sloth_tongue03
+    100138: sloth_tongue04
+    400000: //RootNode
+    400002: sloth
+    400004: sloth_
+    400006: sloth_earL
+    400008: sloth_earR
+    400010: sloth_head
+    400012: sloth_jaw
+    400014: sloth_LArm1
+    400016: sloth_LArm2
+    400018: sloth_LArmCollarbone
+    400020: sloth_LArmDigit11
+    400022: sloth_LArmDigit12
+    400024: sloth_LArmDigit13
+    400026: sloth_LArmDigit21
+    400028: sloth_LArmDigit22
+    400030: sloth_LArmDigit23
+    400032: sloth_LArmDigit31
+    400034: sloth_LArmDigit32
+    400036: sloth_LArmDigit33
+    400038: sloth_LArmDigit41
+    400040: sloth_LArmDigit42
+    400042: sloth_LArmDigit43
+    400044: sloth_LArmIKTarget
+    400046: sloth_LArmPalm
+    400048: sloth_LLeg1
+    400050: sloth_LLeg2
+    400052: sloth_LLegAnkle
+    400054: sloth_LLegDigit11
+    400056: sloth_LLegDigit21
+    400058: sloth_LLegDigit31
+    400060: sloth_LLegPlatform
+    400062: sloth_Neck1
+    400064: sloth_Neck2
+    400066: sloth_Neck3
+    400068: sloth_pelvis
+    400070: sloth_RArm1
+    400072: sloth_RArm2
+    400074: sloth_RArmCollarbone
+    400076: sloth_RArmDigit11
+    400078: sloth_RArmDigit12
+    400080: sloth_RArmDigit13
+    400082: sloth_RArmDigit21
+    400084: sloth_RArmDigit22
+    400086: sloth_RArmDigit23
+    400088: sloth_RArmDigit31
+    400090: sloth_RArmDigit32
+    400092: sloth_RArmDigit33
+    400094: sloth_RArmDigit41
+    400096: sloth_RArmDigit42
+    400098: sloth_RArmDigit43
+    400100: sloth_RArmIKTarget
+    400102: sloth_RArmPalm
+    400104: sloth_ribs
+    400106: sloth_RLeg1
+    400108: sloth_RLeg2
+    400110: sloth_RLegAnkle
+    400112: sloth_RLegDigit11
+    400114: sloth_RLegDigit21
+    400116: sloth_RLegDigit31
+    400118: sloth_RLegPlatform
+    400120: sloth_Spine1
+    400122: sloth_Spine2
+    400124: sloth_Spine3
+    400126: sloth_Tail1
+    400128: sloth_Tail2
+    400130: sloth_Tail3
+    400132: sloth_tongue01
+    400134: sloth_tongue02
+    400136: sloth_tongue03
+    400138: sloth_tongue04
+    4300000: sloth
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: sloth
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

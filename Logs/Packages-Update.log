@@ -1,17 +1,15 @@
 
-=== Fri Mar  5 21:41:26 2021
+=== Sat Mar  6 18:28:07 2021
 
 Packages were changed.
 Update Mode: mergeDefaultDependencies
 
 The following packages were added:
-  com.unity.analytics@3.2.3
-  com.unity.purchasing@2.2.1
-  com.unity.ads@2.0.8
-  com.unity.textmeshpro@1.4.1
-  com.unity.package-manager-ui@2.0.13
-  com.unity.collab-proxy@1.2.15
+  com.unity.collab-proxy@1.2.16
+  com.unity.ide.rider@1.1.4
+  com.unity.ide.vscode@1.2.3
   com.unity.modules.ai@1.0.0
+  com.unity.modules.androidjni@1.0.0
   com.unity.modules.animation@1.0.0
   com.unity.modules.assetbundle@1.0.0
   com.unity.modules.audio@1.0.0
@@ -41,3 +39,7 @@ The following packages were added:
   com.unity.modules.vr@1.0.0
   com.unity.modules.wind@1.0.0
   com.unity.modules.xr@1.0.0
+  com.unity.test-framework@1.1.22
+  com.unity.textmeshpro@2.1.1
+  com.unity.timeline@1.2.18
+  com.unity.ugui@1.0.0

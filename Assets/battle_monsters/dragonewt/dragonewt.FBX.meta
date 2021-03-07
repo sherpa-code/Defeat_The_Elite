@@ -1,0 +1,199 @@
+fileFormatVersion: 2
+guid: e239eb95b4c902444ae090fb1a2062a4
+timeCreated: 1467992132
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: drago_head
+    100002: drago_jaw
+    100004: drago_LArm1
+    100006: drago_LArm2
+    100008: drago_LArmCollarbone
+    100010: drago_LArmDigit11
+    100012: drago_LArmDigit12
+    100014: drago_LArmDigit13
+    100016: drago_LArmDigit21
+    100018: drago_LArmDigit22
+    100020: drago_LArmDigit23
+    100022: drago_LArmDigit31
+    100024: drago_LArmDigit32
+    100026: drago_LArmDigit33
+    100028: drago_LArmPalm
+    100030: drago_LLeg1
+    100032: drago_LLeg2
+    100034: drago_LLegAnkle
+    100036: drago_LLegDigit11
+    100038: drago_LLegDigit12
+    100040: drago_LLegDigit21
+    100042: drago_LLegDigit22
+    100044: drago_LLegPlatform
+    100046: drago_neck1
+    100048: drago_neck2
+    100050: drago_neck3
+    100052: drago_pelvis
+    100054: drago_RArm1
+    100056: drago_RArm2
+    100058: drago_RArmCollarbone
+    100060: drago_RArmDigit11
+    100062: drago_RArmDigit12
+    100064: drago_RArmDigit13
+    100066: drago_RArmDigit21
+    100068: drago_RArmDigit22
+    100070: drago_RArmDigit23
+    100072: drago_RArmDigit31
+    100074: drago_RArmDigit32
+    100076: drago_RArmDigit33
+    100078: drago_RArmPalm
+    100080: drago_ribs
+    100082: drago_RLeg1
+    100084: drago_RLeg2
+    100086: drago_RLegAnkle
+    100088: drago_RLegDigit11
+    100090: drago_RLegDigit12
+    100092: drago_RLegDigit21
+    100094: drago_RLegDigit22
+    100096: drago_RLegPlatform
+    100098: drago_Spine1
+    100100: drago_Spine2
+    100102: drago_Spine3
+    100104: drago_Tail1
+    100106: drago_Tail2
+    100108: drago_Tail3
+    100110: drago_tongue_01
+    100112: drago_tongue_02
+    100114: drago_tongue_03
+    100116: drago_tongue_04
+    100118: dragonewt
+    100120: //RootNode
+    100122: dragonewt_
+    400000: drago_head
+    400002: drago_jaw
+    400004: drago_LArm1
+    400006: drago_LArm2
+    400008: drago_LArmCollarbone
+    400010: drago_LArmDigit11
+    400012: drago_LArmDigit12
+    400014: drago_LArmDigit13
+    400016: drago_LArmDigit21
+    400018: drago_LArmDigit22
+    400020: drago_LArmDigit23
+    400022: drago_LArmDigit31
+    400024: drago_LArmDigit32
+    400026: drago_LArmDigit33
+    400028: drago_LArmPalm
+    400030: drago_LLeg1
+    400032: drago_LLeg2
+    400034: drago_LLegAnkle
+    400036: drago_LLegDigit11
+    400038: drago_LLegDigit12
+    400040: drago_LLegDigit21
+    400042: drago_LLegDigit22
+    400044: drago_LLegPlatform
+    400046: drago_neck1
+    400048: drago_neck2
+    400050: drago_neck3
+    400052: drago_pelvis
+    400054: drago_RArm1
+    400056: drago_RArm2
+    400058: drago_RArmCollarbone
+    400060: drago_RArmDigit11
+    400062: drago_RArmDigit12
+    400064: drago_RArmDigit13
+    400066: drago_RArmDigit21
+    400068: drago_RArmDigit22
+    400070: drago_RArmDigit23
+    400072: drago_RArmDigit31
+    400074: drago_RArmDigit32
+    400076: drago_RArmDigit33
+    400078: drago_RArmPalm
+    400080: drago_ribs
+    400082: drago_RLeg1
+    400084: drago_RLeg2
+    400086: drago_RLegAnkle
+    400088: drago_RLegDigit11
+    400090: drago_RLegDigit12
+    400092: drago_RLegDigit21
+    400094: drago_RLegDigit22
+    400096: drago_RLegPlatform
+    400098: drago_Spine1
+    400100: drago_Spine2
+    400102: drago_Spine3
+    400104: drago_Tail1
+    400106: drago_Tail2
+    400108: drago_Tail3
+    400110: drago_tongue_01
+    400112: drago_tongue_02
+    400114: drago_tongue_03
+    400116: drago_tongue_04
+    400118: //RootNode
+    400120: dragonewt
+    400122: dragonewt_
+    4300000: dragonewt
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: dragonewt
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,211 @@
+fileFormatVersion: 2
+guid: 9402238d7da884d438de7cc5b71e735d
+timeCreated: 1467041377
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Bug
+    100002: //RootNode
+    100004: bug_
+    100006: bug_attenaL1
+    100008: bug_attenaL2
+    100010: bug_attenaL3
+    100012: bug_attenaL4
+    100014: bug_attenaL5
+    100016: bug_attenaL6
+    100018: bug_attenaL7
+    100020: bug_attenaR1
+    100022: bug_attenaR2
+    100024: bug_attenaR3
+    100026: bug_attenaR4
+    100028: bug_attenaR5
+    100030: bug_attenaR6
+    100032: bug_attenaR7
+    100034: bug_body
+    100036: bug_head
+    100038: bug_LLeg11
+    100040: bug_LLeg12
+    100042: bug_LLeg13
+    100044: bug_LLeg1Ankle
+    100046: bug_LLeg1Digit11
+    100048: bug_LLeg1Digit21
+    100050: bug_LLeg1Platform
+    100052: bug_LLeg21
+    100054: bug_LLeg22
+    100056: bug_LLeg23
+    100058: bug_LLeg2Ankle
+    100060: bug_LLeg2Digit11
+    100062: bug_LLeg2Digit21
+    100064: bug_LLeg2Platform
+    100066: bug_LLeg31
+    100068: bug_LLeg32
+    100070: bug_LLeg33
+    100072: bug_LLeg3Ankle
+    100074: bug_LLeg3Digit11
+    100076: bug_LLeg3Digit21
+    100078: bug_LLeg3Platform
+    100080: bug_mandible_L
+    100082: bug_mandible_R
+    100084: bug_neck1
+    100086: bug_neck2
+    100088: bug_RLeg11
+    100090: bug_RLeg12
+    100092: bug_RLeg13
+    100094: bug_RLeg1Ankle
+    100096: bug_RLeg1Digit11
+    100098: bug_RLeg1Digit21
+    100100: bug_RLeg1Platform
+    100102: bug_RLeg21
+    100104: bug_RLeg22
+    100106: bug_RLeg23
+    100108: bug_RLeg2Ankle
+    100110: bug_RLeg2Digit11
+    100112: bug_RLeg2Digit21
+    100114: bug_RLeg2Platform
+    100116: bug_RLeg31
+    100118: bug_RLeg32
+    100120: bug_RLeg33
+    100122: bug_RLeg3Ankle
+    100124: bug_RLeg3Digit11
+    100126: bug_RLeg3Digit21
+    100128: bug_RLeg3Platform
+    100130: bug_thorax1
+    100132: bug_thorax2
+    100134: bug_thorax3
+    400000: Bug
+    400002: //RootNode
+    400004: bug_
+    400006: bug_attenaL1
+    400008: bug_attenaL2
+    400010: bug_attenaL3
+    400012: bug_attenaL4
+    400014: bug_attenaL5
+    400016: bug_attenaL6
+    400018: bug_attenaL7
+    400020: bug_attenaR1
+    400022: bug_attenaR2
+    400024: bug_attenaR3
+    400026: bug_attenaR4
+    400028: bug_attenaR5
+    400030: bug_attenaR6
+    400032: bug_attenaR7
+    400034: bug_body
+    400036: bug_head
+    400038: bug_LLeg11
+    400040: bug_LLeg12
+    400042: bug_LLeg13
+    400044: bug_LLeg1Ankle
+    400046: bug_LLeg1Digit11
+    400048: bug_LLeg1Digit21
+    400050: bug_LLeg1Platform
+    400052: bug_LLeg21
+    400054: bug_LLeg22
+    400056: bug_LLeg23
+    400058: bug_LLeg2Ankle
+    400060: bug_LLeg2Digit11
+    400062: bug_LLeg2Digit21
+    400064: bug_LLeg2Platform
+    400066: bug_LLeg31
+    400068: bug_LLeg32
+    400070: bug_LLeg33
+    400072: bug_LLeg3Ankle
+    400074: bug_LLeg3Digit11
+    400076: bug_LLeg3Digit21
+    400078: bug_LLeg3Platform
+    400080: bug_mandible_L
+    400082: bug_mandible_R
+    400084: bug_neck1
+    400086: bug_neck2
+    400088: bug_RLeg11
+    400090: bug_RLeg12
+    400092: bug_RLeg13
+    400094: bug_RLeg1Ankle
+    400096: bug_RLeg1Digit11
+    400098: bug_RLeg1Digit21
+    400100: bug_RLeg1Platform
+    400102: bug_RLeg21
+    400104: bug_RLeg22
+    400106: bug_RLeg23
+    400108: bug_RLeg2Ankle
+    400110: bug_RLeg2Digit11
+    400112: bug_RLeg2Digit21
+    400114: bug_RLeg2Platform
+    400116: bug_RLeg31
+    400118: bug_RLeg32
+    400120: bug_RLeg33
+    400122: bug_RLeg3Ankle
+    400124: bug_RLeg3Digit11
+    400126: bug_RLeg3Digit21
+    400128: bug_RLeg3Platform
+    400130: bug_thorax1
+    400132: bug_thorax2
+    400134: bug_thorax3
+    4300000: Bug
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Bug
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

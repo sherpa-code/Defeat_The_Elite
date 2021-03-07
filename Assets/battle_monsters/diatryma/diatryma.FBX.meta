@@ -1,0 +1,165 @@
+fileFormatVersion: 2
+guid: 373bc37f6844770438f74cde484e08d2
+timeCreated: 1467041367
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: diatryma
+    100002: //RootNode
+    100004: diatryma_
+    100006: diatryma_head
+    100008: diatryma_jaw
+    100010: diatryma_LLeg1
+    100012: diatryma_LLeg2
+    100014: diatryma_LLegAnkle
+    100016: diatryma_LLegDigit11
+    100018: diatryma_LLegDigit12
+    100020: diatryma_LLegDigit13
+    100022: diatryma_LLegDigit21
+    100024: diatryma_LLegDigit22
+    100026: diatryma_LLegDigit23
+    100028: diatryma_LLegDigit31
+    100030: diatryma_LLegDigit32
+    100032: diatryma_LLegDigit33
+    100034: diatryma_LLegPlatform
+    100036: diatryma_neck1
+    100038: diatryma_neck2
+    100040: diatryma_neck3
+    100042: diatryma_neck4
+    100044: diatryma_neck5
+    100046: diatryma_pelvis
+    100048: diatryma_RLeg1
+    100050: diatryma_RLeg2
+    100052: diatryma_RLegAnkle
+    100054: diatryma_RLegDigit11
+    100056: diatryma_RLegDigit12
+    100058: diatryma_RLegDigit13
+    100060: diatryma_RLegDigit21
+    100062: diatryma_RLegDigit22
+    100064: diatryma_RLegDigit23
+    100066: diatryma_RLegDigit31
+    100068: diatryma_RLegDigit32
+    100070: diatryma_RLegDigit33
+    100072: diatryma_RLegPlatform
+    100074: diatryma_Tail1
+    100076: diatryma_Tail2
+    100078: diatryma_tongue01
+    100080: diatryma_tongue02
+    100082: diatryma_tongue03
+    100084: diatryma_tongue04
+    100086: feathers
+    400000: //RootNode
+    400002: diatryma
+    400004: diatryma_
+    400006: diatryma_head
+    400008: diatryma_jaw
+    400010: diatryma_LLeg1
+    400012: diatryma_LLeg2
+    400014: diatryma_LLegAnkle
+    400016: diatryma_LLegDigit11
+    400018: diatryma_LLegDigit12
+    400020: diatryma_LLegDigit13
+    400022: diatryma_LLegDigit21
+    400024: diatryma_LLegDigit22
+    400026: diatryma_LLegDigit23
+    400028: diatryma_LLegDigit31
+    400030: diatryma_LLegDigit32
+    400032: diatryma_LLegDigit33
+    400034: diatryma_LLegPlatform
+    400036: diatryma_neck1
+    400038: diatryma_neck2
+    400040: diatryma_neck3
+    400042: diatryma_neck4
+    400044: diatryma_neck5
+    400046: diatryma_pelvis
+    400048: diatryma_RLeg1
+    400050: diatryma_RLeg2
+    400052: diatryma_RLegAnkle
+    400054: diatryma_RLegDigit11
+    400056: diatryma_RLegDigit12
+    400058: diatryma_RLegDigit13
+    400060: diatryma_RLegDigit21
+    400062: diatryma_RLegDigit22
+    400064: diatryma_RLegDigit23
+    400066: diatryma_RLegDigit31
+    400068: diatryma_RLegDigit32
+    400070: diatryma_RLegDigit33
+    400072: diatryma_RLegPlatform
+    400074: diatryma_Tail1
+    400076: diatryma_Tail2
+    400078: diatryma_tongue01
+    400080: diatryma_tongue02
+    400082: diatryma_tongue03
+    400084: diatryma_tongue04
+    400086: feathers
+    4300000: diatryma
+    4300002: feathers
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: diatryma
+    13700002: feathers
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

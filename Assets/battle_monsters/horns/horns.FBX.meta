@@ -1,0 +1,171 @@
+fileFormatVersion: 2
+guid: e408b7d5010a24a4d95a73f8f2426068
+timeCreated: 1467041385
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: horns
+    100004: horns_
+    100006: horns_BackLLeg1
+    100008: horns_BackLLeg2
+    100010: horns_BackLLeg3
+    100012: horns_BackLLegAnkle
+    100014: horns_BackLLegDigit11
+    100016: horns_BackLLegDigit21
+    100018: horns_BackLLegDigit31
+    100020: horns_BackLLegPlatform
+    100022: horns_BackRLeg1
+    100024: horns_BackRLeg2
+    100026: horns_BackRLeg3
+    100028: horns_BackRLegAnkle
+    100030: horns_BackRLegDigit11
+    100032: horns_BackRLegDigit21
+    100034: horns_BackRLegDigit31
+    100036: horns_BackRLegPlatform
+    100038: horns_FrontLLeg1
+    100040: horns_FrontLLeg2
+    100042: horns_FrontLLegAnkle
+    100044: horns_FrontLLegDigit11
+    100046: horns_FrontLLegDigit21
+    100048: horns_FrontLLegDigit31
+    100050: horns_FrontLLegPlatform
+    100052: horns_FrontRLeg1
+    100054: horns_FrontRLeg2
+    100056: horns_FrontRLegAnkle
+    100058: horns_FrontRLegDigit11
+    100060: horns_FrontRLegDigit21
+    100062: horns_FrontRLegDigit31
+    100064: horns_FrontRLegPlatform
+    100066: horns_head
+    100068: horns_jaw
+    100070: horns_pelvis
+    100072: horns_ribs
+    100074: horns_Spine1
+    100076: horns_Spine1 1
+    100078: horns_Spine2
+    100080: horns_Spine2 1
+    100082: horns_Spine3
+    100084: horns_Spine3 1
+    100086: horns_Tail1
+    100088: horns_Tail2
+    100090: horns_Tail3
+    100092: horns_Tail4
+    100094: horns_Tail5
+    400000: //RootNode
+    400002: horns
+    400004: horns_
+    400006: horns_BackLLeg1
+    400008: horns_BackLLeg2
+    400010: horns_BackLLeg3
+    400012: horns_BackLLegAnkle
+    400014: horns_BackLLegDigit11
+    400016: horns_BackLLegDigit21
+    400018: horns_BackLLegDigit31
+    400020: horns_BackLLegPlatform
+    400022: horns_BackRLeg1
+    400024: horns_BackRLeg2
+    400026: horns_BackRLeg3
+    400028: horns_BackRLegAnkle
+    400030: horns_BackRLegDigit11
+    400032: horns_BackRLegDigit21
+    400034: horns_BackRLegDigit31
+    400036: horns_BackRLegPlatform
+    400038: horns_FrontLLeg1
+    400040: horns_FrontLLeg2
+    400042: horns_FrontLLegAnkle
+    400044: horns_FrontLLegDigit11
+    400046: horns_FrontLLegDigit21
+    400048: horns_FrontLLegDigit31
+    400050: horns_FrontLLegPlatform
+    400052: horns_FrontRLeg1
+    400054: horns_FrontRLeg2
+    400056: horns_FrontRLegAnkle
+    400058: horns_FrontRLegDigit11
+    400060: horns_FrontRLegDigit21
+    400062: horns_FrontRLegDigit31
+    400064: horns_FrontRLegPlatform
+    400066: horns_head
+    400068: horns_jaw
+    400070: horns_pelvis
+    400072: horns_ribs
+    400074: horns_Spine1
+    400076: horns_Spine1 1
+    400078: horns_Spine2
+    400080: horns_Spine2 1
+    400082: horns_Spine3
+    400084: horns_Spine3 1
+    400086: horns_Tail1
+    400088: horns_Tail2
+    400090: horns_Tail3
+    400092: horns_Tail4
+    400094: horns_Tail5
+    4300000: horns
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: horns
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
