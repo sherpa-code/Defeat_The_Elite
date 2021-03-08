@@ -13,6 +13,10 @@ public class Combatant : MonoBehaviour
     public int currentHP;
 
     
+    public BattleAbilities meleeAttack;
+    public BattleAbilities specialMove;
+
+
     public bool TakeDamage(int damage)
     {
         currentHP -= damage;
