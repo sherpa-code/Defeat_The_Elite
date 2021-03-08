@@ -1330,6 +1330,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3361979197237174383}
   - component: {fileID: 3361979197227913101}
+  - component: {fileID: -1058025905107404127}
   m_Layer: 0
   m_Name: bug
   m_TagString: Untagged
@@ -1344,9 +1345,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3361979197237279823}
-  m_LocalRotation: {x: -0, y: 0.9826253, z: -0, w: 0.18560053}
-  m_LocalPosition: {x: -2.86, y: 0.35, z: -8.23}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 3361979197237174381}
   - {fileID: 3361979197237174377}
@@ -1359,7 +1360,7 @@ Transform:
   - {fileID: 3361979197237174765}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 158.608, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3361979197227913101
 Animator:
   serializedVersion: 3
@@ -1379,6 +1380,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-1058025905107404127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3361979197237279823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatantName: Spinpion
+  attack: 3
+  defense: 1
+  speed: 1
+  maxHP: 100
+  currentHP: 100
 --- !u!1 &3361979197237279825
 GameObject:
   m_ObjectHideFlags: 0

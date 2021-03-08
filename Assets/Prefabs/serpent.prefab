@@ -769,6 +769,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3557228038508406254}
   - component: {fileID: 3557228038515886606}
+  - component: {fileID: -7795660497971579482}
   m_Layer: 0
   m_Name: serpent
   m_TagString: Untagged
@@ -783,8 +784,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3557228038508640718}
-  m_LocalRotation: {x: -0, y: 0.9981029, z: -0, w: -0.061568145}
-  m_LocalPosition: {x: 29.314, y: 0.945745, z: -9.385}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3557228038508406252}
@@ -792,7 +793,7 @@ Transform:
   - {fileID: 3557228038508406226}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 187.06, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3557228038515886606
 Animator:
   serializedVersion: 3
@@ -812,6 +813,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-7795660497971579482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3557228038508640718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatantName: Stunacuda
+  attack: 3
+  defense: 1
+  speed: 1
+  maxHP: 100
+  currentHP: 100
 --- !u!1 &3557228038508640720
 GameObject:
   m_ObjectHideFlags: 0

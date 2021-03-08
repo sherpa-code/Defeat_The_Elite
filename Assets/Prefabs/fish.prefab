@@ -381,6 +381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6318846985249811803}
   - component: {fileID: 6318846985240183483}
+  - component: {fileID: -497733861525196563}
   m_Layer: 0
   m_Name: fish
   m_TagString: Untagged
@@ -395,8 +396,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6318846985249714553}
-  m_LocalRotation: {x: 0.011619093, y: 0.98445994, z: 0.014349561, w: 0.174636}
-  m_LocalPosition: {x: 5.89, y: 0, z: -7.18}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6318846985249811801}
@@ -404,7 +405,7 @@ Transform:
   - {fileID: 6318846985249811785}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -1.386, y: 159.86201, z: 1.5990001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6318846985240183483
 Animator:
   serializedVersion: 3
@@ -424,6 +425,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-497733861525196563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6318846985249714553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatantName: Quiling
+  attack: 3
+  defense: 1
+  speed: 1
+  maxHP: 100
+  currentHP: 100
 --- !u!1 &6318846985249714555
 GameObject:
   m_ObjectHideFlags: 0

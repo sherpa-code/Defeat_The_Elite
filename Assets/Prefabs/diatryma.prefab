@@ -1299,6 +1299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2864951519576265456}
   - component: {fileID: 2864951519585369360}
+  - component: {fileID: 8364356885038651983}
   m_Layer: 0
   m_Name: diatryma
   m_TagString: Untagged
@@ -1313,8 +1314,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2864951519575838418}
-  m_LocalRotation: {x: -0, y: 0.9990989, z: -0, w: 0.042444285}
-  m_LocalPosition: {x: 0.46, y: -1.2, z: -5.96}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2864951519576265458}
@@ -1325,7 +1326,7 @@ Transform:
   - {fileID: 2864951519576265382}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 175.13501, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2864951519585369360
 Animator:
   serializedVersion: 3
@@ -1345,6 +1346,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8364356885038651983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2864951519575838418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatantName: Mantoal
+  attack: 3
+  defense: 1
+  speed: 1
+  maxHP: 100
+  currentHP: 100
 --- !u!1 &2864951519575838420
 GameObject:
   m_ObjectHideFlags: 0
