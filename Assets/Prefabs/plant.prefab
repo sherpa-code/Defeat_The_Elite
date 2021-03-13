@@ -4351,12 +4351,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatantName: Gorimite
+  monsterName: Gorimite
   attack: 3
   defense: 1
   speed: 1
-  maxHP: 100
-  currentHP: 100
+  specialAbility: Seed
+  specialAbilityDescription: Poison
+  maxHP: 1000
+  currentHP: 1000
+  meleeAttack: {fileID: 0}
+  specialMove: {fileID: 0}
 --- !u!1 &6815554699438826342
 GameObject:
   m_ObjectHideFlags: 0

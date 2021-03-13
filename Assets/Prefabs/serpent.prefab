@@ -786,7 +786,7 @@ Transform:
   m_GameObject: {fileID: 3557228038508640718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children:
   - {fileID: 3557228038508406252}
   - {fileID: 3557228038508406256}
@@ -825,12 +825,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatantName: Stunacuda
+  monsterName: Ramodo
   attack: 3
   defense: 1
   speed: 1
-  maxHP: 100
-  currentHP: 100
+  specialAbility: Intimiate
+  specialAbilityDescription: Condition
+  maxHP: 1000
+  currentHP: 1000
+  meleeAttack: {fileID: 0}
+  specialMove: {fileID: 0}
 --- !u!1 &3557228038508640720
 GameObject:
   m_ObjectHideFlags: 0

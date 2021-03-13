@@ -88,7 +88,7 @@ Transform:
   m_GameObject: {fileID: 3783013324998945828}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 3783013324999241734}
   - {fileID: 3783013324999241728}
@@ -131,12 +131,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatantName: Needles
+  monsterName: Needles
   attack: 3
   defense: 1
   speed: 1
-  maxHP: 100
-  currentHP: 100
+  specialAbility: Stab
+  specialAbilityDescription: Attack
+  maxHP: 1000
+  currentHP: 1000
+  meleeAttack: {fileID: 0}
+  specialMove: {fileID: 0}
 --- !u!1 &3783013324998945830
 GameObject:
   m_ObjectHideFlags: 0

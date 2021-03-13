@@ -21,14 +21,13 @@ public class BattleSystem : MonoBehaviour
     public Transform allySpawnTransform;
     public Transform enemySpawnTransform;
 
-    Combatant allyCombatant;
-    Combatant enemyCombatant;
+    Monster allymonster;
+    Monster enemymonster;
 
     public Image playerActions;
 
     public Image combatReadout;
     public Text dialogueText;
-    
 
     public BattleState battleState;
 
@@ -42,7 +41,8 @@ public class BattleSystem : MonoBehaviour
     {
         battleState = BattleState.START;
         //SetupBattle()
-        StartCoroutine(SetupBattle());
+
+        //StartCoroutine(SetupBattle());
     }
 
 
@@ -52,16 +52,16 @@ public class BattleSystem : MonoBehaviour
     {
         //GameObject allyGameObject = Instantiate(allyPrefab, allySpawnTransform);
         GameObject allyGameObject = Instantiate(allyPrefab, allySpawnTransform.position, allySpawnTransform.rotation);
-        allyCombatant = allyGameObject.GetComponent<Combatant>();
+        allymonster = allyGameObject.GetComponent<Monster>();
 
         //GameObject enemyGameObject = Instantiate(enemyPrefab, enemySpawnTransform);
         GameObject enemyGameObject = Instantiate(enemyPrefab, enemySpawnTransform.position, enemySpawnTransform.rotation);
-        enemyCombatant = enemyGameObject.GetComponent<Combatant>();
+        enemymonster = enemyGameObject.GetComponent<Monster>();
 
-        dialogueText.text = "A wild " + enemyCombatant.combatantName + " approaches!";
+        dialogueText.text = "A wild " + enemymonster.monsterName + " approaches!";
 
-        allyHUD.SetHUD(allyCombatant);
-        enemyHUD.SetHUD(enemyCombatant);
+        allyHUD.SetHUD(allymonster);
+        enemyHUD.SetHUD(enemymonster);
 
         //yield return new WaitForSeconds(2f);
         yield return new WaitForSeconds(0f); // debug setting for instant state change
@@ -88,7 +88,7 @@ public class BattleSystem : MonoBehaviour
 
 
 
-    public void onMeleeButton()
+    public void OnMeleeButton()
     {
         Debug.Log("Melee Button clicked");
         if (battleState != BattleState.PLAYERTURN) return;
@@ -96,7 +96,7 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerAttack());
     }
 
-    public void onSpecialButton()
+    public void OnSpecialButton()
     {
         Debug.Log("Special Button clicked");
         if (battleState != BattleState.PLAYERTURN) return;
@@ -104,7 +104,7 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerSpecialAbility());
     }
 
-    public void onDefendButton()
+    public void OnDefendButton()
     {
         Debug.Log("Defend Button clicked");
         if (battleState != BattleState.PLAYERTURN) return;
@@ -112,7 +112,7 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerDefend());
     }
 
-    public void onItemButton()
+    public void OnItemButton()
     {
         Debug.Log("Items Button clicked");
         if (battleState != BattleState.PLAYERTURN) return;
@@ -125,21 +125,21 @@ public class BattleSystem : MonoBehaviour
     {
         playerActions.gameObject.SetActive(false); // debug setting
         combatReadout.gameObject.SetActive(true); // debug setting
-        dialogueText.text = allyCombatant.combatantName+" tried to melee attack...";
+        dialogueText.text = allymonster.monsterName+" tried to melee attack...";
         yield return new WaitForSeconds(2f);
 
         // Damage enemy and check if dead
-        bool isDead = enemyCombatant.TakeDamage(allyCombatant.attack);
+        bool isDead = enemymonster.TakeDamage(allymonster.attack);
 
-        enemyHUD.SetHP(enemyCombatant.currentHP);
+        enemyHUD.SetHP(enemymonster.currentHP);
         dialogueText.text = "The attack was successful!";
 
         yield return new WaitForSeconds(2f);
 
         if (isDead)
         {
-            // check for remaining combatants
-            // if combatants remaining: (if team length > 1)
+            // check for remaining monsters
+            // if monsters remaining: (if team length > 1)
             //      send out another (TODO: replace with a way to select from remaining)
             //      proceed to enemy turn
             //      state = BattleState.ENEMYTURN;
@@ -170,7 +170,7 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "You have defeated all opponents. You win!";
         } else if (battleState == BattleState.LOST)
         {
-            dialogueText.text = "You have no remaining combatants. You lose!";
+            dialogueText.text = "You have no remaining monsters. You lose!";
         }
     }
 
@@ -178,20 +178,20 @@ public class BattleSystem : MonoBehaviour
     {
         playerActions.gameObject.SetActive(false);
         combatReadout.gameObject.SetActive(true);
-        dialogueText.text = enemyCombatant.combatantName+" attacks...";
+        dialogueText.text = enemymonster.monsterName+" attacks...";
 
         yield return new WaitForSeconds(1f);
 
-        bool isDead = allyCombatant.TakeDamage(enemyCombatant.attack);
+        bool isDead = allymonster.TakeDamage(enemymonster.attack);
 
-        allyHUD.SetHP(allyCombatant.currentHP);
+        allyHUD.SetHP(allymonster.currentHP);
 
         yield return new WaitForSeconds(1f);
 
         if (isDead)
         {
-            // check for remaining combatants
-            // if ally combatants remaining: (if team length > 1)
+            // check for remaining monsters
+            // if ally monsters remaining: (if team length > 1)
             //      send out another (TODO: replace with a way to select from remaining)
             //      proceed to player turn
             //      state = BattleState.ENEMYTURN;
@@ -219,11 +219,11 @@ public class BattleSystem : MonoBehaviour
         playerActions.gameObject.SetActive(false); // debug setting
         combatReadout.gameObject.SetActive(true); // debug setting
 
-        dialogueText.text = allyCombatant.combatantName + " tried to heal...";
+        dialogueText.text = allymonster.monsterName + " tried to heal...";
         yield return new WaitForSeconds(2f);
 
-        allyCombatant.Heal(1);
-        allyHUD.SetHP(allyCombatant.currentHP);
+        allymonster.Heal(1);
+        allyHUD.SetHP(allymonster.currentHP);
         dialogueText.text = "The heal was successful!";
 
         yield return new WaitForSeconds(2f);

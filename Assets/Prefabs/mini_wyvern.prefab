@@ -2125,7 +2125,7 @@ Transform:
   m_GameObject: {fileID: 7913610366032958898}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 7913610366032660598}
   - {fileID: 7913610366032660524}
@@ -2169,12 +2169,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatantName: Hypephin
+  monsterName: Peliral
   attack: 3
   defense: 1
   speed: 1
-  maxHP: 100
-  currentHP: 100
+  specialAbility: Razor Wing
+  specialAbilityDescription: Attack
+  maxHP: 1000
+  currentHP: 1000
+  meleeAttack: {fileID: 0}
+  specialMove: {fileID: 0}
 --- !u!1 &7913610366032958900
 GameObject:
   m_ObjectHideFlags: 0

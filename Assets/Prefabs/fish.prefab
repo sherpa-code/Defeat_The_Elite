@@ -398,7 +398,7 @@ Transform:
   m_GameObject: {fileID: 6318846985249714553}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.2, y: 3.2, z: 3.2}
   m_Children:
   - {fileID: 6318846985249811801}
   - {fileID: 6318846985249811807}
@@ -437,12 +437,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatantName: Quiling
+  monsterName: Steelupine
   attack: 3
   defense: 1
   speed: 1
-  maxHP: 100
-  currentHP: 100
+  specialAbility: Bubble
+  specialAbilityDescription: Attack
+  maxHP: 1000
+  currentHP: 1000
+  meleeAttack: {fileID: 0}
+  specialMove: {fileID: 0}
 --- !u!1 &6318846985249714555
 GameObject:
   m_ObjectHideFlags: 0

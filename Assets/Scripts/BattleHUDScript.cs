@@ -10,12 +10,12 @@ public class BattleHUDScript : MonoBehaviour
     //public Text levelText;
     public Slider hpSlider;
 
-    public void SetHUD(Combatant combatant)
+    public void SetHUD(Monster monster)
     {
-        nameText.text = combatant.combatantName;
-        //levelText.text = "Lvl " + combatant.combatantLevel;
-        hpSlider.maxValue = combatant.maxHP;
-        hpSlider.value = combatant.currentHP;
+        nameText.text = monster.monsterName;
+        //levelText.text = "Lvl " + monster.monsterLevel;
+        hpSlider.maxValue = monster.maxHP;
+        hpSlider.value = monster.currentHP;
     }
 
 
