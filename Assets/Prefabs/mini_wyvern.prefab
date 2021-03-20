@@ -2170,8 +2170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Peliral
-  attack: 3
-  defense: 1
+  attack: 550
+  defense: 5
   speed: 1
   specialAbility: Razor Wing
   specialAbilityDescription: Attack

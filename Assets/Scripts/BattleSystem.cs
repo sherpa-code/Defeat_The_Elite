@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public enum BattleState
 {
@@ -12,20 +13,21 @@ public enum BattleState
     LOST
 }
 
+// TODO: replace references to Canvases with refs to Scripts within the code as well as in Unity
+
 public class BattleSystem : MonoBehaviour
 {
-
-    public GameObject allyPrefab;
-    public GameObject enemyPrefab;
-
     public Transform allySpawnTransform;
     public Transform enemySpawnTransform;
 
-    Monster allymonster;
-    Monster enemymonster;
+    public GameObject enemyGameObject;
+    public GameObject allyGameObject;
+
+    public Monster allyMonster;
+    public Monster enemyMonster;
 
     public Image playerActions;
-
+    public Image gameOverHUD;
     public Image combatReadout;
     public Text dialogueText;
 
@@ -34,45 +36,96 @@ public class BattleSystem : MonoBehaviour
     public BattleHUDScript allyHUD;
     public BattleHUDScript enemyHUD;
 
+    public Canvas battleCanvas;
+
+    public string playerName;
+    public TextMeshProUGUI playerNameText;
+    public TextMeshProUGUI enemyNameText;
+
+    public List<Monster> allyTeamList = new List<Monster>() { null, null, null }; 
+
+    public List<Trainer> enemyTrainers = new List<Trainer>() { null, null, null, null };
+
+    public Trainer currentEnemyTrainer;
+    public List<Monster> currentEnemyTeamList = new List<Monster>() { null, null, null };
+
+    public Random r = new Random();
 
 
-    // Start is called before the first frame update
-    void Start()
+    public void beginGame()
     {
-        battleState = BattleState.START;
-        //SetupBattle()
+        Debug.Log("Beginning game loop");
 
-        //StartCoroutine(SetupBattle());
+        // TODO: load random trainer. low priority TODO because fighting the same trainers in order doesnt really matter
+        currentEnemyTrainer = enemyTrainers[0];
+        currentEnemyTeamList = currentEnemyTrainer.trainerTeam;
+
+        //currentEnemyTeamList.Clear();
+        //for (int i=0; i<currentEnemyTrainer.trainerTeam.Count; i++)
+        //{
+        //    currentEnemyTeamList.Add(currentEnemyTrainer.trainerTeam[i]);
+        //}
+
+        enemyNameText.text = currentEnemyTrainer.firstName + " " + currentEnemyTrainer.lastName;
+        playerNameText.text = playerName;
+
+        battleState = BattleState.START;
+
+        gameObject.SetActive(true);
+        battleCanvas.gameObject.SetActive(true);
+
+        //SetupBattle();
+        StartCoroutine(SetupBattle());
     }
 
+    public void loadNextEnemyTrainer()
+    {
+        if (enemyTrainers.Count > 0) // TODO: move this to the enemy pokemon dead function
+        {
+            enemyTrainers.RemoveAt(0);
+        }
 
+        if (enemyTrainers.Count > 0)
+        {
+            currentEnemyTrainer = enemyTrainers[0];
+        } else
+        {
+            // victory function
+        }
+    }
 
-    //void SetupBattle()
+    public void loadNextenemyMonster()
+    {
+        if (currentEnemyTrainer.trainerTeam.Count > 0)
+        {
+            // TODO: load next enemy monster
+        }
+    }
+
     IEnumerator SetupBattle()
     {
-        //GameObject allyGameObject = Instantiate(allyPrefab, allySpawnTransform);
-        GameObject allyGameObject = Instantiate(allyPrefab, allySpawnTransform.position, allySpawnTransform.rotation);
-        allymonster = allyGameObject.GetComponent<Monster>();
+        //TODO: replace allyTeamList[0].gameObject with method that returns the next living player monster
+        allyGameObject = Instantiate(allyTeamList[0].gameObject, allySpawnTransform.position, allySpawnTransform.rotation);
+        allyMonster = allyGameObject.GetComponent<Monster>();
 
-        //GameObject enemyGameObject = Instantiate(enemyPrefab, enemySpawnTransform);
-        GameObject enemyGameObject = Instantiate(enemyPrefab, enemySpawnTransform.position, enemySpawnTransform.rotation);
-        enemymonster = enemyGameObject.GetComponent<Monster>();
+        //TODO: replace allyTeamList[0].gameObject with method that returns the next living enemy monster
+        enemyGameObject = Instantiate(currentEnemyTeamList[0].gameObject, enemySpawnTransform.position, enemySpawnTransform.rotation);
+        enemyMonster = enemyGameObject.GetComponent<Monster>();
 
-        dialogueText.text = "A wild " + enemymonster.monsterName + " approaches!";
+        dialogueText.text = "A wild " + enemyMonster.monsterName + " approaches!";
 
-        allyHUD.SetHUD(allymonster);
-        enemyHUD.SetHUD(enemymonster);
+        allyHUD.SetHUD(allyMonster);
+        enemyHUD.SetHUD(enemyMonster);
 
         //yield return new WaitForSeconds(2f);
         yield return new WaitForSeconds(0f); // debug setting for instant state change
 
         battleState = BattleState.PLAYERTURN;
-        PlayerTurn();
+        PlayerTurn(); // TODO: replace with whichever monster is faster
     }
 
     void PlayerTurn()
     {
-
         //dialogueText.text = "Choose an action:";
         combatReadout.gameObject.SetActive(false); // debug setting
         playerActions.gameObject.SetActive(true); // debug setting
@@ -85,8 +138,6 @@ public class BattleSystem : MonoBehaviour
     //    combatReadout.gameObject.SetActive(false); // debug setting
     //    playerActions.gameObject.SetActive(true); // debug setting
     //}
-
-
 
     public void OnMeleeButton()
     {
@@ -120,24 +171,27 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerItems());
     }
 
-
     IEnumerator PlayerAttack()
     {
-        playerActions.gameObject.SetActive(false); // debug setting
-        combatReadout.gameObject.SetActive(true); // debug setting
-        dialogueText.text = allymonster.monsterName+" tried to melee attack...";
+        playerActions.gameObject.SetActive(false);
+        combatReadout.gameObject.SetActive(true);
+        dialogueText.text = allyMonster.monsterName + " tried to melee attack...";
         yield return new WaitForSeconds(2f);
 
-        // Damage enemy and check if dead
-        bool isDead = enemymonster.TakeDamage(allymonster.attack);
-
-        enemyHUD.SetHP(enemymonster.currentHP);
+        // TODO: check if attack was successful
         dialogueText.text = "The attack was successful!";
 
+        // Damage enemy and check if dead
+        bool isDead = enemyMonster.TakeDamage(allyMonster.attack);
+
+        enemyHUD.SetHP(enemyMonster.currentHP);
+        
         yield return new WaitForSeconds(2f);
 
         if (isDead)
         {
+            Destroy(enemyGameObject);
+            
             // check for remaining monsters
             // if monsters remaining: (if team length > 1)
             //      send out another (TODO: replace with a way to select from remaining)
@@ -146,10 +200,9 @@ public class BattleSystem : MonoBehaviour
             // else:
             //      end battle
             //      state = BattleState.WON;
-            
+
             battleState = BattleState.WON;
             EndBattle();
-
         }
         else
         {
@@ -168,28 +221,33 @@ public class BattleSystem : MonoBehaviour
         if (battleState == BattleState.WON)
         {
             dialogueText.text = "You have defeated all opponents. You win!";
+            
         } else if (battleState == BattleState.LOST)
         {
             dialogueText.text = "You have no remaining monsters. You lose!";
         }
+
+        gameOverHUD.gameObject.SetActive(true);
     }
 
     IEnumerator EnemyTurn()
     {
         playerActions.gameObject.SetActive(false);
         combatReadout.gameObject.SetActive(true);
-        dialogueText.text = enemymonster.monsterName+" attacks...";
+        dialogueText.text = enemyMonster.monsterName+" attacks...";
 
         yield return new WaitForSeconds(1f);
 
-        bool isDead = allymonster.TakeDamage(enemymonster.attack);
+        bool isDead = allyMonster.TakeDamage(enemyMonster.attack);
 
-        allyHUD.SetHP(allymonster.currentHP);
+        allyHUD.SetHP(allyMonster.currentHP);
 
         yield return new WaitForSeconds(1f);
 
         if (isDead)
         {
+            Destroy(allyGameObject);
+
             // check for remaining monsters
             // if ally monsters remaining: (if team length > 1)
             //      send out another (TODO: replace with a way to select from remaining)
@@ -204,7 +262,8 @@ public class BattleSystem : MonoBehaviour
 
             battleState = BattleState.LOST;
             EndBattle();
-        } else
+        }
+        else
         {
             //      proceed to enemy turn
             //      state = BattleState.ENEMYTURN;
@@ -219,11 +278,11 @@ public class BattleSystem : MonoBehaviour
         playerActions.gameObject.SetActive(false); // debug setting
         combatReadout.gameObject.SetActive(true); // debug setting
 
-        dialogueText.text = allymonster.monsterName + " tried to heal...";
+        dialogueText.text = allyMonster.monsterName + " tried to heal...";
         yield return new WaitForSeconds(2f);
 
-        allymonster.Heal(1);
-        allyHUD.SetHP(allymonster.currentHP);
+        allyMonster.Heal(1);
+        allyHUD.SetHP(allyMonster.currentHP);
         dialogueText.text = "The heal was successful!";
 
         yield return new WaitForSeconds(2f);
@@ -231,8 +290,6 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(EnemyTurn());
 
     }
-
-    
 
     IEnumerator PlayerDefend()
     {
@@ -257,4 +314,5 @@ public class BattleSystem : MonoBehaviour
             // if clicked No, hide Confirm window
         // if clicked cancel hide items list window and show player actions window
     }
+
 }

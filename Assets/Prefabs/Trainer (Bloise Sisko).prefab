@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5596840044485571279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8989499199329602043}
+  - component: {fileID: 4894749204993009131}
+  m_Layer: 0
+  m_Name: Trainer (Bloise Sisko)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8989499199329602043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5596840044485571279}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.486803, y: 2.5415187, z: -34.28334}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4894749204993009131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5596840044485571279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9e6a8e317f23e34fb0c7717eeaa521c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstName: Bloise
+  lastName: Sisko
+  trainerTeam:
+  - {fileID: 4345286351174118158, guid: 858a7caa740b95f42842abcb05709a0c, type: 3}
+  - {fileID: 5193489582645430606, guid: daa353e2147502749ad6b4235d7b6b1b, type: 3}
+  - {fileID: -7795660497971579482, guid: fca5e819f4e1a024c82bb95a15fcb9ce, type: 3}

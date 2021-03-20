@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class BattleHUDScript : MonoBehaviour
 {
-
     public Text nameText;
     //public Text levelText;
     public Slider hpSlider;
@@ -18,9 +17,9 @@ public class BattleHUDScript : MonoBehaviour
         hpSlider.value = monster.currentHP;
     }
 
-
     public void SetHP(int hp)
     {
         hpSlider.value = hp;
     }
+
 }

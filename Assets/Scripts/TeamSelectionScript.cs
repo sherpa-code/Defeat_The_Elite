@@ -6,7 +6,6 @@ using TMPro;
 
 public class TeamSelectionScript : MonoBehaviour
 {
-
     public Button slot1Button;
     public Button slot2Button;
     public Button slot3Button;
@@ -29,7 +28,11 @@ public class TeamSelectionScript : MonoBehaviour
     public Transform slot2PreviewTransform;
     public Transform slot3PreviewTransform;
 
+    public MainMenuScript mainMenuScript;
+
     public List<Monster> teamList = new List<Monster>() { null, null, null };
+
+    public BattleSystem battleSystem;
     //public List<TextMeshProUGUI> teamListNameTextList = new List<TextMeshProUGUI>() { null, null, null };
 
     public void OnSlotButton(int slot)
@@ -46,7 +49,10 @@ public class TeamSelectionScript : MonoBehaviour
     {
         Debug.Log("Confirm button pressed");
 
-        // start combat
+        battleSystem.allyTeamList = teamList;
+        gameObject.SetActive(false);
+        battleSystem.beginGame();
+        
     }
 
     public void OnCancelButton()
@@ -55,11 +61,11 @@ public class TeamSelectionScript : MonoBehaviour
 
         ResetTeam();
         UpdateTeamPreviews();
-        gameObject.SetActive(false);
-        mainMenuCanvas.gameObject.SetActive(true);
+        //gameObject.SetActive(false);
+        mainMenuScript.returnToMainMenu();
+        //mainMenuCanvas.gameObject.SetActive(true);
 
     }
-
 
     public void UpdateTeamPreviews()
     {
@@ -95,7 +101,6 @@ public class TeamSelectionScript : MonoBehaviour
             slot3MonsterNameText.text = "Empty";
         }
         
-
         isTeamFullCheck();
     }
 
@@ -107,96 +112,12 @@ public class TeamSelectionScript : MonoBehaviour
         slot2MonsterNameText.text = "Empty";
         slot3MonsterNameText.text = "Empty";
 
+        Destroy(slot1Preview);
+        Destroy(slot2Preview);
+        Destroy(slot3Preview);
 
-        if (teamList[0])
-        {
-            Destroy(slot1Preview);
-            //slot1Monster = null;
-        }
-
-        if (teamList[1])
-        {
-            Destroy(slot2Preview);
-            //slot2Monster = null;
-        }
-
-        if (teamList[2])
-        {
-            Destroy(slot3Preview);
-            //slot3Monster = null;
-        }
-
-        //teamList = [ slot1Monster, slot2Monster, slot3Monster ];
-        //teamList = [slot1Monster, slot2Monster, slot3Monster];
-
-        //teamList.Clear();
-        //teamList.Add
-
-        //teamList = new List<Monster> { slot1Monster, slot2Monster, slot3Monster };
         teamList = new List<Monster> { null, null, null };
     }
-
-    //public void ResetTeam()
-    //{
-    //    Debug.Log("ResetTeam() fired");
-
-    //    slot1MonsterNameText.text = "Empty";
-    //    slot2MonsterNameText.text = "Empty";
-    //    slot3MonsterNameText.text = "Empty";
-
-
-    //    if (slot1Monster)
-    //    {
-    //        Destroy(slot1Preview);
-    //        //slot1Monster = null;
-    //    }
-
-    //    if (slot2Monster)
-    //    {
-    //        Destroy(slot2Preview);
-    //        //slot2Monster = null;
-    //    }
-
-    //    if (slot3Monster)
-    //    {
-    //        Destroy(slot3Preview);
-    //        //slot3Monster = null;
-    //    }
-
-    //    //teamList = [ slot1Monster, slot2Monster, slot3Monster ];
-    //    //teamList = [slot1Monster, slot2Monster, slot3Monster];
-
-    //    //teamList.Clear();
-    //    //teamList.Add
-
-    //    //teamList = new List<Monster> { slot1Monster, slot2Monster, slot3Monster };
-    //    teamList = new List<Monster> { null, null, null };
-    //}
-
-    //public void ResetTeam()
-    //{
-    //    for (int i = 0; i < 3; i++)
-    //    {
-    //        if (teamList[i] == null)
-    //        {
-    //            if (i == 0)
-    //            {
-    //                slot1MonsterNameText.text = "";
-    //                // destroy monster prefab model
-    //            }
-    //            else if (i == 1)
-    //            {
-    //                slot2MonsterNameText.text = "";
-    //                // destroy monster prefab model
-    //            }
-    //            else if (i == 2)
-    //            {
-    //                slot3MonsterNameText.text = "";
-    //                // destroy monster prefab model
-    //            }
-    //        }
-    //    }
-    //}
 
     public void isTeamFullCheck()
     {

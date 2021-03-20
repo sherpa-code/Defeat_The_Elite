@@ -6,7 +6,6 @@ using TMPro;
 
 public class MonsterSelectScript : MonoBehaviour
 {
-    
     public Monster monster1;
     public Monster monster2;
     public Monster monster3;
@@ -40,6 +39,10 @@ public class MonsterSelectScript : MonoBehaviour
     public TextMeshProUGUI monster9ButtonText;
     public TextMeshProUGUI monster10ButtonText;
 
+    List<Monster> monsterList = new List<Monster>();
+    List<Button> monsterButtonList = new List<Button>();
+    List<TextMeshProUGUI> monsterButtonTextList = new List<TextMeshProUGUI>();
+
     public Button selectButton;
     public Button cancelButton;
 
@@ -61,10 +64,6 @@ public class MonsterSelectScript : MonoBehaviour
     public int currentSlot;
     public Monster currentMonster;
 
-    List<Monster> monsterList = new List<Monster>();
-    List<Button> monsterButtonList = new List<Button>();
-    List<TextMeshProUGUI> monsterButtonTextList = new List<TextMeshProUGUI>();
-
 
     void Start()
     {
@@ -72,7 +71,6 @@ public class MonsterSelectScript : MonoBehaviour
         SetNamesToButtons();
         
     }
-
 
     void SetNamesToButtons()
     {
@@ -150,41 +148,49 @@ public class MonsterSelectScript : MonoBehaviour
         }
     }
 
-
     void GenerateLists()
     {
-        monsterList.Add(monster1);
-        monsterList.Add(monster2);
-        monsterList.Add(monster3);
-        monsterList.Add(monster4);
-        monsterList.Add(monster5);
-        monsterList.Add(monster6);
-        monsterList.Add(monster7);
-        monsterList.Add(monster8);
-        monsterList.Add(monster9);
-        monsterList.Add(monster10);
+        monsterList = new List<Monster>() {
+            monster1,
+            monster2,
+            monster3,
+            monster4,
+            monster5,
+            monster6,
+            monster7,
+            monster8,
+            monster9,
+            monster10
+        };
 
-        monsterButtonList.Add(monster1Button);
-        monsterButtonList.Add(monster2Button);
-        monsterButtonList.Add(monster3Button);
-        monsterButtonList.Add(monster4Button);
-        monsterButtonList.Add(monster5Button);
-        monsterButtonList.Add(monster6Button);
-        monsterButtonList.Add(monster7Button);
-        monsterButtonList.Add(monster8Button);
-        monsterButtonList.Add(monster9Button);
-        monsterButtonList.Add(monster10Button);
+        monsterButtonList = new List<Button>()
+        {
+            monster1Button,
+            monster2Button,
+            monster3Button,
+            monster4Button,
+            monster5Button,
+            monster6Button,
+            monster7Button,
+            monster8Button,
+            monster9Button,
+            monster10Button
+        };
 
-        monsterButtonTextList.Add(monster1ButtonText);
-        monsterButtonTextList.Add(monster2ButtonText);
-        monsterButtonTextList.Add(monster3ButtonText);
-        monsterButtonTextList.Add(monster4ButtonText);
-        monsterButtonTextList.Add(monster5ButtonText);
-        monsterButtonTextList.Add(monster6ButtonText);
-        monsterButtonTextList.Add(monster7ButtonText);
-        monsterButtonTextList.Add(monster8ButtonText);
-        monsterButtonTextList.Add(monster9ButtonText);
-        monsterButtonTextList.Add(monster10ButtonText);
+        monsterButtonTextList = new List<TextMeshProUGUI>()
+        {
+            monster1ButtonText,
+            monster2ButtonText,
+            monster3ButtonText,
+            monster4ButtonText,
+            monster5ButtonText,
+            monster6ButtonText,
+            monster7ButtonText,
+            monster8ButtonText,
+            monster9ButtonText,
+            monster10ButtonText
+        };
+
     }
 
 }
