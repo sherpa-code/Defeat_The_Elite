@@ -67,8 +67,12 @@ public class MainMenuScript : MonoBehaviour
     {
         Debug.Log("Quit button pressed");
 
-        UnityEditor.EditorApplication.isPlaying = false; // works in editor
-        Application.Quit(); // works in build
+        // save any game data here
+        #if UNITY_EDITOR // quit if in Editor
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else // quit if in Build
+            Application.Quit();
+        #endif
     }
 
 }
