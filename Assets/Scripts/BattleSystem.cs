@@ -58,7 +58,8 @@ public class BattleSystem : MonoBehaviour
 
         // TODO: load random trainer. low priority TODO because fighting the same trainers in order doesnt really matter
         currentEnemyTrainer = enemyTrainers[0];
-        currentEnemyTeamList = currentEnemyTrainer.trainerTeam;
+        //currentEnemyTeamList = currentEnemyTrainer.trainerTeam;
+        currentEnemyTeamList = new List<Monster>(currentEnemyTrainer.trainerTeam);
 
         //currentEnemyTeamList.Clear();
         //for (int i=0; i<currentEnemyTrainer.trainerTeam.Count; i++)
@@ -120,8 +121,19 @@ public class BattleSystem : MonoBehaviour
         //yield return new WaitForSeconds(2f);
         yield return new WaitForSeconds(0f); // debug setting for instant state change
 
-        battleState = BattleState.PLAYERTURN;
-        PlayerTurn(); // TODO: replace with whichever monster is faster
+
+        if (allyMonster.getSpeed() >= enemyMonster.getSpeed())
+        {
+            battleState = BattleState.PLAYERTURN;
+            PlayerTurn();
+        }
+        else
+        {
+            battleState = BattleState.ENEMYTURN;
+            StartCoroutine(EnemyTurn());
+        }
+        //battleState = BattleState.PLAYERTURN;
+        //PlayerTurn(); // TODO: replace with whichever monster is faster
     }
 
     void PlayerTurn()
@@ -190,24 +202,38 @@ public class BattleSystem : MonoBehaviour
 
         if (isDead)
         {
+            dialogueText.text = enemyMonster.monsterName + " has died!";
+            yield return new WaitForSeconds(2f);
             Destroy(enemyGameObject);
-            
-            // check for remaining monsters
-            // if monsters remaining: (if team length > 1)
-            //      send out another (TODO: replace with a way to select from remaining)
-            //      proceed to enemy turn
-            //      state = BattleState.ENEMYTURN;
-            // else:
-            //      end battle
-            //      state = BattleState.WON;
+            currentEnemyTeamList.RemoveAt(0);
+            if (currentEnemyTeamList.Count > 0)
+            {
+                enemyGameObject = Instantiate(currentEnemyTeamList[0].gameObject, enemySpawnTransform.position, enemySpawnTransform.rotation);
+                enemyMonster = enemyGameObject.GetComponent<Monster>();
+                enemyHUD.SetHUD(enemyMonster);
+                dialogueText.text = "You sent out " + enemyMonster.monsterName;
+                yield return new WaitForSeconds(2f);
+                if (allyMonster.getSpeed() >= enemyMonster.getSpeed())
+                {
+                    battleState = BattleState.PLAYERTURN;
+                    PlayerTurn();
+                }
+                else
+                {
+                    battleState = BattleState.ENEMYTURN;
+                    StartCoroutine(EnemyTurn());
+                }
+            }
+            else
+            {
+                battleState = BattleState.WON;
+                EndBattle();
+            }
 
-            battleState = BattleState.WON;
-            EndBattle();
         }
         else
         {
-            //      proceed to enemy turn
-            //      state = BattleState.ENEMYTURN;
+
             battleState = BattleState.ENEMYTURN;
             StartCoroutine(EnemyTurn());
         }
@@ -246,27 +272,39 @@ public class BattleSystem : MonoBehaviour
 
         if (isDead)
         {
+            dialogueText.text = allyMonster.monsterName + " has died!";
+            yield return new WaitForSeconds(2f);
             Destroy(allyGameObject);
+            //TODO: Add a way to select which team member you want to select;
+            allyTeamList.RemoveAt(0);
+            if (allyTeamList.Count > 0)
+            {
+                allyGameObject = Instantiate(allyTeamList[0].gameObject, allySpawnTransform.position, allySpawnTransform.rotation);
+                allyMonster = allyGameObject.GetComponent<Monster>();
+                allyHUD.SetHUD(allyMonster);
+                dialogueText.text ="You sent out " + allyMonster.monsterName;
+                yield return new WaitForSeconds(2f);
+                if (allyMonster.getSpeed() >= enemyMonster.getSpeed())
+                {
+                    battleState = BattleState.PLAYERTURN;
+                    PlayerTurn();
+                }
+                else
+                {
+                    battleState = BattleState.ENEMYTURN;
+                    StartCoroutine(EnemyTurn());
+                }
+            }
+            else
+            {
+                battleState = BattleState.LOST;
+                EndBattle();
+            }
 
-            // check for remaining monsters
-            // if ally monsters remaining: (if team length > 1)
-            //      send out another (TODO: replace with a way to select from remaining)
-            //      proceed to player turn
-            //      state = BattleState.ENEMYTURN;
-            // else:
-            //      end battle
-            //      state = BattleState.WON;
-
-            battleState = BattleState.WON;
-            EndBattle();
-
-            battleState = BattleState.LOST;
-            EndBattle();
         }
         else
         {
-            //      proceed to enemy turn
-            //      state = BattleState.ENEMYTURN;
+
             battleState = BattleState.PLAYERTURN;
             //StartCoroutine(PlayerTurn());
             PlayerTurn();

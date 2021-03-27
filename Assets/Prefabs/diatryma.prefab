@@ -1359,7 +1359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Quivark
-  attack: 550
+  attack: 1000
   defense: 5
   speed: 1
   specialAbility: Shriek

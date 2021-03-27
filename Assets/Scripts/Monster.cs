@@ -45,5 +45,9 @@ public class Monster : MonoBehaviour
             currentHP = maxHP;
         }
     }
+    public int getSpeed()
+    {
+        return this.speed;
+    }
 
 }
