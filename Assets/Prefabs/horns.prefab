@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Horns
-  attack: 550
+  attack: 1050
   defense: 5
   speed: 1
   specialAbility: Charge

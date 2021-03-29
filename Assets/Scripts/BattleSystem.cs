@@ -57,7 +57,8 @@ public class BattleSystem : MonoBehaviour
         Debug.Log("Beginning game loop");
 
         // TODO: load random trainer. low priority TODO because fighting the same trainers in order doesnt really matter
-        currentEnemyTrainer = enemyTrainers[0];
+
+        currentEnemyTrainer = enemyTrainers[Random.Range(0,3)];
         //currentEnemyTeamList = currentEnemyTrainer.trainerTeam;
         currentEnemyTeamList = new List<Monster>(currentEnemyTrainer.trainerTeam);
 
@@ -200,38 +201,67 @@ public class BattleSystem : MonoBehaviour
         
         yield return new WaitForSeconds(2f);
 
-        if (isDead)
+        if (isDead) //if monster dies
         {
             dialogueText.text = enemyMonster.monsterName + " has died!";
             yield return new WaitForSeconds(2f);
             Destroy(enemyGameObject);
             currentEnemyTeamList.RemoveAt(0);
-            if (currentEnemyTeamList.Count > 0)
+            if (currentEnemyTeamList.Count > 0)//if enemy trainer has monsters left
             {
                 enemyGameObject = Instantiate(currentEnemyTeamList[0].gameObject, enemySpawnTransform.position, enemySpawnTransform.rotation);
                 enemyMonster = enemyGameObject.GetComponent<Monster>();
                 enemyHUD.SetHUD(enemyMonster);
-                dialogueText.text = "You sent out " + enemyMonster.monsterName;
+                dialogueText.text = currentEnemyTrainer.getFullName() + " sent out " + enemyMonster.monsterName;
                 yield return new WaitForSeconds(2f);
-                if (allyMonster.getSpeed() >= enemyMonster.getSpeed())
+                if (allyMonster.getSpeed() >= enemyMonster.getSpeed()) //if players monster is faster
                 {
                     battleState = BattleState.PLAYERTURN;
                     PlayerTurn();
                 }
-                else
+                else// if enemy monster is faster
                 {
                     battleState = BattleState.ENEMYTURN;
                     StartCoroutine(EnemyTurn());
                 }
             }
-            else
+            else // if enemy trainer has no monsters left
             {
-                battleState = BattleState.WON;
-                EndBattle();
+                currentEnemyTrainer.isDefeated = true;
+                if (allTrainersDefeated()) //if all trainers are defeated
+                {
+                    battleState = BattleState.WON;
+                    EndBattle();
+                }
+                else //if there are trainers undeafeated
+                {
+                    while (currentEnemyTrainer.isDefeated)
+                    {
+                        currentEnemyTrainer = enemyTrainers[Random.Range(0, enemyTrainers.Count)];             
+                    }
+                    currentEnemyTeamList = new List<Monster>(currentEnemyTrainer.trainerTeam);
+                    dialogueText.text = currentEnemyTrainer.getFullName() + " wants to battle!";
+                    yield return new WaitForSeconds(2f);
+                    enemyGameObject = Instantiate(currentEnemyTeamList[0].gameObject, enemySpawnTransform.position, enemySpawnTransform.rotation);
+                    enemyMonster = enemyGameObject.GetComponent<Monster>();
+                    enemyHUD.SetHUD(enemyMonster);
+                    dialogueText.text = currentEnemyTrainer.getFullName() + " sent out " + enemyMonster.monsterName;
+                    yield return new WaitForSeconds(2f);
+                    if (allyMonster.getSpeed() >= enemyMonster.getSpeed()) //if players monster is faster
+                    {
+                        battleState = BattleState.PLAYERTURN;
+                        PlayerTurn();
+                    }
+                    else// if enemy monster is faster
+                    {
+                        battleState = BattleState.ENEMYTURN;
+                        StartCoroutine(EnemyTurn());
+                    }
+                }
             }
 
         }
-        else
+        else //if monster lives
         {
 
             battleState = BattleState.ENEMYTURN;
@@ -351,6 +381,18 @@ public class BattleSystem : MonoBehaviour
             // if clicked Yes, hide Confirm window and use item
             // if clicked No, hide Confirm window
         // if clicked cancel hide items list window and show player actions window
+    }
+
+    public bool allTrainersDefeated()
+    {
+        foreach (Trainer trainer in enemyTrainers)
+        {
+            if (!trainer.isDefeated) //if a trainer IS NOT defeated
+            {
+                return false; //All trainers deafted is false
+            }
+        }
+        return true;
     }
 
 }
