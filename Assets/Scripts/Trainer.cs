@@ -10,5 +10,8 @@ public class Trainer : MonoBehaviour
 
     public bool isDefeated;
 
-
+    public string getFullName()
+    {
+        return firstName + " " + lastName;
+    }
 }
