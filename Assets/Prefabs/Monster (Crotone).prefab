@@ -1272,7 +1272,7 @@ GameObject:
   - component: {fileID: 8331128101287665033}
   - component: {fileID: 734123839894642994}
   m_Layer: 0
-  m_Name: sloth
+  m_Name: Monster (Crotone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1334,8 +1334,9 @@ MonoBehaviour:
   attack: 550
   defense: 5
   speed: 1
-  specialAbility: Death Breath
+  specialAbilityName: Death Breath
   specialAbilityDescription: Condition
+  specialAbilityPower: 0
   maxHP: 1000
   currentHP: 1000
   meleeAttack: {fileID: 0}

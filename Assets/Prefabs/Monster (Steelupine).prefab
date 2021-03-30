@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 6318846985240183483}
   - component: {fileID: -497733861525196563}
   m_Layer: 0
-  m_Name: fish
+  m_Name: Monster (Steelupine)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -441,8 +441,9 @@ MonoBehaviour:
   attack: 550
   defense: 5
   speed: 1
-  specialAbility: Bubble
+  specialAbilityName: Bubble
   specialAbilityDescription: Attack
+  specialAbilityPower: 0
   maxHP: 1000
   currentHP: 1000
   meleeAttack: {fileID: 0}

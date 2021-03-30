@@ -39,7 +39,7 @@ public class MonsterSelectScript : MonoBehaviour
     public TextMeshProUGUI monster9ButtonText;
     public TextMeshProUGUI monster10ButtonText;
 
-    List<Monster> monsterList = new List<Monster>();
+    public List<Monster> monsterList = new List<Monster>();
     List<Button> monsterButtonList = new List<Button>();
     List<TextMeshProUGUI> monsterButtonTextList = new List<TextMeshProUGUI>();
 
@@ -67,9 +67,7 @@ public class MonsterSelectScript : MonoBehaviour
 
     void Start()
     {
-        GenerateLists();
         SetNamesToButtons();
-        
     }
 
     void SetNamesToButtons()
@@ -90,16 +88,13 @@ public class MonsterSelectScript : MonoBehaviour
         monsterAttack.text = currentMonster.attack.ToString();
         monsterDefense.text = currentMonster.defense.ToString();
         monsterSpeed.text = currentMonster.speed.ToString();
-        monsterSpecialAbilityName.text = currentMonster.specialAbility;
+        monsterSpecialAbilityName.text = currentMonster.specialAbilityName;
         monsterSpecialAbilityDescription.text = currentMonster.specialAbilityDescription;
 
-
-        //GameObject monsterPreview = Instantiate(monsterPreviewGameObject, monsterPreviewTransform.position, monsterPreviewTransform.rotation);
         if (monsterPreview)
         {
             Destroy(monsterPreview);
         }
-        //monsterPreview = Instantiate(monsterList[slot - 1].gameObject, monsterPreviewTransform.position, monsterPreviewTransform.rotation);
         monsterPreview = Instantiate(currentMonster.gameObject, monsterPreviewTransform.position, monsterPreviewTransform.rotation);
     }
 
@@ -139,8 +134,6 @@ public class MonsterSelectScript : MonoBehaviour
         monsterSpecialAbilityName.text = "";
         monsterSpecialAbilityDescription.text = "";
 
-
-        //GameObject monsterPreview = Instantiate(monsterPreviewGameObject, monsterPreviewTransform.position, monsterPreviewTransform.rotation);
         if (monsterPreview)
         {
             Destroy(monsterPreview);
@@ -148,7 +141,7 @@ public class MonsterSelectScript : MonoBehaviour
         }
     }
 
-    void GenerateLists()
+    public void GenerateLists()
     {
         monsterList = new List<Monster>() {
             monster1,
@@ -190,7 +183,6 @@ public class MonsterSelectScript : MonoBehaviour
             monster9ButtonText,
             monster10ButtonText
         };
-
     }
 
 }

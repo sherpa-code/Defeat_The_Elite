@@ -1749,7 +1749,7 @@ GameObject:
   - component: {fileID: 8769214950839366921}
   - component: {fileID: 4783972185731198262}
   m_Layer: 0
-  m_Name: dragonewt
+  m_Name: Monster (Dragonewt)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1809,8 +1809,9 @@ MonoBehaviour:
   attack: 550
   defense: 5
   speed: 1
-  specialAbility: Glare
+  specialAbilityName: Glare
   specialAbilityDescription: Debuff
+  specialAbilityPower: 0
   maxHP: 1000
   currentHP: 1000
   meleeAttack: {fileID: 0}

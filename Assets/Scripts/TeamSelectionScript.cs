@@ -30,14 +30,19 @@ public class TeamSelectionScript : MonoBehaviour
 
     public MainMenuScript mainMenuScript;
 
+    public System.Random r = new System.Random();
+
     public List<Monster> teamList = new List<Monster>() { null, null, null };
 
     public BattleSystem battleSystem;
-    //public List<TextMeshProUGUI> teamListNameTextList = new List<TextMeshProUGUI>() { null, null, null };
+
+    void Start()
+    {
+        monsterSelectScript.GenerateLists();
+    }
 
     public void OnSlotButton(int slot)
     {
-        Debug.Log("Slot #" + slot + " button pressed");
         monsterSelectScript.EmptyMonsterSelection();
         monsterSelectScript.currentSlot = slot;
 
@@ -47,8 +52,6 @@ public class TeamSelectionScript : MonoBehaviour
 
     public void OnConfirmButton()
     {
-        Debug.Log("Confirm button pressed");
-
         battleSystem.allyTeamList = teamList;
         gameObject.SetActive(false);
         battleSystem.beginGame();
@@ -57,14 +60,21 @@ public class TeamSelectionScript : MonoBehaviour
 
     public void OnCancelButton()
     {
-        Debug.Log("Cancel button pressed");
-
         ResetTeam();
         UpdateTeamPreviews();
-        //gameObject.SetActive(false);
         mainMenuScript.returnToMainMenu();
-        //mainMenuCanvas.gameObject.SetActive(true);
+    }
 
+    public void OnRandomButton()
+    {
+        for (int i=0; i<3; i++)
+        {
+            battleSystem.allyTeamList[i] = monsterSelectScript.monsterList[r.Next(0, 9)];
+            teamList[i] = battleSystem.allyTeamList[i];
+            Debug.Log(battleSystem.allyTeamList[i].monsterName);
+        }
+
+        UpdateTeamPreviews();
     }
 
     public void UpdateTeamPreviews()
@@ -106,8 +116,6 @@ public class TeamSelectionScript : MonoBehaviour
 
     public void ResetTeam()
     {
-        Debug.Log("ResetTeam() fired");
-
         slot1MonsterNameText.text = "Empty";
         slot2MonsterNameText.text = "Empty";
         slot3MonsterNameText.text = "Empty";

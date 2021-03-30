@@ -1332,7 +1332,7 @@ GameObject:
   - component: {fileID: 3361979197227913101}
   - component: {fileID: -1058025905107404127}
   m_Layer: 0
-  m_Name: bug
+  m_Name: Monster (Spinpion)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1396,8 +1396,9 @@ MonoBehaviour:
   attack: 550
   defense: 5
   speed: 1
-  specialAbility: Sting
+  specialAbilityName: Sting
   specialAbilityDescription: Poison
+  specialAbilityPower: 0
   maxHP: 1000
   currentHP: 1000
   meleeAttack: {fileID: 0}

@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 5713984364815744253}
   - component: {fileID: 5554390258929398020}
   m_Layer: 0
-  m_Name: horns
+  m_Name: Monster (Horns)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -506,8 +506,9 @@ MonoBehaviour:
   attack: 550
   defense: 5
   speed: 1
-  specialAbility: Charge
+  specialAbilityName: Charge
   specialAbilityDescription: Attack
+  specialAbilityPower: 0
   maxHP: 1000
   currentHP: 1000
   meleeAttack: {fileID: 0}

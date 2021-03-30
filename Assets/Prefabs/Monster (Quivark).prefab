@@ -1301,7 +1301,7 @@ GameObject:
   - component: {fileID: 2864951519585369360}
   - component: {fileID: 8364356885038651983}
   m_Layer: 0
-  m_Name: diatryma
+  m_Name: Monster (Quivark)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1362,8 +1362,9 @@ MonoBehaviour:
   attack: 1000
   defense: 5
   speed: 1
-  specialAbility: Shriek
+  specialAbilityName: Shriek
   specialAbilityDescription: Debuff
+  specialAbilityPower: 0
   maxHP: 1000
   currentHP: 1000
   meleeAttack: {fileID: 0}

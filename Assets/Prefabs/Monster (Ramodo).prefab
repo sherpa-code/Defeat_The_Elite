@@ -771,7 +771,7 @@ GameObject:
   - component: {fileID: 3557228038515886606}
   - component: {fileID: -7795660497971579482}
   m_Layer: 0
-  m_Name: serpent
+  m_Name: Monster (Ramodo)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -829,8 +829,9 @@ MonoBehaviour:
   attack: 550
   defense: 5
   speed: 1
-  specialAbility: Intimiate
+  specialAbilityName: Intimidate
   specialAbilityDescription: Condition
+  specialAbilityPower: 0
   maxHP: 1000
   currentHP: 1000
   meleeAttack: {fileID: 0}

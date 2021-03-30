@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 3783013325008330724}
   - component: {fileID: 4345286351174118158}
   m_Layer: 0
-  m_Name: needles
+  m_Name: Monster (Needles)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,8 +135,9 @@ MonoBehaviour:
   attack: 550
   defense: 5
   speed: 1
-  specialAbility: Stab
+  specialAbilityName: Stab
   specialAbilityDescription: Attack
+  specialAbilityPower: 0
   maxHP: 1000
   currentHP: 1000
   meleeAttack: {fileID: 0}

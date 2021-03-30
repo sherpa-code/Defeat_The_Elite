@@ -25,10 +25,6 @@ public class MainMenuScript : MonoBehaviour
 
     public void returnToMainMenu()
     {
-        //nameEntryCanvas.gameObject.nameInputField.text = "";
-        //nameEntryCanvas.clearNameInputField();
-        //nameEntryCanvas.gameObject.clearNameInputField();
-
         monsterSelectCanvas.gameObject.SetActive(false);
         battleCanvas.gameObject.SetActive(false);
         battleSystem.gameOverHUD.gameObject.SetActive(false);
@@ -54,7 +50,6 @@ public class MainMenuScript : MonoBehaviour
         Debug.Log("Start Game button pressed");
         gameObject.SetActive(false);
         nameEntryCanvas.gameObject.SetActive(true);
-        //nameEntryCanvas.clearNameInputField();
         nameEntryCanvas.GetComponent<NameEntryScript>().clearNameInputField();
 
         //TeamSelectCanvas.gameObject.SetActive(true);
@@ -65,9 +60,8 @@ public class MainMenuScript : MonoBehaviour
 
     public void OnQuitButton()
     {
-        Debug.Log("Quit button pressed");
+        //TODO: (optional) save any game data here
 
-        // save any game data here
         #if UNITY_EDITOR // quit if in Editor
             UnityEditor.EditorApplication.isPlaying = false;
         #else // quit if in Build

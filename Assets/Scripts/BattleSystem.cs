@@ -49,7 +49,11 @@ public class BattleSystem : MonoBehaviour
     public Trainer currentEnemyTrainer;
     public List<Monster> currentEnemyTeamList = new List<Monster>() { null, null, null };
 
-    public Random r = new Random();
+    public System.Random r = new System.Random();
+
+    public TextMeshProUGUI specialMove;
+    public TextMeshProUGUI specialMoveDescriptionText;
+
 
 
     public void beginGame()
@@ -57,15 +61,9 @@ public class BattleSystem : MonoBehaviour
         Debug.Log("Beginning game loop");
 
         // TODO: load random trainer. low priority TODO because fighting the same trainers in order doesnt really matter
-        currentEnemyTrainer = enemyTrainers[0];
-        //currentEnemyTeamList = currentEnemyTrainer.trainerTeam;
+        //currentEnemyTrainer = enemyTrainers[0];
+        currentEnemyTrainer = enemyTrainers[r.Next(0, enemyTrainers.Count)];
         currentEnemyTeamList = new List<Monster>(currentEnemyTrainer.trainerTeam);
-
-        //currentEnemyTeamList.Clear();
-        //for (int i=0; i<currentEnemyTrainer.trainerTeam.Count; i++)
-        //{
-        //    currentEnemyTeamList.Add(currentEnemyTrainer.trainerTeam[i]);
-        //}
 
         enemyNameText.text = currentEnemyTrainer.firstName + " " + currentEnemyTrainer.lastName;
         playerNameText.text = playerName;
@@ -75,7 +73,6 @@ public class BattleSystem : MonoBehaviour
         gameObject.SetActive(true);
         battleCanvas.gameObject.SetActive(true);
 
-        //SetupBattle();
         StartCoroutine(SetupBattle());
     }
 
@@ -113,11 +110,11 @@ public class BattleSystem : MonoBehaviour
         enemyGameObject = Instantiate(currentEnemyTeamList[0].gameObject, enemySpawnTransform.position, enemySpawnTransform.rotation);
         enemyMonster = enemyGameObject.GetComponent<Monster>();
 
-        dialogueText.text = "A wild " + enemyMonster.monsterName + " approaches!";
-
         allyHUD.SetHUD(allyMonster);
+        specialMoveDescriptionText.SetText("(" + allyMonster.specialAbilityName + " - " + allyMonster.specialAbilityDescription.ToString() + ")");
         enemyHUD.SetHUD(enemyMonster);
 
+        dialogueText.text = "A wild " + enemyMonster.monsterName + " approaches!";
         //yield return new WaitForSeconds(2f);
         yield return new WaitForSeconds(0f); // debug setting for instant state change
 
@@ -141,19 +138,11 @@ public class BattleSystem : MonoBehaviour
         //dialogueText.text = "Choose an action:";
         combatReadout.gameObject.SetActive(false); // debug setting
         playerActions.gameObject.SetActive(true); // debug setting
+        
     }
-
-    //IEnumerator PlayerTurn()
-    //{
-    //    yield return new WaitForSeconds(0f);
-    //    //dialogueText.text = "Choose an action:";
-    //    combatReadout.gameObject.SetActive(false); // debug setting
-    //    playerActions.gameObject.SetActive(true); // debug setting
-    //}
 
     public void OnMeleeButton()
     {
-        Debug.Log("Melee Button clicked");
         if (battleState != BattleState.PLAYERTURN) return;
 
         StartCoroutine(PlayerAttack());
@@ -161,7 +150,6 @@ public class BattleSystem : MonoBehaviour
 
     public void OnSpecialButton()
     {
-        Debug.Log("Special Button clicked");
         if (battleState != BattleState.PLAYERTURN) return;
 
         StartCoroutine(PlayerSpecialAbility());
@@ -169,7 +157,6 @@ public class BattleSystem : MonoBehaviour
 
     public void OnDefendButton()
     {
-        Debug.Log("Defend Button clicked");
         if (battleState != BattleState.PLAYERTURN) return;
 
         StartCoroutine(PlayerDefend());
@@ -177,7 +164,6 @@ public class BattleSystem : MonoBehaviour
 
     public void OnItemButton()
     {
-        Debug.Log("Items Button clicked");
         if (battleState != BattleState.PLAYERTURN) return;
 
         StartCoroutine(PlayerItems());
@@ -202,7 +188,7 @@ public class BattleSystem : MonoBehaviour
 
         if (isDead)
         {
-            dialogueText.text = enemyMonster.monsterName + " has died!";
+            dialogueText.text = enemyMonster.monsterName + " has fainted!";
             yield return new WaitForSeconds(2f);
             Destroy(enemyGameObject);
             currentEnemyTeamList.RemoveAt(0);
@@ -211,7 +197,9 @@ public class BattleSystem : MonoBehaviour
                 enemyGameObject = Instantiate(currentEnemyTeamList[0].gameObject, enemySpawnTransform.position, enemySpawnTransform.rotation);
                 enemyMonster = enemyGameObject.GetComponent<Monster>();
                 enemyHUD.SetHUD(enemyMonster);
-                dialogueText.text = "You sent out " + enemyMonster.monsterName;
+                enemyHUD.SetHP(enemyMonster.currentHP);
+                //dialogueText.text = "You sent out " + enemyMonster.monsterName;
+                dialogueText.text = currentEnemyTrainer.getFullName()+" sent out " + enemyMonster.monsterName+".";
                 yield return new WaitForSeconds(2f);
                 if (allyMonster.getSpeed() >= enemyMonster.getSpeed())
                 {
@@ -246,7 +234,7 @@ public class BattleSystem : MonoBehaviour
         combatReadout.gameObject.SetActive(true);
         if (battleState == BattleState.WON)
         {
-            dialogueText.text = "You have defeated all opponents. You win!";
+            dialogueText.text = "You have defeated "+currentEnemyTrainer.getFullName()+". You win!";
             
         } else if (battleState == BattleState.LOST)
         {
@@ -282,6 +270,7 @@ public class BattleSystem : MonoBehaviour
                 allyGameObject = Instantiate(allyTeamList[0].gameObject, allySpawnTransform.position, allySpawnTransform.rotation);
                 allyMonster = allyGameObject.GetComponent<Monster>();
                 allyHUD.SetHUD(allyMonster);
+                allyHUD.SetHP(allyMonster.currentHP);
                 dialogueText.text ="You sent out " + allyMonster.monsterName;
                 yield return new WaitForSeconds(2f);
                 if (allyMonster.getSpeed() >= enemyMonster.getSpeed())
@@ -316,12 +305,13 @@ public class BattleSystem : MonoBehaviour
         playerActions.gameObject.SetActive(false); // debug setting
         combatReadout.gameObject.SetActive(true); // debug setting
 
-        dialogueText.text = allyMonster.monsterName + " tried to heal...";
+        dialogueText.text = allyMonster.monsterName + " tried "+allyMonster.specialAbilityName+"...";
         yield return new WaitForSeconds(2f);
 
+        // TODO: add logic for distinct special abilities, including checking if they hit or not
         allyMonster.Heal(1);
         allyHUD.SetHP(allyMonster.currentHP);
-        dialogueText.text = "The heal was successful!";
+        dialogueText.text = allyMonster.specialAbilityName+" was successful!";
 
         yield return new WaitForSeconds(2f);
         
@@ -331,16 +321,19 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator PlayerDefend()
     {
-        // Damage enemy
+        // TODO: Temporarily boost defense stat (until next turn)
+        // TODO: Set Defense state
+        // TODO: Change state based on above result
         yield return new WaitForSeconds(2f);
 
-        // Set Defense state
-        // Change state based on above result
+        
     }
 
     IEnumerator PlayerItems()
     {
-        // Damage enemy
+        // TODO: make items UI
+        // TODO: make item prefabs
+        // TODO: make way to track inventory
         yield return new WaitForSeconds(2f);
 
         // Hide player actions window

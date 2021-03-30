@@ -4291,7 +4291,7 @@ GameObject:
   - component: {fileID: 6815554699448209572}
   - component: {fileID: 5193489582645430606}
   m_Layer: 0
-  m_Name: plant
+  m_Name: Monster (Gorimite)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4355,8 +4355,9 @@ MonoBehaviour:
   attack: 550
   defense: 5
   speed: 1
-  specialAbility: Seed
+  specialAbilityName: Seed
   specialAbilityDescription: Poison
+  specialAbilityPower: 0
   maxHP: 1000
   currentHP: 1000
   meleeAttack: {fileID: 0}
