@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\BattleAbilities.cs" />
      <Compile Include="Assets\Scripts\BattleHUDScript.cs" />
      <Compile Include="Assets\Scripts\BattleSystem.cs" />
+     <Compile Include="Assets\Scripts\ItemScript.cs" />
      <Compile Include="Assets\Scripts\MainMenuScript.cs" />
      <Compile Include="Assets\Scripts\Monster.cs" />
      <Compile Include="Assets\Scripts\MonsterSelectScript.cs" />
