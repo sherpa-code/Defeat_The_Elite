@@ -20,7 +20,9 @@ public class MainMenuScript : MonoBehaviour
 
     void Start()
     {
+        
         returnToMainMenu();
+        //battleCanvas.GetComponent<ItemMenuScript>().gameObject.SetActive(true);
     }
 
     public void returnToMainMenu()
@@ -48,6 +50,8 @@ public class MainMenuScript : MonoBehaviour
     public void OnStartGameButton()
     {
         Debug.Log("Start Game button pressed");
+        //battleSystem.itemMenu.gameObject.SetActive(true);
+        
         gameObject.SetActive(false);
         nameEntryCanvas.gameObject.SetActive(true);
         nameEntryCanvas.GetComponent<NameEntryScript>().clearNameInputField();

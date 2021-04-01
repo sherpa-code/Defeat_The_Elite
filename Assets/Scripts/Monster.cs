@@ -19,8 +19,15 @@ public class Monster : MonoBehaviour
     public int maxHP;
     public int currentHP;
     
-    public BattleAbilities meleeAttack;
-    public BattleAbilities specialMove;
+    //public BattleAbilities meleeAttack;
+    //public BattleAbilities specialMove;
+
+    public Animator animator;
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
 
     public bool TakeDamage(int damage)
@@ -32,7 +39,6 @@ public class Monster : MonoBehaviour
         {
             currentHP -= damage;
         }
-
         return HasDied();
     }
 
@@ -59,4 +65,29 @@ public class Monster : MonoBehaviour
         return this.speed;
     }
 
+    public IEnumerator playHurtAnimation()
+    {
+        animator.SetBool("Was Hit", true);
+        yield return new WaitForSeconds(1.5f);
+        animator.SetBool("Was Hit", false);
+    }
+    public IEnumerator playDeathAnimation()
+    {
+        animator.SetBool("Was Hit", true);
+        animator.SetBool("Dead", true);
+        yield return new WaitForSeconds(1.5f);
+        
+    }
+    public IEnumerator playAttackAnimation()
+    {
+        animator.SetBool("Melee Attacking", true);
+        yield return new WaitForSeconds(1.5f);
+        animator.SetBool("Melee Attacking", false);
+    }
+    public IEnumerator playSpecialAnimation()
+    {
+        animator.SetBool("Magic Attacking", true);
+        yield return new WaitForSeconds(1.5f);
+        animator.SetBool("Magic Attacking", false);
+    }
 }

@@ -43,4 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a937373183c4a194cb866f2197fdd048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemDisplayName: {fileID: 0}
   itemName: Large Potion
+  itemEffectiveness: 0
+  itemImage: {fileID: 21300000, guid: 17d7c9bde5d08b74cafab553ea11eb38, type: 3}
