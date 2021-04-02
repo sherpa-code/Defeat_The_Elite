@@ -64,6 +64,8 @@ public class MonsterSelectScript : MonoBehaviour
     public int currentSlot;
     public Monster currentMonster;
 
+    public AudioManager audioManager;
+
 
     void Start()
     {
@@ -81,6 +83,7 @@ public class MonsterSelectScript : MonoBehaviour
     public void OnMonsterSlotButton(int slot)
     {
         Debug.Log("Monster " + slot + " button pressed");
+        audioManager.playBlip();
         selectButton.interactable = true;
 
         currentMonster = monsterList[slot - 1];
@@ -101,6 +104,7 @@ public class MonsterSelectScript : MonoBehaviour
     public void OnCancelButton()
     {
         Debug.Log("Cancel button pressed.");
+        audioManager.playBlip();
         currentSlot = 0;
         EmptyMonsterSelection();
         selectButton.interactable = false;
@@ -111,7 +115,8 @@ public class MonsterSelectScript : MonoBehaviour
     public void OnSelectButton()
     {
         Debug.Log("Select button pressed.");
-        
+        audioManager.playBlip();
+
         teamSelectionScript.teamList[currentSlot - 1] = currentMonster;
 
         gameObject.SetActive(false);

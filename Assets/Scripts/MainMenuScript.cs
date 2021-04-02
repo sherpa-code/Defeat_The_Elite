@@ -16,11 +16,14 @@ public class MainMenuScript : MonoBehaviour
     public Canvas battleCanvas;
     public BattleSystem battleSystem;
     public Canvas nameEntryCanvas;
-
+    public AudioManager audioManager;
+    //private AudioSource audioSource;
+    //public AudioClip menuBlipSound;
 
     void Start()
     {
         
+
         returnToMainMenu();
         //battleCanvas.GetComponent<ItemMenuScript>().gameObject.SetActive(true);
     }
@@ -49,6 +52,8 @@ public class MainMenuScript : MonoBehaviour
     
     public void OnStartGameButton()
     {
+        audioManager.playBlip();
+      
         Debug.Log("Start Game button pressed");
         //battleSystem.itemMenu.gameObject.SetActive(true);
         
@@ -64,6 +69,8 @@ public class MainMenuScript : MonoBehaviour
 
     public void OnQuitButton()
     {
+        audioManager.playBlip();
+      
         //TODO: (optional) save any game data here
 
         #if UNITY_EDITOR // quit if in Editor

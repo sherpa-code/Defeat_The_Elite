@@ -23,10 +23,16 @@ public class Monster : MonoBehaviour
     //public BattleAbilities specialMove;
 
     public Animator animator;
+    private AudioSource audioSource; //private because example I seen was private
+    public AudioClip attackSound;
+    public AudioClip specialSound;
+    public AudioClip hurtSound;
+    public AudioClip deathSound;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -67,27 +73,50 @@ public class Monster : MonoBehaviour
 
     public IEnumerator playHurtAnimation()
     {
+        playHurtSound();
         animator.SetBool("Was Hit", true);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForEndOfFrame();
         animator.SetBool("Was Hit", false);
+        
     }
     public IEnumerator playDeathAnimation()
     {
         animator.SetBool("Was Hit", true);
+        playDeathSound();
         animator.SetBool("Dead", true);
-        yield return new WaitForSeconds(1.5f);
-        
+        yield return new WaitForEndOfFrame();
+
     }
     public IEnumerator playAttackAnimation()
     {
+        playAttackSound();
         animator.SetBool("Melee Attacking", true);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForEndOfFrame(); ;
         animator.SetBool("Melee Attacking", false);
     }
     public IEnumerator playSpecialAnimation()
     {
+        playSpecialSound();
         animator.SetBool("Magic Attacking", true);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForEndOfFrame();
         animator.SetBool("Magic Attacking", false);
     }
+
+    public void playHurtSound()
+    {
+        audioSource.PlayOneShot(hurtSound);
+    }
+    public void playDeathSound()
+    {
+        audioSource.PlayOneShot(deathSound);
+    }
+    public void playAttackSound()
+    {
+        audioSource.PlayOneShot(attackSound);
+    }
+    public void playSpecialSound()
+    {
+        audioSource.PlayOneShot(specialSound);
+    }
+
 }

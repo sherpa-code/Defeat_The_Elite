@@ -57,7 +57,12 @@ public class BattleSystem : MonoBehaviour
     //public ItemMenuScript itemMenu;
     public Image itemMenu;
 
+    public AudioManager audioManager;
 
+    void Start()
+    {
+        
+    }
 
     public void beginGame()
     {
@@ -108,6 +113,7 @@ public class BattleSystem : MonoBehaviour
 
     public void OnMeleeButton()
     {
+        audioManager.playBlip();
         if (battleState != BattleState.PLAYERTURN) return;
 
         StartCoroutine(PlayerAttack());
@@ -115,6 +121,7 @@ public class BattleSystem : MonoBehaviour
 
     public void OnSpecialButton()
     {
+        audioManager.playBlip();
         if (battleState != BattleState.PLAYERTURN) return;
 
         StartCoroutine(PlayerSpecialAbility());
@@ -122,6 +129,7 @@ public class BattleSystem : MonoBehaviour
 
     public void OnDefendButton()
     {
+        audioManager.playBlip();
         if (battleState != BattleState.PLAYERTURN) return;
 
         StartCoroutine(PlayerDefend());
@@ -129,6 +137,7 @@ public class BattleSystem : MonoBehaviour
 
     public void OnItemButton()
     {
+        audioManager.playBlip();
         //if (battleState != BattleState.PLAYERTURN) return;
         Debug.Log("Item Button clicked");
         //StartCoroutine(PlayerItems());

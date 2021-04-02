@@ -36,13 +36,17 @@ public class TeamSelectionScript : MonoBehaviour
 
     public BattleSystem battleSystem;
 
+    public AudioManager audioManager;
+
     void Start()
     {
         monsterSelectScript.GenerateLists();
+        
     }
 
     public void OnSlotButton(int slot)
     {
+        audioManager.playBlip();
         monsterSelectScript.EmptyMonsterSelection();
         monsterSelectScript.currentSlot = slot;
 
@@ -52,6 +56,7 @@ public class TeamSelectionScript : MonoBehaviour
 
     public void OnConfirmButton()
     {
+        audioManager.playBlip();
         battleSystem.allyTeamList = teamList;
         gameObject.SetActive(false);
         battleSystem.beginGame();
@@ -60,6 +65,7 @@ public class TeamSelectionScript : MonoBehaviour
 
     public void OnCancelButton()
     {
+        audioManager.playBlip();
         ResetTeam();
         UpdateTeamPreviews();
         mainMenuScript.returnToMainMenu();
@@ -67,6 +73,7 @@ public class TeamSelectionScript : MonoBehaviour
 
     public void OnRandomButton()
     {
+        audioManager.playBlip();
         for (int i=0; i<3; i++)
         {
             battleSystem.allyTeamList[i] = monsterSelectScript.monsterList[r.Next(0, 9)];

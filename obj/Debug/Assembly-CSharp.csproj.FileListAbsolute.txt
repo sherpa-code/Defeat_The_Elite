@@ -270,3 +270,7 @@ E:\UnityTermProject\RPGCombat2021\obj\Debug\Assembly-CSharp.csproj.CoreCompileIn
 E:\UnityTermProject\RPGCombat2021\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 E:\UnityTermProject\RPGCombat2021\obj\Debug\Assembly-CSharp.dll
 E:\UnityTermProject\RPGCombat2021\obj\Debug\Assembly-CSharp.pdb
+C:\Users\micha\CP4471_RPGCombat\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Users\micha\CP4471_RPGCombat\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+C:\Users\micha\CP4471_RPGCombat\obj\Debug\Assembly-CSharp.dll
+C:\Users\micha\CP4471_RPGCombat\obj\Debug\Assembly-CSharp.pdb

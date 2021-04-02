@@ -10,6 +10,7 @@ public class NameEntryScript : MonoBehaviour
     public BattleSystem battleSystem;
     public TeamSelectionScript teamSelectionScript;
     public MainMenuScript mainMenuScript;
+    public AudioManager audioManager;
 
 
     public void enableConfirmButton()
@@ -25,6 +26,7 @@ public class NameEntryScript : MonoBehaviour
 
     public void saveUserName()
     {
+        audioManager.playBlip();
         battleSystem.playerName = nameInputField.text;
     }
 
@@ -42,7 +44,7 @@ public class NameEntryScript : MonoBehaviour
     public void OnCancelButton()
     {
         Debug.Log("Cancel button pressed");
-                
+        audioManager.playBlip();
         mainMenuScript.returnToMainMenu();
     }
 
