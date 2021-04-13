@@ -10,9 +10,9 @@ public class BattleHUDScript : MonoBehaviour
     //public Text levelText;
     public Slider hpSlider;
     public TextMeshProUGUI currentHPText;
+    public TextMeshProUGUI maxHPText;
 
-    public void SetHUD(Monster monster)
-    {
+    public void SetHUD(Monster monster) {
         nameText.text = monster.monsterName;
         //levelText.text = "Lvl " + monster.monsterLevel;
         hpSlider.maxValue = monster.maxHP;
@@ -20,10 +20,13 @@ public class BattleHUDScript : MonoBehaviour
         
     }
 
-    public void SetHP(int hp)
-    {
+    public void SetHP(int hp) {
         hpSlider.value = hp;
         currentHPText.text = hp.ToString();
     }
 
+    public void SetMaxHP(int hp)
+    {
+        maxHPText.text = " / " + hp.ToString();
+    }
 }

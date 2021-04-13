@@ -1807,19 +1807,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Dragonewt
-  attack: 550
-  defense: 5
+  attack: 310
+  defense: 240
   speed: 1
   specialAbilityName: Glare
   specialAbilityDescription: Debuff
   specialAbilityPower: 0
-  maxHP: 1000
-  currentHP: 1000
+  maxHP: 850
+  currentHP: 850
   animator: {fileID: 0}
   attackSound: {fileID: 8300000, guid: 3a14e046fd578284e9c8095b8c5f25b0, type: 3}
-  specialSound: {fileID: 8300000, guid: 3a14e046fd578284e9c8095b8c5f25b0, type: 3}
-  hurtSound: {fileID: 8300000, guid: 3a14e046fd578284e9c8095b8c5f25b0, type: 3}
-  deathSound: {fileID: 8300000, guid: 3a14e046fd578284e9c8095b8c5f25b0, type: 3}
+  specialSound: {fileID: 8300000, guid: 2ec9c5fd591c0904bba71840e3f95bf4, type: 3}
+  hurtSound: {fileID: 8300000, guid: 5e362a5bd8a971e4cadd62e09df43dc2, type: 3}
+  deathSound: {fileID: 8300000, guid: 451f7d9bd72b24d42a200c8c6cb9f740, type: 3}
 --- !u!82 &-5462889772172709105
 AudioSource:
   m_ObjectHideFlags: 0

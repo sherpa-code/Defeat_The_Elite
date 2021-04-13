@@ -504,19 +504,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Horns
-  attack: 550
-  defense: 5
+  attack: 320
+  defense: 190
   speed: 1
   specialAbilityName: Charge
   specialAbilityDescription: Attack
   specialAbilityPower: 0
-  maxHP: 1000
-  currentHP: 1000
+  maxHP: 750
+  currentHP: 750
   animator: {fileID: 0}
   attackSound: {fileID: 8300000, guid: 040bce811dfe0734189af7e8d16dc20e, type: 3}
-  specialSound: {fileID: 8300000, guid: 040bce811dfe0734189af7e8d16dc20e, type: 3}
-  hurtSound: {fileID: 8300000, guid: 040bce811dfe0734189af7e8d16dc20e, type: 3}
-  deathSound: {fileID: 8300000, guid: 040bce811dfe0734189af7e8d16dc20e, type: 3}
+  specialSound: {fileID: 8300000, guid: baf4365a7d3125d4fb55c775354eb2df, type: 3}
+  hurtSound: {fileID: 8300000, guid: b958966ac5253de4cb55718b8c409203, type: 3}
+  deathSound: {fileID: 8300000, guid: 7cd54a3c556867446a7b2493528b0cd0, type: 3}
 --- !u!82 &-9177043698105249280
 AudioSource:
   m_ObjectHideFlags: 0

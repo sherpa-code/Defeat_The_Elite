@@ -1332,19 +1332,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Crotone
-  attack: 550
-  defense: 5
+  attack: 335
+  defense: 250
   speed: 1
   specialAbilityName: Death Breath
   specialAbilityDescription: Condition
   specialAbilityPower: 0
-  maxHP: 1000
-  currentHP: 1000
+  maxHP: 900
+  currentHP: 900
   animator: {fileID: 0}
   attackSound: {fileID: 8300000, guid: c6513dab84c9a5a4fbcbaf76fc4f31b9, type: 3}
-  specialSound: {fileID: 8300000, guid: c6513dab84c9a5a4fbcbaf76fc4f31b9, type: 3}
-  hurtSound: {fileID: 8300000, guid: c6513dab84c9a5a4fbcbaf76fc4f31b9, type: 3}
-  deathSound: {fileID: 8300000, guid: c6513dab84c9a5a4fbcbaf76fc4f31b9, type: 3}
+  specialSound: {fileID: 8300000, guid: 94ff678cec30ece4c958a0199acc8b0f, type: 3}
+  hurtSound: {fileID: 8300000, guid: ea02ed26093abc043a0344f1f9d34625, type: 3}
+  deathSound: {fileID: 8300000, guid: 787743cd5abae1041ac7e170176c8d5c, type: 3}
 --- !u!82 &4033924282204507115
 AudioSource:
   m_ObjectHideFlags: 0

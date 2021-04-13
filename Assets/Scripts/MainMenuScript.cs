@@ -20,29 +20,24 @@ public class MainMenuScript : MonoBehaviour
     //private AudioSource audioSource;
     //public AudioClip menuBlipSound;
 
-    void Start()
-    {
+    void Start() {
         
-
         returnToMainMenu();
         //battleCanvas.GetComponent<ItemMenuScript>().gameObject.SetActive(true);
     }
 
-    public void returnToMainMenu()
-    {
+    public void returnToMainMenu() {
         monsterSelectCanvas.gameObject.SetActive(false);
         battleCanvas.gameObject.SetActive(false);
         battleSystem.gameOverHUD.gameObject.SetActive(false);
         teamSelectionScript.ResetTeam();
         teamSelectionScript.UpdateTeamPreviews();
 
-        if (battleSystem.allyGameObject)
-        {
+        if (battleSystem.allyGameObject) {
             Destroy(battleSystem.allyGameObject);
         }
 
-        if (battleSystem.enemyGameObject)
-        {
+        if (battleSystem.enemyGameObject) {
             Destroy(battleSystem.enemyGameObject);
         }
 
@@ -50,8 +45,7 @@ public class MainMenuScript : MonoBehaviour
         gameObject.SetActive(true);
     }
     
-    public void OnStartGameButton()
-    {
+    public void OnStartGameButton() {
         audioManager.playBlip();
       
         Debug.Log("Start Game button pressed");
@@ -67,8 +61,7 @@ public class MainMenuScript : MonoBehaviour
         //playerActions.gameObject.SetActive(true); // debug setting
     }
 
-    public void OnQuitButton()
-    {
+    public void OnQuitButton() {
         audioManager.playBlip();
       
         //TODO: (optional) save any game data here
@@ -79,5 +72,4 @@ public class MainMenuScript : MonoBehaviour
             Application.Quit();
         #endif
     }
-
 }

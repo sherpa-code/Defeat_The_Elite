@@ -4353,19 +4353,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Gorimite
-  attack: 550
-  defense: 5
+  attack: 340
+  defense: 260
   speed: 1
   specialAbilityName: Seed
   specialAbilityDescription: Poison
   specialAbilityPower: 0
-  maxHP: 1000
-  currentHP: 1000
+  maxHP: 800
+  currentHP: 800
   animator: {fileID: 0}
   attackSound: {fileID: 8300000, guid: 2e487d89a03df224582040011ae2ce39, type: 3}
-  specialSound: {fileID: 8300000, guid: 2e487d89a03df224582040011ae2ce39, type: 3}
-  hurtSound: {fileID: 8300000, guid: 2e487d89a03df224582040011ae2ce39, type: 3}
-  deathSound: {fileID: 8300000, guid: 2e487d89a03df224582040011ae2ce39, type: 3}
+  specialSound: {fileID: 8300000, guid: 10e7879940d96a741aeb830dad16ba47, type: 3}
+  hurtSound: {fileID: 8300000, guid: 20dda93867b47d84fb3d4ae4ef7b0c1a, type: 3}
+  deathSound: {fileID: 8300000, guid: 8778cba5f3a29b441988ab18d5ab4f8a, type: 3}
 --- !u!82 &1164671375112940803
 AudioSource:
   m_ObjectHideFlags: 0

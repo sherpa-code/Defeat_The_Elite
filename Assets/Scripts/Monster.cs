@@ -28,95 +28,89 @@ public class Monster : MonoBehaviour
     public AudioClip specialSound;
     public AudioClip hurtSound;
     public AudioClip deathSound;
+    int damageTaken;
 
-    void Start()
-    {
+    void Start() {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
     }
 
+    public void calculateDamage(int damageInput) {
+        //return damageInput * (100 / (10 + defense));
+        damageTaken = damageInput * (100 / (10 + defense));
+    }
 
-    public bool TakeDamage(int damage)
-    {
-        if (currentHP - damage < 0)
-        {
+    //public bool TakeDamage(int damage) {
+    public bool TakeDamage(int damageTaken) {
+        if (currentHP - damageTaken < 0) {
             currentHP = 0;
-        } else
-        {
-            currentHP -= damage;
+        } else {
+            currentHP -= damageTaken;
         }
         return HasDied();
     }
 
-    public bool HasDied()
-    {
-        if (currentHP <= 0)
-        {
+    public bool HasDied() {
+        if (currentHP <= 0) {
             return true;
         }
         return false;
     }
 
-    public void Heal(int amount)
-    {
+    public void Heal(int amount) {
         currentHP += amount;
-        if (currentHP > maxHP)
-        {
+        if (currentHP > maxHP) {
             currentHP = maxHP;
         }
     }
 
-    public int getSpeed()
-    {
+    public int getSpeed() {
         return this.speed;
     }
 
-    public IEnumerator playHurtAnimation()
-    {
+    public IEnumerator playHurtAnimation() {
         playHurtSound();
         animator.SetBool("Was Hit", true);
         yield return new WaitForEndOfFrame();
         animator.SetBool("Was Hit", false);
         
     }
-    public IEnumerator playDeathAnimation()
-    {
+
+    public IEnumerator playDeathAnimation() {
         animator.SetBool("Was Hit", true);
         playDeathSound();
         animator.SetBool("Dead", true);
         yield return new WaitForEndOfFrame();
 
     }
-    public IEnumerator playAttackAnimation()
-    {
+
+    public IEnumerator playAttackAnimation() {
         playAttackSound();
         animator.SetBool("Melee Attacking", true);
         yield return new WaitForEndOfFrame(); ;
         animator.SetBool("Melee Attacking", false);
     }
-    public IEnumerator playSpecialAnimation()
-    {
+
+    public IEnumerator playSpecialAnimation() {
         playSpecialSound();
         animator.SetBool("Magic Attacking", true);
         yield return new WaitForEndOfFrame();
         animator.SetBool("Magic Attacking", false);
     }
 
-    public void playHurtSound()
-    {
+    public void playHurtSound() {
         audioSource.PlayOneShot(hurtSound);
     }
-    public void playDeathSound()
-    {
+
+    public void playDeathSound() {
         audioSource.PlayOneShot(deathSound);
     }
-    public void playAttackSound()
-    {
+
+    public void playAttackSound() {
         audioSource.PlayOneShot(attackSound);
     }
-    public void playSpecialSound()
-    {
+
+    public void playSpecialSound() {
         audioSource.PlayOneShot(specialSound);
     }
-
 }

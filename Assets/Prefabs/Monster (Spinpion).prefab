@@ -1394,19 +1394,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Spinpion
-  attack: 550
-  defense: 5
+  attack: 300
+  defense: 490
   speed: 1
   specialAbilityName: Sting
   specialAbilityDescription: Poison
   specialAbilityPower: 0
-  maxHP: 1000
-  currentHP: 1000
+  maxHP: 750
+  currentHP: 750
   animator: {fileID: 0}
   attackSound: {fileID: 8300000, guid: 139bd3652475d844b8ac2d4ae339f781, type: 3}
-  specialSound: {fileID: 8300000, guid: bd51f1b0c79748143bd7db099acd1f7a, type: 3}
-  hurtSound: {fileID: 8300000, guid: 139bd3652475d844b8ac2d4ae339f781, type: 3}
-  deathSound: {fileID: 8300000, guid: 139bd3652475d844b8ac2d4ae339f781, type: 3}
+  specialSound: {fileID: 8300000, guid: 00eb6d72fa51c9b4bb977c1374a7ec26, type: 3}
+  hurtSound: {fileID: 8300000, guid: 31f51701b41ae9d43ba2b0cb3dd132b6, type: 3}
+  deathSound: {fileID: 8300000, guid: a01f7d01589047342993079d048c04d8, type: 3}
 --- !u!82 &-2288195847647701061
 AudioSource:
   m_ObjectHideFlags: 0
