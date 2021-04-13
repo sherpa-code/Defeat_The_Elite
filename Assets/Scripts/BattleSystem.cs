@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class BattleSystem : MonoBehaviour
-{
+public class BattleSystem : MonoBehaviour {
     public Transform allySpawnTransform;
     public Transform enemySpawnTransform;
 
@@ -40,12 +39,14 @@ public class BattleSystem : MonoBehaviour
 
     public TextMeshProUGUI specialMove;
     public TextMeshProUGUI specialMoveDescriptionText;
+    public TextMeshProUGUI specialMoveChargesText;
 
     //public ItemMenuScript itemMenu;
     public Image itemMenu;
 
     public AudioManager audioManager;
     public System.Single messageDisplayTime = 2f;
+    
 
     public void beginGame() {
         gameObject.SetActive(true);
@@ -54,19 +55,21 @@ public class BattleSystem : MonoBehaviour
         allyHUD.gameObject.SetActive(false);
         combatReadout.gameObject.SetActive(true);
 
-        StartCoroutine(beginBattle());
-    }
-
-    public IEnumerator beginBattle() {
         currentEnemyTrainer = enemyTrainers[r.Next(0, enemyTrainers.Count)];
         enemyNameText.text = currentEnemyTrainer.firstName + " " + currentEnemyTrainer.lastName;
         playerNameText.text = playerName;
 
+        currentEnemyTeamList = new List<Monster>(currentEnemyTrainer.trainerTeam);
+
+        updateSpecialMoveChargesText();
+
+        StartCoroutine(beginBattle());
+    }
+
+    public IEnumerator beginBattle() {
         dialogueText.text = "The battle begins!";
         //dialogueText.text = "Long multiple line string for testing text wrapping and spacing in the section."; // DEBUG
         yield return new WaitForSeconds(3f);
-
-        currentEnemyTeamList = new List<Monster>(currentEnemyTrainer.trainerTeam);
 
         spawnAllyMonster(0);
         yield return new WaitForSeconds(messageDisplayTime);
@@ -77,17 +80,29 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(checkSpeedAndContinue());
     }
 
+    //void updateSpecialMoveChargesText() {
+    //    specialMoveChargesText.text = "";
+
+    //    for (int i=0; i<allyMonster.specialChargesLeft; i++) {
+    //        if (i == 0) {
+    //            specialMoveChargesText.text = "SQUARE HERE"; // TODO fix this LiberationSans square or add a font to project and put a the UNICODE square here to show full or empty charge
+    //        }
+    //        specialMoveChargesText.text += " ";
+    //    }
+        
+    //}
+
     public IEnumerator checkSpeedAndContinue() {
         if (isPlayerFaster() == "yes") {
             dialogueText.text = allyMonster.monsterName + " is faster and acts first!";
             yield return new WaitForSeconds(messageDisplayTime);
-            PlayerTurn();
+            StartCoroutine(PlayerTurn());
         } else if (isPlayerFaster() == "tie") {
             dialogueText.text = "Both monsters are equally fast!";
             yield return new WaitForSeconds(messageDisplayTime);
             dialogueText.text = "Your " + allyMonster.monsterName + " acts first!";
             yield return new WaitForSeconds(messageDisplayTime);
-            PlayerTurn();
+            StartCoroutine(PlayerTurn());
         } else {
             dialogueText.text = enemyMonster.monsterName + " is faster and acts first!";
             yield return new WaitForSeconds(messageDisplayTime);
@@ -95,22 +110,43 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    public void PlayerTurn() {
-        //dialogueText.text = "Choose an action:";
-        combatReadout.gameObject.SetActive(false); // debug setting
-        playerActions.gameObject.SetActive(true); // debug setting
 
-    }
+    public IEnumerator PlayerTurn() {
+        if (allyMonster.isPoisoned) {
+            dialogueText.text = allyMonster.name + " is still poisoned!";
+            combatReadout.gameObject.SetActive(true);
+            bool isDead = allyMonster.TakeDamage(allyMonster.poisonDamageTaken);
+            allyHUD.SetHP(allyMonster.currentHP);
+            allyMonster.playHurtAnimation();
 
-    public string isPlayerFaster() {
-        if (allyMonster.getSpeed() > enemyMonster.getSpeed()) { // if players monster is faster
-            return "yes";
-        } else if (allyMonster.getSpeed() == enemyMonster.getSpeed()) {
-            return "tie";
-        } else { // if enemy monster is faster 
-            return "no";
+            if (isDead) {
+                StartCoroutine(allyMonster.playDeathAnimation());
+                dialogueText.text = allyMonster.monsterName + " has died!";
+                yield return new WaitForSeconds(5f);
+                Destroy(allyGameObject);
+                allyTeamList.RemoveAt(0);
+
+                if (allyTeamList.Count > 0) {
+                    yield return new WaitForSeconds(messageDisplayTime);
+                    spawnAllyMonster(0); //TODO: Add a way to select 0 or 1, AKA select which of 2 remaining monsters to send out
+                    yield return new WaitForSeconds(messageDisplayTime);
+                    StartCoroutine(checkSpeedAndContinue());
+                    yield break;
+                } else {
+                    GameOverLost();
+                }
+            } else { yield return new WaitForSeconds(messageDisplayTime); }
         }
+
+
+        yield return new WaitForSeconds(messageDisplayTime);
+
+        combatReadout.gameObject.SetActive(false);
+        playerActions.gameObject.SetActive(true);
+
     }
+
+    
 
     public IEnumerator PlayerAttack() {
         playerActions.gameObject.SetActive(false);
@@ -175,45 +211,110 @@ public class BattleSystem : MonoBehaviour
 
     
 
-    public IEnumerator conditionCheck() {
-        dialogueText.text = "Condition check here";
-        yield return new WaitForSeconds(0f);
-    }
+    //public bool poisonCheck(Monster monster) {
+    //    if (monster.isPoison) {
+
+    //    }
+    //    dialogueText.text = "Condition check here";
+
+    //}
+
+    //public bool deathBreathCheck()
+    //{
+
+    //}
 
     public IEnumerator EnemyTurn() {
+        bool isDead = false;
         playerActions.gameObject.SetActive(false);
         combatReadout.gameObject.SetActive(true);
-        StartCoroutine(enemyMonster.playAttackAnimation());
-        dialogueText.text = enemyMonster.monsterName + " attacks...";
-        yield return new WaitForSeconds(1.5f);
+        
+        string decision = EnemyDecision();
+        if (decision == "melee") {
+            Debug.Log("Enemy Melee Decision");
 
-        bool isDead = allyMonster.TakeDamage(enemyMonster.attack);
+            dialogueText.text = enemyMonster.monsterName + " attacks...";
+            yield return new WaitForSeconds(messageDisplayTime);
+            dialogueText.text = enemyMonster.monsterName + "'s attack hit!";
+            StartCoroutine(enemyMonster.playAttackAnimation());
+            yield return new WaitForSeconds(messageDisplayTime);
+            isDead = allyMonster.TakeDamage(allyMonster.attack);
+        } else {
+            Debug.Log("Enemy Special Decision");
+
+            dialogueText.text = enemyMonster.monsterName + " tries " + enemyMonster.specialAbilityName + "...";
+            yield return new WaitForSeconds(messageDisplayTime);
+            dialogueText.text = enemyMonster.specialAbilityName + " was successful.";
+            StartCoroutine(enemyMonster.playSpecialAnimation());
+            yield return new WaitForSeconds(messageDisplayTime);
+            isDead = allyMonster.TakeDamage(allyMonster.specialDamage);
+        }
+
         allyHUD.SetHP(allyMonster.currentHP);
-
 
         if (isDead) {
             StartCoroutine(allyMonster.playDeathAnimation());
             dialogueText.text = allyMonster.monsterName + " has died!";
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(4f);
             Destroy(allyGameObject);
             allyTeamList.RemoveAt(0);
             if (allyTeamList.Count > 0) {
                 yield return new WaitForSeconds(messageDisplayTime);
-                spawnAllyMonster(0); //TODO: Add a way to select 0 or 1, AKA select which of 2 remaining monsters to send out
-                yield return new WaitForSeconds(messageDisplayTime);
-                StartCoroutine(conditionCheck());
+                spawnAllyMonster(0);        // TODO: Add a way to select 0 or 1, AKA select which of 2 remaining monsters to send out
                 yield return new WaitForSeconds(messageDisplayTime);
                 StartCoroutine(checkSpeedAndContinue());
             } else {
+                yield return new WaitForSeconds(messageDisplayTime);
                 GameOverLost();
             }
         } else {
             StartCoroutine(allyMonster.playHurtAnimation());
             yield return new WaitForSeconds(messageDisplayTime);
-            //StartCoroutine(PlayerTurn());
-            PlayerTurn();
+            StartCoroutine(PlayerTurn());
         }
     }
+
+    public string EnemyDecision() {
+        string decision;
+        int choice;
+
+        if (enemyMonster.specialChargesLeft > 0) {
+            choice = r.Next(0, 1);
+            if (choice == 1) { choice = r.Next(0, 1); } // reroll on special roll to give it only 25% activation chance
+
+            if (choice == 0) {
+                decision = "melee";
+                //} else if (choice == 1) {
+            } else {
+                decision = "special";
+                enemyMonster.specialChargesLeft--;
+            }
+        } else {
+            decision = "melee";
+        }
+
+        return decision;
+    }
+
+    //public string EnemyDecision() {
+    //    string decision;
+    //    int choice = r.Next(0, 1);
+
+    //    if (choice == 1) { choice = r.Next(0, 1); } // reroll on special to give it only 25% activation chance
+
+    //    if (enemyMonster.specialChargesLeft > 0) { 
+    //        if (choice == 0) {
+    //            decision = "melee";
+    //            //} else if (choice == 1) {
+    //        } else {
+    //            decision = "special";
+    //        }
+    //    } else {
+    //        decision = "melee";
+    //    }
+
+    //    return decision;
+    //}
 
     public IEnumerator PlayerSpecialAbility() {
         playerActions.gameObject.SetActive(false); // debug setting
@@ -287,6 +388,16 @@ public class BattleSystem : MonoBehaviour
         enemyHUD.SetMaxHP(enemyMonster.maxHP);
         dialogueText.text = currentEnemyTrainer.firstName + " sent out " + enemyMonster.monsterName + ".";
         enemyHUD.gameObject.SetActive(true);
+    }
+
+    public string isPlayerFaster() {
+        if (allyMonster.getSpeed() > enemyMonster.getSpeed()) {
+            return "yes";
+        } else if (allyMonster.getSpeed() == enemyMonster.getSpeed()) {
+            return "tie";
+        } else {
+            return "no";
+        }
     }
 
     public void GameOverVictory()

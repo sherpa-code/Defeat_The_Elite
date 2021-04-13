@@ -4,17 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class BattleHUDScript : MonoBehaviour
-{
+public class BattleHUDScript : MonoBehaviour {
     public Text nameText;
-    //public Text levelText;
     public Slider hpSlider;
     public TextMeshProUGUI currentHPText;
     public TextMeshProUGUI maxHPText;
 
     public void SetHUD(Monster monster) {
         nameText.text = monster.monsterName;
-        //levelText.text = "Lvl " + monster.monsterLevel;
         hpSlider.maxValue = monster.maxHP;
         hpSlider.value = monster.currentHP;
         
@@ -27,6 +24,6 @@ public class BattleHUDScript : MonoBehaviour
 
     public void SetMaxHP(int hp)
     {
-        maxHPText.text = " / " + hp.ToString();
+        maxHPText.text = " /  " + hp.ToString();
     }
 }

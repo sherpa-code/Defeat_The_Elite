@@ -1362,7 +1362,8 @@ MonoBehaviour:
   monsterName: Quivark
   attack: 340
   defense: 260
-  speed: 1
+  speed: 3
+  specialChargesLeft: 3
   specialAbilityName: Shriek
   specialAbilityDescription: Debuff
   specialAbilityPower: 0
@@ -1373,6 +1374,9 @@ MonoBehaviour:
   specialSound: {fileID: 8300000, guid: 613531c5885829a4aaa7c44212ddafe2, type: 3}
   hurtSound: {fileID: 8300000, guid: 22c7f9748c8a3d3478698ac299f13743, type: 3}
   deathSound: {fileID: 8300000, guid: ca9ea2ba00e382e49860764bc07ae87c, type: 3}
+  isPoisoned: 0
+  poisonDamageTaken: 0
+  isDeathBreathed: 0
 --- !u!82 &6297556212543317257
 AudioSource:
   m_ObjectHideFlags: 0

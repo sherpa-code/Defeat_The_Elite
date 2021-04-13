@@ -4356,9 +4356,12 @@ MonoBehaviour:
   attack: 340
   defense: 260
   speed: 1
+  specialChargesLeft: 3
   specialAbilityName: Seed
   specialAbilityDescription: Poison
   specialAbilityPower: 0
+  specialDamage: 165
+  specialPoisonDamage: 150
   maxHP: 800
   currentHP: 800
   animator: {fileID: 0}
@@ -4366,6 +4369,9 @@ MonoBehaviour:
   specialSound: {fileID: 8300000, guid: 10e7879940d96a741aeb830dad16ba47, type: 3}
   hurtSound: {fileID: 8300000, guid: 20dda93867b47d84fb3d4ae4ef7b0c1a, type: 3}
   deathSound: {fileID: 8300000, guid: 8778cba5f3a29b441988ab18d5ab4f8a, type: 3}
+  isPoisoned: 0
+  poisonDamageTaken: 0
+  isDeathBreathed: 0
 --- !u!82 &1164671375112940803
 AudioSource:
   m_ObjectHideFlags: 0

@@ -1809,7 +1809,8 @@ MonoBehaviour:
   monsterName: Dragonewt
   attack: 310
   defense: 240
-  speed: 1
+  speed: 8
+  specialChargesLeft: 3
   specialAbilityName: Glare
   specialAbilityDescription: Debuff
   specialAbilityPower: 0
@@ -1820,6 +1821,9 @@ MonoBehaviour:
   specialSound: {fileID: 8300000, guid: 2ec9c5fd591c0904bba71840e3f95bf4, type: 3}
   hurtSound: {fileID: 8300000, guid: 5e362a5bd8a971e4cadd62e09df43dc2, type: 3}
   deathSound: {fileID: 8300000, guid: 451f7d9bd72b24d42a200c8c6cb9f740, type: 3}
+  isPoisoned: 0
+  poisonDamageTaken: 0
+  isDeathBreathed: 0
 --- !u!82 &-5462889772172709105
 AudioSource:
   m_ObjectHideFlags: 0

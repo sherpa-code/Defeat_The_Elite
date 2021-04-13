@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainMenuScript : MonoBehaviour
-{
+public class MainMenuScript : MonoBehaviour {
     public BattleHUDScript allyHUD;
     public BattleHUDScript enemyHUD;
     public Image playerActions;

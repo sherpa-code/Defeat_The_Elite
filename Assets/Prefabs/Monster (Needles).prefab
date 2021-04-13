@@ -135,10 +135,13 @@ MonoBehaviour:
   monsterName: Needles
   attack: 340
   defense: 210
-  speed: 1
+  speed: 9
+  specialChargesLeft: 3
   specialAbilityName: Stab
   specialAbilityDescription: Attack
   specialAbilityPower: 0
+  specialDamage: 410
+  specialPoisonDamage: 0
   maxHP: 900
   currentHP: 900
   animator: {fileID: 0}
@@ -146,6 +149,9 @@ MonoBehaviour:
   specialSound: {fileID: 8300000, guid: 61f76c18b75ad1b4c8263b7242342fb0, type: 3}
   hurtSound: {fileID: 8300000, guid: a9951f1a3e48a5447acc33bb9c675940, type: 3}
   deathSound: {fileID: 8300000, guid: 431dc5be11da80a4f8e6157ee0defd77, type: 3}
+  isPoisoned: 0
+  poisonDamageTaken: 0
+  isDeathBreathed: 0
 --- !u!82 &-589900981878305044
 AudioSource:
   m_ObjectHideFlags: 0

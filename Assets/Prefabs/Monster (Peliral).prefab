@@ -2173,10 +2173,13 @@ MonoBehaviour:
   monsterName: Peliral
   attack: 350
   defense: 260
-  speed: 1
+  speed: 6
+  specialChargesLeft: 3
   specialAbilityName: Razor Wing
   specialAbilityDescription: Attack
   specialAbilityPower: 0
+  specialDamage: 380
+  specialPoisonDamage: 0
   maxHP: 900
   currentHP: 900
   animator: {fileID: 0}
@@ -2184,6 +2187,9 @@ MonoBehaviour:
   specialSound: {fileID: 8300000, guid: 87df671c3b36bce489b3eb00ed35b33b, type: 3}
   hurtSound: {fileID: 8300000, guid: 65568bafdec25844ea87de2120b2d9ec, type: 3}
   deathSound: {fileID: 8300000, guid: a80337d2d79a43745bd17ef75d2d057c, type: 3}
+  isPoisoned: 0
+  poisonDamageTaken: 0
+  isDeathBreathed: 0
 --- !u!82 &8816156519297063413
 AudioSource:
   m_ObjectHideFlags: 0
