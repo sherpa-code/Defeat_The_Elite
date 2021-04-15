@@ -119,13 +119,13 @@ MonoBehaviour:
   speed: 9
   maxHP: 900
   currentHP: 900
+  needsHeals: 0
   isPoisoned: 0
   poisonTurnsLeft: 0
   poisonDamageTaken: 0
   isDeathBreathed: 0
   deathBreathTurnsLeft: 0
   isDebuffed: 0
-  needsHeals: 0
   isDefending: 0
   specialAbilityName: Stab
   specialAbilityDescription: Attack
@@ -135,6 +135,9 @@ MonoBehaviour:
   specialPoisonDuration: 0
   isSpecialDebuff: 0
   specialDebuffDuration: 0
+  specialDebuffAttackAmount: 0
+  specialDebuffDefenseAmount: 0
+  specialDebuffSpeedAmount: 0
   isSpecialDeathBreath: 0
   specialDeathBreathDuration: 0
   isSpecialHeals: 0
@@ -146,6 +149,10 @@ MonoBehaviour:
   specialSound: {fileID: 8300000, guid: 61f76c18b75ad1b4c8263b7242342fb0, type: 3}
   hurtSound: {fileID: 8300000, guid: a9951f1a3e48a5447acc33bb9c675940, type: 3}
   deathSound: {fileID: 8300000, guid: 431dc5be11da80a4f8e6157ee0defd77, type: 3}
+  isPlayerMonster: 0
+  playerDamageModifier: 1.2
+  isEnemyMonster: 0
+  enemyDamageModifier: 0.75
 --- !u!95 &3783013325008330724
 Animator:
   serializedVersion: 3

@@ -78,9 +78,8 @@ public class TeamSelectionScript : MonoBehaviour
         for (int i=0; i<3; i++)
         {
             //battleSystem.allyTeamList[i] = monsterSelectScript.monsterList[r.Next(0, 9)];
-            //teamList[i] = battleSystem.allyTeamList[i];
+            //teamList[i] = battleSystem.allyTeamList[i]
 
-            
             teamList[i] = monsterSelectScript.monsterList[r.Next(0, 9)];
 
             //Debug.Log(battleSystem.allyTeamList[i].monsterName);

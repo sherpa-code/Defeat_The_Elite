@@ -49,11 +49,11 @@ public class Monster : MonoBehaviour {
     public AudioClip hurtSound;
     public AudioClip deathSound;
 
-    public bool isPlayerMonster;
+    public bool isPlayerMonster = false;
     public double playerDamageModifier = 1.1; // Used to balance combat
-    public bool isEnemyMonster;
-    public double enemyDamageModifier = 0.8; // Used to balance combat
-    //public double enemyDamageModifier = 5; // Used to balance combat
+    public bool isEnemyMonster = false;
+    //public double enemyDamageModifier = 0.8; // Used to balance combat
+    public double enemyDamageModifier = 5; // Used to balance combat
 
     void Start() {
         animator = GetComponent<Animator>();
@@ -61,21 +61,25 @@ public class Monster : MonoBehaviour {
     }
 
     public int calculateDamage(int damageInput) {
-        double damage = damageInput * (100.0 / (10.0 + defense));
+        double damageOutput = damageInput * (100.0 / (10.0 + defense));
+        int damageApplied;
         if (isPlayerMonster) {
-            return (int) Math.Round(damage * enemyDamageModifier);
+            damageApplied = (int)Math.Round(damageOutput * enemyDamageModifier);
+            Debug.Log("isPlayerMonster and damageOutput*enemyMod = " + damageApplied);
         } else {
-            return (int) Math.Round(damage * playerDamageModifier);
+            damageApplied = (int)Math.Round(damageOutput * playerDamageModifier);
+            Debug.Log("isEnemyMonster and damageOutput*playerMod = " + damageApplied);
         }
+        return damageApplied;
     }
 
-    public bool TakeDamage(int damageTaken) {
-        int damage = calculateDamage(damageTaken);
+    public bool TakeDamage(int damageInput) {
+        int damageTaken = calculateDamage(damageInput);
 
-        if (currentHP - damage < 0) {
+        if (currentHP - damageTaken < 0) {
             currentHP = 0;
         } else {
-            currentHP -= damage;
+            currentHP -= damageTaken;
         }
         
         return HasDied();

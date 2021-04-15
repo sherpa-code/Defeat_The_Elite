@@ -50,8 +50,8 @@ public class BattleSystem : MonoBehaviour {
     public System.Single messageDisplayTime = 2f;
     public System.Single attackAnimationTime = 1.5f;
 
-
-
+    public Monster lastMonster;
+    public Transform lastMonsterTransform;
 
     public void beginGame() {
         bgmManager.playBattleBGM();
@@ -169,6 +169,7 @@ public class BattleSystem : MonoBehaviour {
         StartCoroutine(allyMonster.playDeathAnimation());
         dialogueText.text = allyMonster.monsterName + " has died!";
         yield return new WaitForSeconds(4f);
+        lastMonster = Instantiate(allyTeamList[0], lastMonsterTransform);
         Destroy(allyGameObject);
         allyTeamList.RemoveAt(0);
 
@@ -184,15 +185,17 @@ public class BattleSystem : MonoBehaviour {
 
     public IEnumerator enemyMonsterDied(Monster monster) {
         Debug.Log("Monster died!");
-        StartCoroutine(allyMonster.playDeathAnimation());
-        dialogueText.text = allyMonster.monsterName + " has died!";
+        StartCoroutine(enemyMonster.playDeathAnimation());
+        dialogueText.text = enemyMonster.monsterName + " has died!";
         yield return new WaitForSeconds(4f);
-        Destroy(allyGameObject);
-        allyTeamList.RemoveAt(0);
+        //lastMonster = Instantiate(currentEnemyTeamList[0], lastMonsterTransform);
 
-        if (allyTeamList.Count > 0) {
+        Destroy(enemyGameObject);
+        currentEnemyTeamList.RemoveAt(0);
+
+        if (currentEnemyTeamList.Count > 0) {
             yield return new WaitForSeconds(messageDisplayTime);
-            spawnAllyMonster(0); //TODO: Add a way to select which of 2 remaining monsters to send out
+            spawnNextEnemyMonster(); //TODO: Add a way to select which of 2 remaining monsters to send out
             yield return new WaitForSeconds(messageDisplayTime);
             StartCoroutine(checkSpeedAndContinue());
         } else {
@@ -270,9 +273,10 @@ public class BattleSystem : MonoBehaviour {
             } else {
                 dialogueText.text = enemyMonster.monsterName + "'s attack hit!";
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(messageDisplayTime);
             isDead = allyMonster.TakeDamage(enemyMonster.attack);
-        } else {dialogueText.text = enemyMonster.monsterName + " tries " + enemyMonster.specialAbilityName + "...";
+        } else {
+            dialogueText.text = enemyMonster.monsterName + " tries " + enemyMonster.specialAbilityName + "...";
             yield return new WaitForSeconds(messageDisplayTime);
             dialogueText.text = enemyMonster.specialAbilityName + " was successful.";
             StartCoroutine(enemyMonster.playSpecialAnimation());
@@ -406,8 +410,10 @@ public class BattleSystem : MonoBehaviour {
         playerActions.gameObject.SetActive(false);
         combatReadout.gameObject.SetActive(true);
 
+        Debug.Log("PlayerDefend()'s NOT allyMonsterDefense = " + allyMonster.defense);
         allyMonster.isDefending = true;
         allyMonster.defense = allyMonster.defense * 2;
+        Debug.Log("PlayerDefend()'s updated allyMonsterDefense = " + allyMonster.defense);
         dialogueText.text = allyMonster.monsterName + " is defending.\nDefense raised to " + allyMonster.defense + " until next turn.";
         
         yield return new WaitForSeconds(messageDisplayTime);
@@ -534,12 +540,84 @@ public class BattleSystem : MonoBehaviour {
     }
 
     public void flagMonstersByTeam() {
+        Debug.Log("Flag fired");
         for (int i = 0; i < currentEnemyTeamList.Count; i++) {
-            currentEnemyTeamList[i].isEnemyMonster = true;
+            Debug.Log("enemy monsters = " + currentEnemyTeamList[i].monsterName);
+            currentEnemyTeamList[i].isPlayerMonster = false;
+            currentEnemyTeamList[i].isEnemyMonster = false;
+            //currentEnemyTeamList[i].isEnemyMonster = true;
         }
 
         for (int i = 0; i < allyTeamList.Count; i++) {
-            allyTeamList[i].isPlayerMonster = true;
+            Debug.Log("ally monsters = " + allyTeamList[i].monsterName);
+            //allyTeamList[i].isPlayerMonster = true;
+            //allyTeamList[i].isEnemyMonster = false;
+
+            allyTeamList[i].isPlayerMonster = false;
+            allyTeamList[i].isEnemyMonster = false;
         }
+    }
+
+    public IEnumerator useSmallLeafPotion() {
+        itemMenu.gameObject.SetActive(false);
+        combatReadout.gameObject.SetActive(true);
+        audioManager.playBlip();
+        int healAmount = 300;
+        dialogueText.text = "You used a small leaf potion on " + allyMonster.monsterName + ".";
+        yield return new WaitForSeconds(messageDisplayTime);
+        allyMonster.Heal(healAmount);
+        allyHUD.SetHP(allyMonster.currentHP);
+        dialogueText.text = allyMonster.monsterName + " has healed for " + healAmount + "HP!";
+        yield return new WaitForSeconds(messageDisplayTime);
+        StartCoroutine(EnemyTurn());
+    }
+    public IEnumerator useLargeLeafPotion() {
+        itemMenu.gameObject.SetActive(false);
+        combatReadout.gameObject.SetActive(true);
+        audioManager.playBlip();
+        dialogueText.text = "You used a large potion on " + allyMonster.monsterName + ".";
+        yield return new WaitForSeconds(messageDisplayTime);
+        allyMonster.currentHP = allyMonster.maxHP;
+        allyHUD.SetHP(allyMonster.currentHP);
+        dialogueText.text = allyMonster.monsterName + " has healed to max HP!";
+        yield return new WaitForSeconds(messageDisplayTime);
+        StartCoroutine(EnemyTurn());
+    }
+
+    public IEnumerator useReviveLeaf() {
+        itemMenu.gameObject.SetActive(false);
+        combatReadout.gameObject.SetActive(true);
+        audioManager.playBlip();
+        if (allyTeamList.Count == 3) {
+            dialogueText.text = "You do not have downed monster. You can't revive anything!";
+            yield return new WaitForSeconds(messageDisplayTime);
+            combatReadout.gameObject.SetActive(false);
+            playerActions.gameObject.SetActive(true);
+            yield break;
+        } else {
+            dialogueText.text = "You used a revive potion on " + lastMonster.monsterName + ". They will be added to the end of your team.";
+            yield return new WaitForSeconds(messageDisplayTime);
+            allyTeamList.Add(lastMonster);
+            StartCoroutine(EnemyTurn());
+        }
+
+    
+    }
+
+    public void onSmallPotionButton() {
+        audioManager.playBlip();
+
+        StartCoroutine(useSmallLeafPotion());
+    }
+    public void onLargePotionButton() {
+        audioManager.playBlip();
+
+        StartCoroutine(useLargeLeafPotion());
+    }
+
+    public void onReviveLeafButton() {
+        audioManager.playBlip();
+
+        StartCoroutine(useReviveLeaf());
     }
 }

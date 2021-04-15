@@ -813,13 +813,13 @@ MonoBehaviour:
   speed: 5
   maxHP: 950
   currentHP: 950
+  needsHeals: 0
   isPoisoned: 0
   poisonTurnsLeft: 0
   poisonDamageTaken: 0
   isDeathBreathed: 0
   deathBreathTurnsLeft: 0
   isDebuffed: 0
-  needsHeals: 0
   isDefending: 0
   specialAbilityName: Intimidate
   specialAbilityDescription: Condition
@@ -843,6 +843,10 @@ MonoBehaviour:
   specialSound: {fileID: 8300000, guid: 36aa5711fff91b84fb426c44cf02a8a1, type: 3}
   hurtSound: {fileID: 8300000, guid: 67093ffc097984d4fb1737bdf46c79df, type: 3}
   deathSound: {fileID: 8300000, guid: 4317acea700a9a847b1fbb35c0d1be42, type: 3}
+  isPlayerMonster: 0
+  playerDamageModifier: 1.2
+  isEnemyMonster: 0
+  enemyDamageModifier: 0.75
 --- !u!95 &3557228038515886606
 Animator:
   serializedVersion: 3

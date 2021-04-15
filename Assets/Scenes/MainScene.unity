@@ -341,8 +341,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1832635276}
-        m_MethodName: antidoteButton
+      - m_Target: {fileID: 408750172}
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4232,6 +4232,8 @@ MonoBehaviour:
   audioManager: {fileID: 602258132}
   messageDisplayTime: 2
   attackAnimationTime: 1.5
+  lastMonster: {fileID: 0}
+  lastMonsterTransform: {fileID: 643316739}
 --- !u!4 &408750174
 Transform:
   m_ObjectHideFlags: 0
@@ -4245,6 +4247,7 @@ Transform:
   m_Children:
   - {fileID: 1493054092}
   - {fileID: 748042860}
+  - {fileID: 643316739}
   - {fileID: 1838640788}
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -7521,6 +7524,36 @@ Transform:
   m_Father: {fileID: 1449170858}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 40, z: 0}
+--- !u!1 &643316738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 643316739}
+  m_Layer: 0
+  m_Name: LastMonsterTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &643316739
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643316738}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -400, y: 0, z: -200}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 408750174}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &645958109
 GameObject:
   m_ObjectHideFlags: 0
@@ -8894,8 +8927,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1832635276}
-        m_MethodName: powerGemButton
+      - m_Target: {fileID: 408750172}
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19175,8 +19208,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf191439df5d3ba42b570d81842d2504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuBGM: {fileID: 8300000, guid: cbd4590d3d8e06c4b85651d80452c505, type: 3}
-  battleBGM: {fileID: 8300000, guid: 3dbe75f08d8cd1c4abfad6d01669ffe4, type: 3}
+  menuBGM: {fileID: 8300000, guid: a6e61175629ab6a4bbfcbc62a68b558f, type: 3}
+  battleBGM: {fileID: 8300000, guid: 76c314f98aa8b7e4cb47e9b18b5f96b9, type: 3}
 --- !u!82 &1557561645
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19189,7 +19222,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.22
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -19769,8 +19802,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1832635276}
-        m_MethodName: largePotionButton
+      - m_Target: {fileID: 408750173}
+        m_MethodName: onLargePotionButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20622,8 +20655,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1832635276}
-        m_MethodName: smallPotionButton
+      - m_Target: {fileID: 408750173}
+        m_MethodName: onSmallPotionButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22523,7 +22556,7 @@ RectTransform:
   - {fileID: 717331770}
   - {fileID: 1832635273}
   m_Father: {fileID: 408750174}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -24091,8 +24124,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1832635276}
-        m_MethodName: reviveLeafButton
+      - m_Target: {fileID: 408750173}
+        m_MethodName: onReviveLeafButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
