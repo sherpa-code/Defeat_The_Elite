@@ -202,29 +202,25 @@ public class BattleSystem : MonoBehaviour {
         string decision = EnemyDecision();
 
         if (decision == "melee") {
-            //Debug.Log("Enemy Melee Decision");
             dialogueText.text = enemyMonster.monsterName + " attacks...";
             yield return new WaitForSeconds(messageDisplayTime);
+            StartCoroutine(enemyMonster.playAttackAnimation());
             if (enemyMonster.monsterName.EndsWith("s")) {
                 dialogueText.text = enemyMonster.monsterName + "' attack hit!";
             } else {
                 dialogueText.text = enemyMonster.monsterName + "'s attack hit!";
             }
-            StartCoroutine(enemyMonster.playAttackAnimation());
-            yield return new WaitForSeconds(messageDisplayTime);
-            isDead = allyMonster.TakeDamage(allyMonster.attack);
-        } else {
-            //Debug.Log("Enemy Special Decision");
-
-            dialogueText.text = enemyMonster.monsterName + " tries " + enemyMonster.specialAbilityName + "...";
+            yield return new WaitForSeconds(1f);
+            isDead = allyMonster.TakeDamage(enemyMonster.attack);
+        } else {dialogueText.text = enemyMonster.monsterName + " tries " + enemyMonster.specialAbilityName + "...";
             yield return new WaitForSeconds(messageDisplayTime);
             dialogueText.text = enemyMonster.specialAbilityName + " was successful.";
             StartCoroutine(enemyMonster.playSpecialAnimation());
-            yield return new WaitForSeconds(messageDisplayTime);
             isDead = allyMonster.TakeDamage(allyMonster.specialDamage);
         }
 
         allyHUD.SetHP(allyMonster.currentHP);
+        //yield return new WaitForSeconds(attackAnimationTime);
 
         if (isDead) {
             StartCoroutine(allyMonster.playDeathAnimation());

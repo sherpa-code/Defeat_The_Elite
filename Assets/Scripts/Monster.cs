@@ -7,41 +7,39 @@ using TMPro;
 public class Monster : MonoBehaviour {
     public string monsterName;
 
+
+
     public int attack;
     public int defense;
     public int speed;
+    public int maxHP;
+    public int currentHP;
+
+    public bool isPoisoned;
+    public int poisonDamageTaken;
+    public bool isDeathBreathed;
+    public bool isDebuffed;
+    public bool needsHeals;
+    public bool isDefending;
 
     public string specialAbilityName;
     public string specialAbilityDescription;
-    //public int specialAbilityPower;
     public int specialDamage;
+    public bool isSpecialPoison;
     public int specialPoisonDamage;
+    public bool isSpecialDebuff;
+    public bool isSpecialHeals;
     //public int specialChargesLeft;
     //public int specialChargesMax;
 
-    public bool isSpecialPoison;
-    public bool isSpecialDebuff;
-    public bool isSpecialHeals;
-
-    public int maxHP;
-    public int currentHP;
-    
-    //public BattleAbilities meleeAttack;
-    //public BattleAbilities specialMove;
+    public int damageTaken;
 
     public Animator animator;
-    public AudioSource audioSource; //private because example I seen was private
+    public AudioSource audioSource;
     public AudioClip attackSound;
     public AudioClip specialSound;
     public AudioClip hurtSound;
     public AudioClip deathSound;
-    public int damageTaken;
-
-    public bool isPoisoned;
-    public int poisonDamageTaken;
-    //public bool isDeathBreathed;
-    public bool isDebuffed;
-    public bool needsHeals;
 
     void Start() {
         animator = GetComponent<Animator>();
@@ -58,7 +56,7 @@ public class Monster : MonoBehaviour {
         } else {
             currentHP -= damageTaken;
         }
-        Debug.Log("damageTaken by " + monsterName + " = " + damageTaken);
+        //Debug.Log("damageTaken by " + monsterName + " = " + damageTaken);
         return HasDied();
     }
 
@@ -82,7 +80,6 @@ public class Monster : MonoBehaviour {
         animator.SetBool("Was Hit", true);
         yield return new WaitForEndOfFrame();
         animator.SetBool("Was Hit", false);
-        
     }
 
     public IEnumerator playDeathAnimation() {
@@ -90,7 +87,6 @@ public class Monster : MonoBehaviour {
         animator.SetBool("Was Hit", true);
         yield return new WaitForEndOfFrame();
         animator.SetBool("Dead", true);
-
     }
 
     public IEnumerator playAttackAnimation() {
