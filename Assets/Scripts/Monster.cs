@@ -3,25 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class Monster : MonoBehaviour {
     public string monsterName;
-
-
 
     public int attack;
     public int defense;
     public int speed;
     public int maxHP;
     public int currentHP;
-
+    public bool needsHeals;
     public bool isPoisoned;
     public int poisonTurnsLeft;
     public int poisonDamageTaken;
     public bool isDeathBreathed;
     public int deathBreathTurnsLeft;
     public bool isDebuffed;
-    public bool needsHeals;
     public bool isDefending;
 
     public string specialAbilityName;
@@ -51,22 +49,35 @@ public class Monster : MonoBehaviour {
     public AudioClip hurtSound;
     public AudioClip deathSound;
 
+    public bool isPlayerMonster;
+    public double playerDamageModifier = 1.1; // Used to balance combat
+    public bool isEnemyMonster;
+    public double enemyDamageModifier = 0.8; // Used to balance combat
+    //public double enemyDamageModifier = 5; // Used to balance combat
+
     void Start() {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void calculateDamage(int damageInput) {
-        damageTaken = damageInput * (100 / (10 + defense));
+    public int calculateDamage(int damageInput) {
+        double damage = damageInput * (100.0 / (10.0 + defense));
+        if (isPlayerMonster) {
+            return (int) Math.Round(damage * enemyDamageModifier);
+        } else {
+            return (int) Math.Round(damage * playerDamageModifier);
+        }
     }
 
     public bool TakeDamage(int damageTaken) {
-        if (currentHP - damageTaken < 0) {
+        int damage = calculateDamage(damageTaken);
+
+        if (currentHP - damage < 0) {
             currentHP = 0;
         } else {
-            currentHP -= damageTaken;
+            currentHP -= damage;
         }
-        //Debug.Log("damageTaken by " + monsterName + " = " + damageTaken);
+        
         return HasDied();
     }
 
@@ -85,7 +96,6 @@ public class Monster : MonoBehaviour {
     }
 
     public IEnumerator playHurtAnimation() {
-        Debug.Log("monster hurt animation");
         audioSource.PlayOneShot(hurtSound);
         animator.SetBool("Was Hit", true);
         yield return new WaitForEndOfFrame();

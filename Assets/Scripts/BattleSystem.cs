@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 
 public class BattleSystem : MonoBehaviour {
+    public BgmManager bgmManager;
+
     public Transform allySpawnTransform;
     public Transform enemySpawnTransform;
 
@@ -49,7 +51,10 @@ public class BattleSystem : MonoBehaviour {
     public System.Single attackAnimationTime = 1.5f;
 
 
+
+
     public void beginGame() {
+        bgmManager.playBattleBGM();
         gameObject.SetActive(true);
         battleCanvas.gameObject.SetActive(true);
         enemyHUD.gameObject.SetActive(false);
@@ -62,10 +67,14 @@ public class BattleSystem : MonoBehaviour {
 
         currentEnemyTeamList = new List<Monster>(currentEnemyTrainer.trainerTeam);
 
+        flagMonstersByTeam();
+
         //updateSpecialMoveChargesText();
 
         StartCoroutine(beginBattle());
     }
+
+    
 
     public IEnumerator beginBattle() {
         dialogueText.text = "The battle begins!";
@@ -105,22 +114,34 @@ public class BattleSystem : MonoBehaviour {
         }
     }
 
-
     public IEnumerator PlayerTurn() {
         bool isDead = false;
 
+        if (allyMonster.isDefending) {
+            allyMonster.defense = allyMonster.defense / 2;
+            allyMonster.isDefending = false;
+            dialogueText.text = allyMonster.monsterName + " stopped defending.\nDefense returned to " + allyMonster.defense + ".";
+            combatReadout.gameObject.SetActive(true);
+            yield return new WaitForSeconds(messageDisplayTime);
+        }
+
         // Start checking conditions
         if (allyMonster.isPoisoned) {
-            dialogueText.text = allyMonster.name + " is still poisoned!";
+            dialogueText.text = allyMonster.monsterName + " is still poisoned!";
             combatReadout.gameObject.SetActive(true);
             isDead = allyMonster.TakeDamage(allyMonster.poisonDamageTaken);
             allyHUD.SetHP(allyMonster.currentHP);
             allyMonster.playHurtAnimation();
             yield return new WaitForSeconds(messageDisplayTime);
+
+            if (isDead) {
+                StartCoroutine(allyMonsterDied(allyMonster));
+                yield break;
+            }
         }
 
         if (allyMonster.isDeathBreathed) {
-            dialogueText.text = allyMonster.name + " still smells the Death Breath...";
+            dialogueText.text = allyMonster.monsterName + " still smells the Death Breath...";
             yield return new WaitForSeconds(messageDisplayTime);
             combatReadout.gameObject.SetActive(true);
             if (r.Next(0, 9) == 9) {
@@ -132,26 +153,50 @@ public class BattleSystem : MonoBehaviour {
                 dialogueText.text = "but " + allyMonster.name + " survived!";
             }
             yield return new WaitForSeconds(messageDisplayTime);
-        }
 
-        if (isDead) {
-            StartCoroutine(allyMonster.playDeathAnimation());
-            dialogueText.text = allyMonster.monsterName + " has died!";
-            yield return new WaitForSeconds(4f);
-            Destroy(allyGameObject);
-            allyTeamList.RemoveAt(0);
-
-            if (allyTeamList.Count > 0) {
-                yield return new WaitForSeconds(messageDisplayTime);
-                spawnAllyMonster(0); //TODO: Add a way to select which of 2 remaining monsters to send out
-                yield return new WaitForSeconds(messageDisplayTime);
-                StartCoroutine(checkSpeedAndContinue());
-            } else {
-                GameOverLost();
+            if (isDead) {
+                StartCoroutine(allyMonsterDied(allyMonster));
+                yield break;
             }
+        }
+        
+        combatReadout.gameObject.SetActive(false);
+        playerActions.gameObject.SetActive(true);
+    }
+
+    public IEnumerator allyMonsterDied(Monster monster) {
+        Debug.Log("Monster died!");
+        StartCoroutine(allyMonster.playDeathAnimation());
+        dialogueText.text = allyMonster.monsterName + " has died!";
+        yield return new WaitForSeconds(4f);
+        Destroy(allyGameObject);
+        allyTeamList.RemoveAt(0);
+
+        if (allyTeamList.Count > 0) {
+            yield return new WaitForSeconds(messageDisplayTime);
+            spawnAllyMonster(0); //TODO: Add a way to select which of 2 remaining monsters to send out
+            yield return new WaitForSeconds(messageDisplayTime);
+            StartCoroutine(checkSpeedAndContinue());
         } else {
-            combatReadout.gameObject.SetActive(false);
-            playerActions.gameObject.SetActive(true);
+            GameOverLost();
+        }
+    }
+
+    public IEnumerator enemyMonsterDied(Monster monster) {
+        Debug.Log("Monster died!");
+        StartCoroutine(allyMonster.playDeathAnimation());
+        dialogueText.text = allyMonster.monsterName + " has died!";
+        yield return new WaitForSeconds(4f);
+        Destroy(allyGameObject);
+        allyTeamList.RemoveAt(0);
+
+        if (allyTeamList.Count > 0) {
+            yield return new WaitForSeconds(messageDisplayTime);
+            spawnAllyMonster(0); //TODO: Add a way to select which of 2 remaining monsters to send out
+            yield return new WaitForSeconds(messageDisplayTime);
+            StartCoroutine(checkSpeedAndContinue());
+        } else {
+            GameOverLost();
         }
     }
 
@@ -340,8 +385,8 @@ public class BattleSystem : MonoBehaviour {
     }
 
     public IEnumerator PlayerSpecialAbility() {
-        playerActions.gameObject.SetActive(false); // debug setting
-        combatReadout.gameObject.SetActive(true); // debug setting
+        playerActions.gameObject.SetActive(false);
+        combatReadout.gameObject.SetActive(true);
 
         dialogueText.text = allyMonster.monsterName + " tried " + allyMonster.specialAbilityName + "...";
         StartCoroutine(allyMonster.playSpecialAnimation());
@@ -358,18 +403,16 @@ public class BattleSystem : MonoBehaviour {
     }
 
     public IEnumerator PlayerDefend() {
-        playerActions.gameObject.SetActive(false); // debug setting
-        combatReadout.gameObject.SetActive(true); // debug setting
+        playerActions.gameObject.SetActive(false);
+        combatReadout.gameObject.SetActive(true);
 
-        dialogueText.text = allyMonster.monsterName + " is defending.\nDefense raised to " + allyMonster.defense + " until next turn.";
-        //StartCoroutine(allyMonster.playSpecialAnimation());
-
+        allyMonster.isDefending = true;
         allyMonster.defense = allyMonster.defense * 2;
-
+        dialogueText.text = allyMonster.monsterName + " is defending.\nDefense raised to " + allyMonster.defense + " until next turn.";
+        
         yield return new WaitForSeconds(messageDisplayTime);
 
         StartCoroutine(EnemyTurn());
-
     }
 
 
@@ -400,7 +443,6 @@ public class BattleSystem : MonoBehaviour {
         specialMoveDescriptionText.SetText("(" + allyMonster.specialAbilityName + " - " + allyMonster.specialAbilityDescription.ToString() + ")");
         dialogueText.text = "You sent out " + allyMonster.monsterName + ".";
         allyHUD.gameObject.SetActive(true);
-
     }
 
     public void spawnNextEnemyMonster() {
@@ -489,5 +531,15 @@ public class BattleSystem : MonoBehaviour {
             }
         }
         return true; //else All trainers are deafeated
+    }
+
+    public void flagMonstersByTeam() {
+        for (int i = 0; i < currentEnemyTeamList.Count; i++) {
+            currentEnemyTeamList[i].isEnemyMonster = true;
+        }
+
+        for (int i = 0; i < allyTeamList.Count; i++) {
+            allyTeamList[i].isPlayerMonster = true;
+        }
     }
 }

@@ -57,7 +57,8 @@ public class TeamSelectionScript : MonoBehaviour
     public void OnConfirmButton()
     {
         audioManager.playBlip();
-        battleSystem.allyTeamList = teamList;
+        //battleSystem.allyTeamList = teamList;
+        battleSystem.allyTeamList = new List<Monster>(teamList);
         gameObject.SetActive(false);
         battleSystem.beginGame();
         
@@ -76,9 +77,13 @@ public class TeamSelectionScript : MonoBehaviour
         audioManager.playBlip();
         for (int i=0; i<3; i++)
         {
-            battleSystem.allyTeamList[i] = monsterSelectScript.monsterList[r.Next(0, 9)];
-            teamList[i] = battleSystem.allyTeamList[i];
-            Debug.Log(battleSystem.allyTeamList[i].monsterName);
+            //battleSystem.allyTeamList[i] = monsterSelectScript.monsterList[r.Next(0, 9)];
+            //teamList[i] = battleSystem.allyTeamList[i];
+
+            
+            teamList[i] = monsterSelectScript.monsterList[r.Next(0, 9)];
+
+            //Debug.Log(battleSystem.allyTeamList[i].monsterName);
         }
 
         UpdateTeamPreviews();
