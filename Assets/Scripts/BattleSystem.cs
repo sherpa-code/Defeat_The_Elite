@@ -46,7 +46,8 @@ public class BattleSystem : MonoBehaviour {
 
     public AudioManager audioManager;
     public System.Single messageDisplayTime = 2f;
-    
+    public System.Single attackAnimationTime = 1.5f;
+
 
     public void beginGame() {
         gameObject.SetActive(true);
@@ -61,7 +62,7 @@ public class BattleSystem : MonoBehaviour {
 
         currentEnemyTeamList = new List<Monster>(currentEnemyTrainer.trainerTeam);
 
-        updateSpecialMoveChargesText();
+        //updateSpecialMoveChargesText();
 
         StartCoroutine(beginBattle());
     }
@@ -80,18 +81,6 @@ public class BattleSystem : MonoBehaviour {
         StartCoroutine(checkSpeedAndContinue());
     }
 
-    //void updateSpecialMoveChargesText() {
-    //    specialMoveChargesText.text = "";
-
-    //    for (int i=0; i<allyMonster.specialChargesLeft; i++) {
-    //        if (i == 0) {
-    //            specialMoveChargesText.text = "SQUARE HERE"; // TODO fix this LiberationSans square or add a font to project and put a the UNICODE square here to show full or empty charge
-    //        }
-    //        specialMoveChargesText.text += " ";
-    //    }
-        
-    //}
-
     public IEnumerator checkSpeedAndContinue() {
         if (isPlayerFaster() == "yes") {
             dialogueText.text = allyMonster.monsterName + " is faster and acts first!";
@@ -100,9 +89,15 @@ public class BattleSystem : MonoBehaviour {
         } else if (isPlayerFaster() == "tie") {
             dialogueText.text = "Both monsters are equally fast!";
             yield return new WaitForSeconds(messageDisplayTime);
-            dialogueText.text = "Your " + allyMonster.monsterName + " acts first!";
-            yield return new WaitForSeconds(messageDisplayTime);
-            StartCoroutine(PlayerTurn());
+            if (r.Next(0, 1) == 0) {
+                dialogueText.text = "Your " + allyMonster.monsterName + " acts first!";
+                yield return new WaitForSeconds(messageDisplayTime);
+                StartCoroutine(PlayerTurn());
+            } else {
+                dialogueText.text = currentEnemyTrainer.firstName + "'s " + enemyMonster.monsterName + " acts first!";
+                yield return new WaitForSeconds(messageDisplayTime);
+                StartCoroutine(EnemyTurn());
+            }
         } else {
             dialogueText.text = enemyMonster.monsterName + " is faster and acts first!";
             yield return new WaitForSeconds(messageDisplayTime);
@@ -112,41 +107,38 @@ public class BattleSystem : MonoBehaviour {
 
 
     public IEnumerator PlayerTurn() {
+        bool isDead = false;
+
+        // Start checking conditions
         if (allyMonster.isPoisoned) {
             dialogueText.text = allyMonster.name + " is still poisoned!";
             combatReadout.gameObject.SetActive(true);
-            bool isDead = allyMonster.TakeDamage(allyMonster.poisonDamageTaken);
+            isDead = allyMonster.TakeDamage(allyMonster.poisonDamageTaken);
             allyHUD.SetHP(allyMonster.currentHP);
             allyMonster.playHurtAnimation();
-
-            if (isDead) {
-                StartCoroutine(allyMonster.playDeathAnimation());
-                dialogueText.text = allyMonster.monsterName + " has died!";
-                yield return new WaitForSeconds(5f);
-                Destroy(allyGameObject);
-                allyTeamList.RemoveAt(0);
-
-                if (allyTeamList.Count > 0) {
-                    yield return new WaitForSeconds(messageDisplayTime);
-                    spawnAllyMonster(0); //TODO: Add a way to select 0 or 1, AKA select which of 2 remaining monsters to send out
-                    yield return new WaitForSeconds(messageDisplayTime);
-                    StartCoroutine(checkSpeedAndContinue());
-                    yield break;
-                } else {
-                    GameOverLost();
-                }
-            } else { yield return new WaitForSeconds(messageDisplayTime); }
+            yield return new WaitForSeconds(messageDisplayTime);
         }
 
+        if (isDead) {
+            StartCoroutine(allyMonster.playDeathAnimation());
+            dialogueText.text = allyMonster.monsterName + " has died!";
+            yield return new WaitForSeconds(4f);
+            Destroy(allyGameObject);
+            allyTeamList.RemoveAt(0);
 
-        yield return new WaitForSeconds(messageDisplayTime);
-
-        combatReadout.gameObject.SetActive(false);
-        playerActions.gameObject.SetActive(true);
-
+            if (allyTeamList.Count > 0) {
+                yield return new WaitForSeconds(messageDisplayTime);
+                spawnAllyMonster(0); //TODO: Add a way to select which of 2 remaining monsters to send out
+                yield return new WaitForSeconds(messageDisplayTime);
+                StartCoroutine(checkSpeedAndContinue());
+            } else {
+                GameOverLost();
+            }
+        } else {
+            combatReadout.gameObject.SetActive(false);
+            playerActions.gameObject.SetActive(true);
+        }
     }
-
-    
 
     public IEnumerator PlayerAttack() {
         playerActions.gameObject.SetActive(false);
@@ -154,7 +146,7 @@ public class BattleSystem : MonoBehaviour {
         dialogueText.text = allyMonster.monsterName + " tried to melee attack...";
 
         StartCoroutine(allyMonster.playAttackAnimation());
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(attackAnimationTime);
 
         // TODO: check if attack was successful
         dialogueText.text = "The attack was successful!";
@@ -193,36 +185,14 @@ public class BattleSystem : MonoBehaviour {
             }
         } else { //if monster lives
             StartCoroutine(enemyMonster.playHurtAnimation());
-            Debug.Log("monster hurt animation");
             yield return new WaitForSeconds(3f);
             StartCoroutine(EnemyTurn());
         }
     }
 
-    public bool allTrainersDefeated() {
-        foreach (Trainer trainer in enemyTrainers) {
-            if (!trainer.isDefeated) { //if a trainer IS NOT defeated
-                return false; //All trainers defeated is false
-            }
-        }
-        return true; //else All trainers are deafeated
-    }
-
-
     
-
-    //public bool poisonCheck(Monster monster) {
-    //    if (monster.isPoison) {
-
-    //    }
-    //    dialogueText.text = "Condition check here";
-
-    //}
-
-    //public bool deathBreathCheck()
-    //{
-
-    //}
+    
+    
 
     public IEnumerator EnemyTurn() {
         bool isDead = false;
@@ -230,17 +200,21 @@ public class BattleSystem : MonoBehaviour {
         combatReadout.gameObject.SetActive(true);
         
         string decision = EnemyDecision();
-        if (decision == "melee") {
-            Debug.Log("Enemy Melee Decision");
 
+        if (decision == "melee") {
+            //Debug.Log("Enemy Melee Decision");
             dialogueText.text = enemyMonster.monsterName + " attacks...";
             yield return new WaitForSeconds(messageDisplayTime);
-            dialogueText.text = enemyMonster.monsterName + "'s attack hit!";
+            if (enemyMonster.monsterName.EndsWith("s")) {
+                dialogueText.text = enemyMonster.monsterName + "' attack hit!";
+            } else {
+                dialogueText.text = enemyMonster.monsterName + "'s attack hit!";
+            }
             StartCoroutine(enemyMonster.playAttackAnimation());
             yield return new WaitForSeconds(messageDisplayTime);
             isDead = allyMonster.TakeDamage(allyMonster.attack);
         } else {
-            Debug.Log("Enemy Special Decision");
+            //Debug.Log("Enemy Special Decision");
 
             dialogueText.text = enemyMonster.monsterName + " tries " + enemyMonster.specialAbilityName + "...";
             yield return new WaitForSeconds(messageDisplayTime);
@@ -274,40 +248,62 @@ public class BattleSystem : MonoBehaviour {
         }
     }
 
-    public string EnemyDecision() {
-        string decision;
-        int choice;
-
-        if (enemyMonster.specialChargesLeft > 0) {
-            choice = r.Next(0, 1);
-            if (choice == 1) { choice = r.Next(0, 1); } // reroll on special roll to give it only 25% activation chance
-
-            if (choice == 0) {
-                decision = "melee";
-                //} else if (choice == 1) {
-            } else {
-                decision = "special";
-                enemyMonster.specialChargesLeft--;
-            }
-        } else {
-            decision = "melee";
+    public bool needsHeals(Monster monster) {
+        //double currentHP = monster.currentHP
+        if (monster.currentHP <= 1000000000) { // DEBUG
+            //if (monster.currentHP <= (monster.maxHP * 0.6)) {
+            return true;
         }
-
-        return decision;
+        return false;
     }
 
+    public string EnemyDecision() { // Note: return logic separated out for readability
+        enemyMonster.needsHeals = needsHeals(enemyMonster);
+
+        if (enemyMonster.needsHeals) {
+            if (enemyMonster.isSpecialHeals) {
+                if (healRoll() == 1) {
+                    return "special";
+                }
+            }
+        }
+        
+        if (enemyMonster.isSpecialPoison) {
+            if (!allyMonster.isPoisoned) {
+                if (specialRoll() == 1) {
+                    return "special";
+                }
+            }
+        }
+        
+        if (enemyMonster.isSpecialDebuff) {
+            if (!allyMonster.isDebuffed) {
+                if (specialRoll() == 1) {
+                    return "special";
+                }
+            }
+        }
+
+        return "melee"; // finally, if special isnt applicable or the rolls missed, just melee attack
+    }
+
+
+
+    // BACKUP
     //public string EnemyDecision() {
     //    string decision;
-    //    int choice = r.Next(0, 1);
+    //    int choice;
 
-    //    if (choice == 1) { choice = r.Next(0, 1); } // reroll on special to give it only 25% activation chance
+    //    if (enemyMonster.specialChargesLeft > 0) {
+    //        choice = r.Next(0, 1);
+    //        if (choice == 1) { choice = r.Next(0, 1); } // reroll on special roll to give it only 25% activation chance
 
-    //    if (enemyMonster.specialChargesLeft > 0) { 
     //        if (choice == 0) {
     //            decision = "melee";
     //            //} else if (choice == 1) {
     //        } else {
     //            decision = "special";
+    //            enemyMonster.specialChargesLeft--;
     //        }
     //    } else {
     //        decision = "melee";
@@ -315,6 +311,22 @@ public class BattleSystem : MonoBehaviour {
 
     //    return decision;
     //}
+
+    // TODO: elaborate on this based on what the monster is
+    public int healRoll() {
+        int roll = r.Next(0, 1);
+        if (roll == 1) { roll = r.Next(0, 1); } // reroll on heal roll to give it only 25% activation chance
+
+        return roll;
+    }
+
+    // TODO: elaborate on this based on what the monster is
+    public int specialRoll() {
+        int roll = r.Next(0, 1);
+        if (roll == 1) { roll = r.Next(0, 1); } // reroll on special roll to give it only 25% activation chance
+
+        return roll;
+    }
 
     public IEnumerator PlayerSpecialAbility() {
         playerActions.gameObject.SetActive(false); // debug setting
@@ -443,5 +455,28 @@ public class BattleSystem : MonoBehaviour {
         audioManager.playBlip();
 
         PlayerItems();
+    }
+
+
+
+    //void updateSpecialMoveChargesText() {
+    //    specialMoveChargesText.text = "";
+
+    //    for (int i=0; i<allyMonster.specialChargesLeft; i++) {
+    //        if (i == 0) {
+    //            specialMoveChargesText.text = "SQUARE HERE"; // TODO fix this LiberationSans square or add a font to project and put a the UNICODE square here to show full or empty charge
+    //        }
+    //        specialMoveChargesText.text += " ";
+    //    }
+
+    //}
+
+    public bool allTrainersDefeated() {
+        foreach (Trainer trainer in enemyTrainers) {
+            if (!trainer.isDefeated) { //if a trainer IS NOT defeated
+                return false; //All trainers defeated is false
+            }
+        }
+        return true; //else All trainers are deafeated
     }
 }

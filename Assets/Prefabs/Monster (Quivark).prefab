@@ -1363,17 +1363,24 @@ MonoBehaviour:
   attack: 340
   defense: 260
   speed: 3
-  specialChargesLeft: 3
   specialAbilityName: Shriek
   specialAbilityDescription: Debuff
   specialAbilityPower: 0
+  specialDamage: 0
+  specialPoisonDamage: 0
+  specialChargesLeft: 3
+  specialChargesMax: 0
+  isSpecialPoison: 0
+  isSpecialDebuff: 1
   maxHP: 1100
   currentHP: 1100
   animator: {fileID: 0}
+  audioSource: {fileID: 0}
   attackSound: {fileID: 8300000, guid: d12fcafe470f29641bb211fceae9e978, type: 3}
   specialSound: {fileID: 8300000, guid: 613531c5885829a4aaa7c44212ddafe2, type: 3}
   hurtSound: {fileID: 8300000, guid: 22c7f9748c8a3d3478698ac299f13743, type: 3}
   deathSound: {fileID: 8300000, guid: ca9ea2ba00e382e49860764bc07ae87c, type: 3}
+  damageTaken: 0
   isPoisoned: 0
   poisonDamageTaken: 0
   isDeathBreathed: 0

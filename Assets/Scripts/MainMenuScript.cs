@@ -19,8 +19,8 @@ public class MainMenuScript : MonoBehaviour {
     //private AudioSource audioSource;
     //public AudioClip menuBlipSound;
 
+
     void Start() {
-        
         returnToMainMenu();
         //battleCanvas.GetComponent<ItemMenuScript>().gameObject.SetActive(true);
     }

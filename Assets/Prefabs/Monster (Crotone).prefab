@@ -1335,17 +1335,23 @@ MonoBehaviour:
   attack: 335
   defense: 250
   speed: 2
-  specialChargesLeft: 3
   specialAbilityName: Death Breath
   specialAbilityDescription: Condition
   specialAbilityPower: 0
+  specialDamage: 0
+  specialPoisonDamage: 0
+  specialChargesLeft: 3
+  specialChargesMax: 0
+  isSpecialPoison: 1
   maxHP: 900
   currentHP: 900
   animator: {fileID: 0}
+  audioSource: {fileID: 0}
   attackSound: {fileID: 8300000, guid: c6513dab84c9a5a4fbcbaf76fc4f31b9, type: 3}
   specialSound: {fileID: 8300000, guid: 94ff678cec30ece4c958a0199acc8b0f, type: 3}
   hurtSound: {fileID: 8300000, guid: ea02ed26093abc043a0344f1f9d34625, type: 3}
   deathSound: {fileID: 8300000, guid: 787743cd5abae1041ac7e170176c8d5c, type: 3}
+  damageTaken: 0
   isPoisoned: 0
   poisonDamageTaken: 0
   isDeathBreathed: 0

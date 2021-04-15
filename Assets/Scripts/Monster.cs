@@ -13,11 +13,15 @@ public class Monster : MonoBehaviour {
 
     public string specialAbilityName;
     public string specialAbilityDescription;
-    public int specialAbilityPower;
+    //public int specialAbilityPower;
     public int specialDamage;
     public int specialPoisonDamage;
-    public int specialChargesLeft;
-    public int specialChargesMax;
+    //public int specialChargesLeft;
+    //public int specialChargesMax;
+
+    public bool isSpecialPoison;
+    public bool isSpecialDebuff;
+    public bool isSpecialHeals;
 
     public int maxHP;
     public int currentHP;
@@ -35,7 +39,9 @@ public class Monster : MonoBehaviour {
 
     public bool isPoisoned;
     public int poisonDamageTaken;
-    public bool isDeathBreathed;
+    //public bool isDeathBreathed;
+    public bool isDebuffed;
+    public bool needsHeals;
 
     void Start() {
         animator = GetComponent<Animator>();
@@ -71,6 +77,7 @@ public class Monster : MonoBehaviour {
     }
 
     public IEnumerator playHurtAnimation() {
+        Debug.Log("monster hurt animation");
         audioSource.PlayOneShot(hurtSound);
         animator.SetBool("Was Hit", true);
         yield return new WaitForEndOfFrame();

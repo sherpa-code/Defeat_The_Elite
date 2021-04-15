@@ -11,6 +11,8 @@ public class NameEntryScript : MonoBehaviour
     public TeamSelectionScript teamSelectionScript;
     public MainMenuScript mainMenuScript;
     public AudioManager audioManager;
+    public System.Random r = new System.Random();
+    public List<string> randomNames = new List<string>() { "Ramza", "Agrias", "Cidolfus", "Delita", "Dycedarg", "Folmarv", "Meliadoul", "Mustadio", "Gafgarion", "Argath", "Wiegraf", "Rapha", "Zalbaag", "Belias" };
 
 
     public void enableConfirmButton()
@@ -48,4 +50,13 @@ public class NameEntryScript : MonoBehaviour
         mainMenuScript.returnToMainMenu();
     }
 
+    public void RandomName() {
+        int roll = r.Next(0, randomNames.Count - 1);
+
+        if (nameInputField.text != randomNames[roll]) {
+            nameInputField.text = randomNames[roll];
+        } else {
+            RandomName();
+        }
+    }
 }
