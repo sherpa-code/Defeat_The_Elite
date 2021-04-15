@@ -768,8 +768,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3557228038508406254}
-  - component: {fileID: 3557228038515886606}
   - component: {fileID: -7795660497971579482}
+  - component: {fileID: 3557228038515886606}
   - component: {fileID: 5349561661257679141}
   m_Layer: 0
   m_Name: Monster (Ramodo)
@@ -795,6 +795,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7795660497971579482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3557228038508640718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterName: Ramodo
+  attack: 335
+  defense: 260
+  speed: 5
+  maxHP: 950
+  currentHP: 950
+  isPoisoned: 0
+  poisonTurnsLeft: 0
+  poisonDamageTaken: 0
+  isDeathBreathed: 0
+  deathBreathTurnsLeft: 0
+  isDebuffed: 0
+  needsHeals: 0
+  isDefending: 0
+  specialAbilityName: Intimidate
+  specialAbilityDescription: Condition
+  specialDamage: 0
+  isSpecialPoison: 0
+  specialPoisonDamage: 0
+  specialPoisonDuration: 0
+  isSpecialDebuff: 1
+  specialDebuffDuration: 3
+  specialDebuffAttackAmount: 20
+  specialDebuffDefenseAmount: 20
+  specialDebuffSpeedAmount: 2
+  isSpecialDeathBreath: 0
+  specialDeathBreathDuration: 0
+  isSpecialHeals: 0
+  specialHealsAmount: 0
+  damageTaken: 0
+  animator: {fileID: 0}
+  audioSource: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: 393919e8af80c7249886876514435539, type: 3}
+  specialSound: {fileID: 8300000, guid: 36aa5711fff91b84fb426c44cf02a8a1, type: 3}
+  hurtSound: {fileID: 8300000, guid: 67093ffc097984d4fb1737bdf46c79df, type: 3}
+  deathSound: {fileID: 8300000, guid: 4317acea700a9a847b1fbb35c0d1be42, type: 3}
 --- !u!95 &3557228038515886606
 Animator:
   serializedVersion: 3
@@ -814,43 +862,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-7795660497971579482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3557228038508640718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterName: Ramodo
-  attack: 335
-  defense: 260
-  speed: 5
-  specialAbilityName: Intimidate
-  specialAbilityDescription: Condition
-  specialAbilityPower: 0
-  specialDamage: 0
-  specialPoisonDamage: 0
-  specialChargesLeft: 3
-  specialChargesMax: 0
-  isSpecialPoison: 0
-  isSpecialDebuff: 1
-  maxHP: 950
-  currentHP: 950
-  animator: {fileID: 0}
-  audioSource: {fileID: 0}
-  attackSound: {fileID: 8300000, guid: 393919e8af80c7249886876514435539, type: 3}
-  specialSound: {fileID: 8300000, guid: 36aa5711fff91b84fb426c44cf02a8a1, type: 3}
-  hurtSound: {fileID: 8300000, guid: 67093ffc097984d4fb1737bdf46c79df, type: 3}
-  deathSound: {fileID: 8300000, guid: 4317acea700a9a847b1fbb35c0d1be42, type: 3}
-  damageTaken: 0
-  isPoisoned: 0
-  poisonDamageTaken: 0
-  isDeathBreathed: 0
 --- !u!82 &5349561661257679141
 AudioSource:
   m_ObjectHideFlags: 0

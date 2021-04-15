@@ -16,8 +16,10 @@ public class Monster : MonoBehaviour {
     public int currentHP;
 
     public bool isPoisoned;
+    public int poisonTurnsLeft;
     public int poisonDamageTaken;
     public bool isDeathBreathed;
+    public int deathBreathTurnsLeft;
     public bool isDebuffed;
     public bool needsHeals;
     public bool isDefending;
@@ -27,8 +29,16 @@ public class Monster : MonoBehaviour {
     public int specialDamage;
     public bool isSpecialPoison;
     public int specialPoisonDamage;
+    public int specialPoisonDuration;
     public bool isSpecialDebuff;
+    public int specialDebuffDuration;
+    public int specialDebuffAttackAmount;
+    public int specialDebuffDefenseAmount;
+    public int specialDebuffSpeedAmount;
+    public bool isSpecialDeathBreath;
+    public int specialDeathBreathDuration;
     public bool isSpecialHeals;
+    public int specialHealsAmount;
     //public int specialChargesLeft;
     //public int specialChargesMax;
 

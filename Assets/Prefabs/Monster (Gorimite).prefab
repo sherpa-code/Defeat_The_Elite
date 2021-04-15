@@ -4288,8 +4288,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6815554699438866244}
-  - component: {fileID: 6815554699448209572}
   - component: {fileID: 5193489582645430606}
+  - component: {fileID: 6815554699448209572}
   - component: {fileID: 1164671375112940803}
   m_Layer: 0
   m_Name: Monster (Gorimite)
@@ -4321,6 +4321,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5193489582645430606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6815554699438826340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterName: Gorimite
+  attack: 340
+  defense: 260
+  speed: 1
+  maxHP: 800
+  currentHP: 800
+  isPoisoned: 0
+  poisonTurnsLeft: 0
+  poisonDamageTaken: 0
+  isDeathBreathed: 0
+  deathBreathTurnsLeft: 0
+  isDebuffed: 0
+  needsHeals: 0
+  isDefending: 0
+  specialAbilityName: Seed
+  specialAbilityDescription: Poison
+  specialDamage: 165
+  isSpecialPoison: 1
+  specialPoisonDamage: 150
+  specialPoisonDuration: 3
+  isSpecialDebuff: 0
+  specialDebuffDuration: 0
+  specialDebuffAttackAmount: 0
+  specialDebuffDefenseAmount: 0
+  specialDebuffSpeedAmount: 0
+  isSpecialDeathBreath: 0
+  specialDeathBreathDuration: 0
+  isSpecialHeals: 0
+  specialHealsAmount: 0
+  damageTaken: 0
+  animator: {fileID: 0}
+  audioSource: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: 2e487d89a03df224582040011ae2ce39, type: 3}
+  specialSound: {fileID: 8300000, guid: 10e7879940d96a741aeb830dad16ba47, type: 3}
+  hurtSound: {fileID: 8300000, guid: 20dda93867b47d84fb3d4ae4ef7b0c1a, type: 3}
+  deathSound: {fileID: 8300000, guid: 8778cba5f3a29b441988ab18d5ab4f8a, type: 3}
 --- !u!95 &6815554699448209572
 Animator:
   serializedVersion: 3
@@ -4340,42 +4388,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5193489582645430606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6815554699438826340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterName: Gorimite
-  attack: 340
-  defense: 260
-  speed: 1
-  specialAbilityName: Seed
-  specialAbilityDescription: Poison
-  specialAbilityPower: 0
-  specialDamage: 165
-  specialPoisonDamage: 150
-  specialChargesLeft: 3
-  specialChargesMax: 0
-  isSpecialPoison: 1
-  maxHP: 800
-  currentHP: 800
-  animator: {fileID: 0}
-  audioSource: {fileID: 0}
-  attackSound: {fileID: 8300000, guid: 2e487d89a03df224582040011ae2ce39, type: 3}
-  specialSound: {fileID: 8300000, guid: 10e7879940d96a741aeb830dad16ba47, type: 3}
-  hurtSound: {fileID: 8300000, guid: 20dda93867b47d84fb3d4ae4ef7b0c1a, type: 3}
-  deathSound: {fileID: 8300000, guid: 8778cba5f3a29b441988ab18d5ab4f8a, type: 3}
-  damageTaken: 0
-  isPoisoned: 0
-  poisonDamageTaken: 0
-  isDeathBreathed: 0
 --- !u!82 &1164671375112940803
 AudioSource:
   m_ObjectHideFlags: 0

@@ -441,8 +441,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5713984364806443805}
-  - component: {fileID: 5713984364815744253}
   - component: {fileID: 5554390258929398020}
+  - component: {fileID: 5713984364815744253}
   - component: {fileID: -9177043698105249280}
   m_Layer: 0
   m_Name: Monster (Horns)
@@ -472,6 +472,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5554390258929398020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5713984364806344509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterName: Horns
+  attack: 320
+  defense: 190
+  speed: 7
+  maxHP: 750
+  currentHP: 750
+  isPoisoned: 0
+  poisonTurnsLeft: 0
+  poisonDamageTaken: 0
+  isDeathBreathed: 0
+  deathBreathTurnsLeft: 0
+  isDebuffed: 0
+  needsHeals: 0
+  isDefending: 0
+  specialAbilityName: Charge
+  specialAbilityDescription: Attack
+  specialDamage: 400
+  isSpecialPoison: 0
+  specialPoisonDamage: 0
+  specialPoisonDuration: 0
+  isSpecialDebuff: 0
+  specialDebuffDuration: 0
+  isSpecialDeathBreath: 0
+  specialDeathBreathDuration: 0
+  isSpecialHeals: 0
+  specialHealsAmount: 0
+  damageTaken: 0
+  animator: {fileID: 0}
+  audioSource: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: 040bce811dfe0734189af7e8d16dc20e, type: 3}
+  specialSound: {fileID: 8300000, guid: baf4365a7d3125d4fb55c775354eb2df, type: 3}
+  hurtSound: {fileID: 8300000, guid: b958966ac5253de4cb55718b8c409203, type: 3}
+  deathSound: {fileID: 8300000, guid: 7cd54a3c556867446a7b2493528b0cd0, type: 3}
 --- !u!95 &5713984364815744253
 Animator:
   serializedVersion: 3
@@ -491,38 +536,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5554390258929398020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5713984364806344509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterName: Horns
-  attack: 320
-  defense: 190
-  speed: 7
-  specialChargesLeft: 3
-  specialAbilityName: Charge
-  specialAbilityDescription: Attack
-  specialAbilityPower: 0
-  specialDamage: 400
-  specialPoisonDamage: 0
-  maxHP: 750
-  currentHP: 750
-  animator: {fileID: 0}
-  attackSound: {fileID: 8300000, guid: 040bce811dfe0734189af7e8d16dc20e, type: 3}
-  specialSound: {fileID: 8300000, guid: baf4365a7d3125d4fb55c775354eb2df, type: 3}
-  hurtSound: {fileID: 8300000, guid: b958966ac5253de4cb55718b8c409203, type: 3}
-  deathSound: {fileID: 8300000, guid: 7cd54a3c556867446a7b2493528b0cd0, type: 3}
-  isPoisoned: 0
-  poisonDamageTaken: 0
-  isDeathBreathed: 0
 --- !u!82 &-9177043698105249280
 AudioSource:
   m_ObjectHideFlags: 0

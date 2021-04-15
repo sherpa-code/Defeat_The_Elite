@@ -1329,8 +1329,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3361979197237174383}
-  - component: {fileID: 3361979197227913101}
   - component: {fileID: -1058025905107404127}
+  - component: {fileID: 3361979197227913101}
   - component: {fileID: -2288195847647701061}
   m_Layer: 0
   m_Name: Monster (Spinpion)
@@ -1362,6 +1362,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1058025905107404127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3361979197237279823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterName: Spinpion
+  attack: 300
+  defense: 490
+  speed: 10
+  maxHP: 750
+  currentHP: 750
+  isPoisoned: 0
+  poisonTurnsLeft: 0
+  poisonDamageTaken: 0
+  isDeathBreathed: 0
+  deathBreathTurnsLeft: 0
+  isDebuffed: 0
+  needsHeals: 0
+  isDefending: 0
+  specialAbilityName: Sting
+  specialAbilityDescription: Poison
+  specialDamage: 0
+  isSpecialPoison: 1
+  specialPoisonDamage: 80
+  specialPoisonDuration: 5
+  isSpecialDebuff: 0
+  specialDebuffDuration: 0
+  specialDebuffAttackAmount: 0
+  specialDebuffDefenseAmount: 0
+  specialDebuffSpeedAmount: 0
+  isSpecialDeathBreath: 0
+  specialDeathBreathDuration: 0
+  isSpecialHeals: 0
+  specialHealsAmount: 0
+  damageTaken: 0
+  animator: {fileID: 0}
+  audioSource: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: 139bd3652475d844b8ac2d4ae339f781, type: 3}
+  specialSound: {fileID: 8300000, guid: 00eb6d72fa51c9b4bb977c1374a7ec26, type: 3}
+  hurtSound: {fileID: 8300000, guid: 31f51701b41ae9d43ba2b0cb3dd132b6, type: 3}
+  deathSound: {fileID: 8300000, guid: a01f7d01589047342993079d048c04d8, type: 3}
 --- !u!95 &3361979197227913101
 Animator:
   serializedVersion: 3
@@ -1381,42 +1429,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-1058025905107404127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3361979197237279823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterName: Spinpion
-  attack: 300
-  defense: 490
-  speed: 10
-  specialAbilityName: Sting
-  specialAbilityDescription: Poison
-  specialAbilityPower: 0
-  specialDamage: 0
-  specialPoisonDamage: 150
-  specialChargesLeft: 3
-  specialChargesMax: 0
-  isSpecialPoison: 1
-  maxHP: 750
-  currentHP: 750
-  animator: {fileID: 0}
-  audioSource: {fileID: 0}
-  attackSound: {fileID: 8300000, guid: 139bd3652475d844b8ac2d4ae339f781, type: 3}
-  specialSound: {fileID: 8300000, guid: 00eb6d72fa51c9b4bb977c1374a7ec26, type: 3}
-  hurtSound: {fileID: 8300000, guid: 31f51701b41ae9d43ba2b0cb3dd132b6, type: 3}
-  deathSound: {fileID: 8300000, guid: a01f7d01589047342993079d048c04d8, type: 3}
-  damageTaken: 0
-  isPoisoned: 0
-  poisonDamageTaken: 0
-  isDeathBreathed: 0
 --- !u!82 &-2288195847647701061
 AudioSource:
   m_ObjectHideFlags: 0

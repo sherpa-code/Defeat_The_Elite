@@ -2107,8 +2107,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7913610366032660946}
-  - component: {fileID: 7913610366040352652}
   - component: {fileID: -6431697762309481309}
+  - component: {fileID: 7913610366040352652}
   - component: {fileID: 8816156519297063413}
   m_Layer: 0
   m_Name: Monster (Peliral)
@@ -2139,6 +2139,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6431697762309481309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7913610366032958898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterName: Peliral
+  attack: 350
+  defense: 260
+  speed: 6
+  maxHP: 900
+  currentHP: 900
+  isPoisoned: 0
+  poisonTurnsLeft: 0
+  poisonDamageTaken: 0
+  isDeathBreathed: 0
+  deathBreathTurnsLeft: 0
+  isDebuffed: 0
+  needsHeals: 0
+  isDefending: 0
+  specialAbilityName: Razor Wing
+  specialAbilityDescription: Attack
+  specialDamage: 380
+  isSpecialPoison: 0
+  specialPoisonDamage: 0
+  specialPoisonDuration: 0
+  isSpecialDebuff: 0
+  specialDebuffDuration: 0
+  isSpecialDeathBreath: 0
+  specialDeathBreathDuration: 0
+  isSpecialHeals: 0
+  specialHealsAmount: 0
+  damageTaken: 0
+  animator: {fileID: 0}
+  audioSource: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: caed1710212c9d64fa5a710cc23c7a50, type: 3}
+  specialSound: {fileID: 8300000, guid: 87df671c3b36bce489b3eb00ed35b33b, type: 3}
+  hurtSound: {fileID: 8300000, guid: 65568bafdec25844ea87de2120b2d9ec, type: 3}
+  deathSound: {fileID: 8300000, guid: a80337d2d79a43745bd17ef75d2d057c, type: 3}
 --- !u!95 &7913610366040352652
 Animator:
   serializedVersion: 3
@@ -2158,38 +2203,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-6431697762309481309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7913610366032958898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterName: Peliral
-  attack: 350
-  defense: 260
-  speed: 6
-  specialChargesLeft: 3
-  specialAbilityName: Razor Wing
-  specialAbilityDescription: Attack
-  specialAbilityPower: 0
-  specialDamage: 380
-  specialPoisonDamage: 0
-  maxHP: 900
-  currentHP: 900
-  animator: {fileID: 0}
-  attackSound: {fileID: 8300000, guid: caed1710212c9d64fa5a710cc23c7a50, type: 3}
-  specialSound: {fileID: 8300000, guid: 87df671c3b36bce489b3eb00ed35b33b, type: 3}
-  hurtSound: {fileID: 8300000, guid: 65568bafdec25844ea87de2120b2d9ec, type: 3}
-  deathSound: {fileID: 8300000, guid: a80337d2d79a43745bd17ef75d2d057c, type: 3}
-  isPoisoned: 0
-  poisonDamageTaken: 0
-  isDeathBreathed: 0
 --- !u!82 &8816156519297063413
 AudioSource:
   m_ObjectHideFlags: 0

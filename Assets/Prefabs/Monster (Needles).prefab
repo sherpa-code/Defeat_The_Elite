@@ -70,8 +70,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3783013324999241732}
-  - component: {fileID: 3783013325008330724}
   - component: {fileID: 4345286351174118158}
+  - component: {fileID: 3783013325008330724}
   - component: {fileID: -589900981878305044}
   m_Layer: 0
   m_Name: Monster (Needles)
@@ -101,6 +101,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4345286351174118158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3783013324998945828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterName: Needles
+  attack: 340
+  defense: 210
+  speed: 9
+  maxHP: 900
+  currentHP: 900
+  isPoisoned: 0
+  poisonTurnsLeft: 0
+  poisonDamageTaken: 0
+  isDeathBreathed: 0
+  deathBreathTurnsLeft: 0
+  isDebuffed: 0
+  needsHeals: 0
+  isDefending: 0
+  specialAbilityName: Stab
+  specialAbilityDescription: Attack
+  specialDamage: 410
+  isSpecialPoison: 0
+  specialPoisonDamage: 0
+  specialPoisonDuration: 0
+  isSpecialDebuff: 0
+  specialDebuffDuration: 0
+  isSpecialDeathBreath: 0
+  specialDeathBreathDuration: 0
+  isSpecialHeals: 0
+  specialHealsAmount: 0
+  damageTaken: 0
+  animator: {fileID: 0}
+  audioSource: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: 8d37102601843124ba3769a5bdd48464, type: 3}
+  specialSound: {fileID: 8300000, guid: 61f76c18b75ad1b4c8263b7242342fb0, type: 3}
+  hurtSound: {fileID: 8300000, guid: a9951f1a3e48a5447acc33bb9c675940, type: 3}
+  deathSound: {fileID: 8300000, guid: 431dc5be11da80a4f8e6157ee0defd77, type: 3}
 --- !u!95 &3783013325008330724
 Animator:
   serializedVersion: 3
@@ -120,38 +165,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4345286351174118158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3783013324998945828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterName: Needles
-  attack: 340
-  defense: 210
-  speed: 9
-  specialChargesLeft: 3
-  specialAbilityName: Stab
-  specialAbilityDescription: Attack
-  specialAbilityPower: 0
-  specialDamage: 410
-  specialPoisonDamage: 0
-  maxHP: 900
-  currentHP: 900
-  animator: {fileID: 0}
-  attackSound: {fileID: 8300000, guid: 8d37102601843124ba3769a5bdd48464, type: 3}
-  specialSound: {fileID: 8300000, guid: 61f76c18b75ad1b4c8263b7242342fb0, type: 3}
-  hurtSound: {fileID: 8300000, guid: a9951f1a3e48a5447acc33bb9c675940, type: 3}
-  deathSound: {fileID: 8300000, guid: 431dc5be11da80a4f8e6157ee0defd77, type: 3}
-  isPoisoned: 0
-  poisonDamageTaken: 0
-  isDeathBreathed: 0
 --- !u!82 &-589900981878305044
 AudioSource:
   m_ObjectHideFlags: 0

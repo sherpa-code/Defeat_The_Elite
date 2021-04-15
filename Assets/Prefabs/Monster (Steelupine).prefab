@@ -380,8 +380,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6318846985249811803}
-  - component: {fileID: 6318846985240183483}
   - component: {fileID: -497733861525196563}
+  - component: {fileID: 6318846985240183483}
   - component: {fileID: -6359227297937310134}
   m_Layer: 0
   m_Name: Monster (Steelupine)
@@ -407,6 +407,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-497733861525196563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6318846985249714553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterName: Steelupine
+  attack: 300
+  defense: 190
+  speed: 4
+  maxHP: 800
+  currentHP: 800
+  isPoisoned: 0
+  poisonTurnsLeft: 0
+  poisonDamageTaken: 0
+  isDeathBreathed: 0
+  deathBreathTurnsLeft: 0
+  isDebuffed: 0
+  needsHeals: 0
+  isDefending: 0
+  specialAbilityName: Bubble
+  specialAbilityDescription: Attack
+  specialDamage: 420
+  isSpecialPoison: 0
+  specialPoisonDamage: 0
+  specialPoisonDuration: 0
+  isSpecialDebuff: 0
+  specialDebuffDuration: 0
+  isSpecialDeathBreath: 0
+  specialDeathBreathDuration: 0
+  isSpecialHeals: 0
+  specialHealsAmount: 0
+  damageTaken: 0
+  animator: {fileID: 0}
+  audioSource: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: 9c5000048f3ee8b44a43d75499a49b45, type: 3}
+  specialSound: {fileID: 8300000, guid: b925e0ae63097b346914f62dc0d1d133, type: 3}
+  hurtSound: {fileID: 8300000, guid: af1f125338b97654d8fa993cdede23f2, type: 3}
+  deathSound: {fileID: 8300000, guid: 2a9f65743a817de4594834643b3935e6, type: 3}
 --- !u!95 &6318846985240183483
 Animator:
   serializedVersion: 3
@@ -426,38 +471,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-497733861525196563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6318846985249714553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c22e0b6ecd14c3468b740800c6b5f03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterName: Steelupine
-  attack: 300
-  defense: 190
-  speed: 4
-  specialChargesLeft: 3
-  specialAbilityName: Bubble
-  specialAbilityDescription: Attack
-  specialAbilityPower: 0
-  specialDamage: 420
-  specialPoisonDamage: 0
-  maxHP: 800
-  currentHP: 800
-  animator: {fileID: 0}
-  attackSound: {fileID: 8300000, guid: 9c5000048f3ee8b44a43d75499a49b45, type: 3}
-  specialSound: {fileID: 8300000, guid: b925e0ae63097b346914f62dc0d1d133, type: 3}
-  hurtSound: {fileID: 8300000, guid: af1f125338b97654d8fa993cdede23f2, type: 3}
-  deathSound: {fileID: 8300000, guid: 2a9f65743a817de4594834643b3935e6, type: 3}
-  isPoisoned: 0
-  poisonDamageTaken: 0
-  isDeathBreathed: 0
 --- !u!82 &-6359227297937310134
 AudioSource:
   m_ObjectHideFlags: 0

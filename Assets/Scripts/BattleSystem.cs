@@ -119,6 +119,21 @@ public class BattleSystem : MonoBehaviour {
             yield return new WaitForSeconds(messageDisplayTime);
         }
 
+        if (allyMonster.isDeathBreathed) {
+            dialogueText.text = allyMonster.name + " still smells the Death Breath...";
+            yield return new WaitForSeconds(messageDisplayTime);
+            combatReadout.gameObject.SetActive(true);
+            if (r.Next(0, 9) == 9) {
+                isDead = allyMonster.TakeDamage(allyMonster.currentHP);
+                dialogueText.text = "...and it was critical!";
+                allyHUD.SetHP(allyMonster.currentHP);
+                allyMonster.playHurtAnimation();
+            } else {
+                dialogueText.text = "but " + allyMonster.name + " survived!";
+            }
+            yield return new WaitForSeconds(messageDisplayTime);
+        }
+
         if (isDead) {
             StartCoroutine(allyMonster.playDeathAnimation());
             dialogueText.text = allyMonster.monsterName + " has died!";
