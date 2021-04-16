@@ -138,7 +138,11 @@ public class BattleSystem : MonoBehaviour {
                 yield break;
             }
             allyMonster.poisonTurnsLeft--;
-            
+            if (allyMonster.poisonTurnsLeft <= 0) {
+                allyMonster.isPoisoned = false;
+                dialogueText.text = "...and the poison wore off!";
+                yield return new WaitForSeconds(messageDisplayTime);
+            }
         }
 
         if (allyMonster.isDeathBreathed) {
@@ -146,7 +150,7 @@ public class BattleSystem : MonoBehaviour {
             yield return new WaitForSeconds(messageDisplayTime);
             combatReadout.gameObject.SetActive(true);
             if (r.Next(0, 9) == 9) {
-                isDead = allyMonster.TakeDamage(allyMonster.currentHP);
+                isDead = allyMonster.TakeDamage(allyMonster.currentHP); // receive all remaining HP in damage for insta-kill
                 dialogueText.text = "...and it was critical!";
                 allyHUD.SetHP(allyMonster.currentHP);
                 allyMonster.playHurtAnimation();
@@ -160,6 +164,11 @@ public class BattleSystem : MonoBehaviour {
                 yield break;
             }
             allyMonster.deathBreathTurnsLeft--;
+            if (allyMonster.deathBreathTurnsLeft <= 0) {
+                allyMonster.isDeathBreathed = false;
+                dialogueText.text = "...and the Death Breath wore off!";
+                yield return new WaitForSeconds(messageDisplayTime);
+            }
         }
 
         if (allyMonster.isDebuffed) {
@@ -167,6 +176,11 @@ public class BattleSystem : MonoBehaviour {
             combatReadout.gameObject.SetActive(true);
             yield return new WaitForSeconds(messageDisplayTime);
             allyMonster.debuffedTurnsLeft--;
+            if (allyMonster.debuffedTurnsLeft <= 0) {
+                allyMonster.isDebuffed = false;
+                dialogueText.text = "...but the weakness wore off!";
+                yield return new WaitForSeconds(messageDisplayTime);
+            }
         }
 
         if (allyMonster.isBuffed) {
@@ -174,6 +188,11 @@ public class BattleSystem : MonoBehaviour {
             combatReadout.gameObject.SetActive(true);
             yield return new WaitForSeconds(messageDisplayTime);
             allyMonster.buffedTurnsLeft--;
+            if (allyMonster.buffedTurnsLeft <= 0) {
+                allyMonster.isBuffed = false;
+                dialogueText.text = "...but it finally wore off.";
+                yield return new WaitForSeconds(messageDisplayTime);
+            }
         }
 
         combatReadout.gameObject.SetActive(false);
@@ -188,7 +207,6 @@ public class BattleSystem : MonoBehaviour {
         StartCoroutine(allyMonster.playAttackAnimation());
         yield return new WaitForSeconds(attackAnimationTime);
 
-        // TODO: check if attack was successful
         dialogueText.text = "The attack was successful!";
         bool isDead = enemyMonster.TakeDamage(allyMonster.attack);
 
@@ -207,9 +225,9 @@ public class BattleSystem : MonoBehaviour {
                 StartCoroutine(checkSpeedAndContinue());
             } else {  // if enemy trainer has no monsters left
                 currentEnemyTrainer.isDefeated = true;
-                if (allTrainersDefeated()) { //if all trainers are defeated
+                if (allTrainersDefeated()) {
                     GameOverVictory();
-                } else { //if there are still trainers undeafeated
+                } else { //if there are still trainers undefeated
                     while (currentEnemyTrainer.isDefeated) {
                         currentEnemyTrainer = enemyTrainers[Random.Range(0, enemyTrainers.Count)];
                     }
@@ -283,8 +301,8 @@ public class BattleSystem : MonoBehaviour {
 
     public bool needsHeals(Monster monster) {
         //double currentHP = monster.currentHP
-        if (monster.currentHP <= 1000000000) { // DEBUG
-            //if (monster.currentHP <= (monster.maxHP * 0.6)) {
+        if (monster.currentHP <= 500) { // DEBUG
+            //if (monster.currentHP <= (monster.maxHP * 0.6)) { // TODO: test and confirm multiplying by double works here
             return true;
         }
         return false;
@@ -292,10 +310,12 @@ public class BattleSystem : MonoBehaviour {
 
     public string EnemyDecision() { // Note: return logic separated out for readability
         enemyMonster.needsHeals = needsHeals(enemyMonster);
+        //Debug.Log("Enemy needs heals? = " + enemyMonster.needsHeals);
 
         if (enemyMonster.needsHeals) {
             if (enemyMonster.isSpecialHeals) {
                 if (healRoll() == 1) {
+                    Debug.Log("enemy needs heals and is going to use heal special (steelupine)");
                     return "special";
                 }
             }
@@ -304,6 +324,7 @@ public class BattleSystem : MonoBehaviour {
         if (enemyMonster.isSpecialPoison) {
             if (!allyMonster.isPoisoned) {
                 if (specialRoll() == 1) {
+                    Debug.Log("enemy has poison special, ally not poisoned, is going to use it (gorimite and spinpion)");
                     return "special";
                 }
             }
@@ -312,6 +333,7 @@ public class BattleSystem : MonoBehaviour {
         if (enemyMonster.isSpecialDebuff) {
             if (!allyMonster.isDebuffed) {
                 if (specialRoll() == 1) {
+                    Debug.Log("enemy has debuff, ally not debuffed, is going to use it (dragonewt, quivark, ramodo)");
                     return "special";
                 }
             }
@@ -319,31 +341,6 @@ public class BattleSystem : MonoBehaviour {
 
         return "melee"; // finally, if special isnt applicable or the rolls missed, just melee attack
     }
-
-
-
-    // BACKUP
-    //public string EnemyDecision() {
-    //    string decision;
-    //    int choice;
-
-    //    if (enemyMonster.specialChargesLeft > 0) {
-    //        choice = r.Next(0, 1);
-    //        if (choice == 1) { choice = r.Next(0, 1); } // reroll on special roll to give it only 25% activation chance
-
-    //        if (choice == 0) {
-    //            decision = "melee";
-    //            //} else if (choice == 1) {
-    //        } else {
-    //            decision = "special";
-    //            enemyMonster.specialChargesLeft--;
-    //        }
-    //    } else {
-    //        decision = "melee";
-    //    }
-
-    //    return decision;
-    //}
 
     // TODO: elaborate on this based on what the monster is
     public int healRoll() {
@@ -367,6 +364,60 @@ public class BattleSystem : MonoBehaviour {
 
         dialogueText.text = allyMonster.monsterName + " tried " + allyMonster.specialAbilityName + "...";
         StartCoroutine(allyMonster.playSpecialAnimation());
+        yield return new WaitForSeconds(messageDisplayTime);
+
+        if (allyMonster.isSpecialPoison) {
+            if (enemyMonster.isPoisoned) {
+                dialogueText.text = "But " + enemyMonster.specialAbilityName + " is already poisoned!";
+                yield return new WaitForSeconds(messageDisplayTime);
+            } else {
+                dialogueText.text = allyMonster.specialAbilityName + " was successful!";
+                yield return new WaitForSeconds(messageDisplayTime);
+                dialogueText.text = "Now " + enemyMonster.monsterName + " is poisoned!";
+                yield return new WaitForSeconds(messageDisplayTime);
+                enemyMonster.isPoisoned = true;
+                enemyMonster.poisonDamageTaken = allyMonster.specialPoisonDamage;
+                enemyMonster.poisonTurnsLeft = allyMonster.specialPoisonDuration;
+            }
+        } else if (allyMonster.isSpecialDeathBreath) {
+            if (enemyMonster.isDeathBreathed) {
+                dialogueText.text = "But " + enemyMonster.specialAbilityName + " already smells the Death Breath!";
+                yield return new WaitForSeconds(messageDisplayTime);
+            } else {
+                dialogueText.text = allyMonster.specialAbilityName + " was successful!";
+                yield return new WaitForSeconds(messageDisplayTime);
+                dialogueText.text = "Now " + enemyMonster.monsterName + " can smell the Death Breath!";
+                yield return new WaitForSeconds(messageDisplayTime);
+                enemyMonster.isDeathBreathed = true;
+                enemyMonster.deathBreathTurnsLeft = allyMonster.specialDeathBreathDuration;
+            }
+        } else if (allyMonster.isSpecialHeals) {
+            if (allyMonster.currentHP == allyMonster.maxHP) {
+                dialogueText.text = "But " + allyMonster.specialAbilityName + " is already at full health!";
+                yield return new WaitForSeconds(messageDisplayTime);
+            } else {
+                dialogueText.text = allyMonster.specialAbilityName + " was successful!";
+                yield return new WaitForSeconds(messageDisplayTime);
+                int amountHealed = allyMonster.Heal(allyMonster.specialHealsAmount);
+                allyHUD.SetHP(allyMonster.currentHP);
+                dialogueText.text = allyMonster.monsterName + " healed for " + amountHealed + "HP!";
+                yield return new WaitForSeconds(messageDisplayTime);
+            }
+        } else if (allyMonster.isSpecialDebuff) {
+            if (enemyMonster.isDebuffed) {
+                dialogueText.text = "But " + enemyMonster.monsterName + " is already weakened!";
+                yield return new WaitForSeconds(messageDisplayTime);
+            } else {
+                enemyMonster.isDebuffed = true;
+                enemyMonster.debuffedTurnsLeft = allyMonster.specialDebuffDuration;
+                enemyMonster.debuffedAttackAmount = allyMonster.specialDebuffAttackAmount;
+                enemyMonster.debuffedDefenseAmount = allyMonster.specialDebuffDefenseAmount;
+                enemyMonster.debuffedSpeedAmount = allyMonster.specialDebuffSpeedAmount;
+                enemyMonster.updateMyStats();
+                dialogueText.text = enemyMonster.monsterName + " became weakened!";
+                yield return new WaitForSeconds(messageDisplayTime);
+            }
+        }
 
         // TODO: add logic for distinct special abilities, including checking if they hit or not
         allyMonster.Heal(1);
@@ -376,7 +427,6 @@ public class BattleSystem : MonoBehaviour {
         yield return new WaitForSeconds(messageDisplayTime);
 
         StartCoroutine(EnemyTurn());
-
     }
 
     public IEnumerator PlayerDefend() {
@@ -576,15 +626,16 @@ public class BattleSystem : MonoBehaviour {
         itemMenu.gameObject.SetActive(false);
         combatReadout.gameObject.SetActive(true);
         audioManager.playBlip();
-        int healAmount = 300;
         dialogueText.text = "You used a small leaf potion on " + allyMonster.monsterName + ".";
         yield return new WaitForSeconds(messageDisplayTime);
-        allyMonster.Heal(healAmount);
+        int amountHealed;
+        amountHealed = allyMonster.Heal(300);
         allyHUD.SetHP(allyMonster.currentHP);
-        dialogueText.text = allyMonster.monsterName + " has healed for " + healAmount + "HP!";
+        dialogueText.text = allyMonster.monsterName + " was healed for " + amountHealed + "HP!";
         yield return new WaitForSeconds(messageDisplayTime);
         StartCoroutine(EnemyTurn());
     }
+
     public IEnumerator useLargeLeafPotion() {
         itemMenu.gameObject.SetActive(false);
         combatReadout.gameObject.SetActive(true);
@@ -593,7 +644,7 @@ public class BattleSystem : MonoBehaviour {
         yield return new WaitForSeconds(messageDisplayTime);
         allyMonster.currentHP = allyMonster.maxHP;
         allyHUD.SetHP(allyMonster.currentHP);
-        dialogueText.text = allyMonster.monsterName + " has healed to max HP!";
+        dialogueText.text = allyMonster.monsterName + " was healed to max HP!";
         yield return new WaitForSeconds(messageDisplayTime);
         StartCoroutine(EnemyTurn());
     }
@@ -609,7 +660,7 @@ public class BattleSystem : MonoBehaviour {
             playerActions.gameObject.SetActive(true);
             yield break;
         } else {
-            dialogueText.text = "You used a revive potion on " + lastMonster.monsterName + ". They will be added to the end of your team.";
+            dialogueText.text = "You used a revive potion on " + lastMonster.monsterName + ". They're back on the team!";
             yield return new WaitForSeconds(messageDisplayTime);
             allyTeamList.Add(lastMonster);
             StartCoroutine(EnemyTurn());
@@ -633,25 +684,6 @@ public class BattleSystem : MonoBehaviour {
 
         StartCoroutine(useReviveLeaf());
     }
-
-    //public void flagMonstersByTeam() {
-    //    Debug.Log("Flag fired");
-    //    for (int i = 0; i < currentEnemyTeamList.Count; i++) {
-    //        Debug.Log("enemy monsters = " + currentEnemyTeamList[i].monsterName);
-    //        currentEnemyTeamList[i].isPlayerMonster = false;
-    //        //currentEnemyTeamList[i].isEnemyMonster = false;
-    //        //currentEnemyTeamList[i].isEnemyMonster = true;
-    //    }
-
-    //    for (int i = 0; i < allyTeamList.Count; i++) {
-    //        Debug.Log("ally monsters = " + allyTeamList[i].monsterName);
-    //        //allyTeamList[i].isPlayerMonster = true;
-    //        //allyTeamList[i].isEnemyMonster = false;
-
-    //        allyTeamList[i].isPlayerMonster = false;
-    //        //allyTeamList[i].isEnemyMonster = false;
-    //    }
-    //}
 
     //void updateSpecialMoveChargesText() {
     //    specialMoveChargesText.text = "";

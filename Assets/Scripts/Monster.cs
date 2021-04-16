@@ -8,8 +8,11 @@ using System;
 public class Monster : MonoBehaviour {
     public string monsterName;
 
+    public int originalAttack;
     public int attack;
+    public int originalDefense;
     public int defense;
+    public int originalSpeed;
     public int speed;
     public int maxHP;
     public int currentHP;
@@ -21,8 +24,14 @@ public class Monster : MonoBehaviour {
     public int deathBreathTurnsLeft;
     public bool isDebuffed;
     public int debuffedTurnsLeft;
+    public int debuffedAttackAmount;
+    public int debuffedDefenseAmount;
+    public int debuffedSpeedAmount;
     public bool isBuffed;
     public int buffedTurnsLeft;
+    public int buffedAttackAmount;
+    public int buffedDefenseAmount;
+    public int buffedSpeedAmount;
     public bool isDefending;
 
     public string specialAbilityName;
@@ -62,6 +71,21 @@ public class Monster : MonoBehaviour {
     void Start() {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        originalAttack = attack;
+        originalDefense = defense;
+        originalSpeed = speed;
+    }
+
+    public void updateMyStats() {
+        if (isDebuffed) {
+            attack = attack - debuffedAttackAmount;
+            defense = defense - debuffedDefenseAmount;
+            speed = speed - debuffedSpeedAmount;
+        } else {
+            attack = originalAttack;
+            defense = originalDefense;
+            speed = originalSpeed;
+        }
     }
 
     public int calculateDamage(int damageInput) {
@@ -102,12 +126,38 @@ public class Monster : MonoBehaviour {
         return false;
     }
 
-    public void Heal(int amount) {
-        currentHP += amount;
-        if (currentHP > maxHP) {
+    public int Heal(int amount) { // TODO: confirm that this logic works
+        int healedAmount = 0;
+        if (currentHP + amount > maxHP) {
+            healedAmount = maxHP - currentHP;
+            Debug.Log("Current HP + amount > maxHP so return = " + healedAmount);
             currentHP = maxHP;
+            return healedAmount;
+        } else {
+            Debug.Log("Current HP + amount <= maxHP so return = " + amount);
+            currentHP += amount;
+            return amount;
         }
     }
+
+    //public int Heal(int amount) { // TODO: confirm that this logic works (simpler version of above)
+    //    int healedAmount = 0;
+
+    //    if (currentHP + amount > maxHP) {
+    //        healedAmount = maxHP - amount;
+    //        currentHP = maxHP;
+    //    } else {
+    //        healedAmount = amount;
+    //    }
+    //    return healedAmount;
+    //}
+
+    //public void Heal(int amount) {
+    //    currentHP += amount;
+    //    if (currentHP > maxHP) {
+    //        currentHP = maxHP;
+    //    }
+    //}
 
     public IEnumerator playHurtAnimation() {
         audioSource.PlayOneShot(hurtSound);
