@@ -16,7 +16,7 @@ public class MainMenuScript : MonoBehaviour {
     public BattleSystem battleSystem;
     public Canvas nameEntryCanvas;
     public AudioManager audioManager;
-    public BgmManager bgmManager;
+    public BGMManager BGMManager;
     //private AudioSource audioSource;
     //public AudioClip menuBlipSound;
 
@@ -27,7 +27,7 @@ public class MainMenuScript : MonoBehaviour {
     }
 
     public void returnToMainMenu() {
-        bgmManager.playMenuBGM();
+        BGMManager.playMenuBGM();
         monsterSelectCanvas.gameObject.SetActive(false);
         battleCanvas.gameObject.SetActive(false);
         battleSystem.gameOverHUD.gameObject.SetActive(false);

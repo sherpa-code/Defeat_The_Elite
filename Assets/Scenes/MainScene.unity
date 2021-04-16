@@ -4194,7 +4194,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841819f45966ad04a9004d41886f01c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmManager: {fileID: 1557561644}
   allySpawnTransform: {fileID: 1493054092}
   enemySpawnTransform: {fileID: 748042860}
   enemyGameObject: {fileID: 0}
@@ -4230,8 +4229,7 @@ MonoBehaviour:
   specialMoveChargesText: {fileID: 0}
   itemMenu: {fileID: 1832635274}
   audioManager: {fileID: 602258132}
-  messageDisplayTime: 2
-  attackAnimationTime: 1.5
+  BGMManager: {fileID: 1557561644}
   lastMonster: {fileID: 0}
   lastMonsterTransform: {fileID: 643316739}
 --- !u!4 &408750174
@@ -4250,7 +4248,7 @@ Transform:
   - {fileID: 643316739}
   - {fileID: 1838640788}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &408961600
 PrefabInstance:
@@ -5745,7 +5743,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &554866510
 PrefabInstance:
@@ -6508,7 +6506,7 @@ RectTransform:
   - {fileID: 1311299882}
   - {fileID: 837404444}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6903,7 +6901,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &606160009
 GameObject:
@@ -8425,7 +8423,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &707238328
 GameObject:
@@ -10745,7 +10743,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &862453527
 GameObject:
@@ -12137,7 +12135,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 32.125, y: -6.6840005, z: -3.5660002}
 --- !u!1 &965767421
 GameObject:
@@ -16427,7 +16425,7 @@ RectTransform:
   - {fileID: 561205808}
   - {fileID: 430486860}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -16458,7 +16456,7 @@ MonoBehaviour:
   battleSystem: {fileID: 408750173}
   nameEntryCanvas: {fileID: 573910128}
   audioManager: {fileID: 602258132}
-  bgmManager: {fileID: 1557561644}
+  BGMManager: {fileID: 1557561644}
 --- !u!4 &1302809834 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 84376f2a0948947b5a6dfe814a1100a0,
@@ -18193,7 +18191,7 @@ Transform:
   - {fileID: 1854053907}
   - {fileID: 323115797}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1455313273
 PrefabInstance:
@@ -19318,7 +19316,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1569303024
 GameObject:
@@ -21772,7 +21770,7 @@ RectTransform:
   - {fileID: 2117406840}
   - {fileID: 2032555110}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -25177,7 +25175,7 @@ RectTransform:
   - {fileID: 1339661825}
   - {fileID: 1084097693}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -26281,7 +26279,7 @@ Transform:
   - {fileID: 336426924}
   - {fileID: 1514914420}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2094386699 stripped
 Transform:

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BgmManager : MonoBehaviour {
+public class BGMManager : MonoBehaviour {
     private AudioSource audioSource;
     public AudioClip menuBGM;
     public AudioClip battleBGM;

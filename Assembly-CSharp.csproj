@@ -94,10 +94,10 @@
      <Compile Include="Assets\Free_Rocks\Standard Assets\Effects\ImageEffects\Scripts\VignetteAndChromaticAberration.cs" />
      <Compile Include="Assets\Free_Rocks\Standard Assets\Effects\ImageEffects\Scripts\Vortex.cs" />
      <Compile Include="Assets\Scripts\AudioManager.cs" />
+     <Compile Include="Assets\Scripts\BGMManager.cs" />
      <Compile Include="Assets\Scripts\BattleAbilities.cs" />
      <Compile Include="Assets\Scripts\BattleHUDScript.cs" />
      <Compile Include="Assets\Scripts\BattleSystem.cs" />
-     <Compile Include="Assets\Scripts\BgmManager.cs" />
      <Compile Include="Assets\Scripts\ItemMenuScript.cs" />
      <Compile Include="Assets\Scripts\ItemScript.cs" />
      <Compile Include="Assets\Scripts\ListCreatorScript.cs" />

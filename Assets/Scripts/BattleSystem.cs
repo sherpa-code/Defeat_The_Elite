@@ -5,8 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 public class BattleSystem : MonoBehaviour {
-    public BgmManager bgmManager;
-
+    
     public Transform allySpawnTransform;
     public Transform enemySpawnTransform;
 
@@ -47,6 +46,8 @@ public class BattleSystem : MonoBehaviour {
     public Image itemMenu;
 
     public AudioManager audioManager;
+    public BGMManager BGMManager;
+
     public static System.Single messageDisplayTime = 0.2f;
     //public System.Single attackAnimationTime = 1.5f;
     public static System.Single attackAnimationTime = messageDisplayTime*0.75f;
@@ -55,7 +56,7 @@ public class BattleSystem : MonoBehaviour {
     public Transform lastMonsterTransform;
 
     public void beginGame() {
-        bgmManager.playBattleBGM();
+        BGMManager.playBattleBGM();
         gameObject.SetActive(true);
         battleCanvas.gameObject.SetActive(true);
         enemyHUD.gameObject.SetActive(false);

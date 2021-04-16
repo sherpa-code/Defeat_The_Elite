@@ -3,7 +3,9 @@ guid: cf191439df5d3ba42b570d81842d2504
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - menuBGM: {fileID: 8300000, guid: a6e61175629ab6a4bbfcbc62a68b558f, type: 3}
+  - battleBGM: {fileID: 8300000, guid: 76c314f98aa8b7e4cb47e9b18b5f96b9, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
