@@ -75,8 +75,6 @@ public class BattleSystem : MonoBehaviour {
         StartCoroutine(beginBattle());
     }
 
-    
-
     public IEnumerator beginBattle() {
         dialogueText.text = "The battle begins!";
         //dialogueText.text = "Long multiple line string for testing text wrapping and spacing in the section."; // DEBUG
@@ -182,47 +180,6 @@ public class BattleSystem : MonoBehaviour {
         playerActions.gameObject.SetActive(true);
     }
 
-    public IEnumerator allyMonsterDied(Monster monster) {
-        Debug.Log("Ally monster died!");
-        //StartCoroutine(allyMonster.playDeathAnimation());
-        StartCoroutine(monster.playDeathAnimation());
-        dialogueText.text = allyMonster.monsterName + " has died!";
-        yield return new WaitForSeconds(4f);
-        lastMonster = Instantiate(allyTeamList[0], lastMonsterTransform);
-        Destroy(allyGameObject);
-        allyTeamList.RemoveAt(0);
-
-        if (allyTeamList.Count > 0) {
-            yield return new WaitForSeconds(messageDisplayTime);
-            spawnAllyMonster(0); //TODO: Add a way to select which of 2 remaining monsters to send out
-            yield return new WaitForSeconds(messageDisplayTime);
-            StartCoroutine(checkSpeedAndContinue());
-        } else {
-            GameOverLost();
-        }
-    }
-
-    public IEnumerator enemyMonsterDied(Monster monster) {
-        Debug.Log("Enemy monster died!");
-        //StartCoroutine(enemyMonster.playDeathAnimation());
-        StartCoroutine(monster.playDeathAnimation());
-        dialogueText.text = enemyMonster.monsterName + " has died!";
-        yield return new WaitForSeconds(4f);
-        lastMonster = Instantiate(currentEnemyTeamList[0], lastMonsterTransform);
-
-        Destroy(enemyGameObject);
-        currentEnemyTeamList.RemoveAt(0);
-
-        if (currentEnemyTeamList.Count > 0) {
-            yield return new WaitForSeconds(messageDisplayTime);
-            spawnNextEnemyMonster(); //TODO: Add a way to select which of 2 remaining monsters to send out
-            yield return new WaitForSeconds(messageDisplayTime);
-            StartCoroutine(checkSpeedAndContinue());
-        } else {
-            GameOverLost();
-        }
-    }
-
     public IEnumerator PlayerAttack() {
         playerActions.gameObject.SetActive(false);
         combatReadout.gameObject.SetActive(true);
@@ -236,7 +193,6 @@ public class BattleSystem : MonoBehaviour {
         bool isDead = enemyMonster.TakeDamage(allyMonster.attack);
 
         enemyHUD.SetHP(enemyMonster.currentHP);
-
 
         if (isDead) {
             StartCoroutine(enemyMonster.playDeathAnimation());
@@ -272,10 +228,6 @@ public class BattleSystem : MonoBehaviour {
             StartCoroutine(EnemyTurn());
         }
     }
-
-    
-    
-    
 
     public IEnumerator EnemyTurn() {
         bool isDead = false;
@@ -442,7 +394,6 @@ public class BattleSystem : MonoBehaviour {
         StartCoroutine(EnemyTurn());
     }
 
-
     public void PlayerItems() {
         //battleCanvas.GetComponent<ItemMenuScript>().gameObject.SetActive(true);
         Debug.Log("PlayerItems() begins");
@@ -459,7 +410,6 @@ public class BattleSystem : MonoBehaviour {
         // if clicked No, hide Confirm window
         // if clicked cancel hide items list window and show player actions window
     }
-
 
     private void spawnAllyMonster(int monsterIndex) {
         allyGameObject = Instantiate(allyTeamList[monsterIndex].gameObject, allySpawnTransform.position, allySpawnTransform.rotation);
@@ -483,13 +433,79 @@ public class BattleSystem : MonoBehaviour {
         enemyHUD.gameObject.SetActive(true);
     }
 
-    public string isPlayerFaster() {
-        if (allyMonster.getSpeed() > enemyMonster.getSpeed()) {
-            return "yes";
-        } else if (allyMonster.getSpeed() == enemyMonster.getSpeed()) {
-            return "tie";
+    public IEnumerator monsterDied(Monster monster) { // TODO: implement for poison and death breath; testing
+        StartCoroutine(monster.playDeathAnimation());
+        dialogueText.text = monster.monsterName + " has died!";
+        yield return new WaitForSeconds(4f);
+
+        if (monster.isPlayerMonster) {
+            Debug.Log("Ally monster died");
+            lastMonster = Instantiate(allyTeamList[0], lastMonsterTransform);
+            Destroy(allyGameObject);
+            allyTeamList.RemoveAt(0);
+
+            if (allyTeamList.Count > 0) {
+                spawnAllyMonster(0); //TODO: Add a way to select which of 2 remaining monsters to send out
+                yield return new WaitForSeconds(messageDisplayTime);
+            } else {
+                GameOverLost();
+            }
         } else {
-            return "no";
+            Debug.Log("Enemy monster died");
+            lastMonster = Instantiate(currentEnemyTeamList[0], lastMonsterTransform);
+
+            Destroy(enemyGameObject);
+            currentEnemyTeamList.RemoveAt(0);
+
+            if (currentEnemyTeamList.Count > 0) {
+                spawnNextEnemyMonster(); //TODO: Add a way to select which of 2 remaining monsters to send out
+                yield return new WaitForSeconds(messageDisplayTime);
+            } else {
+                GameOverLost();
+            }
+        }
+
+        StartCoroutine(checkSpeedAndContinue());
+    }
+
+    public IEnumerator allyMonsterDied(Monster monster) {
+        Debug.Log("Ally monster died!");
+        //StartCoroutine(allyMonster.playDeathAnimation());
+        StartCoroutine(monster.playDeathAnimation());
+        dialogueText.text = allyMonster.monsterName + " has died!";
+        yield return new WaitForSeconds(4f);
+        lastMonster = Instantiate(allyTeamList[0], lastMonsterTransform);
+        Destroy(allyGameObject);
+        allyTeamList.RemoveAt(0);
+
+        if (allyTeamList.Count > 0) {
+            yield return new WaitForSeconds(messageDisplayTime);
+            spawnAllyMonster(0); //TODO: Add a way to select which of 2 remaining monsters to send out
+            yield return new WaitForSeconds(messageDisplayTime);
+            StartCoroutine(checkSpeedAndContinue());
+        } else {
+            GameOverLost();
+        }
+    }
+
+    public IEnumerator enemyMonsterDied(Monster monster) {
+        Debug.Log("Enemy monster died!");
+        //StartCoroutine(enemyMonster.playDeathAnimation());
+        StartCoroutine(monster.playDeathAnimation());
+        dialogueText.text = enemyMonster.monsterName + " has died!";
+        yield return new WaitForSeconds(4f);
+        lastMonster = Instantiate(currentEnemyTeamList[0], lastMonsterTransform);
+
+        Destroy(enemyGameObject);
+        currentEnemyTeamList.RemoveAt(0);
+
+        if (currentEnemyTeamList.Count > 0) {
+            yield return new WaitForSeconds(messageDisplayTime);
+            spawnNextEnemyMonster(); //TODO: Add a way to select which of 2 remaining monsters to send out
+            yield return new WaitForSeconds(messageDisplayTime);
+            StartCoroutine(checkSpeedAndContinue());
+        } else {
+            GameOverLost();
         }
     }
 
@@ -512,7 +528,6 @@ public class BattleSystem : MonoBehaviour {
 
         gameOverHUD.gameObject.SetActive(true);
     }
-
 
     public void OnMeleeButton() {
         audioManager.playBlip();
@@ -538,20 +553,6 @@ public class BattleSystem : MonoBehaviour {
         PlayerItems();
     }
 
-
-
-    //void updateSpecialMoveChargesText() {
-    //    specialMoveChargesText.text = "";
-
-    //    for (int i=0; i<allyMonster.specialChargesLeft; i++) {
-    //        if (i == 0) {
-    //            specialMoveChargesText.text = "SQUARE HERE"; // TODO fix this LiberationSans square or add a font to project and put a the UNICODE square here to show full or empty charge
-    //        }
-    //        specialMoveChargesText.text += " ";
-    //    }
-
-    //}
-
     public bool allTrainersDefeated() {
         foreach (Trainer trainer in enemyTrainers) {
             if (!trainer.isDefeated) { //if a trainer IS NOT defeated
@@ -561,22 +562,13 @@ public class BattleSystem : MonoBehaviour {
         return true; //else All trainers are deafeated
     }
 
-    public void flagMonstersByTeam() {
-        Debug.Log("Flag fired");
-        for (int i = 0; i < currentEnemyTeamList.Count; i++) {
-            Debug.Log("enemy monsters = " + currentEnemyTeamList[i].monsterName);
-            currentEnemyTeamList[i].isPlayerMonster = false;
-            //currentEnemyTeamList[i].isEnemyMonster = false;
-            //currentEnemyTeamList[i].isEnemyMonster = true;
-        }
-
-        for (int i = 0; i < allyTeamList.Count; i++) {
-            Debug.Log("ally monsters = " + allyTeamList[i].monsterName);
-            //allyTeamList[i].isPlayerMonster = true;
-            //allyTeamList[i].isEnemyMonster = false;
-
-            allyTeamList[i].isPlayerMonster = false;
-            //allyTeamList[i].isEnemyMonster = false;
+    public string isPlayerFaster() {
+        if (allyMonster.getSpeed() > enemyMonster.getSpeed()) {
+            return "yes";
+        } else if (allyMonster.getSpeed() == enemyMonster.getSpeed()) {
+            return "tie";
+        } else {
+            return "no";
         }
     }
 
@@ -622,8 +614,6 @@ public class BattleSystem : MonoBehaviour {
             allyTeamList.Add(lastMonster);
             StartCoroutine(EnemyTurn());
         }
-
-    
     }
 
     public void onSmallPotionButton() {
@@ -631,6 +621,7 @@ public class BattleSystem : MonoBehaviour {
 
         StartCoroutine(useSmallLeafPotion());
     }
+
     public void onLargePotionButton() {
         audioManager.playBlip();
 
@@ -642,4 +633,35 @@ public class BattleSystem : MonoBehaviour {
 
         StartCoroutine(useReviveLeaf());
     }
+
+    //public void flagMonstersByTeam() {
+    //    Debug.Log("Flag fired");
+    //    for (int i = 0; i < currentEnemyTeamList.Count; i++) {
+    //        Debug.Log("enemy monsters = " + currentEnemyTeamList[i].monsterName);
+    //        currentEnemyTeamList[i].isPlayerMonster = false;
+    //        //currentEnemyTeamList[i].isEnemyMonster = false;
+    //        //currentEnemyTeamList[i].isEnemyMonster = true;
+    //    }
+
+    //    for (int i = 0; i < allyTeamList.Count; i++) {
+    //        Debug.Log("ally monsters = " + allyTeamList[i].monsterName);
+    //        //allyTeamList[i].isPlayerMonster = true;
+    //        //allyTeamList[i].isEnemyMonster = false;
+
+    //        allyTeamList[i].isPlayerMonster = false;
+    //        //allyTeamList[i].isEnemyMonster = false;
+    //    }
+    //}
+
+    //void updateSpecialMoveChargesText() {
+    //    specialMoveChargesText.text = "";
+
+    //    for (int i=0; i<allyMonster.specialChargesLeft; i++) {
+    //        if (i == 0) {
+    //            specialMoveChargesText.text = "SQUARE HERE"; // TODO fix this LiberationSans square or add a font to project and put a the UNICODE square here to show full or empty charge
+    //        }
+    //        specialMoveChargesText.text += " ";
+    //    }
+
+    //}
 }
