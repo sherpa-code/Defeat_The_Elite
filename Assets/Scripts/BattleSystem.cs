@@ -161,7 +161,7 @@ public class BattleSystem : MonoBehaviour {
             dialogueText.text = allyMonster.monsterName + " still smells the Death Breath...";
             yield return new WaitForSeconds(messageDisplayTime);
             combatReadout.gameObject.SetActive(true);
-            if (r.Next(0, 9) == 9) {
+            if (r.Next(0, 10) == 9) {
                 isDead = allyMonster.TakeDamage(allyMonster.currentHP); // receive all remaining HP in damage for insta-kill
                 dialogueText.text = "...and it was critical!";
                 allyHUD.SetHP(allyMonster.currentHP);
@@ -183,6 +183,30 @@ public class BattleSystem : MonoBehaviour {
             }
         }
 
+        //if (allyMonster.isDebuffed) {
+        //    dialogueText.text = allyMonster.monsterName + " is still weakened...";
+        //    combatReadout.gameObject.SetActive(true);
+        //    yield return new WaitForSeconds(messageDisplayTime);
+        //    allyMonster.debuffedTurnsLeft--;
+        //    if (allyMonster.debuffedTurnsLeft <= 0) {
+        //        allyMonster.isDebuffed = false;
+        //        dialogueText.text = "...but the weakness wore off!";
+        //        yield return new WaitForSeconds(messageDisplayTime);
+        //    }
+        //}
+
+        //if (allyMonster.isBuffed) {
+        //    dialogueText.text = allyMonster.monsterName + " is still buffed by the Power Gem!";
+        //    combatReadout.gameObject.SetActive(true);
+        //    yield return new WaitForSeconds(messageDisplayTime);
+        //    allyMonster.buffedTurnsLeft--;
+        //    if (allyMonster.buffedTurnsLeft <= 0) {
+        //        allyMonster.isBuffed = false;
+        //        dialogueText.text = "...but it finally wore off.";
+        //        yield return new WaitForSeconds(messageDisplayTime);
+        //    }
+        //}
+
         if (allyMonster.isDebuffed) {
             dialogueText.text = allyMonster.monsterName + " is still weakened...";
             combatReadout.gameObject.SetActive(true);
@@ -190,6 +214,9 @@ public class BattleSystem : MonoBehaviour {
             allyMonster.debuffedTurnsLeft--;
             if (allyMonster.debuffedTurnsLeft <= 0) {
                 allyMonster.isDebuffed = false;
+                allyMonster.debuffedAttackAmount = 0;
+                allyMonster.debuffedDefenseAmount = 0;
+                allyMonster.debuffedSpeedAmount = 0;
                 dialogueText.text = "...but the weakness wore off!";
                 yield return new WaitForSeconds(messageDisplayTime);
             }
@@ -202,6 +229,7 @@ public class BattleSystem : MonoBehaviour {
             allyMonster.buffedTurnsLeft--;
             if (allyMonster.buffedTurnsLeft <= 0) {
                 allyMonster.isBuffed = false;
+                allyMonster.buffedAttackAmount = 0;
                 dialogueText.text = "...but it finally wore off.";
                 yield return new WaitForSeconds(messageDisplayTime);
             }
@@ -341,11 +369,20 @@ public class BattleSystem : MonoBehaviour {
             dialogueText.text = enemyMonster.monsterName + " tries " + enemyMonster.specialAbilityName + "...";
             yield return new WaitForSeconds(messageDisplayTime);
             dialogueText.text = enemyMonster.specialAbilityName + " was successful.";
+            yield return new WaitForSeconds(messageDisplayTime);
+            if (enemyMonster.specialAbilityName == "Death Breath") {
+                dialogueText.text = allyMonster.monsterName + " is at risk of perishing from the smell...";
+            } else if (enemyMonster.specialAbilityName == "Seed" || enemyMonster.specialAbilityName == "Sting") {
+                dialogueText.text = allyMonster.monsterName + " became poisoned!";
+            } else if (enemyMonster.specialAbilityName == "Glare" || enemyMonster.specialAbilityName == "Shriek" || enemyMonster.specialAbilityName == "Intimidate") {
+                dialogueText.text = allyMonster.monsterName + "'s attack, defense, and speed have been lowered.";
+            }
+            yield return new WaitForSeconds(messageDisplayTime);
             StartCoroutine(enemyMonster.playSpecialAnimation());
             isDead = allyMonster.TakeDamage(allyMonster.specialDamage);
         }
 
-        enemyHUD.SetHP(allyMonster.currentHP);
+        enemyHUD.SetHP(enemyMonster.currentHP);
         //yield return new WaitForSeconds(attackAnimationTime);
 
         if (isDead) {
@@ -491,8 +528,9 @@ public class BattleSystem : MonoBehaviour {
                 yield return new WaitForSeconds(messageDisplayTime);
             } else {
                 dialogueText.text = allyMonster.specialAbilityName + " was successful!";
+                enemyMonster.playHurtAnimation();
                 yield return new WaitForSeconds(messageDisplayTime);
-                dialogueText.text = "Now " + enemyMonster.monsterName + " is poisoned!";
+                dialogueText.text = enemyMonster.monsterName + " became poisoned!";
                 yield return new WaitForSeconds(messageDisplayTime);
                 enemyMonster.isPoisoned = true;
                 enemyMonster.poisonDamageTaken = allyMonster.specialPoisonDamage;
@@ -504,6 +542,7 @@ public class BattleSystem : MonoBehaviour {
                 yield return new WaitForSeconds(messageDisplayTime);
             } else {
                 dialogueText.text = allyMonster.specialAbilityName + " was successful!";
+                enemyMonster.playHurtAnimation();
                 yield return new WaitForSeconds(messageDisplayTime);
                 dialogueText.text = "Now " + enemyMonster.monsterName + " can smell the Death Breath!";
                 yield return new WaitForSeconds(messageDisplayTime);
@@ -512,7 +551,7 @@ public class BattleSystem : MonoBehaviour {
             }
         } else if (allyMonster.isSpecialHeals) {
             if (allyMonster.currentHP == allyMonster.maxHP) {
-                dialogueText.text = "But " + allyMonster.specialAbilityName + " is already at full health!";
+                dialogueText.text = "But " + allyMonster.monsterName + " is already at full health!";
                 yield return new WaitForSeconds(messageDisplayTime);
             } else {
                 dialogueText.text = allyMonster.specialAbilityName + " was successful!";
@@ -533,17 +572,10 @@ public class BattleSystem : MonoBehaviour {
                 enemyMonster.debuffedDefenseAmount = allyMonster.specialDebuffDefenseAmount;
                 enemyMonster.debuffedSpeedAmount = allyMonster.specialDebuffSpeedAmount;
                 enemyMonster.updateMyStats();
-                dialogueText.text = enemyMonster.monsterName + " became weakened!";
+                dialogueText.text = enemyMonster.monsterName + "'s attack, defense, and speed were lowered!";
                 yield return new WaitForSeconds(messageDisplayTime);
             }
         }
-
-        // TODO: add logic for distinct special abilities, including checking if they hit or not
-        allyMonster.Heal(1);
-        allyHUD.SetHP(allyMonster.currentHP);
-        dialogueText.text = allyMonster.specialAbilityName + " was successful!";
-
-        yield return new WaitForSeconds(messageDisplayTime);
 
         StartCoroutine(EnemyTurn());
     }
@@ -686,7 +718,7 @@ public class BattleSystem : MonoBehaviour {
         combatReadout.gameObject.SetActive(true);
 
         dialogueText.text = "You have defeated all enemy trainers. You win!";
-
+        BGMManager.playVictoryBGM();
         gameOverHUD.gameObject.SetActive(true);
     }
 
@@ -696,7 +728,7 @@ public class BattleSystem : MonoBehaviour {
         combatReadout.gameObject.SetActive(true);
 
         dialogueText.text = "You have no remaining monsters. You lose!";
-
+        BGMManager.playDefeatBGM();
         gameOverHUD.gameObject.SetActive(true);
     }
 
@@ -788,6 +820,49 @@ public class BattleSystem : MonoBehaviour {
         }
     }
 
+    public IEnumerator useAntidote() {
+        itemMenu.gameObject.SetActive(false);
+        combatReadout.gameObject.SetActive(true);
+        audioManager.playBlip();
+        if (allyMonster.isPoisoned) {
+            antidoteQty--;
+            allyMonster.isPoisoned = false;
+            int healed = allyMonster.Heal(allyMonster.poisonDamageTaken);
+            dialogueText.text = allyMonster.monsterName + " has been cured of their poison and restored " + healed + "HP caused by poison.";
+            yield return new WaitForSeconds(messageDisplayTime);
+            //StartCoroutine(EnemyTurn());
+        } else {
+            dialogueText.text = allyMonster.monsterName + " is not poisoned, no need to use an antidote!";
+            yield return new WaitForSeconds(messageDisplayTime);
+            combatReadout.gameObject.SetActive(false);
+            playerActions.gameObject.SetActive(true);
+            yield break;
+        }
+        StartCoroutine(EnemyTurn());
+    }
+
+    public IEnumerator usePowerGem() {
+        itemMenu.gameObject.SetActive(false);
+        combatReadout.gameObject.SetActive(true);
+        audioManager.playBlip();
+        if (allyMonster.isBuffed) {
+            dialogueText.text = allyMonster.monsterName + " is already buffed, you can't buff them twice!";
+            yield return new WaitForSeconds(messageDisplayTime);
+            combatReadout.gameObject.SetActive(false);
+            playerActions.gameObject.SetActive(true);
+            yield break;
+        } else {
+            boostQty--;
+            allyMonster.isBuffed = true;
+            allyMonster.buffedAttackAmount = 100;
+            allyMonster.buffedTurnsLeft = 2;
+            allyMonster.updateMyStats();
+            dialogueText.text = allyMonster.monsterName + " consumed the Power Gem!\nIt's attack is boosted by " + allyMonster.buffedAttackAmount + " and is now " + allyMonster.attack + ".";
+            yield return new WaitForSeconds(messageDisplayTime);
+        }
+        StartCoroutine(EnemyTurn());
+    }
+
     public void onSmallPotionButton() {
         audioManager.playBlip();
         smallPotionQty--;
@@ -808,14 +883,13 @@ public class BattleSystem : MonoBehaviour {
 
     public void onAntidoteButton() {
         audioManager.playBlip();
-        antidoteQty--;
-        StartCoroutine(useReviveLeaf());
+        StartCoroutine(useAntidote());
     }
 
     public void onPowerGemButton() {
         audioManager.playBlip();
-        boostQty--;
-        StartCoroutine(useReviveLeaf());
+        StartCoroutine(usePowerGem());
+
     }
 
     //void updateSpecialMoveChargesText() {

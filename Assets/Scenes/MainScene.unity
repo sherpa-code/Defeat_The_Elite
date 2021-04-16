@@ -341,8 +341,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 408750172}
-        m_MethodName: 
+      - m_Target: {fileID: 408750173}
+        m_MethodName: onAntidoteButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4235,8 +4235,8 @@ MonoBehaviour:
   smallPotionQty: 3
   largePotionQty: 1
   reviveLeafQty: 1
-  antidoteQty: 0
-  boostQty: 0
+  antidoteQty: 1
+  boostQty: 1
   smallPotionQtyText: {fileID: 1092375317}
   largePotionQtyText: {fileID: 464000584}
   reviveLeafQtyText: {fileID: 286651064}
@@ -8935,8 +8935,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 408750172}
-        m_MethodName: 
+      - m_Target: {fileID: 408750173}
+        m_MethodName: onPowerGemButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19218,6 +19218,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuBGM: {fileID: 8300000, guid: a6e61175629ab6a4bbfcbc62a68b558f, type: 3}
   battleBGM: {fileID: 8300000, guid: 76c314f98aa8b7e4cb47e9b18b5f96b9, type: 3}
+  victoryBGM: {fileID: 8300000, guid: fa400f5b5cdb484498366bbdb1998c8a, type: 3}
+  defeatBGM: {fileID: 8300000, guid: 691372a6c5a04f3409ab6909c56628bb, type: 3}
 --- !u!82 &1557561645
 AudioSource:
   m_ObjectHideFlags: 0

@@ -77,16 +77,22 @@ public class Monster : MonoBehaviour {
     }
 
     public void updateMyStats() {
-        if (isDebuffed) {
-            attack = attack - debuffedAttackAmount;
-            defense = defense - debuffedDefenseAmount;
-            speed = speed - debuffedSpeedAmount;
-        } else {
-            attack = originalAttack;
-            defense = originalDefense;
-            speed = originalSpeed;
-        }
+        attack = attack - debuffedAttackAmount + buffedAttackAmount;
+        defense = defense - debuffedDefenseAmount + buffedDefenseAmount;
+        speed = speed - debuffedSpeedAmount + buffedSpeedAmount;
     }
+
+    //public void updateMyStats() {
+    //    if (isDebuffed) {
+    //        attack = attack - debuffedAttackAmount;
+    //        defense = defense - debuffedDefenseAmount;
+    //        speed = speed - debuffedSpeedAmount;
+    //    } else {
+    //        attack = originalAttack;
+    //        defense = originalDefense;
+    //        speed = originalSpeed;
+    //    }
+    //}
 
     public int calculateDamage(int damageInput) {
         //double damageOutput = damageInput * (100.0 / (10.0 + defense));

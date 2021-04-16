@@ -6,6 +6,8 @@ public class BGMManager : MonoBehaviour {
     private AudioSource audioSource;
     public AudioClip menuBGM;
     public AudioClip battleBGM;
+    public AudioClip victoryBGM;
+    public AudioClip defeatBGM;
 
     // Start is called before the first frame update
     void Start() {
@@ -27,6 +29,18 @@ public class BGMManager : MonoBehaviour {
     public void playBattleBGM() {
         audioSource.Stop();
         audioSource.clip = battleBGM;
+        audioSource.Play();
+    }
+
+    public void playVictoryBGM() {
+        audioSource.Stop();
+        audioSource.clip = victoryBGM;
+        audioSource.Play();
+    }
+
+    public void playDefeatBGM() {
+        audioSource.Stop();
+        audioSource.clip = defeatBGM;
         audioSource.Play();
     }
 
