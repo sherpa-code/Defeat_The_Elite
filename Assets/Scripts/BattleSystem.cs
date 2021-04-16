@@ -48,7 +48,7 @@ public class BattleSystem : MonoBehaviour {
     public AudioManager audioManager;
     public BGMManager BGMManager;
 
-    public static System.Single messageDisplayTime = 0.2f;
+    public static System.Single messageDisplayTime = 2f;
     //public System.Single attackAnimationTime = 1.5f;
     public static System.Single attackAnimationTime = messageDisplayTime*0.75f;
 
@@ -70,7 +70,6 @@ public class BattleSystem : MonoBehaviour {
         currentEnemyTeamList = new List<Monster>(currentEnemyTrainer.trainerTeam);
 
         //flagMonstersByTeam();
-
         //updateSpecialMoveChargesText();
 
         StartCoroutine(beginBattle());
@@ -81,7 +80,7 @@ public class BattleSystem : MonoBehaviour {
     public IEnumerator beginBattle() {
         dialogueText.text = "The battle begins!";
         //dialogueText.text = "Long multiple line string for testing text wrapping and spacing in the section."; // DEBUG
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(messageDisplayTime);
 
         spawnAllyMonster(0);
         yield return new WaitForSeconds(messageDisplayTime);
@@ -140,6 +139,8 @@ public class BattleSystem : MonoBehaviour {
                 StartCoroutine(allyMonsterDied(allyMonster));
                 yield break;
             }
+            allyMonster.poisonTurnsLeft--;
+            
         }
 
         if (allyMonster.isDeathBreathed) {
@@ -160,15 +161,31 @@ public class BattleSystem : MonoBehaviour {
                 StartCoroutine(allyMonsterDied(allyMonster));
                 yield break;
             }
+            allyMonster.deathBreathTurnsLeft--;
         }
-        
+
+        if (allyMonster.isDebuffed) {
+            dialogueText.text = allyMonster.monsterName + " is still weakened...";
+            combatReadout.gameObject.SetActive(true);
+            yield return new WaitForSeconds(messageDisplayTime);
+            allyMonster.debuffedTurnsLeft--;
+        }
+
+        if (allyMonster.isBuffed) {
+            dialogueText.text = allyMonster.monsterName + " is still buffed by the Power Gem!";
+            combatReadout.gameObject.SetActive(true);
+            yield return new WaitForSeconds(messageDisplayTime);
+            allyMonster.buffedTurnsLeft--;
+        }
+
         combatReadout.gameObject.SetActive(false);
         playerActions.gameObject.SetActive(true);
     }
 
     public IEnumerator allyMonsterDied(Monster monster) {
-        Debug.Log("Monster died!");
-        StartCoroutine(allyMonster.playDeathAnimation());
+        Debug.Log("Ally monster died!");
+        //StartCoroutine(allyMonster.playDeathAnimation());
+        StartCoroutine(monster.playDeathAnimation());
         dialogueText.text = allyMonster.monsterName + " has died!";
         yield return new WaitForSeconds(4f);
         lastMonster = Instantiate(allyTeamList[0], lastMonsterTransform);
@@ -186,8 +203,9 @@ public class BattleSystem : MonoBehaviour {
     }
 
     public IEnumerator enemyMonsterDied(Monster monster) {
-        Debug.Log("Monster died!");
-        StartCoroutine(enemyMonster.playDeathAnimation());
+        Debug.Log("Enemy monster died!");
+        //StartCoroutine(enemyMonster.playDeathAnimation());
+        StartCoroutine(monster.playDeathAnimation());
         dialogueText.text = enemyMonster.monsterName + " has died!";
         yield return new WaitForSeconds(4f);
         lastMonster = Instantiate(currentEnemyTeamList[0], lastMonsterTransform);

@@ -20,6 +20,9 @@ public class Monster : MonoBehaviour {
     public bool isDeathBreathed;
     public int deathBreathTurnsLeft;
     public bool isDebuffed;
+    public int debuffedTurnsLeft;
+    public bool isBuffed;
+    public int buffedTurnsLeft;
     public bool isDefending;
 
     public string specialAbilityName;
