@@ -432,10 +432,13 @@ MonoBehaviour:
   isDeathBreathed: 0
   deathBreathTurnsLeft: 0
   isDebuffed: 0
+  debuffedTurnsLeft: 0
+  isBuffed: 0
+  buffedTurnsLeft: 0
   isDefending: 0
   specialAbilityName: Bubble
   specialAbilityDescription: Attack
-  specialDamage: 420
+  specialDamage: 0
   isSpecialPoison: 0
   specialPoisonDamage: 0
   specialPoisonDuration: 0
@@ -446,8 +449,8 @@ MonoBehaviour:
   specialDebuffSpeedAmount: 0
   isSpecialDeathBreath: 0
   specialDeathBreathDuration: 0
-  isSpecialHeals: 0
-  specialHealsAmount: 0
+  isSpecialHeals: 1
+  specialHealsAmount: 500
   damageTaken: 0
   animator: {fileID: 0}
   audioSource: {fileID: 0}

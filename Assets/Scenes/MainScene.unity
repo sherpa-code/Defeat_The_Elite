@@ -4232,6 +4232,16 @@ MonoBehaviour:
   BGMManager: {fileID: 1557561644}
   lastMonster: {fileID: 0}
   lastMonsterTransform: {fileID: 643316739}
+  smallPotionQty: 3
+  largePotionQty: 1
+  reviveLeafQty: 1
+  antidoteQty: 0
+  boostQty: 0
+  smallPotionQtyText: {fileID: 1092375317}
+  largePotionQtyText: {fileID: 464000584}
+  reviveLeafQtyText: {fileID: 286651064}
+  antidoteQtyText: {fileID: 633797229}
+  boostQtyText: {fileID: 1435644885}
 --- !u!4 &408750174
 Transform:
   m_ObjectHideFlags: 0

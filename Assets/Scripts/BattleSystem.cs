@@ -55,6 +55,18 @@ public class BattleSystem : MonoBehaviour {
     public Monster lastMonster;
     public Transform lastMonsterTransform;
 
+    public int smallPotionQty = 3; //none of these numbers matter and must be set in the editor instead
+    public int largePotionQty = 1;
+    public int reviveLeafQty = 1;
+    public int antidoteQty = 1;
+    public int boostQty = 1;
+
+    public Text smallPotionQtyText;
+    public Text largePotionQtyText;
+    public Text reviveLeafQtyText;
+    public Text antidoteQtyText;
+    public Text boostQtyText;
+
     public void beginGame() {
         BGMManager.playBattleBGM();
         gameObject.SetActive(true);
@@ -251,7 +263,67 @@ public class BattleSystem : MonoBehaviour {
         bool isDead = false;
         playerActions.gameObject.SetActive(false);
         combatReadout.gameObject.SetActive(true);
-        
+
+        if (enemyMonster.isPoisoned) {
+            dialogueText.text = enemyMonster.monsterName + " is still poisoned!";
+            combatReadout.gameObject.SetActive(true);
+            isDead = enemyMonster.TakeDamage(enemyMonster.poisonDamageTaken);
+            enemyHUD.SetHP(enemyMonster.currentHP);
+            enemyMonster.playHurtAnimation();
+            yield return new WaitForSeconds(messageDisplayTime);
+
+            if (isDead) {
+                StartCoroutine(enemyMonsterDied(enemyMonster));
+                yield break;
+            }
+            enemyMonster.poisonTurnsLeft--;
+            if (enemyMonster.poisonTurnsLeft <= 0) {
+                enemyMonster.isPoisoned = false;
+                dialogueText.text = "...and the poison wore off!";
+                yield return new WaitForSeconds(messageDisplayTime);
+            }
+        }
+
+        if (enemyMonster.isDeathBreathed) {
+            dialogueText.text = enemyMonster.monsterName + " still smells the Death Breath...";
+            yield return new WaitForSeconds(messageDisplayTime);
+            combatReadout.gameObject.SetActive(true);
+            if (r.Next(0, 9) == 9) {
+                isDead = enemyMonster.TakeDamage(enemyMonster.currentHP); // receive all remaining HP in damage for insta-kill
+                dialogueText.text = "...and it was critical!";
+                enemyHUD.SetHP(enemyMonster.currentHP);
+                enemyMonster.playHurtAnimation();
+            } else {
+                dialogueText.text = "but " + enemyMonster.name + " survived!";
+            }
+            yield return new WaitForSeconds(messageDisplayTime);
+
+            if (isDead) {
+                StartCoroutine(enemyMonsterDied(enemyMonster));
+                yield break;
+            }
+            enemyMonster.deathBreathTurnsLeft--;
+            if (enemyMonster.deathBreathTurnsLeft <= 0) {
+                enemyMonster.isDeathBreathed = false;
+                dialogueText.text = "...and the Death Breath wore off!";
+                yield return new WaitForSeconds(messageDisplayTime);
+            }
+        }
+
+        if (enemyMonster.isDebuffed) {
+            dialogueText.text = enemyMonster.monsterName + " is still weakened...";
+            combatReadout.gameObject.SetActive(true);
+            yield return new WaitForSeconds(messageDisplayTime);
+            enemyMonster.debuffedTurnsLeft--;
+            if (enemyMonster.debuffedTurnsLeft <= 0) {
+                enemyMonster.isDebuffed = false;
+                dialogueText.text = "...but the weakness wore off!";
+                yield return new WaitForSeconds(messageDisplayTime);
+            }
+        }
+
+
+        // ACTION BEGINS
         string decision = EnemyDecision();
 
         if (decision == "melee") {
@@ -273,7 +345,7 @@ public class BattleSystem : MonoBehaviour {
             isDead = allyMonster.TakeDamage(allyMonster.specialDamage);
         }
 
-        allyHUD.SetHP(allyMonster.currentHP);
+        enemyHUD.SetHP(allyMonster.currentHP);
         //yield return new WaitForSeconds(attackAnimationTime);
 
         if (isDead) {
@@ -299,63 +371,110 @@ public class BattleSystem : MonoBehaviour {
         }
     }
 
+    //public IEnumerator EnemyTurn() {
+    //    bool isDead = false;
+    //    playerActions.gameObject.SetActive(false);
+    //    combatReadout.gameObject.SetActive(true);
+        
+    //    string decision = EnemyDecision();
+
+    //    if (decision == "melee") {
+    //        dialogueText.text = enemyMonster.monsterName + " attacks...";
+    //        yield return new WaitForSeconds(messageDisplayTime);
+    //        StartCoroutine(enemyMonster.playAttackAnimation());
+    //        if (enemyMonster.monsterName.EndsWith("s")) {
+    //            dialogueText.text = enemyMonster.monsterName + "' attack hit!";
+    //        } else {
+    //            dialogueText.text = enemyMonster.monsterName + "'s attack hit!";
+    //        }
+    //        yield return new WaitForSeconds(messageDisplayTime);
+    //        isDead = allyMonster.TakeDamage(enemyMonster.attack);
+    //    } else {
+    //        dialogueText.text = enemyMonster.monsterName + " tries " + enemyMonster.specialAbilityName + "...";
+    //        yield return new WaitForSeconds(messageDisplayTime);
+    //        dialogueText.text = enemyMonster.specialAbilityName + " was successful.";
+    //        StartCoroutine(enemyMonster.playSpecialAnimation());
+    //        isDead = allyMonster.TakeDamage(allyMonster.specialDamage);
+    //    }
+
+    //    allyHUD.SetHP(allyMonster.currentHP);
+    //    //yield return new WaitForSeconds(attackAnimationTime);
+
+    //    if (isDead) {
+    //        lastMonster = Instantiate(allyTeamList[0], lastMonsterTransform);
+    //        StartCoroutine(allyMonster.playDeathAnimation());
+    //        dialogueText.text = allyMonster.monsterName + " has died!";
+    //        yield return new WaitForSeconds(4f);
+    //        Destroy(allyGameObject);
+    //        allyTeamList.RemoveAt(0);
+    //        if (allyTeamList.Count > 0) {
+    //            yield return new WaitForSeconds(messageDisplayTime);
+    //            spawnAllyMonster(0);        // TODO: Add a way to select 0 or 1, AKA select which of 2 remaining monsters to send out
+    //            yield return new WaitForSeconds(messageDisplayTime);
+    //            StartCoroutine(checkSpeedAndContinue());
+    //        } else {
+    //            yield return new WaitForSeconds(messageDisplayTime);
+    //            GameOverLost();
+    //        }
+    //    } else {
+    //        StartCoroutine(allyMonster.playHurtAnimation());
+    //        yield return new WaitForSeconds(messageDisplayTime);
+    //        StartCoroutine(PlayerTurn());
+    //    }
+    //}
+
+
+
     public bool needsHeals(Monster monster) {
         //double currentHP = monster.currentHP
-        if (monster.currentHP <= 500) { // DEBUG
+        if (monster.currentHP <= 450) { // DEBUG
             //if (monster.currentHP <= (monster.maxHP * 0.6)) { // TODO: test and confirm multiplying by double works here
             return true;
         }
         return false;
     }
 
-    public string EnemyDecision() { // Note: return logic separated out for readability
+    public string EnemyDecision() { // Note: return logic separated out for readabilityuhj
         enemyMonster.needsHeals = needsHeals(enemyMonster);
-        //Debug.Log("Enemy needs heals? = " + enemyMonster.needsHeals);
 
-        if (enemyMonster.needsHeals) {
-            if (enemyMonster.isSpecialHeals) {
-                if (healRoll() == 1) {
-                    Debug.Log("enemy needs heals and is going to use heal special (steelupine)");
-                    return "special";
-                }
+        if (enemyMonster.needsHeals && enemyMonster.isSpecialHeals) {
+            if (healRoll() == 1) {
+                Debug.Log("enemy needs heals and is going to use heal special (steelupine)");
+                return "special";
             }
         }
         
-        if (enemyMonster.isSpecialPoison) {
-            if (!allyMonster.isPoisoned) {
-                if (specialRoll() == 1) {
-                    Debug.Log("enemy has poison special, ally not poisoned, is going to use it (gorimite and spinpion)");
-                    return "special";
-                }
+        if (enemyMonster.isSpecialPoison && !allyMonster.isPoisoned) {
+            if (specialRoll() == 1) {
+                Debug.Log("enemy has poison special, ally not poisoned, is going to use it (gorimite and spinpion)");
+                return "special";
             }
         }
         
-        if (enemyMonster.isSpecialDebuff) {
-            if (!allyMonster.isDebuffed) {
-                if (specialRoll() == 1) {
-                    Debug.Log("enemy has debuff, ally not debuffed, is going to use it (dragonewt, quivark, ramodo)");
-                    return "special";
-                }
+        if (enemyMonster.isSpecialDebuff && !allyMonster.isDebuffed) {
+            if (specialRoll() == 1) {
+                Debug.Log("enemy has debuff, ally not debuffed, is going to use it (dragonewt, quivark, ramodo)");
+                return "special";
             }
         }
 
-        return "melee"; // finally, if special isnt applicable or the rolls missed, just melee attack
+        if (enemyMonster.isSpecialDeathBreath && !allyMonster.isDeathBreathed) {
+            if (specialRoll() == 1) {
+                Debug.Log("enemy has death breath, ally not death breathed, is going to use it (crotone)");
+                return "special";
+            }
+        }
+
+        return "melee";
     }
 
     // TODO: elaborate on this based on what the monster is
     public int healRoll() {
-        int roll = r.Next(0, 1);
-        if (roll == 1) { roll = r.Next(0, 1); } // reroll on heal roll to give it only 25% activation chance
-
-        return roll;
+        return r.Next(0, 4);
     }
 
-    // TODO: elaborate on this based on what the monster is
     public int specialRoll() {
-        int roll = r.Next(0, 1);
-        if (roll == 1) { roll = r.Next(0, 1); } // reroll on special roll to give it only 25% activation chance
-
-        return roll;
+        return r.Next(0, 4);
     }
 
     public IEnumerator PlayerSpecialAbility() {
@@ -448,7 +567,9 @@ public class BattleSystem : MonoBehaviour {
         //battleCanvas.GetComponent<ItemMenuScript>().gameObject.SetActive(true);
         Debug.Log("PlayerItems() begins");
         itemMenu.gameObject.SetActive(true);
+        updateItemHUD();
         playerActions.gameObject.SetActive(false);
+        
 
 
         // Hide player actions window
@@ -669,19 +790,31 @@ public class BattleSystem : MonoBehaviour {
 
     public void onSmallPotionButton() {
         audioManager.playBlip();
-
+        smallPotionQty--;
         StartCoroutine(useSmallLeafPotion());
     }
 
     public void onLargePotionButton() {
         audioManager.playBlip();
-
+        largePotionQty--;
         StartCoroutine(useLargeLeafPotion());
     }
 
     public void onReviveLeafButton() {
         audioManager.playBlip();
+        reviveLeafQty--;
+        StartCoroutine(useReviveLeaf());
+    }
 
+    public void onAntidoteButton() {
+        audioManager.playBlip();
+        antidoteQty--;
+        StartCoroutine(useReviveLeaf());
+    }
+
+    public void onPowerGemButton() {
+        audioManager.playBlip();
+        boostQty--;
         StartCoroutine(useReviveLeaf());
     }
 
@@ -696,4 +829,28 @@ public class BattleSystem : MonoBehaviour {
     //    }
 
     //}
+
+    public void updateItemHUD() {
+        smallPotionQtyText.text = smallPotionQty.ToString();
+        largePotionQtyText.text = largePotionQty.ToString(); ;
+        reviveLeafQtyText.text = reviveLeafQty.ToString(); ;
+        antidoteQtyText.text = antidoteQty.ToString();
+        boostQtyText.text = boostQty.ToString();
+
+        if (smallPotionQty == 0) {
+            smallPotionQtyText.GetComponentInParent<Button>().interactable = false;
+        }
+        if (largePotionQty == 0) {
+            largePotionQtyText.GetComponentInParent<Button>().interactable = false;
+        }
+        if (reviveLeafQty == 0) {
+            reviveLeafQtyText.GetComponentInParent<Button>().interactable = false;
+        }
+        if (antidoteQty == 0) {
+            antidoteQtyText.GetComponentInParent<Button>().interactable = false;
+        }
+        if (boostQty == 0) {
+            boostQtyText.GetComponentInParent<Button>().interactable = false;
+        }
+    }
 }
