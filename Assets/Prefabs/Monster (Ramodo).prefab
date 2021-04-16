@@ -844,9 +844,8 @@ MonoBehaviour:
   hurtSound: {fileID: 8300000, guid: 67093ffc097984d4fb1737bdf46c79df, type: 3}
   deathSound: {fileID: 8300000, guid: 4317acea700a9a847b1fbb35c0d1be42, type: 3}
   isPlayerMonster: 0
-  playerDamageModifier: 1.2
-  isEnemyMonster: 0
-  enemyDamageModifier: 0.75
+  playerDamageModifier: 1.1
+  enemyDamageModifier: 0.8
 --- !u!95 &3557228038515886606
 Animator:
   serializedVersion: 3

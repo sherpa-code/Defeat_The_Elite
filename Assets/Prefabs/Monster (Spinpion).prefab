@@ -1380,13 +1380,13 @@ MonoBehaviour:
   speed: 10
   maxHP: 750
   currentHP: 750
+  needsHeals: 0
   isPoisoned: 0
   poisonTurnsLeft: 0
   poisonDamageTaken: 0
   isDeathBreathed: 0
   deathBreathTurnsLeft: 0
   isDebuffed: 0
-  needsHeals: 0
   isDefending: 0
   specialAbilityName: Sting
   specialAbilityDescription: Poison
@@ -1410,6 +1410,9 @@ MonoBehaviour:
   specialSound: {fileID: 8300000, guid: 00eb6d72fa51c9b4bb977c1374a7ec26, type: 3}
   hurtSound: {fileID: 8300000, guid: 31f51701b41ae9d43ba2b0cb3dd132b6, type: 3}
   deathSound: {fileID: 8300000, guid: a01f7d01589047342993079d048c04d8, type: 3}
+  isPlayerMonster: 0
+  playerDamageModifier: 1.1
+  enemyDamageModifier: 0.8
 --- !u!95 &3361979197227913101
 Animator:
   serializedVersion: 3

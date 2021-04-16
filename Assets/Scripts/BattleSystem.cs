@@ -47,8 +47,9 @@ public class BattleSystem : MonoBehaviour {
     public Image itemMenu;
 
     public AudioManager audioManager;
-    public System.Single messageDisplayTime = 2f;
-    public System.Single attackAnimationTime = 1.5f;
+    public static System.Single messageDisplayTime = 0.2f;
+    //public System.Single attackAnimationTime = 1.5f;
+    public static System.Single attackAnimationTime = messageDisplayTime*0.75f;
 
     public Monster lastMonster;
     public Transform lastMonsterTransform;
@@ -67,7 +68,7 @@ public class BattleSystem : MonoBehaviour {
 
         currentEnemyTeamList = new List<Monster>(currentEnemyTrainer.trainerTeam);
 
-        flagMonstersByTeam();
+        //flagMonstersByTeam();
 
         //updateSpecialMoveChargesText();
 
@@ -188,7 +189,7 @@ public class BattleSystem : MonoBehaviour {
         StartCoroutine(enemyMonster.playDeathAnimation());
         dialogueText.text = enemyMonster.monsterName + " has died!";
         yield return new WaitForSeconds(4f);
-        //lastMonster = Instantiate(currentEnemyTeamList[0], lastMonsterTransform);
+        lastMonster = Instantiate(currentEnemyTeamList[0], lastMonsterTransform);
 
         Destroy(enemyGameObject);
         currentEnemyTeamList.RemoveAt(0);
@@ -287,6 +288,7 @@ public class BattleSystem : MonoBehaviour {
         //yield return new WaitForSeconds(attackAnimationTime);
 
         if (isDead) {
+            lastMonster = Instantiate(allyTeamList[0], lastMonsterTransform);
             StartCoroutine(allyMonster.playDeathAnimation());
             dialogueText.text = allyMonster.monsterName + " has died!";
             yield return new WaitForSeconds(4f);
@@ -443,6 +445,7 @@ public class BattleSystem : MonoBehaviour {
     private void spawnAllyMonster(int monsterIndex) {
         allyGameObject = Instantiate(allyTeamList[monsterIndex].gameObject, allySpawnTransform.position, allySpawnTransform.rotation);
         allyMonster = allyGameObject.GetComponent<Monster>();
+        allyMonster.isPlayerMonster = true;
         allyHUD.SetHUD(allyMonster);
         allyHUD.SetHP(allyMonster.currentHP);
         allyHUD.SetMaxHP(allyMonster.maxHP);
@@ -544,7 +547,7 @@ public class BattleSystem : MonoBehaviour {
         for (int i = 0; i < currentEnemyTeamList.Count; i++) {
             Debug.Log("enemy monsters = " + currentEnemyTeamList[i].monsterName);
             currentEnemyTeamList[i].isPlayerMonster = false;
-            currentEnemyTeamList[i].isEnemyMonster = false;
+            //currentEnemyTeamList[i].isEnemyMonster = false;
             //currentEnemyTeamList[i].isEnemyMonster = true;
         }
 
@@ -554,7 +557,7 @@ public class BattleSystem : MonoBehaviour {
             //allyTeamList[i].isEnemyMonster = false;
 
             allyTeamList[i].isPlayerMonster = false;
-            allyTeamList[i].isEnemyMonster = false;
+            //allyTeamList[i].isEnemyMonster = false;
         }
     }
 

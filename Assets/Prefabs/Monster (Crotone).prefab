@@ -1318,13 +1318,13 @@ MonoBehaviour:
   speed: 2
   maxHP: 900
   currentHP: 900
+  needsHeals: 0
   isPoisoned: 0
   poisonTurnsLeft: 0
   poisonDamageTaken: 0
   isDeathBreathed: 0
   deathBreathTurnsLeft: 0
   isDebuffed: 0
-  needsHeals: 0
   isDefending: 0
   specialAbilityName: Death Breath
   specialAbilityDescription: Condition
@@ -1348,6 +1348,9 @@ MonoBehaviour:
   specialSound: {fileID: 8300000, guid: 94ff678cec30ece4c958a0199acc8b0f, type: 3}
   hurtSound: {fileID: 8300000, guid: ea02ed26093abc043a0344f1f9d34625, type: 3}
   deathSound: {fileID: 8300000, guid: 787743cd5abae1041ac7e170176c8d5c, type: 3}
+  isPlayerMonster: 0
+  playerDamageModifier: 1.1
+  enemyDamageModifier: 0.8
 --- !u!95 &8331128101287665033
 Animator:
   serializedVersion: 3

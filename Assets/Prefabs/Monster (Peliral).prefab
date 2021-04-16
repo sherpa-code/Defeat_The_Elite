@@ -2157,13 +2157,13 @@ MonoBehaviour:
   speed: 6
   maxHP: 900
   currentHP: 900
+  needsHeals: 0
   isPoisoned: 0
   poisonTurnsLeft: 0
   poisonDamageTaken: 0
   isDeathBreathed: 0
   deathBreathTurnsLeft: 0
   isDebuffed: 0
-  needsHeals: 0
   isDefending: 0
   specialAbilityName: Razor Wing
   specialAbilityDescription: Attack
@@ -2173,6 +2173,9 @@ MonoBehaviour:
   specialPoisonDuration: 0
   isSpecialDebuff: 0
   specialDebuffDuration: 0
+  specialDebuffAttackAmount: 0
+  specialDebuffDefenseAmount: 0
+  specialDebuffSpeedAmount: 0
   isSpecialDeathBreath: 0
   specialDeathBreathDuration: 0
   isSpecialHeals: 0
@@ -2184,6 +2187,9 @@ MonoBehaviour:
   specialSound: {fileID: 8300000, guid: 87df671c3b36bce489b3eb00ed35b33b, type: 3}
   hurtSound: {fileID: 8300000, guid: 65568bafdec25844ea87de2120b2d9ec, type: 3}
   deathSound: {fileID: 8300000, guid: a80337d2d79a43745bd17ef75d2d057c, type: 3}
+  isPlayerMonster: 0
+  playerDamageModifier: 1.1
+  enemyDamageModifier: 0.8
 --- !u!95 &7913610366040352652
 Animator:
   serializedVersion: 3

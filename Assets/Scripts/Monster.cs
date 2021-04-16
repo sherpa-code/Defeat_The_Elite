@@ -51,9 +51,10 @@ public class Monster : MonoBehaviour {
 
     public bool isPlayerMonster = false;
     public double playerDamageModifier = 1.1; // Used to balance combat
-    public bool isEnemyMonster = false;
+    //public bool isEnemyMonster = false;
     //public double enemyDamageModifier = 0.8; // Used to balance combat
-    public double enemyDamageModifier = 5; // Used to balance combat
+    //public double enemyDamageModifier = 50000;
+    public float enemyDamageModifier = 50000f;
 
     void Start() {
         animator = GetComponent<Animator>();
@@ -61,8 +62,12 @@ public class Monster : MonoBehaviour {
     }
 
     public int calculateDamage(int damageInput) {
-        double damageOutput = damageInput * (100.0 / (10.0 + defense));
+        //double damageOutput = damageInput * (100.0 / (10.0 + defense));
+        float damageOutput = damageInput * (100.0f / (10.0f + defense));
+        Debug.Log("damageApplied = " + damageOutput);
         int damageApplied;
+        
+
         if (isPlayerMonster) {
             damageApplied = (int)Math.Round(damageOutput * enemyDamageModifier);
             Debug.Log("isPlayerMonster and damageOutput*enemyMod = " + damageApplied);
@@ -70,6 +75,8 @@ public class Monster : MonoBehaviour {
             damageApplied = (int)Math.Round(damageOutput * playerDamageModifier);
             Debug.Log("isEnemyMonster and damageOutput*playerMod = " + damageApplied);
         }
+
+        
         return damageApplied;
     }
 

@@ -425,13 +425,13 @@ MonoBehaviour:
   speed: 4
   maxHP: 800
   currentHP: 800
+  needsHeals: 0
   isPoisoned: 0
   poisonTurnsLeft: 0
   poisonDamageTaken: 0
   isDeathBreathed: 0
   deathBreathTurnsLeft: 0
   isDebuffed: 0
-  needsHeals: 0
   isDefending: 0
   specialAbilityName: Bubble
   specialAbilityDescription: Attack
@@ -441,6 +441,9 @@ MonoBehaviour:
   specialPoisonDuration: 0
   isSpecialDebuff: 0
   specialDebuffDuration: 0
+  specialDebuffAttackAmount: 0
+  specialDebuffDefenseAmount: 0
+  specialDebuffSpeedAmount: 0
   isSpecialDeathBreath: 0
   specialDeathBreathDuration: 0
   isSpecialHeals: 0
@@ -452,6 +455,9 @@ MonoBehaviour:
   specialSound: {fileID: 8300000, guid: b925e0ae63097b346914f62dc0d1d133, type: 3}
   hurtSound: {fileID: 8300000, guid: af1f125338b97654d8fa993cdede23f2, type: 3}
   deathSound: {fileID: 8300000, guid: 2a9f65743a817de4594834643b3935e6, type: 3}
+  isPlayerMonster: 0
+  playerDamageModifier: 1.1
+  enemyDamageModifier: 0.8
 --- !u!95 &6318846985240183483
 Animator:
   serializedVersion: 3
