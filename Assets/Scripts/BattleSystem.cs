@@ -78,8 +78,8 @@ public class BattleSystem : MonoBehaviour {
         allyHUD.gameObject.SetActive(false);
         combatReadout.gameObject.SetActive(true);
 
-        //currentEnemyTrainer = enemyTrainers[r.Next(0, enemyTrainers.Count)];
-        currentEnemyTrainer = enemyTrainers[0]; // DEBUG
+        currentEnemyTrainer = enemyTrainers[r.Next(0, enemyTrainers.Count)];
+        //currentEnemyTrainer = enemyTrainers[0]; // DEBUG
         //0 = Albus Ommin (Steelupine, , )
         //1 = Bloise Sisko (Needles, , )
         //2 = Chun Doom (Spinion, , )
@@ -173,8 +173,8 @@ public class BattleSystem : MonoBehaviour {
             dialogueText.text = allyMonster.monsterName + " still smells the Death Breath...";
             yield return new WaitForSeconds(messageDisplayTime);
             combatReadout.gameObject.SetActive(true);
-            //if (r.Next(0, 10) == 8) {
-            if (true) { // DEBUG
+            if (r.Next(0, 10) == 8) {
+            //if (true) { // DEBUG
                 isDead = true;
                 dialogueText.text = "...and it was critical!";
                 allyHUD.SetHP(0);
@@ -356,7 +356,7 @@ public class BattleSystem : MonoBehaviour {
 
         // ACTION BEGINS
         string decision = EnemyDecision();
-        decision = "special"; // DEBUG
+        //decision = "special"; // DEBUG
 
         if (decision == "melee") {
             dialogueText.text = enemyMonster.monsterName + " attacks...";
