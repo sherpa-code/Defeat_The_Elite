@@ -78,8 +78,8 @@ public class BattleSystem : MonoBehaviour {
         allyHUD.gameObject.SetActive(false);
         combatReadout.gameObject.SetActive(true);
 
-        currentEnemyTrainer = enemyTrainers[r.Next(0, enemyTrainers.Count)];
-        //currentEnemyTrainer = enemyTrainers[3]; // DEBUG
+        //currentEnemyTrainer = enemyTrainers[r.Next(0, enemyTrainers.Count)];
+        currentEnemyTrainer = enemyTrainers[0]; // DEBUG
         //0 = Albus Ommin (Steelupine, , )
         //1 = Bloise Sisko (Needles, , )
         //2 = Chun Doom (Spinion, , )
@@ -340,7 +340,7 @@ public class BattleSystem : MonoBehaviour {
             yield return new WaitForSeconds(messageDisplayTime);
             enemyMonster.debuffedTurnsLeft--;
             if (enemyMonster.debuffedTurnsLeft <= 0) {
-                dialogueText.text = enemyMonster.monsterName + " but recovered!";
+                dialogueText.text = enemyMonster.monsterName + " regained its strength!";
                 //enemyMonster.isDebuffed = false;
                 ////dialogueText.text = "...but the weakness wore off!";
                 //yield return new WaitForSeconds(messageDisplayTime);
@@ -427,7 +427,7 @@ public class BattleSystem : MonoBehaviour {
                 dialogueText.text = enemyMonster.specialAbilityName + " was successful...";
                 yield return new WaitForSeconds(messageDisplayTime);
                 StartCoroutine(allyMonster.playHurtAnimation());
-                isDead = allyMonster.TakeDamage(allyMonster.specialDamage);
+                isDead = allyMonster.TakeDamage(enemyMonster.specialDamage);
                 allyHUD.SetHP(allyMonster.currentHP);
             }
         }
