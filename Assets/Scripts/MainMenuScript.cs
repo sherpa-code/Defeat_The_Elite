@@ -26,6 +26,23 @@ public class MainMenuScript : MonoBehaviour {
         //battleCanvas.GetComponent<ItemMenuScript>().gameObject.SetActive(true);
     }
 
+    //void Start() {
+    //    StartCoroutine(yoyoMP());
+    //    //battleCanvas.GetComponent<ItemMenuScript>().gameObject.SetActive(true);
+    //}
+
+
+    //IEnumerator Start() {
+    //    StartCoroutine(yoyoMP());
+    //    yield return new WaitForSeconds(0f);
+    //    //battleCanvas.GetComponent<ItemMenuScript>().gameObject.SetActive(true);
+    //}
+
+    public IEnumerator yoyoMP() {
+        yield return new WaitForSeconds(0.2f);
+        returnToMainMenu();
+    }
+
     public void returnToMainMenu() {
         BGMManager.playMenuBGM();
         monsterSelectCanvas.gameObject.SetActive(false);

@@ -1788,8 +1788,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Dragonewt
-  attack: 310
+  originalAttack: 0
+  attack: 320
+  originalDefense: 0
   defense: 240
+  originalSpeed: 0
   speed: 8
   maxHP: 850
   currentHP: 850
@@ -1800,6 +1803,15 @@ MonoBehaviour:
   isDeathBreathed: 0
   deathBreathTurnsLeft: 0
   isDebuffed: 0
+  debuffedTurnsLeft: 0
+  debuffedAttackAmount: 0
+  debuffedDefenseAmount: 0
+  debuffedSpeedAmount: 0
+  isBuffed: 0
+  buffedTurnsLeft: 0
+  buffedAttackAmount: 0
+  buffedDefenseAmount: 0
+  buffedSpeedAmount: 0
   isDefending: 0
   specialAbilityName: Glare
   specialAbilityDescription: Debuff
@@ -1809,9 +1821,9 @@ MonoBehaviour:
   specialPoisonDuration: 0
   isSpecialDebuff: 1
   specialDebuffDuration: 4
-  specialDebuffAttackAmount: 50
-  specialDebuffDefenseAmount: 0
-  specialDebuffSpeedAmount: 0
+  specialDebuffAttackAmount: 60
+  specialDebuffDefenseAmount: 40
+  specialDebuffSpeedAmount: 1
   isSpecialDeathBreath: 0
   specialDeathBreathDuration: 0
   isSpecialHeals: 0
@@ -1824,7 +1836,7 @@ MonoBehaviour:
   hurtSound: {fileID: 8300000, guid: 5e362a5bd8a971e4cadd62e09df43dc2, type: 3}
   deathSound: {fileID: 8300000, guid: 451f7d9bd72b24d42a200c8c6cb9f740, type: 3}
   isPlayerMonster: 0
-  playerDamageModifier: 1.1
+  playerDamageModifier: 1.21
   enemyDamageModifier: 0.8
 --- !u!95 &8769214950839366921
 Animator:

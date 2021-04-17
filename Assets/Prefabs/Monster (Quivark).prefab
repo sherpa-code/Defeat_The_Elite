@@ -1341,8 +1341,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Quivark
+  originalAttack: 0
   attack: 340
+  originalDefense: 0
   defense: 260
+  originalSpeed: 0
   speed: 3
   maxHP: 1100
   currentHP: 1100
@@ -1353,6 +1356,15 @@ MonoBehaviour:
   isDeathBreathed: 0
   deathBreathTurnsLeft: 0
   isDebuffed: 0
+  debuffedTurnsLeft: 0
+  debuffedAttackAmount: 0
+  debuffedDefenseAmount: 0
+  debuffedSpeedAmount: 0
+  isBuffed: 0
+  buffedTurnsLeft: 0
+  buffedAttackAmount: 0
+  buffedDefenseAmount: 0
+  buffedSpeedAmount: 0
   isDefending: 0
   specialAbilityName: Shriek
   specialAbilityDescription: Debuff
@@ -1361,10 +1373,10 @@ MonoBehaviour:
   specialPoisonDamage: 0
   specialPoisonDuration: 0
   isSpecialDebuff: 1
-  specialDebuffDuration: 2
-  specialDebuffAttackAmount: 0
-  specialDebuffDefenseAmount: 65
-  specialDebuffSpeedAmount: 0
+  specialDebuffDuration: 3
+  specialDebuffAttackAmount: 80
+  specialDebuffDefenseAmount: 80
+  specialDebuffSpeedAmount: 2
   isSpecialDeathBreath: 0
   specialDeathBreathDuration: 0
   isSpecialHeals: 0
@@ -1377,7 +1389,7 @@ MonoBehaviour:
   hurtSound: {fileID: 8300000, guid: 22c7f9748c8a3d3478698ac299f13743, type: 3}
   deathSound: {fileID: 8300000, guid: ca9ea2ba00e382e49860764bc07ae87c, type: 3}
   isPlayerMonster: 0
-  playerDamageModifier: 1.1
+  playerDamageModifier: 1.21
   enemyDamageModifier: 0.8
 --- !u!95 &2864951519585369360
 Animator:

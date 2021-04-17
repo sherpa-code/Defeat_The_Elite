@@ -77,9 +77,27 @@ public class Monster : MonoBehaviour {
     }
 
     public void updateMyStats() {
+        //attack = originalAttack;
+        //defense = originalDefense;
+        //speed = originalSpeed;i
+
         attack = attack - debuffedAttackAmount + buffedAttackAmount;
         defense = defense - debuffedDefenseAmount + buffedDefenseAmount;
         speed = speed - debuffedSpeedAmount + buffedSpeedAmount;
+
+        if (!isBuffed) {
+            buffedAttackAmount = 0;
+            buffedDefenseAmount = 0;
+            buffedSpeedAmount = 0;
+        }
+
+        if (!isDebuffed) {
+            debuffedAttackAmount = 0;
+            debuffedDefenseAmount = 0;
+            debuffedSpeedAmount = 0;
+        }
+
+        
     }
 
     //public void updateMyStats() {

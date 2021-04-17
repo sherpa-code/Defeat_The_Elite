@@ -20,11 +20,16 @@ public class BGMManager : MonoBehaviour {
 
     }
 
+
+
     public void playMenuBGM() {
+        audioSource = GetComponent<AudioSource>();
         audioSource.Stop();
         audioSource.clip = menuBGM;
         audioSource.Play();
     }
+
+
 
     public void playBattleBGM() {
         audioSource.Stop();

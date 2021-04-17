@@ -1313,8 +1313,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Crotone
+  originalAttack: 0
   attack: 335
+  originalDefense: 0
   defense: 250
+  originalSpeed: 0
   speed: 2
   maxHP: 900
   currentHP: 900
@@ -1325,6 +1328,15 @@ MonoBehaviour:
   isDeathBreathed: 0
   deathBreathTurnsLeft: 0
   isDebuffed: 0
+  debuffedTurnsLeft: 0
+  debuffedAttackAmount: 0
+  debuffedDefenseAmount: 0
+  debuffedSpeedAmount: 0
+  isBuffed: 0
+  buffedTurnsLeft: 0
+  buffedAttackAmount: 0
+  buffedDefenseAmount: 0
+  buffedSpeedAmount: 0
   isDefending: 0
   specialAbilityName: Death Breath
   specialAbilityDescription: Condition
@@ -1349,7 +1361,7 @@ MonoBehaviour:
   hurtSound: {fileID: 8300000, guid: ea02ed26093abc043a0344f1f9d34625, type: 3}
   deathSound: {fileID: 8300000, guid: 787743cd5abae1041ac7e170176c8d5c, type: 3}
   isPlayerMonster: 0
-  playerDamageModifier: 1.1
+  playerDamageModifier: 1.21
   enemyDamageModifier: 0.8
 --- !u!95 &8331128101287665033
 Animator:

@@ -1449,7 +1449,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 573910130}
-        m_MethodName: saveUserName
+        m_MethodName: enableConfirmButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1460,7 +1460,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 573910130}
-        m_MethodName: showTeamSelect
+        m_MethodName: OnConfirmButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4181,7 +4181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &408750173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4235,8 +4235,8 @@ MonoBehaviour:
   smallPotionQty: 3
   largePotionQty: 1
   reviveLeafQty: 1
-  antidoteQty: 1
-  boostQty: 1
+  antidoteQty: 2
+  boostQty: 3
   smallPotionQtyText: {fileID: 1092375317}
   largePotionQtyText: {fileID: 464000584}
   reviveLeafQtyText: {fileID: 286651064}
@@ -4356,14 +4356,14 @@ RectTransform:
   m_GameObject: {fileID: 430486859}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1302413011}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 115, y: 35}
+  m_AnchoredPosition: {x: 125, y: 32}
   m_SizeDelta: {x: 768.07007, y: -26.699997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &430486861
@@ -4385,7 +4385,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: by Jo Crane and Mike Power, 2021
+  m_text: by Sherpa and YoYoMP, 2021
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6536,6 +6536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   confirmButton: {fileID: 153075448}
+  cancelButton: {fileID: 1020622087}
   nameInputField: {fileID: 1311299883}
   battleSystem: {fileID: 408750173}
   teamSelectionScript: {fileID: 2025609172}
@@ -6556,6 +6557,8 @@ MonoBehaviour:
   - Rapha
   - Zalbaag
   - Belias
+  - Yomp
+  - Sherpa
 --- !u!1 &589630205
 GameObject:
   m_ObjectHideFlags: 0
@@ -10862,7 +10865,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.945, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -11297,7 +11300,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.775, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12236,6 +12239,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 573910130}
+        m_MethodName: enableConfirmButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -19195,8 +19209,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1557561646}
-  - component: {fileID: 1557561645}
   - component: {fileID: 1557561644}
+  - component: {fileID: 1557561645}
   m_Layer: 0
   m_Name: BGMManager
   m_TagString: Untagged
@@ -19216,10 +19230,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf191439df5d3ba42b570d81842d2504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuBGM: {fileID: 8300000, guid: a6e61175629ab6a4bbfcbc62a68b558f, type: 3}
-  battleBGM: {fileID: 8300000, guid: 76c314f98aa8b7e4cb47e9b18b5f96b9, type: 3}
-  victoryBGM: {fileID: 8300000, guid: fa400f5b5cdb484498366bbdb1998c8a, type: 3}
-  defeatBGM: {fileID: 8300000, guid: 691372a6c5a04f3409ab6909c56628bb, type: 3}
+  menuBGM: {fileID: 8300000, guid: dc4184c1124632340b664b83a5212376, type: 3}
+  battleBGM: {fileID: 8300000, guid: c351fa357aa75de4a819f7817935256e, type: 3}
+  victoryBGM: {fileID: 8300000, guid: c1b7bc5d92b200e4faa00ee77565af6b, type: 3}
+  defeatBGM: {fileID: 8300000, guid: 81d38f03f9e67984dad71730fb7a759f, type: 3}
 --- !u!82 &1557561645
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19230,12 +19244,12 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: dc4184c1124632340b664b83a5212376, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.23
-  m_Pitch: 1
+  m_Volume: 0.3
+  m_Pitch: 0.92
   Loop: 0
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128

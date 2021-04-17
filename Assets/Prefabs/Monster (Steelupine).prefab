@@ -420,8 +420,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Steelupine
-  attack: 300
+  originalAttack: 0
+  attack: 335
+  originalDefense: 0
   defense: 190
+  originalSpeed: 0
   speed: 4
   maxHP: 800
   currentHP: 800
@@ -433,12 +436,18 @@ MonoBehaviour:
   deathBreathTurnsLeft: 0
   isDebuffed: 0
   debuffedTurnsLeft: 0
+  debuffedAttackAmount: 0
+  debuffedDefenseAmount: 0
+  debuffedSpeedAmount: 0
   isBuffed: 0
   buffedTurnsLeft: 0
+  buffedAttackAmount: 0
+  buffedDefenseAmount: 0
+  buffedSpeedAmount: 0
   isDefending: 0
   specialAbilityName: Bubble
   specialAbilityDescription: Attack
-  specialDamage: 0
+  specialDamage: 440
   isSpecialPoison: 0
   specialPoisonDamage: 0
   specialPoisonDuration: 0
@@ -449,7 +458,7 @@ MonoBehaviour:
   specialDebuffSpeedAmount: 0
   isSpecialDeathBreath: 0
   specialDeathBreathDuration: 0
-  isSpecialHeals: 1
+  isSpecialHeals: 0
   specialHealsAmount: 500
   damageTaken: 0
   animator: {fileID: 0}
@@ -459,7 +468,7 @@ MonoBehaviour:
   hurtSound: {fileID: 8300000, guid: af1f125338b97654d8fa993cdede23f2, type: 3}
   deathSound: {fileID: 8300000, guid: 2a9f65743a817de4594834643b3935e6, type: 3}
   isPlayerMonster: 0
-  playerDamageModifier: 1.1
+  playerDamageModifier: 1.21
   enemyDamageModifier: 0.8
 --- !u!95 &6318846985240183483
 Animator:

@@ -4334,8 +4334,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Gorimite
+  originalAttack: 0
   attack: 340
+  originalDefense: 0
   defense: 260
+  originalSpeed: 0
   speed: 1
   maxHP: 800
   currentHP: 800
@@ -4346,6 +4349,15 @@ MonoBehaviour:
   isDeathBreathed: 0
   deathBreathTurnsLeft: 0
   isDebuffed: 0
+  debuffedTurnsLeft: 0
+  debuffedAttackAmount: 0
+  debuffedDefenseAmount: 0
+  debuffedSpeedAmount: 0
+  isBuffed: 0
+  buffedTurnsLeft: 0
+  buffedAttackAmount: 0
+  buffedDefenseAmount: 0
+  buffedSpeedAmount: 0
   isDefending: 0
   specialAbilityName: Seed
   specialAbilityDescription: Poison
@@ -4370,7 +4382,7 @@ MonoBehaviour:
   hurtSound: {fileID: 8300000, guid: 20dda93867b47d84fb3d4ae4ef7b0c1a, type: 3}
   deathSound: {fileID: 8300000, guid: 8778cba5f3a29b441988ab18d5ab4f8a, type: 3}
   isPlayerMonster: 0
-  playerDamageModifier: 1.1
+  playerDamageModifier: 1.21
   enemyDamageModifier: 0.8
 --- !u!95 &6815554699448209572
 Animator:

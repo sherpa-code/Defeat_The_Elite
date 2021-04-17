@@ -2152,8 +2152,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Peliral
+  originalAttack: 0
   attack: 350
+  originalDefense: 0
   defense: 260
+  originalSpeed: 0
   speed: 6
   maxHP: 900
   currentHP: 900
@@ -2164,10 +2167,19 @@ MonoBehaviour:
   isDeathBreathed: 0
   deathBreathTurnsLeft: 0
   isDebuffed: 0
+  debuffedTurnsLeft: 0
+  debuffedAttackAmount: 0
+  debuffedDefenseAmount: 0
+  debuffedSpeedAmount: 0
+  isBuffed: 0
+  buffedTurnsLeft: 0
+  buffedAttackAmount: 0
+  buffedDefenseAmount: 0
+  buffedSpeedAmount: 0
   isDefending: 0
   specialAbilityName: Razor Wing
   specialAbilityDescription: Attack
-  specialDamage: 380
+  specialDamage: 390
   isSpecialPoison: 0
   specialPoisonDamage: 0
   specialPoisonDuration: 0
@@ -2188,7 +2200,7 @@ MonoBehaviour:
   hurtSound: {fileID: 8300000, guid: 65568bafdec25844ea87de2120b2d9ec, type: 3}
   deathSound: {fileID: 8300000, guid: a80337d2d79a43745bd17ef75d2d057c, type: 3}
   isPlayerMonster: 0
-  playerDamageModifier: 1.1
+  playerDamageModifier: 1.21
   enemyDamageModifier: 0.8
 --- !u!95 &7913610366040352652
 Animator:

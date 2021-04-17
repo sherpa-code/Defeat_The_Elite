@@ -485,8 +485,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Horns
+  originalAttack: 0
   attack: 320
+  originalDefense: 0
   defense: 190
+  originalSpeed: 0
   speed: 7
   maxHP: 750
   currentHP: 750
@@ -497,10 +500,19 @@ MonoBehaviour:
   isDeathBreathed: 0
   deathBreathTurnsLeft: 0
   isDebuffed: 0
+  debuffedTurnsLeft: 0
+  debuffedAttackAmount: 0
+  debuffedDefenseAmount: 0
+  debuffedSpeedAmount: 0
+  isBuffed: 0
+  buffedTurnsLeft: 0
+  buffedAttackAmount: 0
+  buffedDefenseAmount: 0
+  buffedSpeedAmount: 0
   isDefending: 0
   specialAbilityName: Charge
   specialAbilityDescription: Attack
-  specialDamage: 400
+  specialDamage: 440
   isSpecialPoison: 0
   specialPoisonDamage: 0
   specialPoisonDuration: 0
@@ -521,7 +533,7 @@ MonoBehaviour:
   hurtSound: {fileID: 8300000, guid: b958966ac5253de4cb55718b8c409203, type: 3}
   deathSound: {fileID: 8300000, guid: 7cd54a3c556867446a7b2493528b0cd0, type: 3}
   isPlayerMonster: 0
-  playerDamageModifier: 1.1
+  playerDamageModifier: 1.21
   enemyDamageModifier: 0.8
 --- !u!95 &5713984364815744253
 Animator:

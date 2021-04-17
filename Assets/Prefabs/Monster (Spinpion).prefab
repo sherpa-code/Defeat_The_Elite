@@ -1375,8 +1375,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Spinpion
-  attack: 300
-  defense: 490
+  originalAttack: 0
+  attack: 315
+  originalDefense: 0
+  defense: 215
+  originalSpeed: 0
   speed: 10
   maxHP: 750
   currentHP: 750
@@ -1387,12 +1390,21 @@ MonoBehaviour:
   isDeathBreathed: 0
   deathBreathTurnsLeft: 0
   isDebuffed: 0
+  debuffedTurnsLeft: 0
+  debuffedAttackAmount: 0
+  debuffedDefenseAmount: 0
+  debuffedSpeedAmount: 0
+  isBuffed: 0
+  buffedTurnsLeft: 0
+  buffedAttackAmount: 0
+  buffedDefenseAmount: 0
+  buffedSpeedAmount: 0
   isDefending: 0
   specialAbilityName: Sting
   specialAbilityDescription: Poison
   specialDamage: 0
   isSpecialPoison: 1
-  specialPoisonDamage: 80
+  specialPoisonDamage: 70
   specialPoisonDuration: 5
   isSpecialDebuff: 0
   specialDebuffDuration: 0
@@ -1411,7 +1423,7 @@ MonoBehaviour:
   hurtSound: {fileID: 8300000, guid: 31f51701b41ae9d43ba2b0cb3dd132b6, type: 3}
   deathSound: {fileID: 8300000, guid: a01f7d01589047342993079d048c04d8, type: 3}
   isPlayerMonster: 0
-  playerDamageModifier: 1.1
+  playerDamageModifier: 1.21
   enemyDamageModifier: 0.8
 --- !u!95 &3361979197227913101
 Animator:

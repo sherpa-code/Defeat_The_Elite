@@ -808,8 +808,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Ramodo
+  originalAttack: 0
   attack: 335
+  originalDefense: 0
   defense: 260
+  originalSpeed: 0
   speed: 5
   maxHP: 950
   currentHP: 950
@@ -820,6 +823,15 @@ MonoBehaviour:
   isDeathBreathed: 0
   deathBreathTurnsLeft: 0
   isDebuffed: 0
+  debuffedTurnsLeft: 0
+  debuffedAttackAmount: 0
+  debuffedDefenseAmount: 0
+  debuffedSpeedAmount: 0
+  isBuffed: 0
+  buffedTurnsLeft: 0
+  buffedAttackAmount: 0
+  buffedDefenseAmount: 0
+  buffedSpeedAmount: 0
   isDefending: 0
   specialAbilityName: Intimidate
   specialAbilityDescription: Condition
@@ -828,10 +840,10 @@ MonoBehaviour:
   specialPoisonDamage: 0
   specialPoisonDuration: 0
   isSpecialDebuff: 1
-  specialDebuffDuration: 3
-  specialDebuffAttackAmount: 20
-  specialDebuffDefenseAmount: 20
-  specialDebuffSpeedAmount: 2
+  specialDebuffDuration: 6
+  specialDebuffAttackAmount: 50
+  specialDebuffDefenseAmount: 50
+  specialDebuffSpeedAmount: 1
   isSpecialDeathBreath: 0
   specialDeathBreathDuration: 0
   isSpecialHeals: 0
@@ -844,7 +856,7 @@ MonoBehaviour:
   hurtSound: {fileID: 8300000, guid: 67093ffc097984d4fb1737bdf46c79df, type: 3}
   deathSound: {fileID: 8300000, guid: 4317acea700a9a847b1fbb35c0d1be42, type: 3}
   isPlayerMonster: 0
-  playerDamageModifier: 1.1
+  playerDamageModifier: 1.21
   enemyDamageModifier: 0.8
 --- !u!95 &3557228038515886606
 Animator:
