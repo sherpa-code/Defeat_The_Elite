@@ -47,7 +47,8 @@ public class BattleSystem : MonoBehaviour {
     public AudioManager audioManager;
     public BGMManager BGMManager;
 
-    public static System.Single messageDisplayTime = 3.2f;
+    public static System.Single messageDisplayTime = 2.9f;
+    //public static System.Single messageDisplayTime = 3.2f;
     //public System.Single attackAnimationTime = 1.5f;
     //public static System.Single attackAnimationTime = messageDisplayTime*0.75f;
     //public static System.Single hurtAnimationTime = messageDisplayTime * 0.75f;
@@ -155,7 +156,8 @@ public class BattleSystem : MonoBehaviour {
             combatReadout.gameObject.SetActive(true);
             isDead = allyMonster.TakeDamage(allyMonster.poisonDamageTaken);
             allyHUD.SetHP(allyMonster.currentHP);
-            StartCoroutine(allyMonster.playHurtAnimation());
+            //StartCoroutine(allyMonster.playHurtAnimation());
+            yield return StartCoroutine(allyMonster.playHurtAnimation());
             yield return new WaitForSeconds(messageDisplayTime);
 
             if (isDead) {
@@ -180,7 +182,8 @@ public class BattleSystem : MonoBehaviour {
                 isDead = true;
                 dialogueText.text = "...and it was critical!";
                 allyHUD.SetHP(0);
-                StartCoroutine(allyMonster.playHurtAnimation());
+                //StartCoroutine(allyMonster.playHurtAnimation());
+                yield return StartCoroutine(allyMonster.playHurtAnimation());
             } else {
                 dialogueText.text = "...but " + allyMonster.monsterName + " survived!";
             }
@@ -243,18 +246,27 @@ public class BattleSystem : MonoBehaviour {
         dialogueText.text = allyMonster.monsterName + " tried to melee attack...";
 
         yield return StartCoroutine(allyMonster.playAttackAnimation());
+        yield return new WaitForSeconds(2f);
         //StartCoroutine(allyMonster.playAttackAnimation());
         //yield return new WaitForSeconds(attackAnimationTime);
 
         dialogueText.text = "The attack was successful!";
+        yield return new WaitForSeconds(messageDisplayTime);
+
         bool isDead = enemyMonster.TakeDamage(allyMonster.attack);
+        yield return StartCoroutine(enemyMonster.playHurtAnimation());
 
         enemyHUD.SetHP(enemyMonster.currentHP);
+        dialogueText.text = enemyMonster.monsterName + " took " + enemyMonster.lastDamageTaken + " damage!";
+        yield return new WaitForSeconds(messageDisplayTime);
+        
 
         if (isDead) {
-            StartCoroutine(enemyMonster.playDeathAnimation());
+            //StartCoroutine(enemyMonster.playDeathAnimation());
+            yield return StartCoroutine(enemyMonster.playDeathAnimation());
             dialogueText.text = enemyMonster.monsterName + " has died!";
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(messageDisplayTime);
+            //yield return StartCoroutine(allyMonster.playDeathAnimation());
             Destroy(enemyGameObject);
             currentEnemyTeamList.RemoveAt(0);
             if (currentEnemyTeamList.Count > 0) { //if enemy trainer has monsters left
@@ -280,8 +292,9 @@ public class BattleSystem : MonoBehaviour {
                 }
             }
         } else { //if monster lives
-            StartCoroutine(enemyMonster.playHurtAnimation());
-            yield return new WaitForSeconds(3f);
+            //StartCoroutine(enemyMonster.playHurtAnimation());
+            //yield return StartCoroutine(enemyMonster.playHurtAnimation());
+            yield return new WaitForSeconds(messageDisplayTime);
             StartCoroutine(EnemyTurn());
         }
     }
@@ -296,7 +309,8 @@ public class BattleSystem : MonoBehaviour {
             combatReadout.gameObject.SetActive(true);
             isDead = enemyMonster.TakeDamage(enemyMonster.poisonDamageTaken);
             enemyHUD.SetHP(enemyMonster.currentHP);
-            StartCoroutine(enemyMonster.playHurtAnimation());
+            //StartCoroutine(enemyMonster.playHurtAnimation());
+            yield return StartCoroutine(enemyMonster.playHurtAnimation());
             yield return new WaitForSeconds(messageDisplayTime);
 
             if (isDead) {
@@ -319,7 +333,8 @@ public class BattleSystem : MonoBehaviour {
                 isDead = enemyMonster.TakeDamage(enemyMonster.currentHP); // receive all remaining HP in damage for insta-kill
                 dialogueText.text = "...and it was critical!";
                 enemyHUD.SetHP(enemyMonster.currentHP);
-                StartCoroutine(enemyMonster.playHurtAnimation());
+                //StartCoroutine(enemyMonster.playHurtAnimation());
+                yield return StartCoroutine(enemyMonster.playHurtAnimation());
             } else {
                 dialogueText.text = "...but " + enemyMonster.monsterName + " survived!";
             }
@@ -367,23 +382,25 @@ public class BattleSystem : MonoBehaviour {
             playerActions.gameObject.SetActive(false);
             combatReadout.gameObject.SetActive(true);
             yield return new WaitForSeconds(messageDisplayTime);
-            StartCoroutine(enemyMonster.playAttackAnimation());
+            yield return StartCoroutine(enemyMonster.playAttackAnimation());
+            //StartCoroutine(enemyMonster.playAttackAnimation());
             if (enemyMonster.monsterName.EndsWith("s")) {
                 dialogueText.text = enemyMonster.monsterName + "' attack hit!";
             } else {
                 dialogueText.text = enemyMonster.monsterName + "'s attack hit!";
             }
             yield return new WaitForSeconds(messageDisplayTime);
-            StartCoroutine(allyMonster.playHurtAnimation());
+            //StartCoroutine(allyMonster.playHurtAnimation());
+            yield return StartCoroutine(allyMonster.playHurtAnimation());
             isDead = allyMonster.TakeDamage(enemyMonster.attack);
             allyHUD.SetHP(allyMonster.currentHP);
         } else {
-            dialogueText.text = enemyMonster.monsterName + " tries " + enemyMonster.specialAbilityName + "...";
             playerActions.gameObject.SetActive(false);
             combatReadout.gameObject.SetActive(true);
-
+            dialogueText.text = enemyMonster.monsterName + " tries " + enemyMonster.specialAbilityName + "...";
             yield return new WaitForSeconds(messageDisplayTime);
-            StartCoroutine(enemyMonster.playSpecialAnimation());
+            //StartCoroutine(enemyMonster.playSpecialAnimation());
+            yield return StartCoroutine(enemyMonster.playSpecialAnimation());
             yield return new WaitForSeconds(messageDisplayTime * 0.9f);
             //if (enemyMonster.specialAbilityName == "Death Breath") {
             if (enemyMonster.isSpecialDeathBreath) {
@@ -393,7 +410,8 @@ public class BattleSystem : MonoBehaviour {
                 } else {
                     dialogueText.text = enemyMonster.specialAbilityName + " was successful!";
                     yield return new WaitForSeconds(messageDisplayTime);
-                    StartCoroutine(allyMonster.playHurtAnimation());
+                    yield return StartCoroutine(allyMonster.playHurtAnimation());
+                    //StartCoroutine(allyMonster.playHurtAnimation());
                     dialogueText.text = allyMonster.monsterName + " is at risk of perishing from the smell...";
                     yield return new WaitForSeconds(messageDisplayTime);
                     allyMonster.deathBreathTurnsLeft = enemyMonster.specialDeathBreathDuration;
@@ -409,7 +427,8 @@ public class BattleSystem : MonoBehaviour {
                 } else {
                     dialogueText.text = enemyMonster.specialAbilityName + " was successful!";
                     yield return new WaitForSeconds(messageDisplayTime);
-                    StartCoroutine(allyMonster.playHurtAnimation());
+                    //StartCoroutine(allyMonster.playHurtAnimation());
+                    yield return StartCoroutine(allyMonster.playHurtAnimation());
                     dialogueText.text = allyMonster.monsterName + " became poisoned!";
                     yield return new WaitForSeconds(messageDisplayTime);
                     allyMonster.poisonDamageTaken = enemyMonster.specialPoisonDamage;
@@ -433,7 +452,8 @@ public class BattleSystem : MonoBehaviour {
                 }
             } else {
                 dialogueText.text = enemyMonster.specialAbilityName + " was successful...";
-                StartCoroutine(allyMonster.playHurtAnimation());
+                //StartCoroutine(allyMonster.playHurtAnimation());
+                yield return StartCoroutine(allyMonster.playHurtAnimation());
                 isDead = allyMonster.TakeDamage(enemyMonster.specialDamage);
                 allyHUD.SetHP(allyMonster.currentHP);
             }
@@ -442,7 +462,8 @@ public class BattleSystem : MonoBehaviour {
 
         if (isDead) {
             lastMonster = Instantiate(allyTeamList[0], lastMonsterTransform);
-            StartCoroutine(allyMonster.playDeathAnimation());
+            yield return StartCoroutine(allyMonster.playDeathAnimation());
+            //StartCoroutine(allyMonster.playDeathAnimation());
             dialogueText.text = allyMonster.monsterName + " has died!";
             yield return new WaitForSeconds(4f);
             Destroy(allyGameObject);
@@ -521,8 +542,10 @@ public class BattleSystem : MonoBehaviour {
         combatReadout.gameObject.SetActive(true);
 
         dialogueText.text = allyMonster.monsterName + " tried " + allyMonster.specialAbilityName + "...";
-        StartCoroutine(allyMonster.playSpecialAnimation());
+        //StartCoroutine(allyMonster.playSpecialAnimation());
+        yield return StartCoroutine(allyMonster.playSpecialAnimation());
         yield return new WaitForSeconds(messageDisplayTime);
+        //yield return new WaitForSeconds(messageDisplayTime);
 
         if (allyMonster.isSpecialPoison) {
             if (enemyMonster.isSpecialPoison) {
@@ -533,8 +556,9 @@ public class BattleSystem : MonoBehaviour {
                 yield return new WaitForSeconds(messageDisplayTime);
             } else {
                 dialogueText.text = allyMonster.specialAbilityName + " was successful!";
-                StartCoroutine(enemyMonster.playHurtAnimation());
-                yield return new WaitForSeconds(messageDisplayTime);
+                //StartCoroutine(enemyMonster.playHurtAnimation());
+                yield return StartCoroutine(enemyMonster.playHurtAnimation());
+                //yield return new WaitForSeconds(messageDisplayTime);
                 dialogueText.text = enemyMonster.monsterName + " became poisoned!";
                 yield return new WaitForSeconds(messageDisplayTime);
                 enemyMonster.isPoisoned = true;
@@ -547,8 +571,9 @@ public class BattleSystem : MonoBehaviour {
                 yield return new WaitForSeconds(messageDisplayTime);
             } else {
                 dialogueText.text = allyMonster.specialAbilityName + " was successful!";
-                StartCoroutine(enemyMonster.playHurtAnimation());
-                yield return new WaitForSeconds(messageDisplayTime);
+                //StartCoroutine(enemyMonster.playHurtAnimation());
+                yield return StartCoroutine(enemyMonster.playHurtAnimation());
+                //yield return new WaitForSeconds(messageDisplayTime);
                 dialogueText.text = "Now " + enemyMonster.monsterName + " can smell the Death Breath!";
                 yield return new WaitForSeconds(messageDisplayTime);
                 enemyMonster.isDeathBreathed = true;
@@ -585,11 +610,13 @@ public class BattleSystem : MonoBehaviour {
             dialogueText.text = allyMonster.specialAbilityName + " was successful!";
             isDead = enemyMonster.TakeDamage(allyMonster.specialDamage);
             enemyHUD.SetHP(enemyMonster.currentHP);
-            StartCoroutine(enemyMonster.playHurtAnimation());
-            yield return new WaitForSeconds(messageDisplayTime);
+            //StartCoroutine(enemyMonster.playHurtAnimation());
+            yield return StartCoroutine(enemyMonster.playHurtAnimation());
+            //yield return new WaitForSeconds(messageDisplayTime);
 
             if (isDead) {
-                StartCoroutine(enemyMonster.playDeathAnimation());
+                //StartCoroutine(enemyMonster.playDeathAnimation());
+                yield return StartCoroutine(enemyMonster.playDeathAnimation());
                 dialogueText.text = enemyMonster.monsterName + " has died!";
                 yield return new WaitForSeconds(5f);
                 Destroy(enemyGameObject);
@@ -681,9 +708,10 @@ public class BattleSystem : MonoBehaviour {
     }
 
     public IEnumerator monsterDied(Monster monster) { // TODO: implement for poison and death breath; testing
-        StartCoroutine(monster.playDeathAnimation());
+        //StartCoroutine(monster.playDeathAnimation());
+        yield return StartCoroutine(monster.playDeathAnimation());
         dialogueText.text = monster.monsterName + " has died!";
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
 
         if (monster.isPlayerMonster) {
             //Debug.Log("Ally monster died");
@@ -718,8 +746,9 @@ public class BattleSystem : MonoBehaviour {
     public IEnumerator allyMonsterDied(Monster monster) {
         //Debug.Log("Ally monster died!");
         //StartCoroutine(allyMonster.playDeathAnimation());
-        StartCoroutine(monster.playDeathAnimation());
+        //StartCoroutine(monster.playDeathAnimation());
         dialogueText.text = allyMonster.monsterName + " has died!";
+        yield return StartCoroutine(monster.playDeathAnimation());
         yield return new WaitForSeconds(4f);
         lastMonster = Instantiate(allyTeamList[0], lastMonsterTransform);
         Destroy(allyGameObject);
@@ -738,7 +767,8 @@ public class BattleSystem : MonoBehaviour {
     public IEnumerator enemyMonsterDied(Monster monster) {
         //Debug.Log("Enemy monster died!");
         //StartCoroutine(enemyMonster.playDeathAnimation());
-        StartCoroutine(monster.playDeathAnimation());
+        yield return StartCoroutine(monster.playDeathAnimation());
+        //StartCoroutine(monster.playDeathAnimation());
         dialogueText.text = enemyMonster.monsterName + " has died!";
         yield return new WaitForSeconds(4f);
         lastMonster = Instantiate(currentEnemyTeamList[0], lastMonsterTransform);
