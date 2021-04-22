@@ -19249,7 +19249,7 @@ AudioSource:
   m_Volume: 0.3
   m_Pitch: 0.92
   Loop: 0
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128

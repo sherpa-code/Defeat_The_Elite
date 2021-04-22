@@ -68,6 +68,9 @@ public class Monster : MonoBehaviour {
     //public double enemyDamageModifier = 50000;
     public float enemyDamageModifier = 50000f;
 
+    System.Single currentAnimLength;
+    System.Single currentAnimBlendLength = 0.8f;
+
     void Start() {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
@@ -162,6 +165,7 @@ public class Monster : MonoBehaviour {
             currentHP += amount;
             return amount;
         }
+
     }
 
     //public int Heal(int amount) { // TODO: confirm that this logic works (simpler version of above)
@@ -186,28 +190,49 @@ public class Monster : MonoBehaviour {
     public IEnumerator playHurtAnimation() {
         audioSource.PlayOneShot(hurtSound);
         animator.SetBool("Was Hit", true);
-        yield return new WaitForEndOfFrame();
+        //yield return new WaitForEndOfFrame();
+        currentAnimLength = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(currentAnimLength - currentAnimLength * currentAnimBlendLength);
         animator.SetBool("Was Hit", false);
+        Debug.Log("playHurtAnimation() ended");
     }
+
+    //public IEnumerator playHurtAnimation() {
+    //    audioSource.PlayOneShot(hurtSound);
+    //    animator.SetBool("Was Hit", true);
+    //    yield return new WaitForEndOfFrame();
+    //    animator.SetBool("Was Hit", false);
+    //}
 
     public IEnumerator playDeathAnimation() {
         audioSource.PlayOneShot(deathSound);
         animator.SetBool("Was Hit", true);
-        yield return new WaitForEndOfFrame();
+        //yield return new WaitForEndOfFrame();
+        currentAnimLength = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(currentAnimLength - currentAnimLength * currentAnimBlendLength);
         animator.SetBool("Dead", true);
     }
 
     public IEnumerator playAttackAnimation() {
         audioSource.PlayOneShot(attackSound);
         animator.SetBool("Melee Attacking", true);
-        yield return new WaitForEndOfFrame(); ;
+        //while (animation.IsPlaying("yourAnimation")) {
+        //    yield;
+        //}
+        //yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length + animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        //yield return new WaitForEndOfFrame();
+        //yield return new WaitForSeconds(5f);
+        currentAnimLength = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(currentAnimLength - currentAnimLength * currentAnimBlendLength);
         animator.SetBool("Melee Attacking", false);
     }
 
     public IEnumerator playSpecialAnimation() {
         audioSource.PlayOneShot(specialSound);
         animator.SetBool("Magic Attacking", true);
-        yield return new WaitForEndOfFrame();
+        //yield return new WaitForEndOfFrame();
+        currentAnimLength = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(currentAnimLength - currentAnimLength * currentAnimBlendLength);
         animator.SetBool("Magic Attacking", false);
     }
 
