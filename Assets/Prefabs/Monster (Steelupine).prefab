@@ -420,6 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Steelupine
+  isAllyMonster: 0
   originalAttack: 0
   attack: 335
   originalDefense: 0
@@ -445,7 +446,7 @@ MonoBehaviour:
   buffedDefenseAmount: 0
   buffedSpeedAmount: 0
   isDefending: 0
-  specialAbilityName: Bubble
+  specialAbilityName: Aquaslap
   specialAbilityDescription: Attack
   specialDamage: 440
   isSpecialPoison: 0
@@ -467,9 +468,9 @@ MonoBehaviour:
   specialSound: {fileID: 8300000, guid: b925e0ae63097b346914f62dc0d1d133, type: 3}
   hurtSound: {fileID: 8300000, guid: af1f125338b97654d8fa993cdede23f2, type: 3}
   deathSound: {fileID: 8300000, guid: 2a9f65743a817de4594834643b3935e6, type: 3}
-  isPlayerMonster: 0
   playerDamageModifier: 1.21
   enemyDamageModifier: 0.8
+  lastDamageTaken: 0
 --- !u!95 &6318846985240183483
 Animator:
   serializedVersion: 3

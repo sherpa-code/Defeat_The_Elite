@@ -7,7 +7,7 @@ using System;
 
 public class Monster : MonoBehaviour {
     public string monsterName;
-
+    public bool isAllyMonster = false;
     public int originalAttack;
     public int attack;
     public int originalDefense;
@@ -62,7 +62,7 @@ public class Monster : MonoBehaviour {
     public AudioClip hurtSound;
     public AudioClip deathSound;
 
-    public bool isPlayerMonster = false;
+
     //public double playerDamageModifier = 1.1; // Used to balance combat
     public double playerDamageModifier = 3.0; // DEBUG
     //public bool isEnemyMonster = false;
@@ -128,9 +128,9 @@ public class Monster : MonoBehaviour {
         int damageApplied;
         
 
-        if (isPlayerMonster) {
+        if (isAllyMonster) {
             damageApplied = (int)Math.Round(damageOutput * enemyDamageModifier);
-            Debug.Log("isPlayerMonster and damageOutput*enemyMod = " + damageApplied);
+            Debug.Log("isAllyMonster and damageOutput*enemyMod = " + damageApplied);
         } else {
             damageApplied = (int)Math.Round(damageOutput * playerDamageModifier);
             Debug.Log("isEnemyMonster and damageOutput*playerMod = " + damageApplied);

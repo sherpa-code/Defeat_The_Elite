@@ -54,6 +54,8 @@ public class NameEntryScript : MonoBehaviour
     }
 
     public void RandomName() {
+        Debug.Log("RandomName button pressed");
+        audioManager.playBlip();
         int roll = r.Next(0, randomNames.Count);
 
         //Debug.Log("name roll = " + roll + " which is: " + randomNames[roll]);
