@@ -62,13 +62,10 @@ public class Monster : MonoBehaviour {
     public AudioClip hurtSound;
     public AudioClip deathSound;
 
-
-    //public double playerDamageModifier = 1.1; // Used to balance combat
-    public double playerDamageModifier = 3.0; // DEBUG
-    //public bool isEnemyMonster = false;
-    //public double enemyDamageModifier = 0.8; // Used to balance combat
-    //public double enemyDamageModifier = 50000;
-    public float enemyDamageModifier = 50000f;
+    public double playerDamageModifier; // Used to balance combat
+    public double playerSpecialDamageModifier; // Used to balance combat
+    public float enemyDamageModifier; // Used to balance combat
+    public double enemySpecialDamageModifier; // Used to balance combat
 
     System.Single animLength;
     System.Single animBlendFactor = 0.35f;
@@ -87,10 +84,17 @@ public class Monster : MonoBehaviour {
         originalSpeed = speed;
     }
 
+    public void UpdateNeedsHeals() {
+        //if (monster.currentHP <= 450) { // DEBUG
+        if (currentHP <= (maxHP * 0.6)) { // TODO: test and confirm multiplying by double works here
+            needsHeals = true;
+        } else {
+            needsHeals = false;
+        }
+    }
+
     public void updateMyStats() {
-        //attack = originalAttack;
-        //defense = originalDefense;
-        //speed = originalSpeed;i
+        UpdateNeedsHeals();
 
         attack = attack - debuffedAttackAmount + buffedAttackAmount;
         defense = defense - debuffedDefenseAmount + buffedDefenseAmount;
@@ -107,39 +111,44 @@ public class Monster : MonoBehaviour {
             debuffedDefenseAmount = 0;
             debuffedSpeedAmount = 0;
         }
-
-        
     }
 
-    //public void updateMyStats() {
-    //    if (isDebuffed) {
-    //        attack = attack - debuffedAttackAmount;
-    //        defense = defense - debuffedDefenseAmount;
-    //        speed = speed - debuffedSpeedAmount;
-    //    } else {
-    //        attack = originalAttack;
-    //        defense = originalDefense;
-    //        speed = originalSpeed;
-    //    }
-    //}
-
     public int calculateDamage(int damageInput) {
-        //double damageOutput = damageInput * (100.0 / (10.0 + defense));
         float damageOutput = damageInput * (100.0f / (10.0f + defense));
         Debug.Log("damageApplied = " + damageOutput);
         int damageApplied;
-        
 
         if (isAllyMonster) {
             damageApplied = (int)Math.Round(damageOutput * enemyDamageModifier);
-            Debug.Log("isAllyMonster and damageOutput*enemyMod = " + damageApplied);
+            Debug.Log("isAllyMonster damage taken = " + damageApplied);
         } else {
             damageApplied = (int)Math.Round(damageOutput * playerDamageModifier);
-            Debug.Log("isEnemyMonster and damageOutput*playerMod = " + damageApplied);
+            Debug.Log("isEnemyMonster damage taken = " + damageApplied);
         }
-
         
         return damageApplied;
+    }
+
+    public bool TakeDirectDamage(int damageInput) {
+        float damageApplied;
+
+        if (isAllyMonster) {
+            damageApplied = (int)Math.Round(damageInput * enemyDamageModifier);
+            //Debug.Log("isAllyMonster and damageOutput*enemyMod = " + damageApplied);
+        } else {
+            damageApplied = (int)Math.Round(damageInput * playerDamageModifier);
+            //Debug.Log("isEnemyMonster and damageOutput*playerMod = " + damageApplied);
+        }
+
+        lastDamageTaken = (int)damageApplied;
+
+        if (currentHP - (int)damageApplied < 0) {
+            currentHP = 0;
+        } else {
+            currentHP -= (int)damageApplied;
+        }
+
+        return HasDied();
     }
 
     public bool TakeDamage(int damageInput) {
@@ -153,8 +162,8 @@ public class Monster : MonoBehaviour {
             currentHP -= damageTaken;
         }
 
-        //waitingMonster
         
+
         return HasDied();
     }
 
@@ -184,6 +193,7 @@ public class Monster : MonoBehaviour {
         animator.SetBool("Was Hit", true);
         animLength = animator.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSeconds(animLength * animBlendFactor);
+        //yield return new WaitForSeconds(animLength);
         animator.SetBool("Was Hit", false);
         Debug.Log("playHurtAnimation() ended");
     }
@@ -199,12 +209,7 @@ public class Monster : MonoBehaviour {
     public IEnumerator playAttackAnimation() {
         audioSource.PlayOneShot(attackSound);
         animator.SetBool("Melee Attacking", true);
-        //while (animation.IsPlaying("yourAnimation")) {
-        //    yield;
-        //}
-        //yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length + animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
         animLength = animator.GetCurrentAnimatorStateInfo(0).length;
-        //yield return new WaitForSeconds(animLength - animLength * animBlendFactor);
         yield return new WaitForSeconds(animLength * animBlendFactor);
         animator.SetBool("Melee Attacking", false);
     }

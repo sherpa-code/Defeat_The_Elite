@@ -61,7 +61,6 @@ public class TeamSelectionScript : MonoBehaviour
         battleSystem.allyTeamList = new List<Monster>(teamList);
         gameObject.SetActive(false);
         battleSystem.beginGame();
-        
     }
 
     public void OnCancelButton()
@@ -77,12 +76,7 @@ public class TeamSelectionScript : MonoBehaviour
         audioManager.playBlip();
         for (int i=0; i<3; i++)
         {
-            //battleSystem.allyTeamList[i] = monsterSelectScript.monsterList[r.Next(0, 9)];
-            //teamList[i] = battleSystem.allyTeamList[i]
-
-            teamList[i] = monsterSelectScript.monsterList[r.Next(0, 9)];
-
-            //Debug.Log(battleSystem.allyTeamList[i].monsterName);
+            teamList[i] = monsterSelectScript.monsterList[r.Next(0, 10)];
         }
 
         UpdateTeamPreviews();
@@ -149,5 +143,4 @@ public class TeamSelectionScript : MonoBehaviour
             confirmButton.interactable = false;
         }
     }
-
 }
