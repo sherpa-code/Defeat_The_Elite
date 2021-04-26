@@ -15,6 +15,7 @@ public class BattleSystem : MonoBehaviour {
     public Monster allyMonster;
     public Monster enemyMonster;
     public Monster actingMonster;
+    public Monster waitingMonster;
 
     public Image playerActions;
     public Image gameOverHUD;
@@ -49,7 +50,7 @@ public class BattleSystem : MonoBehaviour {
     public BGMManager BGMManager;
 
     //public static System.Single messageDisplayTime = 3.1f;
-    public static System.Single messageDisplayTime = 2f; // DEBUG
+    public static System.Single messageDisplayTime = 1.5f; // DEBUG
     public static System.Single attackAnimationTime = messageDisplayTime * 0.9f;
     public static System.Single hurtAnimationTime = messageDisplayTime * 0.85f;
 
@@ -105,14 +106,17 @@ public class BattleSystem : MonoBehaviour {
         string isPlayerFaster = IsPlayerFaster();
         if (isPlayerFaster == "yes") {
             actingMonster = allyMonster;
+            waitingMonster = enemyMonster;
             yield return StartCoroutine(displayCombatMessage("Your " + allyMonster.monsterName + " is faster and acts first!"));
         } else if (isPlayerFaster == "tie") {
             yield return StartCoroutine(displayCombatMessage("Both monsters are equally fast!"));
             if (r.Next(0, 2) == 0) {
                 actingMonster = allyMonster;
+                waitingMonster = enemyMonster;
                 yield return StartCoroutine(displayCombatMessage("Your " + allyMonster.monsterName + " acts first!"));
             } else {
                 actingMonster = enemyMonster;
+                waitingMonster = allyMonster;
                 if (currentEnemyTrainer.firstName.EndsWith("s")) {
                     yield return StartCoroutine(displayCombatMessage(currentEnemyTrainer.firstName + "' " + enemyMonster.monsterName + " acts first!"));
                 } else {
@@ -121,6 +125,7 @@ public class BattleSystem : MonoBehaviour {
             }
         } else {
             actingMonster = enemyMonster;
+            waitingMonster = allyMonster;
             if (currentEnemyTrainer.firstName.EndsWith("s")) {
                 yield return StartCoroutine(displayCombatMessage(currentEnemyTrainer.firstName + "' " + enemyMonster.monsterName + " acts first!"));
             } else {
@@ -133,14 +138,15 @@ public class BattleSystem : MonoBehaviour {
     public void SwapActingMonster() {
         if (actingMonster.isAllyMonster) {
             actingMonster = enemyMonster;
+            waitingMonster = allyMonster;
         } else {
             actingMonster = allyMonster;
+            waitingMonster = enemyMonster;
         }
     }
 
     public IEnumerator TrainerTurn() { // TODO implement entirely
         switchToUI("readout");
-        //yield return StartCoroutine(WaitForSeconds(0f));
         if (actingMonster.isDefending) {
             actingMonster.defense = actingMonster.defense / 2;
             actingMonster.isDefending = false;
@@ -178,35 +184,43 @@ public class BattleSystem : MonoBehaviour {
         }
 
         yield return StartCoroutine(MonsterDebuffed(actingMonster));
-
         yield return StartCoroutine(MonsterBuffed(actingMonster));
 
         if (actingMonster.isAllyMonster) {
             switchToUI("actions");
         } else {
             StartCoroutine(EnemyAction());
-            //StartCoroutine(); TODO: new coroutine for enemy decisions only
         }
+    }
+
+    public IEnumerator MonsterAttack(Monster monster) {
+        //Debug.Log("waitingMonster = " + waitingMonster.monsterName );
+        StartCoroutine(monster.playAttackAnimation());
+        yield return StartCoroutine(displayCombatMessage(monster.monsterName + " attacks..."));
+        //waitingMonster.TakeDamage(actingMonster.attack);
+        waitingMonster.TakeDamage(monster.attack);
+        StartCoroutine(waitingMonster.playHurtAnimation());
+
+        if (monster.isAllyMonster) {
+            enemyHUD.SetHP(enemyMonster.currentHP);
+        } else {
+            allyHUD.SetHP(allyMonster.currentHP);
+        }
+
+        if (monster.monsterName.EndsWith("s")) {
+            yield return StartCoroutine(displayCombatMessage(monster.monsterName + "' attack hit!"));
+        } else {
+            yield return StartCoroutine(displayCombatMessage(monster.monsterName + "'s attack hit!"));
+        }
+
+        yield return StartCoroutine(displayCombatMessage(waitingMonster.monsterName + " took " + waitingMonster.lastDamageTaken + " damage!"));
     }
 
     public IEnumerator EnemyAction() {
         string decision = EnemyDecision();
-        //decision = "special"; // DEBUG
 
         if (decision == "melee") {
-            StartCoroutine(enemyMonster.playAttackAnimation());
-            yield return StartCoroutine(displayCombatMessage(enemyMonster.monsterName + " attacks..."));
-            if (enemyMonster.monsterName.EndsWith("s")) {
-                yield return StartCoroutine(displayCombatMessage(enemyMonster.monsterName + "' attack hit!"));
-            } else {
-                yield return StartCoroutine(displayCombatMessage(enemyMonster.monsterName + "'s attack hit!"));
-            }
-            //isDead = allyMonster.TakeDamage(enemyMonster.attack);
-            allyMonster.TakeDamage(enemyMonster.attack);
-            allyHUD.SetHP(allyMonster.currentHP);
-            StartCoroutine(allyMonster.playHurtAnimation());
-            yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " took " + allyMonster.lastDamageTaken + " damage!"));
-
+            yield return StartCoroutine(MonsterAttack(enemyMonster));
         } else {
             StartCoroutine(enemyMonster.playSpecialAnimation());
             yield return StartCoroutine(displayCombatMessage(enemyMonster.monsterName + " tries " + enemyMonster.specialAbilityName + "..."));
@@ -247,7 +261,6 @@ public class BattleSystem : MonoBehaviour {
                 }
             } else {
                 StartCoroutine(allyMonster.playHurtAnimation());
-                //isDead = allyMonster.TakeDamage(enemyMonster.specialDamage);
                 allyMonster.TakeDamage(enemyMonster.specialDamage);
                 allyHUD.SetHP(allyMonster.currentHP);
                 yield return StartCoroutine(displayCombatMessage(enemyMonster.specialAbilityName + " was successful..."));
@@ -255,7 +268,6 @@ public class BattleSystem : MonoBehaviour {
         }
 
         if (enemyMonster.currentHP <= 0) {
-            //if (isDead) {
             lastMonster = Instantiate(allyTeamList[0], lastMonsterTransform);
             StartCoroutine(allyMonster.playDeathAnimation());
             yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " has died!"));
@@ -263,7 +275,6 @@ public class BattleSystem : MonoBehaviour {
             Destroy(allyGameObject);
 
             if (allyTeamList.Count > 0) {
-                //yield return new WaitForSeconds(messageDisplayTime);
                 yield return StartCoroutine(spawnAllyMonster(0));        // TODO: Add a way to select 0 or 1, AKA select which of 2 remaining monsters to send out
                 yield return new WaitForSeconds(messageDisplayTime);
                 StartCoroutine(checkSpeedAndContinue());
@@ -274,7 +285,6 @@ public class BattleSystem : MonoBehaviour {
         } else {
             SwapActingMonster();
             StartCoroutine(TrainerTurn());
-            //StartCoroutine(PlayerTurn());
         }
     }
 
@@ -283,7 +293,8 @@ public class BattleSystem : MonoBehaviour {
         yield return StartCoroutine(displayCombatMessage(monster.monsterName + " has died!"));
         if (monster.isAllyMonster) {
             lastMonster = Instantiate(allyTeamList[0], lastMonsterTransform);
-            allyTeamList.RemoveAt(0); Destroy(allyGameObject);
+            allyTeamList.RemoveAt(0);
+            Destroy(allyGameObject);
             if (allyTeamList.Count > 0) {
                 yield return StartCoroutine(spawnAllyMonster(0)); //TODO: Add a way to select which of 2 remaining monsters to send out
                 StartCoroutine(checkSpeedAndContinue());
@@ -304,81 +315,14 @@ public class BattleSystem : MonoBehaviour {
     }
 
     public IEnumerator PlayerAttack() {
-        StartCoroutine(allyMonster.playAttackAnimation());
-        yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " tried to melee attack..."));
-        enemyMonster.TakeDamage(allyMonster.attack);
-        enemyHUD.SetHP(enemyMonster.currentHP);
-        StartCoroutine(enemyMonster.playHurtAnimation());
-        yield return StartCoroutine(displayCombatMessage("The attack was successful!"));
-        yield return StartCoroutine(displayCombatMessage(enemyMonster.monsterName + " took " + enemyMonster.lastDamageTaken + " damage!"));
-
+        yield return StartCoroutine(MonsterAttack(allyMonster));
         if (enemyMonster.currentHP <= 0) {
-            StartCoroutine(enemyMonster.playDeathAnimation());
-            yield return StartCoroutine(displayCombatMessage(enemyMonster.monsterName + " has died!"));
-            Destroy(enemyGameObject);
-            currentEnemyTeamList.RemoveAt(0);
-            if (currentEnemyTeamList.Count > 0) { //if enemy trainer has monsters left
-                yield return StartCoroutine(spawnNextEnemyMonster());
-                StartCoroutine(checkSpeedAndContinue());
-            } else {  // if enemy trainer has no monsters left
-                currentEnemyTrainer.isDefeated = true;
-                if (AllTrainersDefeated()) {
-                    GameOverVictory();
-                } else { //if there are still trainers undefeated
-                    while (currentEnemyTrainer.isDefeated) {
-                        currentEnemyTrainer = enemyTrainers[Random.Range(0, enemyTrainers.Count)];
-                    }
-                    currentEnemyTeamList = new List<Monster>(currentEnemyTrainer.trainerTeam);
-                    yield return StartCoroutine(displayCombatMessage(currentEnemyTrainer.getFullName() + " wants to battle!"));
-                    yield return StartCoroutine(spawnNextEnemyMonster());
-                    StartCoroutine(checkSpeedAndContinue());
-                }
-            }
+            yield return StartCoroutine(MonsterDied(enemyMonster));
         } else { //if monster lives
             SwapActingMonster();
             StartCoroutine(TrainerTurn());
-            //StartCoroutine(EnemyTurn());
         }
     }
-
-    //public IEnumerator IsDeadCheck(Monster monster) {
-    //    if (isDead) {
-    //        if (monster.isAllyMonster) {
-    //            StartCoroutine(allyMonsterDied(allyMonster));
-    //            yield break;
-    //        } else {
-    //            //if (monster.currentHP <= 0) {
-    //            //StartCoroutine(enemyMonsterDied(enemyMonster));
-    //            yield return StartCoroutine(enemyMonsterDied());
-    //            yield break;
-    //        }
-    //    } else {
-    //        if (monster.isAllyMonster) {
-    //            allyMonster.poisonTurnsLeft--;
-    //            if (allyMonster.poisonTurnsLeft <= 0) {
-    //                allyMonster.poisonTurnsLeft = 0;
-    //                allyMonster.isPoisoned = false;
-    //                yield return StartCoroutine(displayCombatMessage("...and the poison wore off!"));
-    //            }
-    //        } else {
-    //            enemyMonster.poisonTurnsLeft--;
-    //            if (enemyMonster.poisonTurnsLeft <= 0) {
-    //                enemyMonster.poisonTurnsLeft = 0;
-    //                enemyMonster.isPoisoned = false;
-    //                yield return StartCoroutine(displayCombatMessage("...and the poison wore off!"));
-    //                //dialogueText.text = "...and the poison wore off!";
-    //                //yield return new WaitForSeconds(messageDisplayTime);
-    //            }
-    //        }
-    //    }
-    //}
-
-    //public IEnumerator IsPoisoned(Monster monster) { yield return new WaitForSeconds(0f); }
-    
-
-
-
-
 
     public IEnumerator MonsterPoisoned(Monster monster) {
         if (monster.isPoisoned) {
@@ -389,8 +333,6 @@ public class BattleSystem : MonoBehaviour {
             } else {
                 enemyHUD.SetHP(monster.currentHP);
             }
-            
-            //StartCoroutine(enemyMonster.playHurtAnimation());
             StartCoroutine(monster.playHurtAnimation());
             yield return StartCoroutine(displayCombatMessage(monster.monsterName + " took " + monster.lastDamageTaken + " damage from poison!"));
         }
@@ -446,10 +388,6 @@ public class BattleSystem : MonoBehaviour {
         }
     }
 
-
-    
-
-
     public bool needsHeals(Monster monster) {
         //double currentHP = monster.currentHP
         if (monster.currentHP <= 450) { // DEBUG
@@ -460,31 +398,22 @@ public class BattleSystem : MonoBehaviour {
     }
 
     public string EnemyDecision() {
-        if (needsHeals(enemyMonster) && enemyMonster.isSpecialHeals) { // TODO: add check for special charges remaining
-            //if (healRoll() == 1) {
-            //    Debug.Log("enemy needs heals and is going to use heal special (steelupine)");
-            //    return "special";
-            //}
+        if (needsHeals(enemyMonster) && enemyMonster.isSpecialHeals) {
             return "special";
         } else if (enemyMonster.isSpecialPoison && !allyMonster.isPoisoned) {
-            //Debug.Log("SPECIAL IS POISON AND ENEMY ISNT");
             if (specialRoll() == 1) {
-                //Debug.Log("enemy has poison special, ally not poisoned, is going to use it (gorimite and spinpion)");
                 return "special";
             }
         } else if (enemyMonster.isSpecialDebuff && !allyMonster.isDebuffed) {
             if (specialRoll() == 1) {
-                //Debug.Log("enemy has debuff, ally not debuffed, is going to use it (dragonewt, quivark, ramodo)");
                 return "special";
             }
         } else if (enemyMonster.isSpecialDeathBreath && !allyMonster.isDeathBreathed) {
             if (specialRoll() == 1) {
-                //Debug.Log("enemy has death breath, ally not death breathed, is going to use it (crotone)");
                 return "special";
             }
         } else {
             if (specialRoll() == 1) {
-                //Debug.Log("ordinary attack special");
                 return "special";
             }
         }
@@ -496,9 +425,7 @@ public class BattleSystem : MonoBehaviour {
     }
 
     public IEnumerator PlayerSpecialAbility() {
-        playerActions.gameObject.SetActive(false);
-        combatReadout.gameObject.SetActive(true);
-
+        switchToUI("readout");
         StartCoroutine(allyMonster.playSpecialAnimation());
         yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " tried " + allyMonster.specialAbilityName + "..."));
 
@@ -546,41 +473,40 @@ public class BattleSystem : MonoBehaviour {
                 yield return StartCoroutine(displayCombatMessage(enemyMonster.monsterName + "'s attack, defense, and speed were lowered!"));
             }
         } else {
-            enemyMonster.TakeDamage(allyMonster.specialDamage);
-            enemyHUD.SetHP(enemyMonster.currentHP);
-            StartCoroutine(enemyMonster.playHurtAnimation());
-            yield return StartCoroutine(displayCombatMessage(allyMonster.specialAbilityName + " was successful!"));
-            
-            if (enemyMonster.currentHP <= 0) {
-                yield return StartCoroutine(MonsterDied(enemyMonster));
-                //Destroy(enemyGameObject);
-                //currentEnemyTeamList.RemoveAt(0);
-                if (currentEnemyTeamList.Count > 0) { //if enemy trainer has monsters left
-                    yield return StartCoroutine(spawnNextEnemyMonster());
-                    //yield return new WaitForSeconds(messageDisplayTime);
-                    StartCoroutine(checkSpeedAndContinue());
-                    yield break;
-                } else {  // if enemy trainer has no monsters left
-                    currentEnemyTrainer.isDefeated = true;
-                    if (AllTrainersDefeated()) {
-                        GameOverVictory();
-                        yield break;
-                    } else { //if there are still trainers undefeated
-                        while (currentEnemyTrainer.isDefeated) {
-                            currentEnemyTrainer = enemyTrainers[Random.Range(0, enemyTrainers.Count)];
-                        }
-                        currentEnemyTeamList = new List<Monster>(currentEnemyTrainer.trainerTeam);
-                        yield return StartCoroutine(displayCombatMessage(currentEnemyTrainer.getFullName() + " wants to battle!"));
-                        yield return StartCoroutine(spawnNextEnemyMonster());
+            int roll = specialRoll();
+            if (roll > 0) {
+                enemyMonster.TakeDamage(allyMonster.specialDamage);
+                enemyHUD.SetHP(enemyMonster.currentHP);
+                StartCoroutine(enemyMonster.playHurtAnimation());
+                yield return StartCoroutine(displayCombatMessage(allyMonster.specialAbilityName + " was successful!"));
+
+                if (enemyMonster.currentHP <= 0) {
+                    yield return StartCoroutine(MonsterDied(enemyMonster));
+                    if (currentEnemyTeamList.Count > 0) { //if enemy trainer has monsters left
                         StartCoroutine(checkSpeedAndContinue());
                         yield break;
+                    } else {  // if enemy trainer has no monsters left
+                        currentEnemyTrainer.isDefeated = true;
+                        if (AllTrainersDefeated()) {
+                            GameOverVictory();
+                            yield break;
+                        } else { //if there are still trainers undefeated
+                            while (currentEnemyTrainer.isDefeated) {
+                                currentEnemyTrainer = enemyTrainers[Random.Range(0, enemyTrainers.Count)];
+                            }
+                            currentEnemyTeamList = new List<Monster>(currentEnemyTrainer.trainerTeam);
+                            yield return StartCoroutine(displayCombatMessage(currentEnemyTrainer.getFullName() + " wants to battle!"));
+                            StartCoroutine(checkSpeedAndContinue());
+                            yield break;
+                        }
                     }
                 }
+            } else {
+                yield return StartCoroutine(displayCombatMessage("... but it missed!"));
             }
         }
         SwapActingMonster();
         StartCoroutine(TrainerTurn());
-        //StartCoroutine(EnemyTurn());
     }
 
     public IEnumerator PlayerDefend() {
@@ -589,7 +515,6 @@ public class BattleSystem : MonoBehaviour {
         yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " is defending.\nDefense raised to " + allyMonster.defense + " until next turn."));
         SwapActingMonster();
         StartCoroutine(TrainerTurn());
-        //StartCoroutine(EnemyTurn());
     }
 
     public void PlayerItems() {
@@ -690,8 +615,7 @@ public class BattleSystem : MonoBehaviour {
 
     public IEnumerator useSmallLeafPotion() {
         itemMenu.gameObject.SetActive(false);
-        playerActions.gameObject.SetActive(false);
-        combatReadout.gameObject.SetActive(true);
+        switchToUI("readout");
         audioManager.playBlip();
         yield return StartCoroutine(displayCombatMessage("You used a small potion on " + allyMonster.monsterName + "."));
         int amountHealed;
@@ -700,13 +624,11 @@ public class BattleSystem : MonoBehaviour {
         yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " was healed for " + amountHealed + "HP!"));
         SwapActingMonster();
         StartCoroutine(TrainerTurn());
-        //StartCoroutine(EnemyTurn());
     }
 
     public IEnumerator useLargeLeafPotion() {
         itemMenu.gameObject.SetActive(false);
-        playerActions.gameObject.SetActive(false);
-        combatReadout.gameObject.SetActive(true);
+        switchToUI("readout");
         audioManager.playBlip();
         yield return StartCoroutine(displayCombatMessage("You used a large potion on " + allyMonster.monsterName + "."));
         allyMonster.currentHP = allyMonster.maxHP;
@@ -714,13 +636,11 @@ public class BattleSystem : MonoBehaviour {
         yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " was healed to max HP!"));
         SwapActingMonster();
         StartCoroutine(TrainerTurn());
-        //StartCoroutine(EnemyTurn());
     }
 
     public IEnumerator useReviveLeaf() {
         itemMenu.gameObject.SetActive(false);
-        playerActions.gameObject.SetActive(false);
-        combatReadout.gameObject.SetActive(true);
+        switchToUI("readout");
         audioManager.playBlip();
         if (allyTeamList.Count == 3) {
             yield return StartCoroutine(displayCombatMessage("You do not have downed monster. You can't revive anything!"));
@@ -731,14 +651,12 @@ public class BattleSystem : MonoBehaviour {
             allyTeamList.Add(lastMonster);
             SwapActingMonster();
             StartCoroutine(TrainerTurn());
-            //StartCoroutine(EnemyTurn());
         }
     }
 
     public IEnumerator useAntidote() {
         itemMenu.gameObject.SetActive(false);
-        playerActions.gameObject.SetActive(false);
-        combatReadout.gameObject.SetActive(true);
+        switchToUI("readout");
         audioManager.playBlip();
         if (allyMonster.isPoisoned) {
             antidoteQty--;
@@ -752,13 +670,11 @@ public class BattleSystem : MonoBehaviour {
         }
         SwapActingMonster();
         StartCoroutine(TrainerTurn());
-        //StartCoroutine(EnemyTurn());
     }
 
     public IEnumerator usePowerGem() {
         itemMenu.gameObject.SetActive(false);
-        playerActions.gameObject.SetActive(false);
-        combatReadout.gameObject.SetActive(true);
+        switchToUI("readout");
         audioManager.playBlip();
         if (allyMonster.isBuffed) {
             yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " is already buffed, you can't buff them twice!"));
@@ -774,7 +690,6 @@ public class BattleSystem : MonoBehaviour {
         }
         SwapActingMonster();
         StartCoroutine(TrainerTurn());
-        //StartCoroutine(EnemyTurn());
     }
 
     public void onSmallPotionButton() {
@@ -803,7 +718,6 @@ public class BattleSystem : MonoBehaviour {
     public void onPowerGemButton() {
         audioManager.playBlip();
         StartCoroutine(usePowerGem());
-
     }
 
     public void updateItemHUD() {
@@ -832,9 +746,7 @@ public class BattleSystem : MonoBehaviour {
 
     public IEnumerator displayCombatMessage(string message) {
         switchToUI("readout");
-
         dialogueText.text = message;
-        //dialogueText.text = "Long multiple line string for testing text wrapping and spacing in the section."; // DEBUG
         yield return new WaitForSeconds(messageDisplayTime);
     }
 
@@ -846,143 +758,6 @@ public class BattleSystem : MonoBehaviour {
     //            specialMoveChargesText.text = "SQUARE HERE"; // TODO fix this LiberationSans square or add a font to project and put a the UNICODE square here to show full or empty charge
     //        }
     //        specialMoveChargesText.text += " ";
-    //    }
-
-    //}
-
-    //public IEnumerator EnemyTurn() {
-    //    switchToUI("readout");
-
-    //    yield return StartCoroutine(MonsterPoisoned(enemyMonster));
-
-    //    if (enemyMonster.isPoisoned) {
-    //        if (enemyMonster.currentHP <= 0) {
-    //            yield return StartCoroutine(enemyMonsterDied());
-    //            yield break;
-    //        }
-    //        enemyMonster.poisonTurnsLeft--;
-    //        if (enemyMonster.poisonTurnsLeft <= 0) {
-    //            enemyMonster.isPoisoned = false;
-    //            yield return StartCoroutine(displayCombatMessage("...and the poison wore off!"));
-    //        }
-    //    }
-
-    //    yield return StartCoroutine(MonsterDeathBreathed(enemyMonster));
-
-    //    if (enemyMonster.isDeathBreathed) {
-    //        if (enemyMonster.currentHP <= 0) {
-    //            yield return StartCoroutine(enemyMonsterDied());
-    //            yield break;
-    //        }
-    //        enemyMonster.deathBreathTurnsLeft--;
-    //        if (enemyMonster.deathBreathTurnsLeft <= 0) {
-    //            enemyMonster.isDeathBreathed = false;
-    //            yield return StartCoroutine(displayCombatMessage("...and the Death Breath wore off!"));
-    //        }
-    //    }
-
-
-    //    yield return StartCoroutine(MonsterDebuffed(enemyMonster)); // ADD BACK
-
-    //    //if (enemyMonster.isDebuffed) {
-    //    //    yield return StartCoroutine(displayCombatMessage(enemyMonster.monsterName + " is still weakened..."));
-    //    //    enemyMonster.debuffedTurnsLeft--;
-    //    //    if (enemyMonster.debuffedTurnsLeft <= 0) {
-    //    //        enemyMonster.debuffedAttackAmount = -enemyMonster.debuffedAttackAmount;
-    //    //        enemyMonster.debuffedDefenseAmount = -enemyMonster.debuffedDefenseAmount;
-    //    //        enemyMonster.debuffedSpeedAmount = -enemyMonster.debuffedSpeedAmount;
-    //    //        enemyMonster.isDebuffed = false;
-    //    //        enemyMonster.updateMyStats();
-    //    //        yield return StartCoroutine(displayCombatMessage("...but " + enemyMonster.monsterName + " regained its strength!"));
-    //    //    }
-    //    //}
-
-    //    // ACTION BEGINS
-    //    string decision = EnemyDecision();
-    //    //decision = "special"; // DEBUG
-
-    //    if (decision == "melee") {
-    //        StartCoroutine(enemyMonster.playAttackAnimation());
-    //        yield return StartCoroutine(displayCombatMessage(enemyMonster.monsterName + " attacks..."));
-    //        if (enemyMonster.monsterName.EndsWith("s")) {
-    //            yield return StartCoroutine(displayCombatMessage(enemyMonster.monsterName + "' attack hit!"));
-    //        } else {
-    //            yield return StartCoroutine(displayCombatMessage(enemyMonster.monsterName + "'s attack hit!"));
-    //        }
-    //        //isDead = allyMonster.TakeDamage(enemyMonster.attack);
-    //        allyMonster.TakeDamage(enemyMonster.attack);
-    //        allyHUD.SetHP(allyMonster.currentHP);
-    //        StartCoroutine(allyMonster.playHurtAnimation());
-    //        yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " took " + allyMonster.lastDamageTaken + " damage!"));
-
-    //    } else {
-    //        StartCoroutine(enemyMonster.playSpecialAnimation());
-    //        yield return StartCoroutine(displayCombatMessage(enemyMonster.monsterName + " tries " + enemyMonster.specialAbilityName + "..."));
-    //        if (enemyMonster.isSpecialDeathBreath) {
-    //            if (allyMonster.isDeathBreathed) {
-    //                yield return StartCoroutine(displayCombatMessage("...but " + allyMonster.monsterName + " already smells the Death Breath!"));
-    //            } else {
-    //                allyMonster.deathBreathTurnsLeft = enemyMonster.specialDeathBreathDuration;
-    //                allyMonster.isDeathBreathed = true;
-    //                StartCoroutine(allyMonster.playHurtAnimation());
-    //                yield return StartCoroutine(displayCombatMessage(enemyMonster.specialAbilityName + " was successful!"));
-    //                yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " is at risk of perishing from the smell..."));
-    //            }
-    //        } else if (enemyMonster.isSpecialPoison) {
-    //            if (allyMonster.isSpecialPoison) {
-    //                yield return StartCoroutine(displayCombatMessage("...but " + allyMonster.monsterName + " is immune to poison!"));
-    //            } else if (allyMonster.isPoisoned) {
-    //                yield return StartCoroutine(displayCombatMessage("...but " + allyMonster.monsterName + " is already poisoned!"));
-    //            } else {
-    //                StartCoroutine(allyMonster.playHurtAnimation());
-    //                yield return StartCoroutine(displayCombatMessage(enemyMonster.specialAbilityName + " was successful!"));
-    //                allyMonster.poisonDamageTaken = enemyMonster.specialPoisonDamage;
-    //                allyMonster.poisonTurnsLeft = enemyMonster.specialPoisonDuration;
-    //                allyMonster.isPoisoned = true;
-    //                yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " became poisoned!"));
-    //            }
-    //        } else if (enemyMonster.isSpecialDebuff) {
-    //            if (allyMonster.isDebuffed) {
-    //                yield return StartCoroutine(displayCombatMessage("...but " + allyMonster.monsterName + " is still debuffed!"));
-    //            } else {
-    //                yield return StartCoroutine(displayCombatMessage(enemyMonster.specialAbilityName + " was successful!"));
-    //                allyMonster.debuffedTurnsLeft = enemyMonster.specialDebuffDuration;
-    //                allyMonster.debuffedAttackAmount = enemyMonster.specialDebuffAttackAmount;
-    //                allyMonster.debuffedDefenseAmount = enemyMonster.specialDebuffDefenseAmount;
-    //                allyMonster.debuffedSpeedAmount = enemyMonster.specialDebuffSpeedAmount;
-    //                allyMonster.isDebuffed = true;
-    //                yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + "'s attack, defense, and speed\nwere lowered!"));
-    //            }
-    //        } else {
-    //            StartCoroutine(allyMonster.playHurtAnimation());
-    //            //isDead = allyMonster.TakeDamage(enemyMonster.specialDamage);
-    //            allyMonster.TakeDamage(enemyMonster.specialDamage);
-    //            allyHUD.SetHP(allyMonster.currentHP);
-    //            yield return StartCoroutine(displayCombatMessage(enemyMonster.specialAbilityName + " was successful..."));
-    //        }
-    //    }
-
-    //    if (enemyMonster.currentHP <= 0) {
-    //        //if (isDead) {
-    //        lastMonster = Instantiate(allyTeamList[0], lastMonsterTransform);
-    //        StartCoroutine(allyMonster.playDeathAnimation());
-    //        yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " has died!"));
-    //        allyTeamList.RemoveAt(0);
-    //        Destroy(allyGameObject);
-
-    //        if (allyTeamList.Count > 0) {
-    //            //yield return new WaitForSeconds(messageDisplayTime);
-    //            yield return StartCoroutine(spawnAllyMonster(0));        // TODO: Add a way to select 0 or 1, AKA select which of 2 remaining monsters to send out
-    //            yield return new WaitForSeconds(messageDisplayTime);
-    //            StartCoroutine(checkSpeedAndContinue());
-    //        } else {
-    //            yield return new WaitForSeconds(messageDisplayTime);
-    //            GameOverLost();
-    //        }
-    //    } else {
-    //        SwapActingMonster();
-    //        StartCoroutine(TrainerTurn());
-    //        //StartCoroutine(PlayerTurn());
     //    }
     //}
 }

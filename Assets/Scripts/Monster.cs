@@ -75,6 +75,8 @@ public class Monster : MonoBehaviour {
 
     public int lastDamageTaken;
 
+    public BattleSystem battleSystem;
+
 
 
     void Start() {
@@ -150,6 +152,8 @@ public class Monster : MonoBehaviour {
         } else {
             currentHP -= damageTaken;
         }
+
+        //waitingMonster
         
         return HasDied();
     }
