@@ -53,6 +53,8 @@ public class BattleSystem : MonoBehaviour {
     //public static System.Single messageDisplayTime = 1.5f; // DEBUG
     public static System.Single attackAnimationTime = messageDisplayTime * 0.9f;
     public static System.Single hurtAnimationTime = messageDisplayTime * 0.85f;
+    public static System.Single fadeUpTime = 2.5f;
+    public static System.Single fadeOutTime = 4f;
 
     public Monster lastMonster;
     public Transform lastMonsterTransform;
@@ -69,6 +71,10 @@ public class BattleSystem : MonoBehaviour {
     public Text antidoteQtyText;
     public Text boostQtyText;
 
+    public ParticleManagerScript particleManager;
+    public GameObject currentParticle;
+    //public static System.Single destroyTime;
+
     public void beginGame() {
         BGMManager.playBattleBGM();
         gameObject.SetActive(true);
@@ -78,7 +84,7 @@ public class BattleSystem : MonoBehaviour {
         switchToUI("readout");
 
         currentEnemyTrainer = enemyTrainers[r.Next(0, enemyTrainers.Count)];
-        //currentEnemyTrainer = enemyTrainers[2]; // DEBUG
+        //currentEnemyTrainer = enemyTrainers[3]; // DEBUG
         //0 = Albus Ommin (Dragonewt, , ) // starts with debuff
         //1 = Bloise Sisko (Needles, , ) // starts with almost fastest
         //2 = Chun Doom (Spinion, , ) // starts with fastest and poison
@@ -146,6 +152,14 @@ public class BattleSystem : MonoBehaviour {
     }
 
     public IEnumerator TrainerTurn() { // TODO implement entirely
+        //GameObject firework = Instantiate(FireworksAll, position, Quaternion.identity);
+        //currentParticle = Instantiate(particlePoison, allySpawnTransform.position, Quaternion.identity);
+        //yield return StartCoroutine(particleManager.PlayAllParticles(allyMonster));
+        //yield return StartCoroutine(particleManager.PlayAllParticles(enemyMonster)); // DEBUG
+
+        for (int i=0; i < 47; i++) {
+
+        }
         switchToUI("readout");
         if (actingMonster.isDefending) {
             actingMonster.defense = actingMonster.defense / 2;
@@ -211,6 +225,7 @@ public class BattleSystem : MonoBehaviour {
             yield return StartCoroutine(displayCombatMessage(monster.monsterName + "'s attack hit!"));
         }
 
+
         yield return StartCoroutine(displayCombatMessage(waitingMonster.monsterName + " took " + waitingMonster.lastDamageTaken + " damage!"));
     }
 
@@ -237,8 +252,11 @@ public class BattleSystem : MonoBehaviour {
 
     public IEnumerator MonsterDied(Monster monster) {
         StartCoroutine(monster.playDeathAnimation());
-        yield return StartCoroutine(displayCombatMessage(monster.monsterName + " has died!"));
+        StartCoroutine(displayCombatMessage(monster.monsterName + " has died!"));
+        currentParticle = Instantiate(particleManager.ball2, waitingMonster.transform.position, Quaternion.identity);
+        yield return StartCoroutine(DestroyParticle(3.5f));
         if (monster.isAllyMonster) {
+
             lastMonster = Instantiate(allyTeamList[0], lastMonsterTransform);
             allyTeamList.RemoveAt(0);
             Destroy(allyGameObject);
@@ -385,6 +403,11 @@ public class BattleSystem : MonoBehaviour {
         return r.Next(0, 9);
     }
 
+    public IEnumerator DestroyParticle(System.Single destroyTime) {
+        yield return new WaitForSeconds(destroyTime);
+        Destroy(currentParticle);
+    }
+
     public IEnumerator MonsterSpecial(Monster monster) {
         switchToUI("readout");
         StartCoroutine(monster.playSpecialAnimation());
@@ -393,6 +416,8 @@ public class BattleSystem : MonoBehaviour {
             if (waitingMonster.isDeathBreathed) {
                 yield return StartCoroutine(displayCombatMessage("...but " + waitingMonster.monsterName + " already smells the Death Breath!"));
             } else {
+                currentParticle = Instantiate(particleManager.portal3, waitingMonster.transform.position, Quaternion.identity);
+                StartCoroutine(DestroyParticle(3.5f));
                 waitingMonster.deathBreathTurnsLeft = monster.specialDeathBreathDuration;
                 waitingMonster.isDeathBreathed = true;
                 StartCoroutine(waitingMonster.playHurtAnimation());
@@ -400,11 +425,16 @@ public class BattleSystem : MonoBehaviour {
                 yield return StartCoroutine(displayCombatMessage(waitingMonster.monsterName + " is at risk of perishing from the smell..."));
             }
         } else if (monster.isSpecialPoison) {
+            Debug.Log("monster isSpecialPoison");
+            //Debug.Log(");
             if (waitingMonster.isSpecialPoison) {
                 yield return StartCoroutine(displayCombatMessage("...but " + waitingMonster.monsterName + " is immune to poison!"));
-            } else if (allyMonster.isPoisoned) {
+            } else if (waitingMonster.isPoisoned) {
                 yield return StartCoroutine(displayCombatMessage("...but " + waitingMonster.monsterName + " is already poisoned!"));
             } else {
+                //currentParticle = Instantiate(partparticlePoison, allySpawnTransform.position, Quaternion.identity);
+                currentParticle = Instantiate(particleManager.ball, waitingMonster.transform.position, Quaternion.identity);
+                StartCoroutine(DestroyParticle(3f));
                 StartCoroutine(waitingMonster.playHurtAnimation());
                 yield return StartCoroutine(displayCombatMessage(monster.specialAbilityName + " was successful!"));
                 waitingMonster.poisonDamageTaken = monster.specialPoisonDamage;
@@ -416,6 +446,8 @@ public class BattleSystem : MonoBehaviour {
             if (waitingMonster.isDebuffed) {
                 yield return StartCoroutine(displayCombatMessage("...but " + waitingMonster.monsterName + " is already weakened!"));
             } else {
+                currentParticle = Instantiate(particleManager.laserBombardment2, waitingMonster.transform.position, Quaternion.identity);
+                StartCoroutine(DestroyParticle(4f));
                 yield return StartCoroutine(displayCombatMessage(monster.specialAbilityName + " was successful!"));
                 waitingMonster.debuffedTurnsLeft = monster.specialDebuffDuration;
                 waitingMonster.debuffedAttackAmount = monster.specialDebuffAttackAmount;
@@ -428,6 +460,8 @@ public class BattleSystem : MonoBehaviour {
         } else {
             int roll = SpecialHitRoll();
             if (roll > 0) {
+                currentParticle = Instantiate(particleManager.explosion, waitingMonster.transform.position, Quaternion.identity);
+                StartCoroutine(DestroyParticle(3f));
                 StartCoroutine(waitingMonster.playHurtAnimation());
                 waitingMonster.TakeDamage(monster.specialDamage);
                 if (waitingMonster.isAllyMonster) {
@@ -472,7 +506,10 @@ public class BattleSystem : MonoBehaviour {
         allyHUD.SetMaxHP(allyMonster.maxHP);
         specialMoveDescriptionText.SetText("(" + allyMonster.specialAbilityName + " - " + allyMonster.specialAbilityDescription.ToString() + ")");
         allyHUD.gameObject.SetActive(true);
-        yield return StartCoroutine(displayCombatMessage("You sent out " + allyMonster.monsterName + "."));
+        currentParticle = Instantiate(particleManager.cube, allyMonster.transform.position, Quaternion.identity);
+        StartCoroutine(displayCombatMessage("You sent out " + allyMonster.monsterName + "."));
+        yield return StartCoroutine(DestroyParticle(4.2f));
+        //yield return StartCoroutine(displayCombatMessage("You sent out " + allyMonster.monsterName + "."));
     }
 
     public IEnumerator spawnNextEnemyMonster() {
@@ -482,16 +519,21 @@ public class BattleSystem : MonoBehaviour {
         enemyHUD.SetHP(enemyMonster.currentHP);
         enemyHUD.SetMaxHP(enemyMonster.maxHP);
         enemyHUD.gameObject.SetActive(true);
-        yield return StartCoroutine(displayCombatMessage(currentEnemyTrainer.firstName + " sent out " + enemyMonster.monsterName + "."));
+        currentParticle = Instantiate(particleManager.cube, enemyMonster.transform.position, Quaternion.identity);
+        StartCoroutine(displayCombatMessage(currentEnemyTrainer.firstName + " sent out " + enemyMonster.monsterName + "."));
+        yield return StartCoroutine(DestroyParticle(4.2f));
+        //yield return StartCoroutine(displayCombatMessage(currentEnemyTrainer.firstName + " sent out " + enemyMonster.monsterName + "."));
     }
     
     public void switchToUI(string ui) {
         if (ui == "actions") {
             playerActions.gameObject.SetActive(true);
             combatReadout.gameObject.SetActive(false);
+            itemMenu.gameObject.SetActive(false);
         } else if (ui == "readout") {
             playerActions.gameObject.SetActive(false);
             combatReadout.gameObject.SetActive(true);
+            itemMenu.gameObject.SetActive(false);
         }
     }
     public void GameOverVictory() {
@@ -551,37 +593,62 @@ public class BattleSystem : MonoBehaviour {
         }
     }
 
-    public IEnumerator useSmallLeafPotion() {
-        itemMenu.gameObject.SetActive(false);
-        switchToUI("readout");
+    public IEnumerator UsePotionSmall() {
+        Debug.Log("Use small potion");
         audioManager.playBlip();
-        yield return StartCoroutine(displayCombatMessage("You used a small potion on " + allyMonster.monsterName + "."));
-        int amountHealed;
-        amountHealed = allyMonster.Heal(300);
-        allyMonster.updateMyStats();
-        allyHUD.SetHP(allyMonster.currentHP);
-        yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " was healed for " + amountHealed + "HP!"));
-        SwapActingMonster();
-        StartCoroutine(TrainerTurn());
+        Debug.Log("current = " + actingMonster.currentHP);
+        Debug.Log("max = " + actingMonster.maxHP);
+        itemMenu.gameObject.SetActive(false);
+        if (actingMonster.currentHP >= actingMonster.maxHP) {
+            yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " is already at full health!"));
+            switchToUI("actions");
+        } else {
+            smallPotionQty--;
+            itemMenu.gameObject.SetActive(false);
+            switchToUI("readout");
+            currentParticle = Instantiate(particleManager.buff, allySpawnTransform.position, Quaternion.identity);
+            yield return StartCoroutine(DestroyParticle(3.5f));
+            yield return StartCoroutine(displayCombatMessage("You used a small potion on " + allyMonster.monsterName + "."));
+            int amountHealed;
+            amountHealed = allyMonster.Heal(300);
+            allyMonster.updateMyStats();
+            allyHUD.SetHP(allyMonster.currentHP);
+            yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " was healed for " + amountHealed + "HP!"));
+            SwapActingMonster();
+            StartCoroutine(TrainerTurn());
+        }
     }
 
-    public IEnumerator useLargeLeafPotion() {
-        itemMenu.gameObject.SetActive(false);
-        switchToUI("readout");
+    public IEnumerator UsePotionLarge() {
+        Debug.Log("Use large potion");
         audioManager.playBlip();
-        yield return StartCoroutine(displayCombatMessage("You used a large potion on " + allyMonster.monsterName + "."));
-        allyMonster.currentHP = allyMonster.maxHP;
-        allyMonster.updateMyStats();
-        allyHUD.SetHP(allyMonster.currentHP);
-        yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " was healed to max HP!"));
-        SwapActingMonster();
-        StartCoroutine(TrainerTurn());
+        Debug.Log("current = " + actingMonster.currentHP);
+        Debug.Log("max = " + actingMonster.maxHP);
+        itemMenu.gameObject.SetActive(false);
+        if (actingMonster.currentHP >= actingMonster.maxHP) {
+            yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " is already at full health!"));
+            switchToUI("actions");
+        } else {
+            largePotionQty--;
+            itemMenu.gameObject.SetActive(false);
+            switchToUI("readout");
+            currentParticle = Instantiate(particleManager.buff, allySpawnTransform.position, Quaternion.identity);
+            yield return StartCoroutine(DestroyParticle(3.5f));
+            yield return StartCoroutine(displayCombatMessage("You used a large potion on " + allyMonster.monsterName + "."));
+            allyMonster.currentHP = allyMonster.maxHP;
+            allyMonster.updateMyStats();
+            allyHUD.SetHP(allyMonster.currentHP);
+            yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " was healed to max HP!"));
+            SwapActingMonster();
+            StartCoroutine(TrainerTurn());
+        }
     }
 
     public IEnumerator useReviveLeaf() {
         itemMenu.gameObject.SetActive(false);
         switchToUI("readout");
         audioManager.playBlip();
+
         if (allyTeamList.Count == 3) {
             yield return StartCoroutine(displayCombatMessage("You do not have downed monster. You can't revive anything!"));
             switchToUI("actions");
@@ -598,11 +665,15 @@ public class BattleSystem : MonoBehaviour {
         itemMenu.gameObject.SetActive(false);
         switchToUI("readout");
         audioManager.playBlip();
+        itemMenu.gameObject.SetActive(false);
         if (allyMonster.isPoisoned) {
             antidoteQty--;
             allyMonster.isPoisoned = false;
-            int healed = allyMonster.Heal(allyMonster.poisonDamageTaken);
-            yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " has been cured of their poison and restored " + healed + "HP caused by poison."));
+            //int healed = allyMonster.Heal(allyMonster.poisonDamageTaken);
+
+            currentParticle = Instantiate(particleManager.sparking2, allySpawnTransform.position, Quaternion.identity);
+            yield return StartCoroutine(DestroyParticle(3.5f));
+            yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " has been cured of their poison"));
         } else {
             yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " is not poisoned, no need to use an antidote!"));
             switchToUI("actions");
@@ -611,6 +682,7 @@ public class BattleSystem : MonoBehaviour {
         SwapActingMonster();
         StartCoroutine(TrainerTurn());
     }
+
 
     public IEnumerator usePowerGem() {
         itemMenu.gameObject.SetActive(false);
@@ -626,6 +698,11 @@ public class BattleSystem : MonoBehaviour {
             allyMonster.buffedAttackAmount = 120;
             allyMonster.buffedTurnsLeft = 4;
             allyMonster.updateMyStats();
+            currentParticle = Instantiate(particleManager.fantasyEffect, allySpawnTransform.position, Quaternion.identity);
+            yield return StartCoroutine(DestroyParticle(4.55f));
+            //yield return new WaitForSeconds(4f);
+            //Destroy(currentParticle);
+            //StartCoroutine(new WaitForSeconds(yield Destroy(currentParticle)));
             yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " consumed the Power Gem!\nIt's attack is boosted by " + allyMonster.buffedAttackAmount + " and is now " + allyMonster.attack + "."));
         }
         SwapActingMonster();
@@ -633,15 +710,11 @@ public class BattleSystem : MonoBehaviour {
     }
 
     public void onSmallPotionButton() {
-        audioManager.playBlip();
-        smallPotionQty--;
-        StartCoroutine(useSmallLeafPotion());
+        StartCoroutine(UsePotionSmall());
     }
 
     public void onLargePotionButton() {
-        audioManager.playBlip();
-        largePotionQty--;
-        StartCoroutine(useLargeLeafPotion());
+        StartCoroutine(UsePotionLarge());
     }
 
     public void onReviveLeafButton() {

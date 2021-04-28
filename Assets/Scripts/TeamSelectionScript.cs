@@ -38,14 +38,15 @@ public class TeamSelectionScript : MonoBehaviour
 
     public AudioManager audioManager;
 
-    void Start()
-    {
+    void Start() {
         monsterSelectScript.GenerateLists();
-        
+    }
+    public IEnumerator FadeOut() {
+        yield return new WaitForSeconds(0f);
+
     }
 
-    public void OnSlotButton(int slot)
-    {
+    public void OnSlotButton(int slot) {
         audioManager.playBlip();
         monsterSelectScript.EmptyMonsterSelection();
         monsterSelectScript.currentSlot = slot;
@@ -53,9 +54,20 @@ public class TeamSelectionScript : MonoBehaviour
         gameObject.SetActive(false);
         monsterSelectCanvas.gameObject.SetActive(true);
     }
+    //public void OnConfirmButtonWrapper() {
+    //    yield return StartCoroutine(OnConfirmButton());
+    //}
 
-    public void OnConfirmButton()
-    {
+    //public IEnumerator OnConfirmButton() {
+    //    audioManager.playBlip();
+    //    //battleSystem.allyTeamList = teamList;
+    //    battleSystem.allyTeamList = new List<Monster>(teamList);
+    //    gameObject.SetActive(false);
+    //    yield return StartCoroutine(FadeOut());
+    //    battleSystem.beginGame();
+    //}
+
+    public void OnConfirmButton() {
         audioManager.playBlip();
         //battleSystem.allyTeamList = teamList;
         battleSystem.allyTeamList = new List<Monster>(teamList);
@@ -63,64 +75,51 @@ public class TeamSelectionScript : MonoBehaviour
         battleSystem.beginGame();
     }
 
-    public void OnCancelButton()
-    {
+    public void OnCancelButton() {
         audioManager.playBlip();
         ResetTeam();
         UpdateTeamPreviews();
         mainMenuScript.returnToMainMenu();
     }
 
-    public void OnRandomButton()
-    {
+    public void OnRandomButton() {
         audioManager.playBlip();
-        for (int i=0; i<3; i++)
-        {
+        for (int i=0; i<3; i++) {
             teamList[i] = monsterSelectScript.monsterList[r.Next(0, 10)];
         }
 
         UpdateTeamPreviews();
     }
 
-    public void UpdateTeamPreviews()
-    {
-
-        if (teamList[0] != null)
-        {
+    public void UpdateTeamPreviews() {
+        if (teamList[0] != null) {
             slot1MonsterNameText.text = teamList[0].monsterName;
             Destroy(slot1Preview);
             slot1Preview = Instantiate(teamList[0].gameObject, slot1PreviewTransform.position, slot1PreviewTransform.rotation);
-        }
-        else
-        {
+        } else {
             slot1MonsterNameText.text = "Empty";
         }
 
-        if (teamList[1] != null)
-        {
+        if (teamList[1] != null) {
             slot2MonsterNameText.text = teamList[1].monsterName;
             Destroy(slot2Preview);
             slot2Preview = Instantiate(teamList[1].gameObject, slot2PreviewTransform.position, slot2PreviewTransform.rotation);
-        } else
-        {
+        } else {
             slot2MonsterNameText.text = "Empty";
         }
 
-        if (teamList[2] != null)
-        {
+        if (teamList[2] != null) {
             slot3MonsterNameText.text = teamList[2].monsterName;
             Destroy(slot3Preview);
             slot3Preview = Instantiate(teamList[2].gameObject, slot3PreviewTransform.position, slot3PreviewTransform.rotation);
-        } else
-        {
+        } else {
             slot3MonsterNameText.text = "Empty";
         }
         
         isTeamFullCheck();
     }
 
-    public void ResetTeam()
-    {
+    public void ResetTeam() {
         slot1MonsterNameText.text = "Empty";
         slot2MonsterNameText.text = "Empty";
         slot3MonsterNameText.text = "Empty";
@@ -132,14 +131,10 @@ public class TeamSelectionScript : MonoBehaviour
         teamList = new List<Monster> { null, null, null };
     }
 
-    public void isTeamFullCheck()
-    {
-        if (teamList[0] != null && teamList[1] != null && teamList[2] != null)
-        {
+    public void isTeamFullCheck() {
+        if (teamList[0] != null && teamList[1] != null && teamList[2] != null) {
             confirmButton.interactable = true;
-        }
-        else
-        {
+        } else {
             confirmButton.interactable = false;
         }
     }
