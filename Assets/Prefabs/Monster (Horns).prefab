@@ -485,6 +485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Horns
+  isAllyMonster: 0
   originalAttack: 0
   attack: 320
   originalDefense: 0
@@ -532,9 +533,12 @@ MonoBehaviour:
   specialSound: {fileID: 8300000, guid: baf4365a7d3125d4fb55c775354eb2df, type: 3}
   hurtSound: {fileID: 8300000, guid: b958966ac5253de4cb55718b8c409203, type: 3}
   deathSound: {fileID: 8300000, guid: 7cd54a3c556867446a7b2493528b0cd0, type: 3}
-  isPlayerMonster: 0
-  playerDamageModifier: 1.21
+  playerDamageModifier: 1.24
+  playerSpecialDamageModifier: 1.08
   enemyDamageModifier: 0.8
+  enemySpecialDamageModifier: 0.8
+  lastDamageTaken: 0
+  battleSystem: {fileID: 0}
 --- !u!95 &5713984364815744253
 Animator:
   serializedVersion: 3

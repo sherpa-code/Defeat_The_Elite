@@ -83,8 +83,8 @@ public class BattleSystem : MonoBehaviour {
         allyHUD.gameObject.SetActive(false);
         switchToUI("readout");
 
-        currentEnemyTrainer = enemyTrainers[r.Next(0, enemyTrainers.Count)];
-        //currentEnemyTrainer = enemyTrainers[3]; // DEBUG
+        //currentEnemyTrainer = enemyTrainers[r.Next(0, enemyTrainers.Count)];
+        currentEnemyTrainer = enemyTrainers[3]; // DEBUG
         //0 = Albus Ommin (Dragonewt, , ) // starts with debuff
         //1 = Bloise Sisko (Needles, , ) // starts with almost fastest
         //2 = Chun Doom (Spinion, , ) // starts with fastest and poison
@@ -177,7 +177,7 @@ public class BattleSystem : MonoBehaviour {
                 actingMonster.poisonTurnsLeft--;
                 if (actingMonster.poisonTurnsLeft == 0) {
                     actingMonster.isPoisoned = false;
-                    yield return StartCoroutine(displayCombatMessage("...and the poison wore off!"));
+                    yield return StartCoroutine(displayCombatMessage("...the poison wore off!"));
                 }
             }
         }
@@ -192,7 +192,7 @@ public class BattleSystem : MonoBehaviour {
                 actingMonster.deathBreathTurnsLeft--;
                 if (actingMonster.deathBreathTurnsLeft == 0) {
                     actingMonster.isDeathBreathed = false;
-                    yield return StartCoroutine(displayCombatMessage("...and the Death Breath wore off!"));
+                    yield return StartCoroutine(displayCombatMessage("...the Death Breath wore off!"));
                 }
             }
         }
@@ -253,10 +253,10 @@ public class BattleSystem : MonoBehaviour {
     public IEnumerator MonsterDied(Monster monster) {
         StartCoroutine(monster.playDeathAnimation());
         StartCoroutine(displayCombatMessage(monster.monsterName + " has died!"));
-        currentParticle = Instantiate(particleManager.ball2, waitingMonster.transform.position, Quaternion.identity);
-        yield return StartCoroutine(DestroyParticle(3.5f));
+        
         if (monster.isAllyMonster) {
-
+            currentParticle = Instantiate(particleManager.ball2, allyMonster.transform.position, Quaternion.identity);
+            yield return StartCoroutine(DestroyParticle(3.5f));
             lastMonster = Instantiate(allyTeamList[0], lastMonsterTransform);
             allyTeamList.RemoveAt(0);
             Destroy(allyGameObject);
@@ -267,6 +267,8 @@ public class BattleSystem : MonoBehaviour {
                 GameOverLost();
             }
         } else {
+            currentParticle = Instantiate(particleManager.ball2, enemyMonster.transform.position, Quaternion.identity);
+            yield return StartCoroutine(DestroyParticle(3.5f));
             currentEnemyTeamList.RemoveAt(0);
             Destroy(enemyGameObject);
 
@@ -306,9 +308,9 @@ public class BattleSystem : MonoBehaviour {
     public IEnumerator MonsterDeathBreathed(Monster monster) {
         if (monster.isDeathBreathed) {
             yield return StartCoroutine(displayCombatMessage(monster.monsterName + " still smells the Death Breath..."));
-            if (r.Next(0, 9) == 8) {
-            //if (r.Next(9, 10) == 9) { // DEBUG: always crit
-                monster.TakeDirectDamage(monster.currentHP);
+            //if (r.Next(0, 9) == 8) {
+            if (r.Next(9, 10) == 9) { // DEBUG: always crit
+                monster.TakeDirectDamage(monster.maxHP);
                 if (monster.isAllyMonster) {
                     allyHUD.SetHP(monster.currentHP);
                 } else {
@@ -470,7 +472,7 @@ public class BattleSystem : MonoBehaviour {
                     enemyHUD.SetHP(waitingMonster.currentHP);
                 }
                 yield return StartCoroutine(displayCombatMessage(monster.specialAbilityName + " was successful..."));
-                yield return StartCoroutine(displayCombatMessage(monster.monsterName + " took " + monster.lastDamageTaken + " damage!"));
+                yield return StartCoroutine(displayCombatMessage(waitingMonster.monsterName + " took " + waitingMonster.lastDamageTaken + " damage!"));
             } else {
                 yield return StartCoroutine(displayCombatMessage("... but it missed!"));
             }
@@ -644,38 +646,34 @@ public class BattleSystem : MonoBehaviour {
         }
     }
 
-    public IEnumerator useReviveLeaf() {
+    public IEnumerator UseReviveLeaf() {
         itemMenu.gameObject.SetActive(false);
         switchToUI("readout");
         audioManager.playBlip();
-
         if (allyTeamList.Count == 3) {
-            yield return StartCoroutine(displayCombatMessage("You do not have downed monster. You can't revive anything!"));
+            yield return StartCoroutine(displayCombatMessage("You do not have downed monster.\nYou can't revive a monster!"));
             switchToUI("actions");
-            yield break;
         } else {
-            yield return StartCoroutine(displayCombatMessage("You used a revive potion on " + lastMonster.monsterName + ". They're back on the team!"));
+            reviveLeafQty--;
             allyTeamList.Add(lastMonster);
+            yield return StartCoroutine(displayCombatMessage("You used a revive potion on " + lastMonster.monsterName + ". They're back on the team!"));
             SwapActingMonster();
             StartCoroutine(TrainerTurn());
         }
     }
 
-    public IEnumerator useAntidote() {
-        itemMenu.gameObject.SetActive(false);
-        switchToUI("readout");
+    public IEnumerator UseAntidote() {
         audioManager.playBlip();
+        switchToUI("readout");
         itemMenu.gameObject.SetActive(false);
         if (allyMonster.isPoisoned) {
             antidoteQty--;
             allyMonster.isPoisoned = false;
-            //int healed = allyMonster.Heal(allyMonster.poisonDamageTaken);
-
             currentParticle = Instantiate(particleManager.sparking2, allySpawnTransform.position, Quaternion.identity);
             yield return StartCoroutine(DestroyParticle(3.5f));
-            yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " has been cured of their poison"));
+            yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " was cured of poison!"));
         } else {
-            yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " is not poisoned, no need to use an antidote!"));
+            yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " is not poisoned,\nno need to use an antidote!"));
             switchToUI("actions");
             yield break;
         }
@@ -684,12 +682,14 @@ public class BattleSystem : MonoBehaviour {
     }
 
 
-    public IEnumerator usePowerGem() {
+
+
+    public IEnumerator UsePowerGem() {
         itemMenu.gameObject.SetActive(false);
         switchToUI("readout");
         audioManager.playBlip();
         if (allyMonster.isBuffed) {
-            yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " is already buffed, you can't buff them twice!"));
+            yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " is already buffed,\nyou can't buff them twice!"));
             switchToUI("actions");
             yield break;
         } else {
@@ -698,12 +698,13 @@ public class BattleSystem : MonoBehaviour {
             allyMonster.buffedAttackAmount = 120;
             allyMonster.buffedTurnsLeft = 4;
             allyMonster.updateMyStats();
+            StartCoroutine(displayCombatMessage(allyMonster.monsterName + " consumed the Power Gem!\nIt's attack is boosted by " + allyMonster.buffedAttackAmount + " and is now " + allyMonster.attack + "."));
             currentParticle = Instantiate(particleManager.fantasyEffect, allySpawnTransform.position, Quaternion.identity);
-            yield return StartCoroutine(DestroyParticle(4.55f));
+            yield return StartCoroutine(DestroyParticle(3.25f));
             //yield return new WaitForSeconds(4f);
             //Destroy(currentParticle);
             //StartCoroutine(new WaitForSeconds(yield Destroy(currentParticle)));
-            yield return StartCoroutine(displayCombatMessage(allyMonster.monsterName + " consumed the Power Gem!\nIt's attack is boosted by " + allyMonster.buffedAttackAmount + " and is now " + allyMonster.attack + "."));
+            
         }
         SwapActingMonster();
         StartCoroutine(TrainerTurn());
@@ -718,19 +719,17 @@ public class BattleSystem : MonoBehaviour {
     }
 
     public void onReviveLeafButton() {
-        audioManager.playBlip();
-        reviveLeafQty--;
-        StartCoroutine(useReviveLeaf());
+        StartCoroutine(UseReviveLeaf());
     }
 
     public void onAntidoteButton() {
         audioManager.playBlip();
-        StartCoroutine(useAntidote());
+        StartCoroutine(UseAntidote());
     }
 
     public void onPowerGemButton() {
         audioManager.playBlip();
-        StartCoroutine(usePowerGem());
+        StartCoroutine(UsePowerGem());
     }
 
     public void updateItemHUD() {

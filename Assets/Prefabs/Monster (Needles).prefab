@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Needles
+  isAllyMonster: 0
   originalAttack: 0
   attack: 340
   originalDefense: 0
@@ -161,9 +162,12 @@ MonoBehaviour:
   specialSound: {fileID: 8300000, guid: 61f76c18b75ad1b4c8263b7242342fb0, type: 3}
   hurtSound: {fileID: 8300000, guid: a9951f1a3e48a5447acc33bb9c675940, type: 3}
   deathSound: {fileID: 8300000, guid: 431dc5be11da80a4f8e6157ee0defd77, type: 3}
-  isPlayerMonster: 0
-  playerDamageModifier: 1.21
+  playerDamageModifier: 1.24
+  playerSpecialDamageModifier: 1.08
   enemyDamageModifier: 0.8
+  enemySpecialDamageModifier: 0.8
+  lastDamageTaken: 0
+  battleSystem: {fileID: 0}
 --- !u!95 &3783013325008330724
 Animator:
   serializedVersion: 3

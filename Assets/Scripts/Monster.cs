@@ -133,10 +133,10 @@ public class Monster : MonoBehaviour {
         float damageApplied;
 
         if (isAllyMonster) {
-            damageApplied = (int)Math.Round(damageInput * enemyDamageModifier);
+            damageApplied = damageInput;
             //Debug.Log("isAllyMonster and damageOutput*enemyMod = " + damageApplied);
         } else {
-            damageApplied = (int)Math.Round(damageInput * playerDamageModifier);
+            damageApplied = (int)Math.Round(damageInput * playerDamageModifier); // modifier currently set above 1.0
             //Debug.Log("isEnemyMonster and damageOutput*playerMod = " + damageApplied);
         }
 

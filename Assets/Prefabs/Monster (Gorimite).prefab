@@ -4334,6 +4334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Gorimite
+  isAllyMonster: 0
   originalAttack: 0
   attack: 340
   originalDefense: 0
@@ -4381,9 +4382,12 @@ MonoBehaviour:
   specialSound: {fileID: 8300000, guid: 10e7879940d96a741aeb830dad16ba47, type: 3}
   hurtSound: {fileID: 8300000, guid: 20dda93867b47d84fb3d4ae4ef7b0c1a, type: 3}
   deathSound: {fileID: 8300000, guid: 8778cba5f3a29b441988ab18d5ab4f8a, type: 3}
-  isPlayerMonster: 0
-  playerDamageModifier: 1.21
+  playerDamageModifier: 1.24
+  playerSpecialDamageModifier: 1.08
   enemyDamageModifier: 0.8
+  enemySpecialDamageModifier: 0.8
+  lastDamageTaken: 0
+  battleSystem: {fileID: 0}
 --- !u!95 &6815554699448209572
 Animator:
   serializedVersion: 3

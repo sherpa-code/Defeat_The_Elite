@@ -4200,6 +4200,8 @@ MonoBehaviour:
   allyGameObject: {fileID: 0}
   allyMonster: {fileID: 0}
   enemyMonster: {fileID: 0}
+  actingMonster: {fileID: 0}
+  waitingMonster: {fileID: 0}
   playerActions: {fileID: 1629643755}
   gameOverHUD: {fileID: 717331771}
   combatReadout: {fileID: 606160011}
@@ -4242,6 +4244,8 @@ MonoBehaviour:
   reviveLeafQtyText: {fileID: 286651064}
   antidoteQtyText: {fileID: 633797229}
   boostQtyText: {fileID: 1435644885}
+  particleManager: {fileID: 704280072}
+  currentParticle: {fileID: 0}
 --- !u!4 &408750174
 Transform:
   m_ObjectHideFlags: 0
@@ -8346,6 +8350,98 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698506582}
   m_CullTransparentMesh: 0
+--- !u!1 &704280071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 704280073}
+  - component: {fileID: 704280072}
+  m_Layer: 0
+  m_Name: ParticleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &704280072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704280071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ede983664e8ed4a867daefae77295f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ball: {fileID: 100006, guid: f1fca55934f274a4b9c8fd316d61e964, type: 3}
+  ball2: {fileID: 100004, guid: 10a7ec2a2783770419a38059c45ea8b3, type: 3}
+  buff: {fileID: 100004, guid: a92a42a2125977345a54e9b8306b5880, type: 3}
+  buff2: {fileID: 100006, guid: 68849d937b3285f4083f33a1dc4cd5ed, type: 3}
+  buff3: {fileID: 100004, guid: 4f1e87ee37fd9904b8aa23d71ab1b9a1, type: 3}
+  cube: {fileID: 100004, guid: 417d95259df90e4488eb927fde45cba3, type: 3}
+  darkBall: {fileID: 100010, guid: 176790904455b214b92ac1cfd30fddc9, type: 3}
+  darkBall2: {fileID: 100002, guid: 7a52d3ff698a7dc4dbc5f0152df3371a, type: 3}
+  explosion: {fileID: 100000, guid: f881607407b15cc46b24d6bda799037a, type: 3}
+  explosion2: {fileID: 100006, guid: 8b940ede2c20ec44ba870a2cdd277051, type: 3}
+  explosion3: {fileID: 100016, guid: 3f1d919251d33ab45a23dc83a945d1da, type: 3}
+  explosion4: {fileID: 100006, guid: 1b0efe600cd9bcd48ae21ef3dffffff8, type: 3}
+  explosion5: {fileID: 100004, guid: 33384af7b24a0f14cb7bbf3b795f7a2b, type: 3}
+  explosion6: {fileID: 100008, guid: f3613b78354895b469b7da1f0a90e686, type: 3}
+  explosion7: {fileID: 100014, guid: f99757c3449090646b2e54da3138946a, type: 3}
+  explosion8: {fileID: 100000, guid: 53d301af6d66cf94497e9fcec3cb6699, type: 3}
+  explosion9: {fileID: 100006, guid: 10b506478f435cf4ca5bbcf982c59f08, type: 3}
+  fantasyEffect: {fileID: 100008, guid: 958065eadd2de834cba095e936840ab9, type: 3}
+  fantasySun: {fileID: 100008, guid: 0dc8a41118815f049b519e777f0eb41e, type: 3}
+  fantasySun2: {fileID: 100004, guid: 7676f997c96af1442b54560bff6edaee, type: 3}
+  fireball: {fileID: 100002, guid: a590c04abd57be544b50a1b51a6674ac, type: 3}
+  fireball2: {fileID: 100006, guid: 973eb0a45c837fd46993e1f277f5dacf, type: 3}
+  fireball3: {fileID: 100006, guid: 0ffc584583b8c1541b3c2100725f6ab5, type: 3}
+  flame: {fileID: 100004, guid: d205bba4d197a5f45a64abfcc6123c20, type: 3}
+  flame2: {fileID: 100004, guid: 79ea71ffadab038428d7002939ad9077, type: 3}
+  flameEmission: {fileID: 100008, guid: e8ee802c71045d5478061ad7452d3b65, type: 3}
+  greenPlane: {fileID: 100006, guid: 2fdab942587233e42ad5de42efdc56af, type: 3}
+  hole: {fileID: 100008, guid: 5372b37f496b28548942cf8e99afeb2e, type: 3}
+  laserBombardment: {fileID: 100000, guid: 41caabb81e9bb9f468feae7e763002e2, type: 3}
+  laserBombardment2: {fileID: 100002, guid: 43cd9440a6b0f644dbf500837634ced5, type: 3}
+  laserBombardment3: {fileID: 100002, guid: 6422340191d2291478e7e4f77bbc5204, type: 3}
+  laserBombardment4: {fileID: 100008, guid: ff9eb0a0f9983744eb282f0506ed5d7f, type: 3}
+  lightningBall: {fileID: 100000, guid: 2c557f8333c64984790ab0461bed7113, type: 3}
+  lightningBall2: {fileID: 100000, guid: d667c498c736d054fbe9373c25331986, type: 3}
+  lightningCloud: {fileID: 100000, guid: a4af0d82b00381c48bc30b65c57ba3f8, type: 3}
+  lightningState: {fileID: 100004, guid: 7099a8c65c7533e4680b71bb8ce55c3d, type: 3}
+  lightningState2: {fileID: 100004, guid: 7c687a4414095c349a8ec5ac5f3cccb2, type: 3}
+  lightningState3: {fileID: 100012, guid: 58f9ce12da61d134080b5256eda98191, type: 3}
+  poison: {fileID: 100006, guid: 2ffc588afbc8e364dad6109fe9ad7a54, type: 3}
+  portal: {fileID: 100010, guid: a087aa2c7016d2042a3b744b2afc4fb0, type: 3}
+  portal2: {fileID: 100010, guid: 0f158be916b4cb245ae87ffe75725147, type: 3}
+  portal3: {fileID: 100012, guid: 06c8e33ce02e2224b964f44ee8004f9a, type: 3}
+  smoke: {fileID: 100000, guid: ac8564998262ae240850396a05244d72, type: 3}
+  snow: {fileID: 100006, guid: 5124dc2491c482e45ac7dd914d77ddc6, type: 3}
+  sparking: {fileID: 100004, guid: 96536afb634b32043bb988d4576053d3, type: 3}
+  sparking2: {fileID: 100006, guid: 50f1c35dedf5eb940a3ee61713626364, type: 3}
+  sparking3: {fileID: 100006, guid: b26161bd088b9ef4992538643ba979ba, type: 3}
+  allySpawnTransform: {fileID: 1493054092}
+  enemySpawnTransform: {fileID: 748042860}
+--- !u!4 &704280073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704280071}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.603759, y: -6.0274696, z: -66.32535}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -14733,6 +14829,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2025609167}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1187055964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19246,10 +19353,10 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: dc4184c1124632340b664b83a5212376, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
-  m_Pitch: 0.92
+  m_Volume: 0.29
+  m_Pitch: 0.925
   Loop: 0
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128

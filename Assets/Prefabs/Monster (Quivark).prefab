@@ -1341,6 +1341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Quivark
+  isAllyMonster: 0
   originalAttack: 0
   attack: 340
   originalDefense: 0
@@ -1388,9 +1389,12 @@ MonoBehaviour:
   specialSound: {fileID: 8300000, guid: 613531c5885829a4aaa7c44212ddafe2, type: 3}
   hurtSound: {fileID: 8300000, guid: 22c7f9748c8a3d3478698ac299f13743, type: 3}
   deathSound: {fileID: 8300000, guid: ca9ea2ba00e382e49860764bc07ae87c, type: 3}
-  isPlayerMonster: 0
-  playerDamageModifier: 1.21
+  playerDamageModifier: 1.24
+  playerSpecialDamageModifier: 1.08
   enemyDamageModifier: 0.8
+  enemySpecialDamageModifier: 0.8
+  lastDamageTaken: 0
+  battleSystem: {fileID: 0}
 --- !u!95 &2864951519585369360
 Animator:
   serializedVersion: 3
