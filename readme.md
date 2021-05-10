@@ -1,6 +1,6 @@
 # Defeat the Elite
 ### A Pokémon-inspired, team-based RPG combat prototype developed in Unity
-#### by Joseph Crane and YoYoMP
+#### by Sherpa and YoYoMP
 
 
 ![alt text](https://raw.githubusercontent.com/sherpa-code/Defeat_The_Elite/main/Screenshots/screen_title.PNG "Title")
