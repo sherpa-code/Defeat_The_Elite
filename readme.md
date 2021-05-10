@@ -1,47 +1,53 @@
-# YUSA
-### A PSX-inspired action-adventure prototype developed in Unreal Engine
-#### by Joseph Crane
+# Defeat the Elite
+### A Pokémon-inspired, team-based RPG combat prototype developed in Unity
+#### by Joseph Crane and YoYoMP
 
 
-![alt text](https://raw.githubusercontent.com/sherpa-code/yusa/master/Preview%20Images/misc/titleScreenSample.png "Title Screen")
+![alt text](https://raw.githubusercontent.com/sherpa-code/Defeat_The_Elite/main/Screenshots/screen_title.PNG "Title")
 
 
-This project constitutes a personal project developed in the course of learning to program using Unreal Engine Blueprints.
+This project constitutes a post-secondary project turned personal projuect developed in the course of learning to program using Unity and C#.
 
 ## Description:
-This action-adventure game draws significant influence from the look, feel, tone, and functionality of Brave Fencer: Musashi, developed and published by Square in 1998.
+This RPG game draws significant influence from the look, feel, tone, and functionality of the Pokémon series, originally developed by Game Freak and released in 1998.
 
 ## Features:
-- Action combat
-- 3D-platformer movement and abilities
-- Capture and use enemy skills
-- Colorful retro-3D environment
-- Interactable NPCs
+- Turn-based combat
+- Animated models
+- Particle effects
+- BGM
+- Sound effects
+- UI incorporating render textures
+- Strategic combat
+- Item management
 - Open source
-- Controller and Keyboard+Mouse support
 
-
-![alt text](https://raw.githubusercontent.com/sherpa-code/yusa/master/Preview%20Images/environment/environment4.png "Ancient Tree")
+![alt text](https://raw.githubusercontent.com/sherpa-code/Defeat_The_Elite/main/Screenshots/screen_team1.PNG "Render Textures")
 
 # Install instructions
-## Prerequisites:
-- Unreal Engine 4.24
-
 ## Steps:
-- Download the repository and place it in your target Project folder
-- Navigate to '(project)/Content/0Project/Maps' and extract Map.1.zip.001
-- In Epic Games Launcher, open '(project)/Yusa.uproject'
-
+- Download and extract the latest ZIP file in the Builds folder.
+- Launch the game using RPGCombat2021.exe
 
 ## Notes:
-- Approximate extracted Project size = ~10GB
-- The game was developed using Unreal Engine Blueprints
+- Approximate extracted Project size = ~200MB
+- The game was developed using Unity and C#
 - All non-original assets were obtained from free-to-use sources. No copyright infringement is intended
 
 
-![alt text](https://raw.githubusercontent.com/sherpa-code/yusa/master/Preview%20Images/environment/environment8.png "Late Evening")
+![alt text](https://raw.githubusercontent.com/sherpa-code/Defeat_The_Elite/main/Screenshots/screen_team2.PNG "Monster Selection")
+Monster Selection
 
 
-![alt text](https://raw.githubusercontent.com/sherpa-code/yusa/master/Preview%20Images/screenshots/screenshots11.png "NPC Interaction")
+![alt text](https://raw.githubusercontent.com/sherpa-code/Defeat_The_Elite/main/Screenshots/screen_combat.png "Inventory Management")
+Inventory Management
 
 
+![alt text](https://raw.githubusercontent.com/sherpa-code/Defeat_The_Elite/main/Screenshots/screen_enemyCast.png "Particle Effects")
+Particle Effects
+
+
+--------
+
+# Subscribe!
+[Video examples available at...](https://www.youtube.com/channel/UC-hVSlAsmEKQ22Vw3jTB6YA/videos "Sherpa-Code YouTube")
