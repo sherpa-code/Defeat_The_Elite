@@ -1,5 +1,5 @@
 # Defeat the Elite
-### A Pokémon-inspired, team-based RPG combat prototype developed in Unity
+### A Pokémon-inspired, team-based RPG combat prototype developed in Unity.
 #### by Sherpa and YoYoMP
 
 
