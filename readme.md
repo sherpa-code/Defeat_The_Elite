@@ -6,7 +6,7 @@
 ![alt text](https://raw.githubusercontent.com/sherpa-code/Defeat_The_Elite/main/Screenshots/screen_title.PNG "Title")
 
 
-This project constitutes a post-secondary project turned personal project developed in the course of learning to program using Unity and C#.
+This project constitutes a post-secondary project turned personal projuect developed in the course of learning to program using Unity and C#.
 
 ## Description:
 This RPG game draws significant influence from the look, feel, tone, and functionality of the Pokémon series, originally developed by Game Freak and released in 1998.

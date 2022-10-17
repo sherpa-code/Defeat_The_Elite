@@ -12,6 +12,7 @@ public class NameEntryScript : MonoBehaviour
     public TeamSelectionScript teamSelectionScript;
     public MainMenuScript mainMenuScript;
     public AudioManager audioManager;
+    public GameManagerScript gameManager;
     public System.Random r = new System.Random();
     public List<string> randomNames = new List<string>() {
         "Ramza", "Agrias", "Yomp", "Delita", "Dycedarg", "Sherpa", "Meliadoul", "Mustadio",
@@ -50,18 +51,13 @@ public class NameEntryScript : MonoBehaviour
     public void OnCancelButton() {
         Debug.Log("Cancel button pressed");
         audioManager.playBlip();
-        mainMenuScript.returnToMainMenu();
+        gameManager.gamePhaseChangeTo("mainMenu");
     }
 
     public void RandomName() {
         Debug.Log("RandomName button pressed");
         audioManager.playBlip();
         int roll = r.Next(0, randomNames.Count);
-
-        //Debug.Log("name roll = " + roll + " which is: " + randomNames[roll]);
-        //Debug.Log("length of names = " + randomNames.Count);
-        //Debug.Log(randomNames[14]);
-        //Debug.Log(randomNames[15]);
 
         if (nameInputField.text != randomNames[roll]) {
             nameInputField.text = randomNames[roll];

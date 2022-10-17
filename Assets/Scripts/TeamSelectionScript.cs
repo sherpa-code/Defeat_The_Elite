@@ -24,6 +24,8 @@ public class TeamSelectionScript : MonoBehaviour
     public Canvas monsterSelectCanvas;
     public MonsterSelectScript monsterSelectScript;
 
+    public Canvas nameEntryCanvas;
+
     public Transform slot1PreviewTransform;
     public Transform slot2PreviewTransform;
     public Transform slot3PreviewTransform;
@@ -37,6 +39,10 @@ public class TeamSelectionScript : MonoBehaviour
     public BattleSystem battleSystem;
 
     public AudioManager audioManager;
+
+    public FadeToBlackManager fade;
+
+    public GameManagerScript gameManager;
 
     void Start() {
         monsterSelectScript.GenerateLists();
@@ -71,15 +77,22 @@ public class TeamSelectionScript : MonoBehaviour
         audioManager.playBlip();
         //battleSystem.allyTeamList = teamList;
         battleSystem.allyTeamList = new List<Monster>(teamList);
+        ResetTeam();
         gameObject.SetActive(false);
-        battleSystem.beginGame();
+        gameManager.gamePhaseChangeTo("combatTrainer");
     }
 
-    public void OnCancelButton() {
+    public void OnCancelButtonWrapper() {
+        StartCoroutine(OnCancelButton());
+    }
+
+    public IEnumerator OnCancelButton() {
         audioManager.playBlip();
+        yield return StartCoroutine(fade.FadeBlackOutSquare());
         ResetTeam();
         UpdateTeamPreviews();
-        mainMenuScript.returnToMainMenu();
+        gameObject.SetActive(false);
+        nameEntryCanvas.gameObject.SetActive(true);
     }
 
     public void OnRandomButton() {

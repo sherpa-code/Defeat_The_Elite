@@ -55,6 +55,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\48 Particle Effect Pack\Script\csDestroyEffect.cs" />
+     <Compile Include="Assets\48 Particle Effect Pack\Script\csMouseOrbit.cs" />
+     <Compile Include="Assets\48 Particle Effect Pack\Script\csParticleEffectPackLightControl.cs" />
+     <Compile Include="Assets\48 Particle Effect Pack\Script\csParticleMove.cs" />
+     <Compile Include="Assets\48 Particle Effect Pack\Script\csShowAllEffect.cs" />
+     <Compile Include="Assets\48 Particle Effect Pack\ShurikenEffectEditor\csShurikenEffectChanger.cs" />
+     <Compile Include="Assets\48 Particle Effect Pack\ShurikenEffectEditor\csShurikenEffectEditor.cs" />
      <Compile Include="Assets\Free_Rocks\Standard Assets\Effects\ImageEffects\Scripts\Antialiasing.cs" />
      <Compile Include="Assets\Free_Rocks\Standard Assets\Effects\ImageEffects\Scripts\Bloom.cs" />
      <Compile Include="Assets\Free_Rocks\Standard Assets\Effects\ImageEffects\Scripts\BloomAndFlares.cs" />
@@ -98,6 +105,9 @@
      <Compile Include="Assets\Scripts\BattleAbilities.cs" />
      <Compile Include="Assets\Scripts\BattleHUDScript.cs" />
      <Compile Include="Assets\Scripts\BattleSystem.cs" />
+     <Compile Include="Assets\Scripts\FadeToBlackManager.cs" />
+     <Compile Include="Assets\Scripts\GameManagerScript.cs" />
+     <Compile Include="Assets\Scripts\InventoryManager.cs" />
      <Compile Include="Assets\Scripts\ItemMenuScript.cs" />
      <Compile Include="Assets\Scripts\ItemScript.cs" />
      <Compile Include="Assets\Scripts\ListCreatorScript.cs" />
@@ -105,6 +115,7 @@
      <Compile Include="Assets\Scripts\Monster.cs" />
      <Compile Include="Assets\Scripts\MonsterSelectScript.cs" />
      <Compile Include="Assets\Scripts\NameEntryScript.cs" />
+     <Compile Include="Assets\Scripts\ParticleManagerScript.cs" />
      <Compile Include="Assets\Scripts\SpawnManager.cs" />
      <Compile Include="Assets\Scripts\TeamSelectionScript.cs" />
      <Compile Include="Assets\Scripts\Trainer.cs" />

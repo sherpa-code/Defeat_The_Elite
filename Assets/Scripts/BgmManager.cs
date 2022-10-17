@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BGMManager : MonoBehaviour {
     private AudioSource audioSource;
@@ -15,21 +13,12 @@ public class BGMManager : MonoBehaviour {
         audioSource.loop = true;
     }
 
-    // Update is called once per frame
-    void Update() {
-
-    }
-
-
-
     public void playMenuBGM() {
         audioSource = GetComponent<AudioSource>();
         audioSource.Stop();
         audioSource.clip = menuBGM;
         audioSource.Play();
     }
-
-
 
     public void playBattleBGM() {
         audioSource.Stop();

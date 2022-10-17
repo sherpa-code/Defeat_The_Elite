@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour {
     public BattleHUDScript allyHUD;
@@ -17,58 +18,18 @@ public class MainMenuScript : MonoBehaviour {
     public Canvas nameEntryCanvas;
     public AudioManager audioManager;
     public BGMManager BGMManager;
+    public FadeToBlackManager fade;
     //private AudioSource audioSource;
     //public AudioClip menuBlipSound;
 
-
-    void Start() {
-        returnToMainMenu();
-        //battleCanvas.GetComponent<ItemMenuScript>().gameObject.SetActive(true);
-    }
-
-    //void Start() {
-    //    StartCoroutine(yoyoMP());
-    //    //battleCanvas.GetComponent<ItemMenuScript>().gameObject.SetActive(true);
-    //}
-
-
-    //IEnumerator Start() {
-    //    StartCoroutine(yoyoMP());
-    //    yield return new WaitForSeconds(0f);
-    //    //battleCanvas.GetComponent<ItemMenuScript>().gameObject.SetActive(true);
-    //}
-
-    public IEnumerator yoyoMP() {
-        yield return new WaitForSeconds(0.2f);
-        returnToMainMenu();
-    }
-
-    public void returnToMainMenu() {
-        BGMManager.playMenuBGM();
-        monsterSelectCanvas.gameObject.SetActive(false);
-        battleCanvas.gameObject.SetActive(false);
-        battleSystem.gameOverHUD.gameObject.SetActive(false);
-        teamSelectionScript.ResetTeam();
-        teamSelectionScript.UpdateTeamPreviews();
-
-        if (battleSystem.allyGameObject) {
-            Destroy(battleSystem.allyGameObject);
-        }
-
-        if (battleSystem.enemyGameObject) {
-            Destroy(battleSystem.enemyGameObject);
-        }
-
-        //battleCanvas.gameOverHUD.gameObject.SetActive(false);
-        gameObject.SetActive(true);
-    }
     
     public void OnStartGameButton() {
+        //SceneManager.LoadScene("TestScene");
         audioManager.playBlip();
-      
+        //StartCoroutine(fade.FadeBlackOutSquare());
         Debug.Log("Start Game button pressed");
         //battleSystem.itemMenu.gameObject.SetActive(true);
-        
+
         gameObject.SetActive(false);
         nameEntryCanvas.gameObject.SetActive(true);
         nameEntryCanvas.GetComponent<NameEntryScript>().clearNameInputField();
